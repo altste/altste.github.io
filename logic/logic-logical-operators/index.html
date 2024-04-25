@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://notes.ellermann.com/main.css">
     <link rel="icon" href="https://notes.ellermann.com/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Programming Notes</title>
+    <title> Programming Notes | Logical Operators </title>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
                 <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
             <div id="trees">
                 <input class="tree-toggle" type="checkbox" id="logic"
-                           />
+                           checked/>
                     <label class="tree-toggle-label"
                            for="logic">Logic</label>
 
@@ -39,11 +39,33 @@
                                 <a href="https://notes.ellermann.com/logic/logic-getyorn/">The getYorN() Method</a>
                             </li>
 
-                            <li >
+                            <li class="active">
                                 <a href="https://notes.ellermann.com/logic/logic-logical-operators/">Logical Operators</a>
                             </li>
 
-                            <li >
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://notes.ellermann.com/logic/logic-logical-operators/#Logical_Operators">Logical Operators</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-logical-operators/#Logical_operators_you_must_know:">Logical operators you must know:</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-logical-operators/#Basic_Truth_Tables_Using_Boolean_Values_Of_True_and_False">Basic Truth Tables Using Boolean Values Of True and False</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-logical-operators/#AND">AND</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-logical-operators/#OR">OR</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
                                 <a href="https://notes.ellermann.com/logic/logic-relational-operators -decision-structures-and-boolean-logic/">Relational Operators</a>
                             </li>
 
@@ -362,135 +384,30 @@
                 </div>
             </div>
         <div id="wrap">
-            <h2>Table of Contents</h2>
+            
+        <h3 id="Logical_Operators">Logical Operators&nbsp;<a class="anchor" href="#Logical_Operators">&#xE732;</a></h3>
+<p>Last Updated: 2024-04-03</p>
+<h4 id="Logical_operators_you_must_know:">Logical operators you must know:&nbsp;<a class="anchor" href="#Logical_operators_you_must_know:">&#xE732;</a></h4>
 <ul>
-        <li>
-                <a href="https://notes.ellermann.com/logic/">Logic</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/logic/logic/">Table Of Contents - Logic </a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-basic-truth-tables-using-boolean-values-of-true-or-false/">Basic Truth Tables Using Boolean Values Of True and False</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-getyorn/">The getYorN() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-logical-operators/">Logical Operators</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-relational-operators -decision-structures-and-boolean-logic/">Relational Operators</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/inputvalidation/">Input Validation</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation/">Table of Contents - Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-getvalidnumber-template-input-validation/">getValidNumber() Template Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-isinvalid-template-input-validation/">isInvalid() Template Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-one-function-input-validation-model/">One-Function Input Validation Model</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-two-function-input-validation-model/">Two-Function Input Validation Model</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-validating-string-data/">Validating String Data</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-examples-of-common-string-library-functions/">Examples of Common String Library Functions</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-common-input-values-to-test-for/">Common Input Values To Test For</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/loops/">Loops</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/loops/loops/">Table Of Contents - Loops </a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-three-types-of-loops-do-while-while-and-for/">Three Types of Loops: The Do-While Loop, The While Loop, and The For Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-which-loop-to-use/">Which loop to use</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-do-while-loop-post-test-loop/">Do-While Loop - (Post-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-pre-test-loop/">While-Loop - (Pre-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-for-loop-pre-test-loop/">For-Loop - (Pre-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-nested-loops/">Nested Loops</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-wantstocontinue-loop/">wantsToContinue Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-game-loop/">Game Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-counting-loop-pre-test-loop-and-post-test-loop/">Counting Loop - (Pre-Test Loop and Post-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-input-while-loop-with-a-sentinel-value/">Input While-Loop With A Sentinel Value</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-standard-input-sentinel-loop/">Standard Input-Sentinel Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-example/">While Loop Example</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-general-format-in-pseudocode/">While Loop in Pseudocode</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-terminology/">Terminology - Loops</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/methods/">Methods</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/methods/methods/">Table Of Contents - Methods</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getstring/">The getString() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getinteger/">The getInteger() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getdouble/">The getDouble() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getyorn/">The getString() Method in Pseudocode and Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-closescanner/">The closeScanner() Method In Pseudocode And Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getrandomnumber/">The getRandomNumber() Method in Pseudocode and Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-general-input-methods-in-java/">Generalized Input Functions In Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-terminology/">Terminology - Modules And Functions</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/arrays/">Arrays</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays/">Table Of Contents - Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-one-dimensional-arrays-pseudocode/">One-Dimensional Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-two-dimensional-arrays-in-pseudocode/">Two-Dimensional Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-initializing-array-with-random-unique-values/">Initializing an Array with Random Unique Values</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-key-array-skills/">Key Array Skills</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/ternary/">Ternary Examples</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary/">Table of Contents - Ternary Examples</a></li>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/">Enhanced For Loops</a></li>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/">Enhanced If Statements (Short Form If Statements)</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/menus/">Menus</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/menus/menus/">Table of Contents - Menus</a></li>
-                        <li><a href="https://notes.ellermann.com/menus/menus-practicemenu/">Practice Menu</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/oop/">Object Oriented Programming</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/oop/oop/">Table of Contents - Object-Oriented Programming (OOP)</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/oop-terminology/">Object-Oriented Programming (OOP) Terminology</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/object-oriented-programming/">Object-Oriented Programming (OOP)</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/oop-review-questions/">Object-Oriented Programming (OOP) Review Questions</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/arduino/">Arduino</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino/">Table Of Contents - Arduino</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/">Arduino Lab # 0 - System Verification Test</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-1-passive-buzzer/">Arduino Lab # 1 - Passive Buzzer</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-2-servo-motor/">Arduino Lab # 2 - Servo Motor</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-3-ultrasonic-sensor/">Arduino Lab # 3 - Ultrasonic Sensor</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-4-stepper-motor-control/">Arduino Lab # 4 - Stepper Motor Control</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-5-simulation-of-collision-avoidance-system/">Arduino Lab # 5 - Simulation of Collision Avoidance System</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-resources/">Arduino Resources</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/resources/">Resources</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/resources/resources/">Table Of Contents - Resources</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/java-programming-resources/">Java Programming Resources</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/installing-the-java-development-kit/">Installing the Java Development Kit (JDK) and the Java Runtime Environment (JRE)</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/">Eclipse IDE: How To Find Matching Brackets and Missing Brackets</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/">Diátaxis: A systematic approach to technical documentation authoring.</a></li>
-                        
-                    </ul>
-                </li>
-        
-    </ul>
+<li>AND – Both conditions must be true</li>
+<li>OR – Either condition must be true</li>
+<li>NOT – Reverses the truth of an expression</li>
+</ul>
+<h4 id="Basic_Truth_Tables_Using_Boolean_Values_Of_True_and_False">Basic Truth Tables Using Boolean Values Of True and False&nbsp;<a class="anchor" href="#Basic_Truth_Tables_Using_Boolean_Values_Of_True_and_False">&#xE732;</a></h4>
+<h4 id="AND">AND&nbsp;<a class="anchor" href="#AND">&#xE732;</a></h4>
+<table><thead><tr><th style="text-align: center">A</th><th style="text-align: center">B</th><th style="text-align: center">A AND B</th></tr></thead><tbody>
+<tr><td style="text-align: center">T</td><td style="text-align: center">T</td><td style="text-align: center">T</td></tr>
+<tr><td style="text-align: center">T</td><td style="text-align: center">F</td><td style="text-align: center">F</td></tr>
+<tr><td style="text-align: center">F</td><td style="text-align: center">F</td><td style="text-align: center">F</td></tr>
+</tbody></table>
+<h4 id="OR">OR&nbsp;<a class="anchor" href="#OR">&#xE732;</a></h4>
+<table><thead><tr><th style="text-align: center">A</th><th style="text-align: center">B</th><th style="text-align: center">A OR B</th></tr></thead><tbody>
+<tr><td style="text-align: center">T</td><td style="text-align: center">T</td><td style="text-align: center">T</td></tr>
+<tr><td style="text-align: center">F</td><td style="text-align: center">T</td><td style="text-align: center">T</td></tr>
+<tr><td style="text-align: center">F</td><td style="text-align: center">F</td><td style="text-align: center">F</td></tr>
+</tbody></table>
 
+    
         </div>
 
     </article>

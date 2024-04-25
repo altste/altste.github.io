@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://notes.ellermann.com/main.css">
     <link rel="icon" href="https://notes.ellermann.com/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>Programming Notes</title>
+    <title> Programming Notes | The getYorN() Method </title>
 </head>
 <body>
 
@@ -22,7 +22,7 @@
                 <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
             <div id="trees">
                 <input class="tree-toggle" type="checkbox" id="logic"
-                           />
+                           checked/>
                     <label class="tree-toggle-label"
                            for="logic">Logic</label>
 
@@ -35,11 +35,33 @@
                                 <a href="https://notes.ellermann.com/logic/logic-basic-truth-tables-using-boolean-values-of-true-or-false/">Basic Truth Tables Using Boolean Values Of True and False</a>
                             </li>
 
-                            <li >
+                            <li class="active">
                                 <a href="https://notes.ellermann.com/logic/logic-getyorn/">The getYorN() Method</a>
                             </li>
 
-                            <li >
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://notes.ellermann.com/logic/logic-getyorn/#The_getYorN()_Method">The getYorN() Method</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-getyorn/#The_getYorN()_Method_In_Pseudocode">The getYorN() Method In Pseudocode</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-getyorn/#The_getYorN()_Method_In_Java">The getYorN() Method In Java</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-getyorn/#The_getString()_Method_in_Pseduocode_used_in_The_getYorN()_Method">The getString() Method in Pseduocode used in The getYorN() Method</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/logic/logic-getyorn/#The_getString()_Method_In_Java_used_in_The_getYorN()_Method">The getString() Method In Java used in The getYorN() Method</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
                                 <a href="https://notes.ellermann.com/logic/logic-logical-operators/">Logical Operators</a>
                             </li>
 
@@ -362,135 +384,119 @@
                 </div>
             </div>
         <div id="wrap">
-            <h2>Table of Contents</h2>
-<ul>
-        <li>
-                <a href="https://notes.ellermann.com/logic/">Logic</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/logic/logic/">Table Of Contents - Logic </a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-basic-truth-tables-using-boolean-values-of-true-or-false/">Basic Truth Tables Using Boolean Values Of True and False</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-getyorn/">The getYorN() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-logical-operators/">Logical Operators</a></li>
-                        <li><a href="https://notes.ellermann.com/logic/logic-relational-operators -decision-structures-and-boolean-logic/">Relational Operators</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/inputvalidation/">Input Validation</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation/">Table of Contents - Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-getvalidnumber-template-input-validation/">getValidNumber() Template Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-isinvalid-template-input-validation/">isInvalid() Template Input Validation</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-one-function-input-validation-model/">One-Function Input Validation Model</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-two-function-input-validation-model/">Two-Function Input Validation Model</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-validating-string-data/">Validating String Data</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-examples-of-common-string-library-functions/">Examples of Common String Library Functions</a></li>
-                        <li><a href="https://notes.ellermann.com/inputvalidation/input-validation-common-input-values-to-test-for/">Common Input Values To Test For</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/loops/">Loops</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/loops/loops/">Table Of Contents - Loops </a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-three-types-of-loops-do-while-while-and-for/">Three Types of Loops: The Do-While Loop, The While Loop, and The For Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-which-loop-to-use/">Which loop to use</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-do-while-loop-post-test-loop/">Do-While Loop - (Post-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-pre-test-loop/">While-Loop - (Pre-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-for-loop-pre-test-loop/">For-Loop - (Pre-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-nested-loops/">Nested Loops</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-wantstocontinue-loop/">wantsToContinue Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-game-loop/">Game Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-counting-loop-pre-test-loop-and-post-test-loop/">Counting Loop - (Pre-Test Loop and Post-Test Loop)</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-input-while-loop-with-a-sentinel-value/">Input While-Loop With A Sentinel Value</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-standard-input-sentinel-loop/">Standard Input-Sentinel Loop</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-example/">While Loop Example</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-while-loop-general-format-in-pseudocode/">While Loop in Pseudocode</a></li>
-                        <li><a href="https://notes.ellermann.com/loops/loops-terminology/">Terminology - Loops</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/methods/">Methods</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/methods/methods/">Table Of Contents - Methods</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getstring/">The getString() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getinteger/">The getInteger() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getdouble/">The getDouble() Method</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getyorn/">The getString() Method in Pseudocode and Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-closescanner/">The closeScanner() Method In Pseudocode And Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-getrandomnumber/">The getRandomNumber() Method in Pseudocode and Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-general-input-methods-in-java/">Generalized Input Functions In Java</a></li>
-                        <li><a href="https://notes.ellermann.com/methods/methods-terminology/">Terminology - Modules And Functions</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/arrays/">Arrays</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays/">Table Of Contents - Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-one-dimensional-arrays-pseudocode/">One-Dimensional Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-two-dimensional-arrays-in-pseudocode/">Two-Dimensional Arrays</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-initializing-array-with-random-unique-values/">Initializing an Array with Random Unique Values</a></li>
-                        <li><a href="https://notes.ellermann.com/arrays/arrays-key-array-skills/">Key Array Skills</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/ternary/">Ternary Examples</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary/">Table of Contents - Ternary Examples</a></li>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/">Enhanced For Loops</a></li>
-                        <li><a href="https://notes.ellermann.com/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/">Enhanced If Statements (Short Form If Statements)</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/menus/">Menus</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/menus/menus/">Table of Contents - Menus</a></li>
-                        <li><a href="https://notes.ellermann.com/menus/menus-practicemenu/">Practice Menu</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/oop/">Object Oriented Programming</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/oop/oop/">Table of Contents - Object-Oriented Programming (OOP)</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/oop-terminology/">Object-Oriented Programming (OOP) Terminology</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/object-oriented-programming/">Object-Oriented Programming (OOP)</a></li>
-                        <li><a href="https://notes.ellermann.com/oop/oop-review-questions/">Object-Oriented Programming (OOP) Review Questions</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/arduino/">Arduino</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino/">Table Of Contents - Arduino</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/">Arduino Lab # 0 - System Verification Test</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-1-passive-buzzer/">Arduino Lab # 1 - Passive Buzzer</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-2-servo-motor/">Arduino Lab # 2 - Servo Motor</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-3-ultrasonic-sensor/">Arduino Lab # 3 - Ultrasonic Sensor</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-4-stepper-motor-control/">Arduino Lab # 4 - Stepper Motor Control</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-lab-5-simulation-of-collision-avoidance-system/">Arduino Lab # 5 - Simulation of Collision Avoidance System</a></li>
-                        <li><a href="https://notes.ellermann.com/arduino/arduino-resources/">Arduino Resources</a></li>
-                        
-                    </ul>
-                </li>
-        <li>
-                <a href="https://notes.ellermann.com/resources/">Resources</a>
-                <ul>
-                        <li><a href="https://notes.ellermann.com/resources/resources/">Table Of Contents - Resources</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/java-programming-resources/">Java Programming Resources</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/installing-the-java-development-kit/">Installing the Java Development Kit (JDK) and the Java Runtime Environment (JRE)</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/">Eclipse IDE: How To Find Matching Brackets and Missing Brackets</a></li>
-                        <li><a href="https://notes.ellermann.com/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/">Diátaxis: A systematic approach to technical documentation authoring.</a></li>
-                        
-                    </ul>
-                </li>
-        
-    </ul>
+            
+        <h3 id="The_getYorN()_Method">The getYorN() Method&nbsp;<a class="anchor" href="#The_getYorN()_Method">&#xE732;</a></h3>
+<p>Last Updated: 2024-04-03</p>
+<h4 id="The_getYorN()_Method_In_Pseudocode">The getYorN() Method In Pseudocode&nbsp;<a class="anchor" href="#The_getYorN()_Method_In_Pseudocode">&#xE732;</a></h4>
+<p>The below method asks the user to enter <code>Y</code> or <code>N</code> using the generalized <code>getString()</code> method</p>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#d08770;">Method Boolean </span><span style="color:#bf616a;">getYesOrNo </span><span>(</span><span style="color:#d08770;">String</span><span> msg)
+</span><span>    </span><span style="color:#d08770;">Declare String</span><span> newValue
+</span><span>	
+</span><span>	</span><span style="color:#d08770;">Display</span><span> msg
+</span><span>    newValue = </span><span style="color:#bf616a;">getString</span><span>(msg)
+</span><span>	
+</span><span>    </span><span style="color:#d08770;">While </span><span style="color:#bf616a;">uppercase</span><span>(newValue) is not &quot;</span><span style="color:#a3be8c;">Y</span><span>&quot;
+</span><span>      </span><span style="color:#d08770;">AND </span><span style="color:#bf616a;">uppercase</span><span>(newValue) is not &quot;</span><span style="color:#a3be8c;">N</span><span>&quot;
+</span><span>	  
+</span><span>          </span><span style="color:#d08770;">Display </span><span>&quot;</span><span style="color:#a3be8c;">Invalid entry. Should be Y or N</span><span>&quot;
+</span><span>		  newValue = </span><span style="color:#bf616a;">getString</span><span>(msg)
+</span><span>		  
+</span><span>    </span><span style="color:#d08770;">End While
+</span><span>	
+</span><span>    </span><span style="color:#d08770;">If</span><span> newValue is &quot;</span><span style="color:#a3be8c;">Y</span><span>&quot; </span><span style="color:#d08770;">Then
+</span><span>        </span><span style="color:#d08770;">Return true
+</span><span>    </span><span style="color:#d08770;">End If
+</span><span>    </span><span style="color:#d08770;">Return false </span><span style="color:#a7adba;">// newVaLUE IS &quot;N&quot;
+</span><span style="color:#d08770;">End Method
+</span></code></pre>
+<p>Notice that <code>getYesOrNo()</code> uses <code>getString()</code>. Why is that? Because <code>getString()</code> is a generalized input method that can return any kind of string such as <code>Y</code> or <code>N</code>.</p>
+<h4 id="The_getYorN()_Method_In_Java">The getYorN() Method In Java&nbsp;<a class="anchor" href="#The_getYorN()_Method_In_Java">&#xE732;</a></h4>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#a7adba;">/** Gets a Yes or No answer from the keyboard. Calls getString
+</span><span style="color:#a7adba;"> * to rejects null input and spaces.
+</span><span style="color:#a7adba;"> * </span><span style="color:#b48ead;">@param </span><span style="color:#bf616a;">msg</span><span style="color:#a7adba;"> is the text that will be displayed the user.
+</span><span style="color:#a7adba;"> * </span><span style="color:#b48ead;">@return</span><span style="color:#a7adba;"> Returns a boolean value. True = yes; False = no. 
+</span><span style="color:#a7adba;">*/ 
+</span><span>
+</span><span style="color:#b48ead;">public static boolean </span><span style="color:#bf616a;">getYorN</span><span>(</span><span style="color:#d08770;">String</span><span> msg) {
+</span><span style="color:#d08770;">String</span><span> answer = </span><span style="color:#bf616a;">getString</span><span>(msg);
+</span><span>      
+</span><span style="color:#b48ead;">while </span><span>(answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">y</span><span>&quot;)   != </span><span style="color:#d08770;">0 
+</span><span>    &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">yes</span><span>&quot;) != </span><span style="color:#d08770;">0 
+</span><span>    &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;)   != </span><span style="color:#d08770;">0 
+</span><span>    &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">no</span><span>&quot;)  != </span><span style="color:#d08770;">0</span><span>) {
+</span><span>         
+</span><span>    </span><span style="color:#b48ead;">if </span><span>(answer.</span><span style="color:#bf616a;">replace</span><span>(&quot; &quot;, &quot;&quot;).</span><span style="color:#bf616a;">equals</span><span>(&quot;&quot;)) {
+</span><span>        </span><span style="color:#d08770;">System</span><span>.err.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">Error: Missing y/n input.</span><span>&quot;);
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">y</span><span>&quot;)   != </span><span style="color:#d08770;">0 
+</span><span>        &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">yes</span><span>&quot;) != </span><span style="color:#d08770;">0 
+</span><span>        &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;)   != </span><span style="color:#d08770;">0 
+</span><span>        &amp;&amp; answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">no</span><span>&quot;)  != </span><span style="color:#d08770;">0</span><span>) {
+</span><span>            </span><span style="color:#d08770;">System</span><span>.err.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">Error: Unexpected input.</span><span>&quot;);
+</span><span>            }
+</span><span>        }
+</span><span>        answer = </span><span style="color:#bf616a;">getString</span><span>(msg);
+</span><span>    } 
+</span><span>      
+</span><span>    </span><span style="color:#b48ead;">if  </span><span>(answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">y</span><span>&quot;)   == </span><span style="color:#d08770;">0  
+</span><span>		|| answer.</span><span style="color:#bf616a;">compareToIgnoreCase</span><span>(&quot;</span><span style="color:#a3be8c;">yes</span><span>&quot;) == </span><span style="color:#d08770;">0</span><span>) {
+</span><span>        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">true</span><span>;
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#b48ead;">return </span><span style="color:#d08770;">false</span><span>;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h4 id="The_getString()_Method_in_Pseduocode_used_in_The_getYorN()_Method">The getString() Method in Pseduocode used in The getYorN() Method&nbsp;<a class="anchor" href="#The_getString()_Method_in_Pseduocode_used_in_The_getYorN()_Method">&#xE732;</a></h4>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#d08770;">Method String </span><span style="color:#bf616a;">getString </span><span>(</span><span style="color:#d08770;">String</span><span> msg)
+</span><span>	</span><span style="color:#d08770;">Declare String</span><span> newValue
+</span><span>
+</span><span>	</span><span style="color:#d08770;">Display</span><span> msg
+</span><span>	</span><span style="color:#d08770;">Input</span><span> newValue
+</span><span>	
+</span><span>	</span><span style="color:#d08770;">While</span><span> newValue is </span><span style="color:#d08770;">null</span><span> or spaces
+</span><span>		</span><span style="color:#d08770;">Display </span><span>&quot;</span><span style="color:#a3be8c;">Error: Missing input.</span><span>&quot;
+</span><span>		</span><span style="color:#d08770;">Display</span><span> msg
+</span><span>		</span><span style="color:#d08770;">Input</span><span> newValue
+</span><span>	</span><span style="color:#d08770;">End While
+</span><span>	
+</span><span>	</span><span style="color:#d08770;">Return</span><span> newValue
+</span><span style="color:#d08770;">End Method
+</span></code></pre>
+<h4 id="The_getString()_Method_In_Java_used_in_The_getYorN()_Method">The getString() Method In Java used in The getYorN() Method&nbsp;<a class="anchor" href="#The_getString()_Method_In_Java_used_in_The_getYorN()_Method">&#xE732;</a></h4>
+<pre data-lang="java" style="background-color:#eff1f5;color:#4f5b66;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#a7adba;">/** Gets a String from the keyboard. Rejects null entry or any 
+</span><span style="color:#a7adba;"> * number of spaces.
+</span><span style="color:#a7adba;"> * </span><span style="color:#b48ead;">@param </span><span style="color:#bf616a;">msg</span><span style="color:#a7adba;"> is the text that will be displayed the user to
+</span><span style="color:#a7adba;"> * ask them to enter a value.
+</span><span style="color:#a7adba;"> * </span><span style="color:#b48ead;">@return</span><span style="color:#a7adba;"> Returns a String from the keyboard. 
+</span><span style="color:#a7adba;">*/ 
+</span><span>
+</span><span style="color:#b48ead;">public static </span><span style="color:#d08770;">String </span><span style="color:#bf616a;">getString</span><span>(</span><span style="color:#d08770;">String</span><span> msg) {
+</span><span>    </span><span style="color:#d08770;">String</span><span> answer = &quot;&quot;;
+</span><span>    </span><span style="color:#d08770;">System</span><span>.out.</span><span style="color:#bf616a;">println</span><span>(msg);
+</span><span>    </span><span style="color:#b48ead;">try </span><span>{
+</span><span>        answer = keyboard.</span><span style="color:#bf616a;">nextLine</span><span>(); 
+</span><span>    } </span><span style="color:#b48ead;">catch </span><span>(</span><span style="color:#d08770;">Exception </span><span style="color:#bf616a;">e</span><span>) {
+</span><span>        </span><span style="color:#d08770;">System</span><span>.err.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">Error reading input from user. </span><span>&quot; 
+</span><span>		    + </span><span style="color:#d08770;">Ending</span><span> program.&quot;</span><span style="color:#a3be8c;">);</span><span style="background-color:#bf616a;color:#eff1f5;">
+</span><span>        </span><span style="color:#d08770;">System</span><span>.</span><span style="color:#bf616a;">exit</span><span>(-</span><span style="color:#d08770;">1</span><span>)</span><span style="background-color:#bf616a;color:#eff1f5;">;</span><span>
+</span><span>    } 
+</span><span>      
+</span><span>    </span><span style="color:#b48ead;">while </span><span>(answer.</span><span style="color:#bf616a;">replace</span><span>(&quot; &quot;, &quot;&quot;).</span><span style="color:#bf616a;">equals</span><span>(&quot;&quot;)) {
+</span><span>        </span><span style="color:#d08770;">System</span><span>.err.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">Error: Missing input.</span><span>&quot;);
+</span><span>        </span><span style="color:#b48ead;">try </span><span>{
+</span><span>            </span><span style="color:#d08770;">System</span><span>.out.</span><span style="color:#bf616a;">println</span><span>(msg);
+</span><span>			answer = keyboard.</span><span style="color:#bf616a;">nextLine</span><span>(); 
+</span><span>        } </span><span style="color:#b48ead;">catch </span><span>(</span><span style="color:#d08770;">Exception </span><span style="color:#bf616a;">e</span><span>) {
+</span><span>            </span><span style="color:#d08770;">System</span><span>.err.</span><span style="color:#bf616a;">println</span><span>(&quot;</span><span style="color:#a3be8c;">Error reading input from user. </span><span>&quot;
+</span><span>				+ </span><span style="color:#d08770;">Ending</span><span> program.&quot;</span><span style="color:#a3be8c;">);</span><span style="background-color:#bf616a;color:#eff1f5;">
+</span><span>            </span><span style="color:#d08770;">System</span><span>.</span><span style="color:#bf616a;">exit</span><span>(-</span><span style="color:#d08770;">1</span><span>)</span><span style="background-color:#bf616a;color:#eff1f5;">;</span><span>
+</span><span>        } 
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">return</span><span> answer;            
+</span><span>}
+</span></code></pre>
 
+    
         </div>
 
     </article>

@@ -93,3 +93,5 @@ Disallow: /
 
 User-agent: *
 Disallow: /
+
+Sitemap: https://notes.ellermann.com/sitemap.xml
