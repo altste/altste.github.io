@@ -1,0 +1,95 @@
+# robots.txt
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: Googlebot-News
+Disallow: /
+
+User-agent: Googlebot-Video
+Disallow: /
+
+User-agent: Storebot-Google
+Disallow: /
+
+User-agent: Google-InspectionTool
+Disallow: /
+
+User-agent:  GoogleOther
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: APIs-Google
+Disallow: /
+
+User-agent: AdsBot-Google
+Disallow: /
+
+User-agent: AdsBot-Google-Mobile
+Disallow: /
+
+User-agent: AdsBot-Google-Mobile-Apps
+Disallow: /
+
+User-agent: Mediapartners-Google
+Disallow: /
+
+User-agent: Google-Safety
+Disallow: /
+
+User-agent: FeedFetcher-Google
+Disallow: /
+
+User-agent: GoogleProducer
+Disallow: /
+
+User-agent: google-speakr
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: *
+Disallow: /
