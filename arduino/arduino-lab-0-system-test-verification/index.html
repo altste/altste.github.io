@@ -301,6 +301,41 @@
                                         <ul id="toc">
                                             <li><a href="
                                                         https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Arduino_Lab_#_0_-_System_Verification_Test">Arduino Lab # 0 - System Verification Test</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Overview">Overview</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Requirements:">Requirements:</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Datasheets:">Datasheets:</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#The_Arduino_IDE_2">The Arduino IDE 2</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Download_the_Editor">Download the Editor</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Principle">Principle</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#How_to_upload_a_sketch_with_the_Arduino_IDE_2">How to upload a sketch with the Arduino IDE 2</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Requirements">Requirements</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Verify_vs_Upload">Verify vs Upload</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Uploading_a_Sketch">Uploading a Sketch</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/#Please_Read_(Only_Linux_Users)">Please Read (Only Linux Users)</a>
+                                                                </li>
+                                                            </ul>
                                                     </li>
                                             </ul>
                                     <li >
@@ -372,7 +407,198 @@
         <div id="wrap">
             
         <h3 id="Arduino_Lab_#_0_-_System_Verification_Test">Arduino Lab # 0 - System Verification Test&nbsp;<a class="anchor" href="#Arduino_Lab_#_0_-_System_Verification_Test">&#xE732;</a></h3>
-<p>Last Updated: 2024-04-03</p>
+<p>Author: Steve Ellermann</p>
+<h4 id="Overview">Overview&nbsp;<a class="anchor" href="#Overview">&#xE732;</a></h4>
+<p>In this lesson, you will install the Arduino IDE 2 onto your computer. You will open the provided source code file and upload it to the UNO R3 controller board using a USB 2.0 Type A to USB 2.0 Type B Cable to blink the Arduino's built-in LED.</p>
+<h4 id="Requirements:">Requirements:&nbsp;<a class="anchor" href="#Requirements:">&#xE732;</a></h4>
+<ul>
+<li>Arduino IDE (Arduino IDE 2 was used for this document)</li>
+<li>Arduino UNO R3 or Elegoo UNO R3 Board</li>
+<li>(1) x USB 2.0 Type A to USB 2.0 Type B Cable</li>
+</ul>
+<h4 id="Datasheets:">Datasheets:&nbsp;<a class="anchor" href="#Datasheets:">&#xE732;</a></h4>
+<ul>
+<li><a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/ArduinoUNOR3Datasheet.pdf">Arduino UNO R3 Datasheet</a></li>
+<li><a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/ELEGOOUNOR3BoardDatasheet.pdf">ELEGOO UNO R3 Datasheet</a></li>
+</ul>
+<p>Downloading and installing the Arduino IDE 2</p>
+<blockquote>
+<p>SOURCE:</p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">Arduino.cc Downloading and installing the Arduino IDE 2</a></p>
+</blockquote>
+<p>A quick guide on how to install the IDE 2 on your operating system.</p>
+<p>You can easily download the editor from the <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.arduino.cc/en/software">Arduino Software page</a>.</p>
+<p><strong>Requirements</strong></p>
+<ul>
+<li>Windows - Win 10 and newer, 64 bits</li>
+<li>Linux - 64 bits</li>
+<li>Mac OS X - Version 10.14: &quot;Mojave&quot; or newer, 64 bits</li>
+</ul>
+<h4 id="The_Arduino_IDE_2">The Arduino IDE 2&nbsp;<a class="anchor" href="#The_Arduino_IDE_2">&#xE732;</a></h4>
+<p>The Arduino IDE 2 is an open-source project. It is a big step from its sturdy predecessor, Arduino IDE 1.x, and comes with revamped UI, improved board &amp; library manager, debugger, autocomplete feature and much more.</p>
+<h4 id="Download_the_Editor">Download the Editor&nbsp;<a class="anchor" href="#Download_the_Editor">&#xE732;</a></h4>
+<p>Downloading the Arduino IDE 2 is done through the Arduino Software page. Here you will also find information on the other editors available to use.</p>
+<h5 id="Installation">Installation&nbsp;<a class="anchor" href="#Installation">&#xE732;</a></h5>
+<h6 id="Windows">Windows&nbsp;<a class="anchor" href="#Windows">&#xE732;</a></h6>
+<p>To install the Arduino IDE 2 on a Windows computer, simply run the file downloaded from the software page.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/downloading-and-installing-img01.png" alt="Running the installation file." /></p>
+<p><em>Running the installation file.</em></p>
+<p>Follow the instructions in the installation guide. The installation may take several minutes.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/downloading-and-installing-img02.png" alt="Instructions for installing the IDE 2" /></p>
+<p><em>Instructions for installing the IDE 2</em></p>
+<p>You can now use the Arduino IDE 2 on your Windows computer!</p>
+<h6 id="macOS">macOS&nbsp;<a class="anchor" href="#macOS">&#xE732;</a></h6>
+<p>To install the Arduino IDE 2 on a macOS computer, simply copy the downloaded file into your application folder.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/downloading-and-installing-img03.png" alt="Installation on macOS." /></p>
+<p><em>Installation on macOS.</em></p>
+<p>You can now use the Arduino IDE 2 on your macOS computer!</p>
+<h6 id="Linux">Linux&nbsp;<a class="anchor" href="#Linux">&#xE732;</a></h6>
+<p>To install the Arduino IDE 2 on Linux, first download the <strong>AppImage 64 bits (X86-64)</strong> from the <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.arduino.cc/en/software">Arduino Software page</a>.</p>
+<p>Before we can launch the editor, we need to first make it an <strong>executable file</strong>. This is done by:</p>
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>right-click the file,
+</span><span>choose **Properties**,
+</span><span>select **Permissions** tab,
+</span><span>tick the **Allow executing file as program** box.
+</span><span>
+</span><span>![](downloading-and-installing-img-04.gif)
+</span></code></pre>
+<p>You can now double click the file to launch the Arduino IDE 2 on your Linux machine. In case you cannot run the AppImage file, make sure that FUSE is installed on your system.</p>
+<h6 id="In_Ubuntu_(&gt;=_22.04):">In Ubuntu (&gt;= 22.04):&nbsp;<a class="anchor" href="#In_Ubuntu_(&gt;=_22.04):">&#xE732;</a></h6>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> add-apt-repository universe
+</span><span style="color:#bf616a;">sudo</span><span> apt install libfuse2
+</span></code></pre>
+<h6 id="In_Fedora">In Fedora&nbsp;<a class="anchor" href="#In_Fedora">&#xE732;</a></h6>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">dnf</span><span> install fuse
+</span></code></pre>
+<p>See instructions for installing FUSE on your distribution <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/AppImage/AppImageKit/wiki/FUSE">here</a>.</p>
+<p>To enable the Arduino IDE to access the serial port and upload code to your board, the following rule can be added to <code>/etc/udev/rules.d/99-arduino.rules</code>.</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">SUBSYSTEMS</span><span>=</span><span style="color:#a3be8c;">=</span><span>&quot;</span><span style="color:#a3be8c;">usb</span><span>&quot;</span><span style="color:#a3be8c;">, </span><span style="color:#bf616a;">ATTRS{idVendor}</span><span>=</span><span style="color:#a3be8c;">=</span><span>&quot;</span><span style="color:#a3be8c;">2341</span><span>&quot;</span><span style="color:#a3be8c;">, </span><span style="color:#bf616a;">GROUP</span><span>=&quot;</span><span style="color:#a3be8c;">plugdev</span><span>&quot;</span><span style="color:#a3be8c;">, </span><span style="color:#bf616a;">MODE</span><span>=&quot;</span><span style="color:#a3be8c;">0666</span><span>&quot;
+</span></code></pre>
+<h5 id="Systems_Verification_Test">Systems Verification Test&nbsp;<a class="anchor" href="#Systems_Verification_Test">&#xE732;</a></h5>
+<p>Download the Arduino source code file (also known as a sketch) <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/Lab0SystemVerificationTest.ino">Lab0SystemVerificationTest.ino</a> and save it to your computer.</p>
+<pre data-lang="cpp" style="background-color:#eff1f5;color:#4f5b66;" class="language-cpp "><code class="language-cpp" data-lang="cpp"><span style="color:#a7adba;">/*
+</span><span style="color:#a7adba;">  Lab0SystemVerificationTest.ino
+</span><span style="color:#a7adba;">
+</span><span style="color:#a7adba;">  Turns an on-board LED on for 100 milliseconds, then off for 100 milliseconds, 
+</span><span style="color:#a7adba;">  repeatedly.
+</span><span style="color:#a7adba;">
+</span><span style="color:#a7adba;">  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
+</span><span style="color:#a7adba;">  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
+</span><span style="color:#a7adba;">  the correct LED pin independent of which board is used.
+</span><span style="color:#a7adba;">  If you want to know what pin the on-board LED is connected to on your Arduino
+</span><span style="color:#a7adba;">  model, check the Technical Specs of your board at:
+</span><span style="color:#a7adba;">  https://www.arduino.cc/en/Main/Products
+</span><span style="color:#a7adba;">
+</span><span style="color:#a7adba;">  modified 21 Feburary 2023
+</span><span style="color:#a7adba;">  by Steve Ellermann
+</span><span style="color:#a7adba;">  modified 8 May 2014
+</span><span style="color:#a7adba;">  by Scott Fitzgerald
+</span><span style="color:#a7adba;">  modified 2 Sep 2016
+</span><span style="color:#a7adba;">  by Arturo Guadalupi
+</span><span style="color:#a7adba;">  modified 8 Sep 2016
+</span><span style="color:#a7adba;">  by Colby Newman
+</span><span style="color:#a7adba;">
+</span><span style="color:#a7adba;">  This code is based on example code in the public domain.
+</span><span style="color:#a7adba;">
+</span><span style="color:#a7adba;">  https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
+</span><span style="color:#a7adba;">*/
+</span><span>
+</span><span style="color:#a7adba;">// the setup function runs once when you press reset or power the board
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">setup</span><span>() {
+</span><span>  </span><span style="color:#a7adba;">// initialize digital pin LED_BUILTIN as an output.
+</span><span>  </span><span style="color:#bf616a;">pinMode</span><span>(LED_BUILTIN, OUTPUT);
+</span><span>}
+</span><span>
+</span><span style="color:#a7adba;">// the loop function runs over and over again forever
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">loop</span><span>() {
+</span><span>  </span><span style="color:#bf616a;">digitalWrite</span><span>(LED_BUILTIN, HIGH);  </span><span style="color:#a7adba;">// turn the LED on (HIGH is the voltage level)
+</span><span>  </span><span style="color:#bf616a;">delay</span><span>(</span><span style="color:#d08770;">100</span><span>);                      </span><span style="color:#a7adba;">// wait for 100 milliseconds
+</span><span>  </span><span style="color:#bf616a;">digitalWrite</span><span>(LED_BUILTIN, LOW);   </span><span style="color:#a7adba;">// turn the LED off by making the voltage LOW
+</span><span>  </span><span style="color:#bf616a;">delay</span><span>(</span><span style="color:#d08770;">500</span><span>);                      </span><span style="color:#a7adba;">// wait for 500 milliseconds
+</span><span>}
+</span></code></pre>
+<h4 id="Principle">Principle&nbsp;<a class="anchor" href="#Principle">&#xE732;</a></h4>
+<p>The UNO R3 board has rows of connectors along both sides that are used to connect to several electronic devices and plug-in 'shields' that extends its capability.</p>
+<p>It also has a single LED that you can control from your sketches. This LED is built onto the UNO R3 board and is often referred to as the 'L' LED as this is how it is labeled on the board.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uno-r3-led.png" alt="" /></p>
+<p>You may find that your UNO R3 board's 'L' LED already blinks when you connect it to a USB plug. This is because the boards are generally shipped with the 'Blink' sketch pre-installed.</p>
+<p>We will reprogram the UNO R3 board with our own Blink sketch and then change the rate at which it blinks.</p>
+<p>The time has now come to put that connection to the test and program your UNO R3 board.</p>
+<p>Attach your Arduino board to your computer with the USB cable.</p>
+<p>Open the file Lab0_SystemVerificationTest.ino that you downloaded with Arduino IDE 2</p>
+<h4 id="How_to_upload_a_sketch_with_the_Arduino_IDE_2">How to upload a sketch with the Arduino IDE 2&nbsp;<a class="anchor" href="#How_to_upload_a_sketch_with_the_Arduino_IDE_2">&#xE732;</a></h4>
+<blockquote>
+<p>SOURCE:</p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-uploading-a-sketch">Arduino.cc How to upload a sketch with the Arduino IDE 2</a></p>
+</blockquote>
+<p>In the Arduino environment, we write <strong>sketches</strong> that can be uploaded to Arduino boards. In this tutorial, we will go through how to select a board connected to your computer, and how to upload a sketch to that board, using the Arduino IDE 2.</p>
+<p>You can easily download the editor from the Arduino Software page.</p>
+<p>You can also follow the <a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
+<h4 id="Requirements">Requirements&nbsp;<a class="anchor" href="#Requirements">&#xE732;</a></h4>
+<ul>
+<li>Arduino IDE 2 installed.</li>
+</ul>
+<h4 id="Verify_vs_Upload">Verify vs Upload&nbsp;<a class="anchor" href="#Verify_vs_Upload">&#xE732;</a></h4>
+<p>There are two main tools when uploading a sketch to a board: <strong>verify</strong> and <strong>upload</strong>. The verify tool simply goes through your sketch, checks for errors and compiles it. The upload tool does the same, but when it finishes compiling the code, it also uploads it to the board.</p>
+<p>A good practice is to use the verifying tool before attempting to upload anything. This is a quick way of spotting any errors in your code, so you can fix them before actually uploading the code.</p>
+<h4 id="Uploading_a_Sketch">Uploading a Sketch&nbsp;<a class="anchor" href="#Uploading_a_Sketch">&#xE732;</a></h4>
+<p>Uploading a sketch is quick and easy, but let's take a look at what we need to do.</p>
+<ol>
+<li>
+<p>Open the Arduino IDE 2.</p>
+</li>
+<li>
+<p>With the editor open, let's take a look at the toolbar at the top. At the very left, there is a checkmark and an arrow pointing right. The checkmark is used to verify, and the arrow is used to upload.</p>
+</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uploading-a-sketch-img01.png" alt="" /></p>
+<p><em>Verifying and uploading buttons</em></p>
+<ol start="3">
+<li>But before doing any of that, we should choose what board we are uploading to. Beside the verify and upload button you should see a a drop down menu, this will, in most cases, display Arduino boards that are connected to your computer. If your board is not automatically detected, you can either press &quot;Select other board and port...&quot; in the drop-down and follow the instructions, or go to Tools &gt; Board and Tools &gt; Port in the toolbar menu to select the board and port manually.</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uploading-a-sketch-img03.png" alt="" /></p>
+<p><em>Selecting the board.</em></p>
+<p>So connect your board to the computer and select it from the drop down menu. You'll know that there is a connection to the board when the board name appears in <strong>bold</strong>.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uploading-a-sketch-img03.5.png" alt="" /></p>
+<p><em>Selecting the board.</em></p>
+<ol start="4">
+<li>Click on the verify tool (checkmark). Since we are verifying an empty sketch, we can be sure it is going to compile. After a few seconds, we can see the result of the action in the console (black box in the bottom).</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uploading-a-sketch-img02.png" alt="" /></p>
+<p><em>Successful compilation printed in the console.</em></p>
+<ol start="5">
+<li>
+<p>With the board selected, we are good to go! Click on the upload button, and it will start uploading the sketch to the board.</p>
+</li>
+<li>
+<p>When it is finished, a notification pops up in the bottom right of your IDE window. Of course, sometimes there are some complications when uploading, and these errors will be listed here as well.</p>
+</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/uploading-a-sketch-img04.png" alt="" /></p>
+<p><em>Successful upload printed in the console.</em></p>
+<p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
+<h4 id="Please_Read_(Only_Linux_Users)">Please Read (Only Linux Users)&nbsp;<a class="anchor" href="#Please_Read_(Only_Linux_Users)">&#xE732;</a></h4>
+<p>It might happen that when you upload a sketch - after you have selected your board and the serial port - you get an error such as &quot;... Permission denied&quot;. If you get this error, you need to set serial port permission.</p>
+<p>To do this, open your Terminal and type:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">ls -l</span><span> /dev/ttyACM*
+</span></code></pre>
+<p>you will get something like:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">crw-rw----</span><span> 1 root dialout 188, 0 5 apr 23.01 ttyACM0
+</span></code></pre>
+<p>The &quot;<code>0</code>&quot; at the end of ACM might be a different number, or multiple entries might be returned. The data we need is &quot;dialout&quot; (is the group owner of the file).</p>
+<p>Now we just need to add our user to the group:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> usermod</span><span style="color:#bf616a;"> -a -G</span><span> dialout &lt;username&gt;
+</span></code></pre>
+<p>where <code>&lt;username&gt;</code> is your Linux user name. <strong>You will need to log out and log in again for this change to take effect.</strong></p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/Ubuntu_Serial.jpg" alt="" /></p>
+<p><em>Adding user to the group.</em></p>
+<p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
+Results</p>
+<p>If you see the Arduino onboard LED blinking (100ms ON, 500ms OFF). Congratulations! Your PC / Arduino have passed the System Verification Test.</p>
+<hr />
+<p>Copyright &amp;copy 2023 - 2024</p>
+<p>Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purposes only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.</p>
+<p>Last Updated: 2024-04-25</p>
 
     
         </div>
