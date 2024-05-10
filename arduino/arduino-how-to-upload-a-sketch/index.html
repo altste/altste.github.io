@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://notes.ellermann.com/main.css">
     <link rel="icon" href="https://notes.ellermann.com/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title> Programming Notes | Table Of Contents - Arduino </title>
+    <title> Programming Notes | Arduino - How To Upload a Sketch </title>
 </head>
 <body>
 
@@ -287,27 +287,11 @@
                            for="arduino">Arduino</label>
 
                     <ul class="subtree">
-                        <li class="active">
+                        <li >
                                 <a href="https://notes.ellermann.com/arduino/arduino/">Table Of Contents - Arduino</a>
                             </li>
 
-                            
-                                    
-                                    
-                                        <ul id="toc">
-                                            <li><a href="
-                                                        https://notes.ellermann.com/arduino/arduino/#Table_Of_Contents_-_Arduino">Table Of Contents - Arduino</a>
-                                                    <ul>
-                                                            <li>
-                                                                    <a href="https://notes.ellermann.com/arduino/arduino/#Arduino">Arduino</a>
-                                                                </li>
-                                                            <li>
-                                                                    <a href="https://notes.ellermann.com/arduino/arduino/#Arduino_Resources">Arduino Resources</a>
-                                                                </li>
-                                                            </ul>
-                                                    </li>
-                                            </ul>
-                                    <li >
+                            <li >
                                 <a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/">Arduino Lab # 0 - System Verification Test</a>
                             </li>
 
@@ -339,11 +323,33 @@
                                 <a href="https://notes.ellermann.com/arduino/arduino-how-to-install-a-library/">Arduino - How To Install A Library</a>
                             </li>
 
-                            <li >
+                            <li class="active">
                                 <a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/">Arduino - How To Upload a Sketch</a>
                             </li>
 
-                            </ul>
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/#How_to_upload_a_sketch_with_the_Arduino_IDE_2">How to upload a sketch with the Arduino IDE 2</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/#Requirements">Requirements</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/#Verify_vs_Upload">Verify vs Upload</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/#Uploading_a_Sketch">Uploading a Sketch</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/#Please_Read_(Only_Linux_Users)">Please Read (Only Linux Users)</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    </ul>
                 <input class="tree-toggle" type="checkbox" id="resources"
                            />
                     <label class="tree-toggle-label"
@@ -387,40 +393,74 @@
             </div>
         <div id="wrap">
             
-        <h3 id="Table_Of_Contents_-_Arduino">Table Of Contents - Arduino&nbsp;<a class="anchor" href="#Table_Of_Contents_-_Arduino">&#xE732;</a></h3>
-<h4 id="Arduino">Arduino&nbsp;<a class="anchor" href="#Arduino">&#xE732;</a></h4>
+        <h3 id="How_to_upload_a_sketch_with_the_Arduino_IDE_2">How to upload a sketch with the Arduino IDE 2&nbsp;<a class="anchor" href="#How_to_upload_a_sketch_with_the_Arduino_IDE_2">&#xE732;</a></h3>
+<blockquote>
+<p>SOURCE:</p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-uploading-a-sketch">Arduino.cc How to upload a sketch with the Arduino IDE 2</a></p>
+</blockquote>
+<p>In the Arduino environment, we write <strong>sketches</strong> that can be uploaded to Arduino boards. In this tutorial, we will go through how to select a board connected to your computer, and how to upload a sketch to that board, using the Arduino IDE 2.</p>
+<p>You can easily download the editor from the Arduino Software page.</p>
+<p>You can also follow the <a rel="noopener nofollow noreferrer" target="_blank" href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
+<h4 id="Requirements">Requirements&nbsp;<a class="anchor" href="#Requirements">&#xE732;</a></h4>
 <ul>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-0-system-test-verification/">Arduino Lab # 0 - System Verification Test</a></p>
-</li>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-1-passive-buzzer/">Arduino Lab # 1 - Passive Buzzer</a></p>
-</li>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-2-servo-motor/">Arduino Lab # 2 - Servo Motor</a></p>
-</li>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-3-ultrasonic-sensor/">Arduino Lab # 3 - Ultrasonic Sensor</a></p>
-</li>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-4-stepper-motor-control/">Arduino Lab # 4 - Stepper Motor Control</a></p>
-</li>
-<li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-lab-5-simulation-of-collision-avoidance-system/">Arduino Lab # 5 - Simulation of Collision Avoidance System</a></p>
-</li>
+<li>Arduino IDE 2 installed.</li>
 </ul>
-<h4 id="Arduino_Resources">Arduino Resources&nbsp;<a class="anchor" href="#Arduino_Resources">&#xE732;</a></h4>
-<ul>
+<h4 id="Verify_vs_Upload">Verify vs Upload&nbsp;<a class="anchor" href="#Verify_vs_Upload">&#xE732;</a></h4>
+<p>There are two main tools when uploading a sketch to a board: <strong>verify</strong> and <strong>upload</strong>. The verify tool simply goes through your sketch, checks for errors and compiles it. The upload tool does the same, but when it finishes compiling the code, it also uploads it to the board.</p>
+<p>A good practice is to use the verifying tool before attempting to upload anything. This is a quick way of spotting any errors in your code, so you can fix them before actually uploading the code.</p>
+<h4 id="Uploading_a_Sketch">Uploading a Sketch&nbsp;<a class="anchor" href="#Uploading_a_Sketch">&#xE732;</a></h4>
+<p>Uploading a sketch is quick and easy, but let's take a look at what we need to do.</p>
+<ol>
 <li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-resources/">Arduino Resources</a></p>
+<p>Open the Arduino IDE 2.</p>
 </li>
 <li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-how-to-install-a-library/">Arduino - How To Install A Library</a></p>
+<p>With the editor open, let's take a look at the toolbar at the top. At the very left, there is a checkmark and an arrow pointing right. The checkmark is used to verify, and the arrow is used to upload.</p>
+</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/uploading-a-sketch-img01.png" alt="" /></p>
+<p><em>Verifying and uploading buttons</em></p>
+<ol start="3">
+<li>But before doing any of that, we should choose what board we are uploading to. Beside the verify and upload button you should see a a drop down menu, this will, in most cases, display Arduino boards that are connected to your computer. If your board is not automatically detected, you can either press &quot;Select other board and port...&quot; in the drop-down and follow the instructions, or go to Tools &gt; Board and Tools &gt; Port in the toolbar menu to select the board and port manually.</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/uploading-a-sketch-img03.png" alt="" /></p>
+<p><em>Selecting the board.</em></p>
+<p>So connect your board to the computer and select it from the drop down menu. You'll know that there is a connection to the board when the board name appears in <strong>bold</strong>.</p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/uploading-a-sketch-img03.5.png" alt="" /></p>
+<p><em>Selecting the board.</em></p>
+<ol start="4">
+<li>Click on the verify tool (checkmark). Since we are verifying an empty sketch, we can be sure it is going to compile. After a few seconds, we can see the result of the action in the console (black box in the bottom).</li>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/uploading-a-sketch-img02.png" alt="" /></p>
+<p><em>Successful compilation printed in the console.</em></p>
+<ol start="5">
+<li>
+<p>With the board selected, we are good to go! Click on the upload button, and it will start uploading the sketch to the board.</p>
 </li>
 <li>
-<p><a href="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/">Arduino - How To Upload a Sketch</a></p>
+<p>When it is finished, a notification pops up in the bottom right of your IDE window. Of course, sometimes there are some complications when uploading, and these errors will be listed here as well.</p>
 </li>
-</ul>
+</ol>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/uploading-a-sketch-img04.png" alt="" /></p>
+<p><em>Successful upload printed in the console.</em></p>
+<p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
+<h4 id="Please_Read_(Only_Linux_Users)">Please Read (Only Linux Users)&nbsp;<a class="anchor" href="#Please_Read_(Only_Linux_Users)">&#xE732;</a></h4>
+<p>It might happen that when you upload a sketch - after you have selected your board and the serial port - you get an error such as &quot;... Permission denied&quot;. If you get this error, you need to set serial port permission.</p>
+<p>To do this, open your Terminal and type:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">ls -l</span><span> /dev/ttyACM*
+</span></code></pre>
+<p>you will get something like:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">crw-rw----</span><span> 1 root dialout 188, 0 5 apr 23.01 ttyACM0
+</span></code></pre>
+<p>The &quot;<code>0</code>&quot; at the end of ACM might be a different number, or multiple entries might be returned. The data we need is &quot;dialout&quot; (is the group owner of the file).</p>
+<p>Now we just need to add our user to the group:</p>
+<pre data-lang="bash" style="background-color:#eff1f5;color:#4f5b66;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">sudo</span><span> usermod</span><span style="color:#bf616a;"> -a -G</span><span> dialout &lt;username&gt;
+</span></code></pre>
+<p>where <code>&lt;username&gt;</code> is your Linux user name. <strong>You will need to log out and log in again for this change to take effect.</strong></p>
+<p><img src="https://notes.ellermann.com/arduino/arduino-how-to-upload-a-sketch/Ubuntu_Serial.jpg" alt="" /></p>
+<p><em>Adding user to the group.</em></p>
+<p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
+Results</p>
 <hr />
 <p>Last Updated: 2024-05-10</p>
 
