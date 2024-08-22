@@ -1,0 +1,13 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+	<title>logo</title>
+	<defs>
+		<image  width="256" height="256" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAADNJREFUeJztyqEBAAAMAqD5/9M7wWqATK6IIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAjCdniycAEBJl56AgAAAABJRU5ErkJggg=="/>
+		<image width="200" height="200" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQMAAACXljzdAAAAAXNSR0IB2cksfwAAAANQTFRFUWz+WUmC7QAAACdJREFUeJztyaEBAAAMAqD5/9PLBj+ASm6JMcYYY4wxxhhjjDHGlAcOMADJ5po/MQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<use id="Layer 1" href="#img1" x="0" y="0"/>
+	<use id="img1" href="#img2" transform="matrix(1.113,0,0,1.113,16.696,16.696)"/>
+	<path id="[]" class="s0" aria-label="[]"  d="m108.9 193.3h-43.3v-133.2h43.3v16.6h-22.4v100.1h22.4zm38.3-133.2h43.4v133.2h-43.4v-16.6h22.4v-99.9h-22.4z"/>
+</svg>

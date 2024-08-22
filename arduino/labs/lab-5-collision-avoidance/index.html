@@ -1,0 +1,4545 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta name="robots" content="noindex, nocache, nofollow, noarchive, nosnippet, notranslate, noimageindex, noodp, noydir, noai, noimageai">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
+  
+  
+  <link rel="canonical" href="https://notes.ellermann.com/arduino/labs/lab-5-collision-avoidance/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+    
+      
+        <title>Arduino Lab 5 - Simulation of Collision Avoidance System - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.3c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arduino-lab-5-simulation-of-collision-avoidance-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arduino Lab 5 - Simulation of Collision Avoidance System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/arrays/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initializing an Array with Random Unique Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/key-array-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Array Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/conditionals-and-loops/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conditionals and Loops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Conditionals and Loops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Truth Tables Using Boolean Values Of True and False
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops - Three Types of Loops - The Do While Loop T- he While Loop - The For Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Counting Pre-Test Loop (While Loop) And Counting Post-Test Loop (Do-While Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    For-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Do-While Loop (Post-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input While-Loop (Pre-Test Loop) With A Sentinel Value And A Priming Read
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Input-Sentinel Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wantsToContinue Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While Loop General Format In Pseudocode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Which Loop To Use
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/inputvalidation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Input Validation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Input Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getValidNumber() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    isInvalid() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validating String Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples of Common String Library Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Input Values To Test For
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/menus/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Menus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Menus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/menus/practicemenu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practice Menu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/methods/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getString() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getinteger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getInteger() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getdouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getDouble() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/closescanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The closeScanner() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getrandomnumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getRandomNumber() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Input Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/oop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Object Oriented Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-review-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Review Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/resources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/java-programming-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Programming Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing The Java Development Kit JDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_3" id="__nav_2_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eclipse IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eclipse IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse IDE -How To Find Matching Brackets and Missing Brackets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_4" id="__nav_2_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diátaxis- A systematic approach to technical documentation authoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/ternary/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ternary
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Ternary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced For Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced If Statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-0-system-test-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1-passive-buzzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2-servo-motor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3-ultrasonic-sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4-stepper-motor-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#28byj-48-5v-stepper-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      28BYJ-48 – 5V Stepper Motor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="28BYJ-48 – 5V Stepper Motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stepper-motor-28byj-48-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stepper Motor 28BYJ-48 Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stepper-motor-wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stepper Motor Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mb-v2-breadboard-power-supply-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      MB-V2 Breadboard Power Supply Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MB-V2 Breadboard Power Supply Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-output-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up output voltage:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uln2003-stepper-motor-driver-module-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ULN2003 Stepper Motor Driver Module PCB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ULN2003 Stepper Motor Driver Module PCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-photo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Photo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor-sg90" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motor SG90
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motor SG90">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hc-sr04-ultrasonic-sensor-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      HC-SR04 Ultrasonic Sensor Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HC-SR04 Ultrasonic Sensor Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-module-timing-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Module Timing Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-module-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Module Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultrasonic Sensor Module Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passive-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Buzzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Buzzer Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#putting-it-all-together-breadboard-power-supply-stepper-motor-stepper-motor-driver-module-pcb-servo-motor-ultrasonic-sensor-and-the-passive-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting it all together, Breadboard Power Supply, Stepper Motor, Stepper Motor Driver Module PCB, Servo Motor, Ultrasonic Sensor, and the Passive Buzzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting it all together, Breadboard Power Supply, Stepper Motor, Stepper Motor Driver Module PCB, Servo Motor, Ultrasonic Sensor, and the Passive Buzzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flow Chart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-code-for-lab-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code For Lab 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-the-source-code-and-library-to-the-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload the source code and library to the Arduino
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Upload A Sketch With The Arduino IDE 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How To Upload A Sketch With The Arduino IDE 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-vs-upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify vs Upload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-a-sketch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading a Sketch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#please-read-only-linux-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Please Read (Only Linux Users)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-add-library-files-to-the-arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Add Library Files To The Arduino IDE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-add-library-files-to-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Add Library Files To The Arduino IDE 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-install-a-library-with-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to install a library with the Arduino IDE 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to install a library with the Arduino IDE 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use Libraries?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing a Library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#including-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Including a Library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Install A Library Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Upload A Sketch Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arduino-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datasheets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datasheets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#28byj-48-5v-stepper-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      28BYJ-48 – 5V Stepper Motor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="28BYJ-48 – 5V Stepper Motor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stepper-motor-28byj-48-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stepper Motor 28BYJ-48 Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stepper-motor-wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stepper Motor Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mb-v2-breadboard-power-supply-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      MB-V2 Breadboard Power Supply Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MB-V2 Breadboard Power Supply Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Specifications
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-output-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up output voltage:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uln2003-stepper-motor-driver-module-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ULN2003 Stepper Motor Driver Module PCB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ULN2003 Stepper Motor Driver Module PCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#product-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Product Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-photo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Photo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servo-motor-sg90" class="md-nav__link">
+    <span class="md-ellipsis">
+      Servo Motor SG90
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Servo Motor SG90">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hc-sr04-ultrasonic-sensor-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      HC-SR04 Ultrasonic Sensor Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HC-SR04 Ultrasonic Sensor Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-module-timing-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Module Timing Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-module-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Module Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ultrasonic Sensor Module Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-wiring-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonic-sensor-example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ultrasonic Sensor Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passive-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Buzzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Passive Buzzer Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Schematic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passive-buzzer-example-picture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passive Buzzer Example Picture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#putting-it-all-together-breadboard-power-supply-stepper-motor-stepper-motor-driver-module-pcb-servo-motor-ultrasonic-sensor-and-the-passive-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting it all together, Breadboard Power Supply, Stepper Motor, Stepper Motor Driver Module PCB, Servo Motor, Ultrasonic Sensor, and the Passive Buzzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting it all together, Breadboard Power Supply, Stepper Motor, Stepper Motor Driver Module PCB, Servo Motor, Ultrasonic Sensor, and the Passive Buzzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flow-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flow Chart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wiring-diagram_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Diagram
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-code-for-lab-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Code For Lab 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-the-source-code-and-library-to-the-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload the source code and library to the Arduino
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Upload A Sketch With The Arduino IDE 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How To Upload A Sketch With The Arduino IDE 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-vs-upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify vs Upload
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-a-sketch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading a Sketch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#please-read-only-linux-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Please Read (Only Linux Users)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-add-library-files-to-the-arduino-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Add Library Files To The Arduino IDE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-add-library-files-to-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Add Library Files To The Arduino IDE 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-install-a-library-with-the-arduino-ide-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to install a library with the Arduino IDE 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to install a library with the Arduino IDE 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use Libraries?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing a Library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#including-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Including a Library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="arduino-lab-5-simulation-of-collision-avoidance-system">Arduino Lab 5 - Simulation of Collision Avoidance System</h1>
+<h2 id="overview">Overview</h2>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Arduino IDE (Arduino 2 was used for this document)</li>
+<li>(1) x SG90 Servo Motor</li>
+<li>(1) x HC-SR04 Ultrasonic Sensor Module</li>
+<li>(1) x MB-V2 Breadboard Power Supply Module</li>
+<li>(1) x 5V Passive Buzzer</li>
+<li>(1) x 28BYJ-48 5V Stepper Motor</li>
+<li>(1) x 830 tie-points breadboard</li>
+<li>(1) x 9V 1A Battery Adapter</li>
+<li>(1) x 9V Battery</li>
+<li>(8) x F-M wires (Female to Male DuPont wires)</li>
+<li>(8) x M-M wire (Male to Male jumper wire)</li>
+<li>(1) x USB 2.0 Type A to USB 2.0 Type B Cable</li>
+<li>(Optional) (1) x USB-C to USB Adapter</li>
+</ul>
+<h2 id="datasheets">Datasheets</h2>
+<ul>
+<li><a href="../../../assets/pdf/ArduinoUNOR3Datasheet.pdf">Arduino UNO R3 Datasheet</a></li>
+<li><a href="../../../assets/pdf/ELEGOOUNOR3BoardDatasheet.pdf">ELEGOO UNO R3</a></li>
+<li><a href="../../../assets/pdf/830430Tie-PointsBreadboardDatasheet.pdf">830 tie-point plug -in Solderless Breadboard</a></li>
+<li><a href="../../../assets/pdf/ULN2003AStepperMotorDriverDatasheet.pdf">ULN2003 stepper motor driver module PCB</a></li>
+<li><a href="../../../assets/pdf/28BYJ-48StepperMotorDatasheet.pdf">28BYJ-48 – 5V Stepper Motor Datasheet</a></li>
+<li><a href="../../../assets/pdf/SG90ServoMotorDatasheet.pdf">Servo Motor SG90 Datasheet</a></li>
+<li><a href="../../../assets/pdf/HC-SR04UltrasonicSensorModuleDatasheet.pdf">HC-SR04 Ultrasonic Sensor Module Datasheet</a></li>
+<li><a href="../../../assets/pdf/PassiveBuzzerDatasheet.pdf">Passive Buzzer Datasheet</a></li>
+<li><a href="../../../assets/pdf/9VDCBatteryDatasheet.pdf">9V battery</a></li>
+<li><a href="../../../assets/pdf/MB-V2BreadboardPowerSupplyModuleDatasheet.pdf">MB-V2 Breadboard Power Supply Module</a></li>
+</ul>
+<h2 id="required-libraries">Required Libraries</h2>
+<ul>
+<li><a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
+<li><a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
+<li><a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a></li>
+<li><a href="../../../assets/zip/Stepper.zip">Stepper.zip</a></li>
+</ul>
+<p>More information about the Servo library is located at <a href="https://www.arduino.cc/reference/en/libraries/servo/">https://www.arduino.cc/reference/en/libraries/servo/</a></p>
+<p>The GitHub repository for the Servo library is located at <a href="https://github.com/arduino-libraries/Servo">https://github.com/arduino-libraries/Servo</a></p>
+<p>More info about the Stepper library can be found at <a href="https://www.arduino.cc/reference/en/libraries/stepper/">https://www.arduino.cc/reference/en/libraries/stepper/</a> </p>
+<p>The GitHub repository for the Stepper library is located at <a href="https://github.com/arduino-libraries/Stepper">https://github.com/arduino-libraries/Stepper</a></p>
+<h3 id="28byj-48-5v-stepper-motor">28BYJ-48 – 5V Stepper Motor</h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img21.png" /></a></p>
+<p>A stepper motor is an electromechanical device which converts electrical pulses into discrete mechanical movements. The shaft or spindle of a stepper motor rotates in discrete step increments when electrical command pulses are applied to it in the proper sequence. The motors rotation has several direct relationships to these applied input pulses. The sequence of the applied pulses is directly related to the direction of motor shafts rotation. The speed of the motor shafts rotation is directly related to the frequency of the input pulses and the length of rotation is directly related to the number of input pulses applied. One of the most significant advantages of a stepper motor is its ability to be accurately controlled in an open loop system. Open loop control means no feedback information about position is needed. This type of control eliminates the need for expensive sensing and feedback devices such as optical encoders. Your position is known simply by keeping track of the input step pulses.</p>
+<h4 id="stepper-motor-28byj-48-parameters">Stepper Motor 28BYJ-48 Parameters</h4>
+<ul>
+<li>Model: 28BYJ-48</li>
+<li>Rated voltage: 5V DC</li>
+<li>Number of Phase: 4</li>
+<li>Speed Variation Ratio: 1 / 64</li>
+<li>Stride Angle: 5.625° / 64</li>
+<li>Frequency: 100Hz</li>
+<li>DC resistance: 50Ω ±7% (25°C)</li>
+<li>Idle In-traction Frequency: &gt; 600Hz</li>
+<li>Idle Out-traction Frequency: &gt; 1000Hz</li>
+<li>In-traction Torque &gt; 34.3mN.m (120Hz)</li>
+<li>Self-positioning Torque &gt; 34.3mN.m</li>
+<li>Friction torque: 600-1200 gf.cm</li>
+<li>Pull in torque: 300 gf.cm</li>
+<li>Insulated resistance &gt; 10MΩ (500V)</li>
+<li>Insulated electricity power: 600VAC / 1mA / 1s</li>
+<li>Insulation grade: A</li>
+<li>Rise in Temperature &lt; 40K(120Hz)</li>
+<li>Noise &lt; 35dB (120Hz, No load, 10cm)</li>
+</ul>
+<h4 id="stepper-motor-wiring-diagram">Stepper Motor Wiring Diagram</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img22.png" /></a></p>
+<p>The bipolar stepper motor usually has four wires coming out of it. Unlike unipolar steppers, bipolar steppers have no common center connection. They have two independent sets of coils instead. You can distinguish them from unipolar steppers by measuring the resistance between the wires. You should find two pairs of wires with equal resistance. If you’ve got the leads of your meter connected to two wires that are not connected (i.e. not attached to the same coil), you should see infinite resistance (or no continuity).</p>
+<h2 id="mb-v2-breadboard-power-supply-module">MB-V2 Breadboard Power Supply Module</h2>
+<p>The small DC motor is likely to use more power than an UNO R3 board digital output can handle directly. If we tried to connect the motor straight to an UNO R3 board pin, there is a good chance that it could damage the UNO R3 board. So we use a power supply module provides power supply.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MB-V2 Breadboard Power Supply Module " src="../../../assets/images/arduino-lab5-img01.png" /></a></p>
+<h3 id="product-specifications">Product Specifications</h3>
+<ul>
+<li>Locking On/Off Switch</li>
+<li>LED Power Indicator</li>
+<li>Input voltage: 6.5-9v (DC) via 5.5mm x 2.1mm plug</li>
+<li>Output voltage: 3.3V/5v</li>
+<li>Maximum output current: 700 mA</li>
+<li>Independent control rail output. 0v, 3.3v, 5v to breadboard</li>
+<li>Output header pins for convenient external use</li>
+<li>Size: 2.1 in x 1.4 in</li>
+<li>USB device connector onboard to power external device</li>
+</ul>
+<h3 id="setting-up-output-voltage">Setting up output voltage:</h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Setting up output voltage of the breadboard power supply module" src="../../../assets/images/arduino-lab5-img02.png" /></a></p>
+<p>The left and right voltage output can be configured independently. To select the output voltage, move jumper to the corresponding pins.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The power indicator LED and the breadboard power rails will not power on if both jumpers are in the “OFF” position.</p>
+</div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img03.png" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure that you align the module correctly on the breadboard. The negative pin(-) on module lines up with the blue line(-) on breadboard and that the positive pin(+) lines up with the red line(+). Failure to do so could result in you accidentialy reversing the power to your project</p>
+</div>
+<h2 id="uln2003-stepper-motor-driver-module-pcb">ULN2003 Stepper Motor Driver Module PCB</h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ULN2003 Stepper Motor Driver Module PCB" src="../../../assets/images/arduino-lab5-img04.png" /></a></p>
+<h3 id="product-description">Product Description</h3>
+<ul>
+<li>Size: 42mmx30mm</li>
+<li>Use ULN2003 driver chip, 500mA</li>
+<li>A, B, C, and D LED lights indicating the four phase stepper motor working condition. </li>
+<li>White jack is the four phase stepper motor standard jack.</li>
+<li>Power pins are separated</li>
+<li>The rest pins of the ULN2003 chip for your further prototyping.</li>
+</ul>
+<p>The simplest way of interfacing a unipolar stepper to Arduino is to use a breakout for ULN2003A transistor array chip. The ULN2003A contains seven Darlington transistor drivers and is somewhat like having seven TIP120 transistors all in one package. The ULN2003A can pass up to 500 mA per channel and has an internal voltage drop of about 1V when on. It also contains internal clamp diodes to dissipate voltage spikes when driving inductive loads. To control the stepper, apply voltage to each of the coils in a specific sequence.</p>
+<p><strong>The sequence would go like this</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img05.png" /></a></p>
+<p>Here are schematics showing how to interface a unipolar stepper motor to four controller pins using a ULN2003A, and showing how to interface using four com</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img06.png" /></a></p>
+<h3 id="connection">Connection</h3>
+<h4 id="schematic">Schematic</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img07.png" /></a></p>
+<h4 id="wiring-diagram">Wiring Diagram</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img08.png" /></a></p>
+<p>We are using 4 pins to control the Stepper.</p>
+<p>Pin 8-11 are controlling the Stepper motor.</p>
+<p>We connect the Ground from to UNO to the Stepper motor.</p>
+<h4 id="example-photo">Example Photo</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img09.png" /></a></p>
+<h2 id="servo-motor-sg90">Servo Motor SG90</h2>
+<ul>
+<li>Universal for JR and FP connector</li>
+<li>Cable length: 25cm</li>
+<li>No load; Operating speed: 0.12 sec / 60 degree (4.8V), 0.10 sec / 60 degree (6.0V)</li>
+<li>Stall torque (4.8V): 1.6kg/cm</li>
+<li>Temperature : -30 ~ 60'C</li>
+<li>Dead band width: 5us</li>
+<li>Working voltage: 3.5~6V</li>
+<li>Dimension : 1.26 in x 1.18 in x 0.47 in (3.2 cm x 3 cm x 1.2 cm)</li>
+<li>Weight : 4.73 oz (134 g)</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img10.png" /></a></p>
+<h3 id="connection-schematic">Connection Schematic</h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img11.png" /></a></p>
+<h3 id="wiring-diagram_1">Wiring Diagram</h3>
+<div class="admonition note">
+<p class="admonition-title">Note For Servo Motor SG90</p>
+<ul>
+<li>The <strong>BROWN</strong> wire from the servo motor connects to <strong>GND</strong> on the Uno R3 board with an M-M wire.</li>
+<li>The <strong>RED</strong> wire from the servo motor connects to <strong>5V</strong> on the Uno R3 board with an M-M wire.</li>
+<li>The <strong>ORANGE</strong> wire from the servo motor connects to <strong>~9</strong> on the Uno R3 board with an M-M wire.</li>
+</ul>
+</div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img12.png" /></a></p>
+<h3 id="example-picture">Example Picture</h3>
+<p>In the picture, the <strong>BROWN</strong> wire of servo is connected via the <strong>BLACK M-M wires</strong>, the <strong>RED</strong> one is connected via the <strong>RED M-M wires</strong>, and the <strong>ORANGE</strong> one is connected via the <strong>YELLOW M-M wires</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img13.png" /></a></p>
+<h2 id="hc-sr04-ultrasonic-sensor-module">HC-SR04 Ultrasonic Sensor Module</h2>
+<p>Ultrasonic sensor module HC-SR04 provides 2cm-400cm non-contact measurement function, the ranging accuracy can reach to 3mm. The modules includes ultrasonic transmitters, receiver and control circuit. The basic principle of work:</p>
+<ol>
+<li>Using IO trigger for at least 10us high level signal,</li>
+<li>The Module automatically sends eight 40 kHz and detect whether there is a pulse signal back.</li>
+<li>If the signal back, through high level , time of high output IO duration is the time from sending ultrasonic tore turning.</li>
+</ol>
+<p>Test distance = (high level time × velocity of sound (340m/s) /2)</p>
+<p>The Timing diagram is shown below. You only need to supply a short 10us pulse to the trigger input to start the ranging, and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo. The Echo is a distance object that is pulse width and the range in proportion .You can calculate the range through the time interval between sending trigger signal and receiving echo signal. Formula: us / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2; we suggest to use over 60ms measurement cycle, in order to prevent trigger signal to the echo signal.</p>
+<h3 id="ultrasonic-sensor-module-timing-diagram">Ultrasonic Sensor Module Timing Diagram</h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img14.png" /></a></p>
+<h3 id="ultrasonic-sensor-module-connection">Ultrasonic Sensor Module Connection</h3>
+<h4 id="ultrasonic-sensor-schematic">Ultrasonic Sensor Schematic</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img15.png" /></a></p>
+<h4 id="ultrasonic-sensor-wiring-diagram">Ultrasonic Sensor Wiring Diagram</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img16.png" /></a></p>
+<h4 id="ultrasonic-sensor-example-picture">Ultrasonic Sensor Example Picture</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img17.png" /></a></p>
+<h2 id="passive-buzzer">Passive Buzzer</h2>
+<p>The working principle of passive buzzer is using PWM generating audio to make the air to vibrate. Appropriately changed as long as the vibration frequency, it can generate different sounds. For example, sending a pulse of 523Hz, it can generate Alto Do, pulse of 587Hz, it can generate mid-range Re, pulse of 659Hz, it can produce mid-range Mi. By the buzzer, you can play a song.</p>
+<p>We should be careful not to use the UNO R3 board analog <code>Write()</code> function to generate a pulse to the buzzer, because the pulse output of analog <code>Write()</code> is fixed (500Hz).</p>
+<h3 id="passive-buzzer-connection">Passive Buzzer Connection</h3>
+<h4 id="passive-buzzer-schematic">Passive Buzzer Schematic</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img18.png" /></a></p>
+<h4 id="wiring-diagram_2">Wiring Diagram</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img19.png" /></a></p>
+<p>Wiring the buzzer connected to the UNO R3 board, the <strong>RED  Wire</strong> (positive) to the <strong>PIN 8</strong>, <strong>BLACK Wire</strong> (negative) to the <strong>GND</strong>.</p>
+<h4 id="passive-buzzer-example-picture">Passive Buzzer Example Picture</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-img20.png" /></a></p>
+<h3 id="putting-it-all-together-breadboard-power-supply-stepper-motor-stepper-motor-driver-module-pcb-servo-motor-ultrasonic-sensor-and-the-passive-buzzer">Putting it all together, Breadboard Power Supply, Stepper Motor, Stepper Motor Driver Module PCB, Servo Motor, Ultrasonic Sensor, and the Passive Buzzer</h3>
+<h4 id="flow-chart">Flow Chart</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/arduino-lab5-flowchart.png" /></a></p>
+<h4 id="wiring-diagram_3">Wiring Diagram</h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/ardunio-lab5-wiring-diagram.png" /></a></p>
+<h2 id="code">Code</h2>
+<p>After wiring, please open the example program <strong>Lab05ArduinoCollisionAvoidance.ino</strong> in the Arduino IDE and click <strong>UPLOAD</strong> to upload the program from the Arduino IDE.</p>
+<p>Before you can run this, make sure that you have installed all of the the library files (<a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a>, <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a>, <a href="../../../assets/zip/pitches.zip">pitches.zip</a>, <a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a>) or re-install it to the Arduino IDE, if necessary. Otherwise, your code will not work.</p>
+<p>For details about loading the library file, see How <a href="#how-to-add-library-files-to-the-arduino-ide-2">"How To Add Library Files To The Arduino IDE"</a> at the bottom of this document.</p>
+<h3 id="source-code-for-lab-5">Source Code For Lab 5</h3>
+<ul>
+<li>Download Ardunio Source Code File: <a href="../../../assets/ino/Lab05ArduinoCollisionAvoidance.ino">Lab05ArduinoCollisionAvoidance.ino</a></li>
+</ul>
+<p><strong>Lab05ArduinoCollisionAvoidance.ino</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Arduino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span>
+<span class="normal"><a href="#__codelineno-0-101">101</a></span>
+<span class="normal"><a href="#__codelineno-0-102">102</a></span>
+<span class="normal"><a href="#__codelineno-0-103">103</a></span>
+<span class="normal"><a href="#__codelineno-0-104">104</a></span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span>
+<span class="normal"><a href="#__codelineno-0-123">123</a></span>
+<span class="normal"><a href="#__codelineno-0-124">124</a></span>
+<span class="normal"><a href="#__codelineno-0-125">125</a></span>
+<span class="normal"><a href="#__codelineno-0-126">126</a></span>
+<span class="normal"><a href="#__codelineno-0-127">127</a></span>
+<span class="normal"><a href="#__codelineno-0-128">128</a></span>
+<span class="normal"><a href="#__codelineno-0-129">129</a></span>
+<span class="normal"><a href="#__codelineno-0-130">130</a></span>
+<span class="normal"><a href="#__codelineno-0-131">131</a></span>
+<span class="normal"><a href="#__codelineno-0-132">132</a></span>
+<span class="normal"><a href="#__codelineno-0-133">133</a></span>
+<span class="normal"><a href="#__codelineno-0-134">134</a></span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span>
+<span class="normal"><a href="#__codelineno-0-136">136</a></span>
+<span class="normal"><a href="#__codelineno-0-137">137</a></span>
+<span class="normal"><a href="#__codelineno-0-138">138</a></span>
+<span class="normal"><a href="#__codelineno-0-139">139</a></span>
+<span class="normal"><a href="#__codelineno-0-140">140</a></span>
+<span class="normal"><a href="#__codelineno-0-141">141</a></span>
+<span class="normal"><a href="#__codelineno-0-142">142</a></span>
+<span class="normal"><a href="#__codelineno-0-143">143</a></span>
+<span class="normal"><a href="#__codelineno-0-144">144</a></span>
+<span class="normal"><a href="#__codelineno-0-145">145</a></span>
+<span class="normal"><a href="#__codelineno-0-146">146</a></span>
+<span class="normal"><a href="#__codelineno-0-147">147</a></span>
+<span class="normal"><a href="#__codelineno-0-148">148</a></span>
+<span class="normal"><a href="#__codelineno-0-149">149</a></span>
+<span class="normal"><a href="#__codelineno-0-150">150</a></span>
+<span class="normal"><a href="#__codelineno-0-151">151</a></span>
+<span class="normal"><a href="#__codelineno-0-152">152</a></span>
+<span class="normal"><a href="#__codelineno-0-153">153</a></span>
+<span class="normal"><a href="#__codelineno-0-154">154</a></span>
+<span class="normal"><a href="#__codelineno-0-155">155</a></span>
+<span class="normal"><a href="#__codelineno-0-156">156</a></span>
+<span class="normal"><a href="#__codelineno-0-157">157</a></span>
+<span class="normal"><a href="#__codelineno-0-158">158</a></span>
+<span class="normal"><a href="#__codelineno-0-159">159</a></span>
+<span class="normal"><a href="#__codelineno-0-160">160</a></span>
+<span class="normal"><a href="#__codelineno-0-161">161</a></span>
+<span class="normal"><a href="#__codelineno-0-162">162</a></span>
+<span class="normal"><a href="#__codelineno-0-163">163</a></span>
+<span class="normal"><a href="#__codelineno-0-164">164</a></span>
+<span class="normal"><a href="#__codelineno-0-165">165</a></span>
+<span class="normal"><a href="#__codelineno-0-166">166</a></span>
+<span class="normal"><a href="#__codelineno-0-167">167</a></span>
+<span class="normal"><a href="#__codelineno-0-168">168</a></span>
+<span class="normal"><a href="#__codelineno-0-169">169</a></span>
+<span class="normal"><a href="#__codelineno-0-170">170</a></span>
+<span class="normal"><a href="#__codelineno-0-171">171</a></span>
+<span class="normal"><a href="#__codelineno-0-172">172</a></span>
+<span class="normal"><a href="#__codelineno-0-173">173</a></span>
+<span class="normal"><a href="#__codelineno-0-174">174</a></span>
+<span class="normal"><a href="#__codelineno-0-175">175</a></span>
+<span class="normal"><a href="#__codelineno-0-176">176</a></span>
+<span class="normal"><a href="#__codelineno-0-177">177</a></span>
+<span class="normal"><a href="#__codelineno-0-178">178</a></span>
+<span class="normal"><a href="#__codelineno-0-179">179</a></span>
+<span class="normal"><a href="#__codelineno-0-180">180</a></span>
+<span class="normal"><a href="#__codelineno-0-181">181</a></span>
+<span class="normal"><a href="#__codelineno-0-182">182</a></span>
+<span class="normal"><a href="#__codelineno-0-183">183</a></span>
+<span class="normal"><a href="#__codelineno-0-184">184</a></span>
+<span class="normal"><a href="#__codelineno-0-185">185</a></span>
+<span class="normal"><a href="#__codelineno-0-186">186</a></span>
+<span class="normal"><a href="#__codelineno-0-187">187</a></span>
+<span class="normal"><a href="#__codelineno-0-188">188</a></span>
+<span class="normal"><a href="#__codelineno-0-189">189</a></span>
+<span class="normal"><a href="#__codelineno-0-190">190</a></span>
+<span class="normal"><a href="#__codelineno-0-191">191</a></span>
+<span class="normal"><a href="#__codelineno-0-192">192</a></span>
+<span class="normal"><a href="#__codelineno-0-193">193</a></span>
+<span class="normal"><a href="#__codelineno-0-194">194</a></span>
+<span class="normal"><a href="#__codelineno-0-195">195</a></span>
+<span class="normal"><a href="#__codelineno-0-196">196</a></span>
+<span class="normal"><a href="#__codelineno-0-197">197</a></span>
+<span class="normal"><a href="#__codelineno-0-198">198</a></span>
+<span class="normal"><a href="#__codelineno-0-199">199</a></span>
+<span class="normal"><a href="#__codelineno-0-200">200</a></span>
+<span class="normal"><a href="#__codelineno-0-201">201</a></span>
+<span class="normal"><a href="#__codelineno-0-202">202</a></span>
+<span class="normal"><a href="#__codelineno-0-203">203</a></span>
+<span class="normal"><a href="#__codelineno-0-204">204</a></span>
+<span class="normal"><a href="#__codelineno-0-205">205</a></span>
+<span class="normal"><a href="#__codelineno-0-206">206</a></span>
+<span class="normal"><a href="#__codelineno-0-207">207</a></span>
+<span class="normal"><a href="#__codelineno-0-208">208</a></span>
+<span class="normal"><a href="#__codelineno-0-209">209</a></span>
+<span class="normal"><a href="#__codelineno-0-210">210</a></span>
+<span class="normal"><a href="#__codelineno-0-211">211</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// Lab05ArduinoCollisionAvoidance.ino</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="c1">//</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// Collision Avoidance System</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">//</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1">// Author: Steve Ellermann</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">// </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c1">// Created:  2023-03-24</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1">// Modified: 2023-04-01</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1">//</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="c1">// Libraries Required:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="c1">// Stepper.zip</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="c1">// HC-SR04.zip</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="c1">// pitches.zip</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="c1">// Servo.zip</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1">//</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="c1">//  Wiring:</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="c1">// -------------------------------------------------</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="c1">// Pin Digital GND | Breadboard 5V</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="c1">// Pin 13          | Echo - Ultrasonic Sensor</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="c1">// Pin 12          | Trig - Ultrasonic Sensor</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="c1">// Pin 11          | IN1 - ULN2003 Driver Board</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="c1">// Pin 10          | IN2 - ULN2003 Driver Board</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="c1">// Pin  9          | IN3 - ULN2003 Driver Board</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="c1">// Pin  8          | IN4 - ULN2003 Driver Board</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="c1">// Pin  7          | + on Passive Buzzer</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="c1">// Pin  6          | Orange Wire - SG90 Servo Motor</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="c1">// Power GND       | GND - Ultrasonic Sensor</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="c1">// Power 5V        | Breadboard 5V</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="c1">// -------------------------------------------------</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="c1">//</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="c1">// Supplies</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="c1">//</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="c1">// Software:</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="c1">// (1) x Arduino IDE (ver 2 was used)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="c1">//</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="c1">// Hardware:</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="c1">// (1) x Elegoo UNO R3</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="c1">// (1) x SG90 Servo Motor</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="c1">// (1) x HC-SR04 Ultrasonic Sensor Module</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="c1">// (1) x MB-V2 Breadboard Power Supply Module</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="c1">// (1) x 5V Passive Buzzer</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="c1">// (1) x 28BYJ-48 5V Stepper Motor</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="c1">// (1) x 830 tie-points breadboard</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="c1">// (1) x 9V 1A Battery Adapter</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="c1">// (1) x 9V Battery</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="c1">// (8) x F-M wires (Female to Male DuPont wires)</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="c1">// (8) x M-M wire (Male to Male jumper wire)</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="c1">// (1) x USB 2.0 Type A to USB 2.0 Type B Cable</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="c1">// (Optional) (1) x USB-C to USB Adapter</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="c1">//</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="c1">// Libraries</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="c1">// #include &quot;Stepper.h&quot;         // library for stepper motor</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;AccelStepper.h&quot;</span><span class="c1">    // library for stepper motor</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;SR04.h&quot;</span><span class="c1">            // library for ultrasonic sensor</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pitches.h&quot;</span><span class="c1">         // library for passive buzzer</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Servo.h&quot;</span><span class="c1">           // library for servo motor</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="c1">// Definitions</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="cp">#define SERVO_PIN 6          </span><span class="c1">// Pin for servo motor</span>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="cp">#define BUZZER_PIN 7         </span><span class="c1">// Pin for passive buzzer</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="cp">#define STEPPER_PIN_1 8      </span><span class="c1">// Pin for stepper motor</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="cp">#define STEPPER_PIN_2 9      </span><span class="c1">// Pin for stepper motor</span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="cp">#define STEPPER_PIN_3 10     </span><span class="c1">// Pin for stepper motor</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="cp">#define STEPPER_PIN_4 11     </span><span class="c1">// Pin for stepper motor</span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="cp">#define ECHO_PIN 12          </span><span class="c1">// Pin for ultrasonic sensor</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67"></a><span class="cp">#define TRIG_PIN 13          </span><span class="c1">// Pin for ultrasonic sensor</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="cp">#define STEPPER_STEPS 32     </span><span class="c1">// Number of steps per revolution of stepper motor internal shaft</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="cp">#define MotorInterfaceType 8 </span><span class="c1">// Define the AccelStepper interface type; 4 wire motor in half step mode:</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70"></a>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="c1">// Constants</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">STEPPER_STEPS_TO_TAKE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w">               </span><span class="c1">// 2048 = 1 Revolution of stepper motor</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="c1">// const int STEPPER_SPEED = 500;                      // Stepper motor speed max seems to be 500</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">STEPPER_SPEED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span><span class="w">                      </span><span class="c1">// Stepper motor speed</span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">STEPPER_MAX_SPEED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Stepper motor speed max speed</span>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">THRESHOLD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">                            </span><span class="c1">// Threshold distance in cm</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">DEBUG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w">                           </span><span class="c1">// Display debug information</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="c1">// Variables</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="kt">int</span><span class="w"> </span><span class="n">servoPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                              </span><span class="c1">// variable to store the servo position</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ultrasonicDistance</span><span class="p">;</span><span class="w">                   </span><span class="c1">// initialize ultrasonic sensor variable for distance</span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">toggleStepperRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">             </span><span class="c1">// toggle stepper rotation</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="kt">bool</span><span class="w"> </span><span class="n">hasRunOnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                                </span><span class="c1">// has the program run once</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84"></a>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85"></a>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="c1">// Objects</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87"></a>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="c1">// Instantiate the stepper library</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="c1">// Setup of proper sequencing for Motor Driver Pins</span>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="c1">// In1, In2, In3, In4 in the sequence 1-3-2-4 for the 28BYJ-48 stepper motor</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="c1">//Stepper myStepper(STEPPER_STEPS, STEPPER_PIN_0, STEPPER_PIN_2, STEPPER_PIN_1, STEPPER_PIN_3);</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92"></a>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="c1">// Initialize with pin sequence IN1-IN3-IN2-IN4 for using the AccelStepper library with 28BYJ-48 stepper motor:</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="n">AccelStepper</span><span class="w">  </span><span class="n">myStepper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccelStepper</span><span class="p">(</span><span class="n">MotorInterfaceType</span><span class="p">,</span><span class="w"> </span><span class="n">STEPPER_PIN_1</span><span class="p">,</span><span class="w"> </span><span class="n">STEPPER_PIN_3</span><span class="p">,</span><span class="w"> </span><span class="n">STEPPER_PIN_2</span><span class="p">,</span><span class="w"> </span><span class="n">STEPPER_PIN_4</span><span class="p">);</span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95"></a>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="c1">// Instantiate servo object to control a servo</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="n">Servo</span><span class="w"> </span><span class="n">myServo</span><span class="p">;</span><span class="w">  </span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98"></a>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="c1">// Instantiate the ultrasonic sensor</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="n">SR04</span><span class="w"> </span><span class="n">myUltrasonic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SR04</span><span class="p">(</span><span class="n">ECHO_PIN</span><span class="p">,</span><span class="n">TRIG_PIN</span><span class="p">);</span>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101"></a>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="c1">// Run once</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="w">  </span><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">  </span><span class="n">myServo</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">SERVO_PIN</span><span class="p">);</span><span class="w">                        </span><span class="c1">// attaches the servo on SERVO_PIN to the servo object</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106"></a>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="w">  </span><span class="c1">// Set the maximum steps per second:</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">  </span><span class="n">myStepper</span><span class="p">.</span><span class="n">setMaxSpeed</span><span class="p">(</span><span class="n">STEPPER_MAX_SPEED</span><span class="p">);</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="p">}</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110"></a>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="c1">// Run repeatedly</span>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113"></a>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hasRunOnce</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115"></a>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                         </span><span class="c1">// print information for debugging</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;hasRunOnce: No&quot;</span><span class="p">);</span><span class="w">                                  </span><span class="c1">// print if program has run once</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Stepper Motor Rotation: clockwise&quot;</span><span class="p">);</span><span class="w">               </span><span class="c1">// print stepper motor rotation direction</span>
+</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-120"><a id="__codelineno-0-120" name="__codelineno-0-120"></a>
+</span><span id="__span-0-121"><a id="__codelineno-0-121" name="__codelineno-0-121"></a><span class="w">    </span><span class="n">hasRunOnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                                                   </span><span class="c1">// update the variable</span>
+</span><span id="__span-0-122"><a id="__codelineno-0-122" name="__codelineno-0-122"></a>
+</span><span id="__span-0-123"><a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="w">    </span><span class="n">stepperRotateClockwise</span><span class="p">();</span><span class="w">                                            </span><span class="c1">// rotate stepper motor clockwise</span>
+</span><span id="__span-0-124"><a id="__codelineno-0-124" name="__codelineno-0-124"></a>
+</span><span id="__span-0-125"><a id="__codelineno-0-125" name="__codelineno-0-125"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-126"><a id="__codelineno-0-126" name="__codelineno-0-126"></a>
+</span><span id="__span-0-127"><a id="__codelineno-0-127" name="__codelineno-0-127"></a><span class="w">    </span><span class="n">ultrasonicDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myUltrasonic</span><span class="p">.</span><span class="n">Distance</span><span class="p">();</span><span class="w">                        </span><span class="c1">// update ultrasonic sensor variable</span>
+</span><span id="__span-0-128"><a id="__codelineno-0-128" name="__codelineno-0-128"></a>
+</span><span id="__span-0-129"><a id="__codelineno-0-129" name="__codelineno-0-129"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                         </span><span class="c1">// print information for debugging</span>
+</span><span id="__span-0-130"><a id="__codelineno-0-130" name="__codelineno-0-130"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Ultrasonic Sensor Distance: &quot;</span><span class="p">);</span><span class="w">                      </span><span class="c1">// print the distance from the ultrasonic sensor in cm</span>
+</span><span id="__span-0-131"><a id="__codelineno-0-131" name="__codelineno-0-131"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">ultrasonicDistance</span><span class="p">);</span><span class="w">                                  </span><span class="c1">// print the distance from the ultrasonic sensor in cm</span>
+</span><span id="__span-0-132"><a id="__codelineno-0-132" name="__codelineno-0-132"></a><span class="w">      </span><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot; cm&quot;</span><span class="p">);</span><span class="w">                                             </span><span class="c1">// print the distance from the ultrasonic sensor in cm</span>
+</span><span id="__span-0-133"><a id="__codelineno-0-133" name="__codelineno-0-133"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-134"><a id="__codelineno-0-134" name="__codelineno-0-134"></a>
+</span><span id="__span-0-135"><a id="__codelineno-0-135" name="__codelineno-0-135"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ultrasonicDistance</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">THRESHOLD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                               </span><span class="c1">// toggle the variable based on distance from ultrasonic sensor</span>
+</span><span id="__span-0-136"><a id="__codelineno-0-136" name="__codelineno-0-136"></a>
+</span><span id="__span-0-137"><a id="__codelineno-0-137" name="__codelineno-0-137"></a><span class="w">      </span><span class="n">toggleStepperRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-0-138"><a id="__codelineno-0-138" name="__codelineno-0-138"></a>
+</span><span id="__span-0-139"><a id="__codelineno-0-139" name="__codelineno-0-139"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-140"><a id="__codelineno-0-140" name="__codelineno-0-140"></a>
+</span><span id="__span-0-141"><a id="__codelineno-0-141" name="__codelineno-0-141"></a><span class="w">      </span><span class="n">toggleStepperRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-142"><a id="__codelineno-0-142" name="__codelineno-0-142"></a>
+</span><span id="__span-0-143"><a id="__codelineno-0-143" name="__codelineno-0-143"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-144"><a id="__codelineno-0-144" name="__codelineno-0-144"></a>
+</span><span id="__span-0-145"><a id="__codelineno-0-145" name="__codelineno-0-145"></a><span class="w">    </span><span class="cm">/*</span>
+</span><span id="__span-0-146"><a id="__codelineno-0-146" name="__codelineno-0-146"></a><span class="cm">    switch(toggleStepperRotation) {                                      // decision loop</span>
+</span><span id="__span-0-147"><a id="__codelineno-0-147" name="__codelineno-0-147"></a>
+</span><span id="__span-0-148"><a id="__codelineno-0-148" name="__codelineno-0-148"></a><span class="cm">      case 0:</span>
+</span><span id="__span-0-149"><a id="__codelineno-0-149" name="__codelineno-0-149"></a><span class="cm">        if (DEBUG) { </span>
+</span><span id="__span-0-150"><a id="__codelineno-0-150" name="__codelineno-0-150"></a><span class="cm">          Serial.println(&quot;Stepper Motor Rotation: clockwise&quot;);             // print stepper motor rotation direction</span>
+</span><span id="__span-0-151"><a id="__codelineno-0-151" name="__codelineno-0-151"></a><span class="cm">        }</span>
+</span><span id="__span-0-152"><a id="__codelineno-0-152" name="__codelineno-0-152"></a><span class="cm">        muteBuzzer();</span>
+</span><span id="__span-0-153"><a id="__codelineno-0-153" name="__codelineno-0-153"></a><span class="cm">        servoRotateToZero();</span>
+</span><span id="__span-0-154"><a id="__codelineno-0-154" name="__codelineno-0-154"></a><span class="cm">        stepperRotateClockwise();</span>
+</span><span id="__span-0-155"><a id="__codelineno-0-155" name="__codelineno-0-155"></a><span class="cm">        break;</span>
+</span><span id="__span-0-156"><a id="__codelineno-0-156" name="__codelineno-0-156"></a>
+</span><span id="__span-0-157"><a id="__codelineno-0-157" name="__codelineno-0-157"></a><span class="cm">      case 1:</span>
+</span><span id="__span-0-158"><a id="__codelineno-0-158" name="__codelineno-0-158"></a><span class="cm">        if (DEBUG) {       </span>
+</span><span id="__span-0-159"><a id="__codelineno-0-159" name="__codelineno-0-159"></a><span class="cm">          Serial.println(&quot;Stepper Motor Rotation: counterclockwise&quot;);      // print stepper motor rotation direction</span>
+</span><span id="__span-0-160"><a id="__codelineno-0-160" name="__codelineno-0-160"></a><span class="cm">        }</span>
+</span><span id="__span-0-161"><a id="__codelineno-0-161" name="__codelineno-0-161"></a><span class="cm">        playBuzzer();</span>
+</span><span id="__span-0-162"><a id="__codelineno-0-162" name="__codelineno-0-162"></a><span class="cm">        servoRotateToOneEighy();</span>
+</span><span id="__span-0-163"><a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="cm">        stepperRotateCounterClockwise();</span>
+</span><span id="__span-0-164"><a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="cm">        break;</span>
+</span><span id="__span-0-165"><a id="__codelineno-0-165" name="__codelineno-0-165"></a>
+</span><span id="__span-0-166"><a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="cm">      default:</span>
+</span><span id="__span-0-167"><a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="cm">        break;</span>
+</span><span id="__span-0-168"><a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="cm">    }</span>
+</span><span id="__span-0-169"><a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="cm">    */</span>
+</span><span id="__span-0-170"><a id="__codelineno-0-170" name="__codelineno-0-170"></a>
+</span><span id="__span-0-171"><a id="__codelineno-0-171" name="__codelineno-0-171"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-172"><a id="__codelineno-0-172" name="__codelineno-0-172"></a>
+</span><span id="__span-0-173"><a id="__codelineno-0-173" name="__codelineno-0-173"></a><span class="p">}</span>
+</span><span id="__span-0-174"><a id="__codelineno-0-174" name="__codelineno-0-174"></a>
+</span><span id="__span-0-175"><a id="__codelineno-0-175" name="__codelineno-0-175"></a><span class="c1">// Rotate stepper motor clockwise</span>
+</span><span id="__span-0-176"><a id="__codelineno-0-176" name="__codelineno-0-176"></a><span class="kt">void</span><span class="w"> </span><span class="nf">stepperRotateClockwise</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-177"><a id="__codelineno-0-177" name="__codelineno-0-177"></a><span class="w">  </span><span class="n">myStepper</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">STEPPER_SPEED</span><span class="p">);</span><span class="w">                                     </span><span class="c1">// stepper motor speed</span>
+</span><span id="__span-0-178"><a id="__codelineno-0-178" name="__codelineno-0-178"></a><span class="w">  </span><span class="c1">//myStepper.step(STEPPER_STEPS_TO_TAKE);                                 // rotate clockwise</span>
+</span><span id="__span-0-179"><a id="__codelineno-0-179" name="__codelineno-0-179"></a><span class="w">  </span><span class="n">myStepper</span><span class="p">.</span><span class="n">runSpeed</span><span class="p">();</span><span class="w">                                                  </span><span class="c1">// rotate clockwise</span>
+</span><span id="__span-0-180"><a id="__codelineno-0-180" name="__codelineno-0-180"></a><span class="p">}</span>
+</span><span id="__span-0-181"><a id="__codelineno-0-181" name="__codelineno-0-181"></a>
+</span><span id="__span-0-182"><a id="__codelineno-0-182" name="__codelineno-0-182"></a><span class="c1">// Rotate stepper motor counter clockwise</span>
+</span><span id="__span-0-183"><a id="__codelineno-0-183" name="__codelineno-0-183"></a><span class="kt">void</span><span class="w"> </span><span class="nf">stepperRotateCounterClockwise</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-184"><a id="__codelineno-0-184" name="__codelineno-0-184"></a><span class="w">  </span><span class="n">myStepper</span><span class="p">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="o">-</span><span class="n">STEPPER_SPEED</span><span class="p">);</span><span class="w">                                     </span><span class="c1">// stepper motor speed</span>
+</span><span id="__span-0-185"><a id="__codelineno-0-185" name="__codelineno-0-185"></a><span class="w">  </span><span class="c1">//myStepper.step(-STEPPER_STEPS_TO_TAKE);                                // rotate counterclockwise</span>
+</span><span id="__span-0-186"><a id="__codelineno-0-186" name="__codelineno-0-186"></a><span class="w">  </span><span class="n">myStepper</span><span class="p">.</span><span class="n">runSpeed</span><span class="p">();</span><span class="w">                                                  </span><span class="c1">// rotate clockwise</span>
+</span><span id="__span-0-187"><a id="__codelineno-0-187" name="__codelineno-0-187"></a><span class="p">}</span>
+</span><span id="__span-0-188"><a id="__codelineno-0-188" name="__codelineno-0-188"></a>
+</span><span id="__span-0-189"><a id="__codelineno-0-189" name="__codelineno-0-189"></a><span class="c1">// Play a tone</span>
+</span><span id="__span-0-190"><a id="__codelineno-0-190" name="__codelineno-0-190"></a><span class="kt">void</span><span class="w"> </span><span class="nf">playBuzzer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-191"><a id="__codelineno-0-191" name="__codelineno-0-191"></a><span class="w">  </span><span class="n">tone</span><span class="p">(</span><span class="n">BUZZER_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">NOTE_G5</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w">                                        </span><span class="c1">// play a tone on the passive buzzer</span>
+</span><span id="__span-0-192"><a id="__codelineno-0-192" name="__codelineno-0-192"></a><span class="p">}</span>
+</span><span id="__span-0-193"><a id="__codelineno-0-193" name="__codelineno-0-193"></a>
+</span><span id="__span-0-194"><a id="__codelineno-0-194" name="__codelineno-0-194"></a><span class="c1">// Mute the tone</span>
+</span><span id="__span-0-195"><a id="__codelineno-0-195" name="__codelineno-0-195"></a><span class="kt">void</span><span class="w"> </span><span class="nf">muteBuzzer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-196"><a id="__codelineno-0-196" name="__codelineno-0-196"></a><span class="w">  </span><span class="n">noTone</span><span class="p">(</span><span class="n">BUZZER_PIN</span><span class="p">);</span><span class="w">                                                    </span><span class="c1">// turn the tone off</span>
+</span><span id="__span-0-197"><a id="__codelineno-0-197" name="__codelineno-0-197"></a><span class="p">}</span>
+</span><span id="__span-0-198"><a id="__codelineno-0-198" name="__codelineno-0-198"></a>
+</span><span id="__span-0-199"><a id="__codelineno-0-199" name="__codelineno-0-199"></a><span class="c1">// Rotate servo motor to 0 degrees</span>
+</span><span id="__span-0-200"><a id="__codelineno-0-200" name="__codelineno-0-200"></a><span class="kt">void</span><span class="w"> </span><span class="nf">servoRotateToZero</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                               </span><span class="c1">// rotate servo to 0 degree position</span>
+</span><span id="__span-0-201"><a id="__codelineno-0-201" name="__codelineno-0-201"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">servoPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">180</span><span class="p">;</span><span class="w"> </span><span class="n">servoPosition</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servoPosition</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// goes from 180 degrees to 0 degrees in steps of 1 degree</span>
+</span><span id="__span-0-202"><a id="__codelineno-0-202" name="__codelineno-0-202"></a><span class="w">    </span><span class="n">myServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">servoPosition</span><span class="p">);</span><span class="w">                                        </span><span class="c1">// tell servo to go to position in variable &#39;pos&#39;</span>
+</span><span id="__span-0-203"><a id="__codelineno-0-203" name="__codelineno-0-203"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-204"><a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="p">}</span>
+</span><span id="__span-0-205"><a id="__codelineno-0-205" name="__codelineno-0-205"></a>
+</span><span id="__span-0-206"><a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="c1">// Rotate servo motor to 180 degrees</span>
+</span><span id="__span-0-207"><a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="kt">void</span><span class="w"> </span><span class="nf">servoRotateToOneEighy</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">                                           </span><span class="c1">// rotate servo to 180 degree position</span>
+</span><span id="__span-0-208"><a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">servoPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">servoPosition</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">180</span><span class="p">;</span><span class="w"> </span><span class="n">servoPosition</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">    </span><span class="c1">// goes from 0 degrees to 180 degrees in steps of 1 degree</span>
+</span><span id="__span-0-209"><a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="w">    </span><span class="n">myServo</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">servoPosition</span><span class="p">);</span><span class="w">                                        </span><span class="c1">// tell servo to go to position in variable &#39;servoPosition&#39;</span>
+</span><span id="__span-0-210"><a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="w">  </span><span class="p">}</span><span class="w">  </span>
+</span><span id="__span-0-211"><a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h3 id="upload-the-source-code-and-library-to-the-arduino">Upload the source code and library to the Arduino</h3>
+<ul>
+<li>
+<p>See <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch</a></p>
+</li>
+<li>
+<p>See <a href="#how-to-add-library-files-to-the-arduino-ide-2">How To Insall A Library</a></p>
+</li>
+</ul>
+<h2 id="how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch With The Arduino IDE 2</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Source: <a href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-uploading-a-sketch">Arduino.cc How to upload a sketch with the Arduino IDE 2</a></li>
+</ul>
+</div>
+<p>In the Arduino environment, we write <strong>sketches</strong> that can be uploaded to Arduino boards. In this tutorial, we will go through how to select a board connected to your computer, and how to upload a sketch to that board, using the Arduino IDE 2.</p>
+<p>You can easily download the editor from the Arduino Software page.</p>
+<p>You can also follow the <a href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
+<h3 id="requirements_1">Requirements</h3>
+<ul>
+<li>Arduino IDE 2 installed.</li>
+</ul>
+<h3 id="verify-vs-upload">Verify vs Upload</h3>
+<p>There are two main tools when uploading a sketch to a board: <strong>verify</strong> and <strong>upload</strong>. The verify tool simply goes through your sketch, checks for errors and compiles it. The upload tool does the same, but when it finishes compiling the code, it also uploads it to the board.</p>
+<p>A good practice is to use the verifying tool before attempting to upload anything. This is a quick way of spotting any errors in your code, so you can fix them before actually uploading the code.</p>
+<h3 id="uploading-a-sketch">Uploading a Sketch</h3>
+<p>Uploading a sketch is quick and easy, but let's take a look at what we need to do.</p>
+<ol>
+<li>
+<p>Open the Arduino IDE 2.</p>
+</li>
+<li>
+<p>With the editor open, let's take a look at the toolbar at the top. At the very left, there is a checkmark and an arrow pointing right. The checkmark is used to verify, and the arrow is used to upload.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img01.png" /></a></p>
+<p><em>Verifying and uploading buttons</em></p>
+<ol>
+<li>But before doing any of that, we should choose what board we are uploading to. Beside the verify and upload button you should see a a drop down menu, this will, in most cases, display Arduino boards that are connected to your computer. If your board is not automatically detected, you can either press "Select other board and port..." in the drop-down and follow the instructions, or go to Tools &gt; Board and Tools &gt; Port in the toolbar menu to select the board and port manually.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.png" /></a></p>
+<p><em>Selecting the board.</em></p>
+<p>So connect your board to the computer and select it from the drop down menu. You'll know that there is a connection to the board when the board name appears in <strong>bold</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.5.png" /></a></p>
+<p><em>Selecting the board.</em></p>
+<ol>
+<li>Click on the verify tool (checkmark). Since we are verifying an empty sketch, we can be sure it is going to compile. After a few seconds, we can see the result of the action in the console (black box in the bottom).</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img02.png" /></a></p>
+<p><em>Successful compilation printed in the console.</em></p>
+<ol>
+<li>
+<p>With the board selected, we are good to go! Click on the upload button, and it will start uploading the sketch to the board.</p>
+</li>
+<li>
+<p>When it is finished, a notification pops up in the bottom right of your IDE window. Of course, sometimes there are some complications when uploading, and these errors will be listed here as well.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img04.png" /></a></p>
+<p><em>Successful upload printed in the console.</em></p>
+<p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
+<h3 id="please-read-only-linux-users">Please Read (Only Linux Users)</h3>
+<p>It might happen that when you upload a sketch - after you have selected your board and the serial port - you get an error such as "... Permission denied". If you get this error, you need to set serial port permission.</p>
+<p>To do this, open your Terminal and type:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyACM*
+</span></code></pre></div>
+<p>you will get something like:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>crw-rw----<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>dialout<span class="w"> </span><span class="m">188</span>,<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>apr<span class="w"> </span><span class="m">23</span>.01<span class="w"> </span>ttyACM0
+</span></code></pre></div>
+<p>The "<code>0</code>" at the end of ACM might be a different number, or multiple entries might be returned. The data we need is "dialout" (is the group owner of the file).</p>
+<p>Now we just need to add our user to the group:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span>&lt;username&gt;
+</span></code></pre></div>
+<p>where <code>&lt;username&gt;</code> is your Linux user name. <strong>You will need to log out and log in again for this change to take effect.</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/Ubuntu_Serial.jpg" /></a></p>
+<p><em>Adding user to the group.</em></p>
+<p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
+Results</p>
+<h2 id="how-to-add-library-files-to-the-arduino-ide">How To Add Library Files To The Arduino IDE</h2>
+<p><strong>Arduino IDE 2</strong></p>
+<p>From within the Arduino IDE with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>Stepper.zip</strong> file downloaded from this page.</p>
+<ul>
+<li>Download Library File: <a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a></li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab5-img-add-library.png" /></a></p>
+<h2 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2</h2>
+<p>From within the Arduino IDE, with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>pitches.zip</strong> file downloaded from this page. Repeat for the additional library files.</p>
+<ul>
+<li>Download Library File: <a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
+<li>Download Library File: <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
+<li>Download Library File: <a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a></li>
+<li>Download Library File: <a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a></li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab5-img-add-library.png" /></a></p>
+<h2 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Source: <a href="https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-installing-a-library">Arduino.cc Installing libraries</a></li>
+</ul>
+</div>
+<p>A large part of the Arduino programming experience is the use of libraries. There are thousands of libraries that can be found online, and the best documented ones can be found and installed directly through the editor.</p>
+<p>In this tutorial, we will go through how to install a library using the library manager in the Arduino IDE 2. We will also show how to access examples from a library that you have installed.</p>
+<p>You can easily download the editor from the <a href="https://www.arduino.cc/en/software">Arduino Software page</a>.</p>
+<p>You can also follow the <a href="https://github.com/arduino/docs-content/blob/main/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
+<h3 id="requirements_2">Requirements</h3>
+<ul>
+<li>Arduino IDE 2 installed.</li>
+</ul>
+<h3 id="why-use-libraries">Why Use Libraries?</h3>
+<p>Libraries are incredibly useful when creating a project of any type. They make our development experience much smoother, and there almost an infinite amount out there. They are used to interface with many different sensors, RTCs, Wi-Fi modules, RGB matrices and of course with other components on your board.</p>
+<p>Arduino has many official libraries, but the real heroes are the Arduino community, who develop, maintain and improve their libraries on a regular basis.</p>
+<h3 id="installing-a-library">Installing a Library</h3>
+<p>Installing a library is quick and easy, but let's take a look at what we need to do.</p>
+<ol>
+<li>
+<p>Open the Arduino IDE 2.</p>
+</li>
+<li>
+<p>With the editor open, let's take a look at the left column. Here, we can see a couple of icons. Let's click the on the <strong>"library"</strong> icon.</p>
+</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img01.png" /></a></p>
+<ol>
+<li>A list will now appear of all available libraries, where we can also search for the library we want to use. In this example, we are going to install the <strong>RTCZero</strong> library. Click on the <strong>"INSTALL"</strong> button to install the library.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img02.png" /></a></p>
+<ol>
+<li>This process should not take too long, but allow up to a minute to install it.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img03.png" /></a></p>
+<ol>
+<li>When it is finished, we can take a look at the library in the library manager column, where it should say <strong>"INSTALLED"</strong>.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img04.png" /></a></p>
+<p>Congratulations! You have now successfully downloaded and installed a library on your machine.</p>
+<h3 id="including-a-library">Including a Library</h3>
+<p>To use a library, you first need to include the library at the top of the sketch.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img05.png" /></a></p>
+<p>Almost all libraries come with already made examples that you can use. These are accessible through File &gt; Examples &gt; {Library} &gt; {Example}. In this example, we are choosing the RTCZero &gt; SimpleRTC.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.png" /></a></p>
+<p>You can also access library examples directly in the library manager, by clicking the three dots next to the installed library, like this: </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.5.png" /></a></p>
+<p>The chosen example will now open up in a new window, and you can start using it however you want to.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img07.png" /></a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../lab-4-stepper-motor-control/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 4">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 4
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../how-to-install-a-library-using-the-arduino-ide/" class="md-footer__link md-footer__link--next" aria-label="Next: How To Install A Library Using The Arduino IDE">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How To Install A Library Using The Arduino IDE
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024. All Rights Reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
