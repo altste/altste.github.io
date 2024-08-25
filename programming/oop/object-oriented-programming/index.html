@@ -1701,7 +1701,9 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -1710,7 +1712,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2669,7 +2671,9 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -2678,7 +2682,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2796,9 +2800,9 @@
                   
 
 
-<h1 id="object-oriented-programming-oop">Object-Oriented Programming (OOP)</h1>
+<h1 id="object-oriented-programming-oop">Object-Oriented Programming (OOP)<a class="headerlink" href="#object-oriented-programming-oop" title="Permanent link">&para;</a></h1>
 <p>What are objects? An employee, a hero, a house, a television remote - just about anything you can picture in the real world can be simulated as a software object. Object-Oriented Programming (OOP) is another way of looking at software.</p>
-<h2 id="classes-and-objects">Classes and Objects</h2>
+<h2 id="classes-and-objects">Classes and Objects<a class="headerlink" href="#classes-and-objects" title="Permanent link">&para;</a></h2>
 <p>The class (file) is the blueprint for creating an actual object. A good analogy is a house’s set of blueprints and the actual house itself. You can look at a blueprint (the class), but you can’t actually walk into it. You have to build the actual house first (the object, also called an instance of the class).</p>
 <div class="admonition tip">
 <p class="admonition-title">Key Concept</p>
@@ -2851,7 +2855,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 <span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// Pseudocode</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">people</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="nf">Person</span><span class="p">(</span><span class="w"> </span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="constructors">Constructors</h2>
+<h2 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permanent link">&para;</a></h2>
 <p>When an object is created, a method in the class called its constructor is executed. Look at this line of code:</p>
 <div class="language-Java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// Pseudocode</span>
@@ -2916,7 +2920,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 </span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="n">End</span><span class="w"> </span><span class="n">Class</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Notice in the class above, the data fields are private. That means other programs cannot update the fields directly, but they can use public methods in the class to update the fields’ values. This is done for security and to follow the OOP principle of encapsulation. The objects created from the class are responsible for the data stored in them. The object has final say about how and when its data can be updated. This is very important for objects that hold money, security clearances, bitcoins, or anything else that should be secure.</p>
-<h2 id="getters-and-setters">Getters and Setters</h2>
+<h2 id="getters-and-setters">Getters and Setters<a class="headerlink" href="#getters-and-setters" title="Permanent link">&para;</a></h2>
 <p>In OOP, objects keep their data private, which means no other program can directly change the data. Other programs must use public methods called getters and setters to get and set data in the object.</p>
 <div class="admonition tip">
 <p class="admonition-title">Key Concept</p>
@@ -2991,7 +2995,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">numberOfBedrooms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numberOfBedrooms</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">End</span><span class="w"> </span><span class="n">Module</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="common-mistakes-with-getters-and-setters">Common mistakes with getters and setters</h2>
+<h2 id="common-mistakes-with-getters-and-setters">Common mistakes with getters and setters<a class="headerlink" href="#common-mistakes-with-getters-and-setters" title="Permanent link">&para;</a></h2>
 <p>In the below code the local variable numberOfBedrooms is set to itself. This setter needed .this as shown above.</p>
 <div class="language-Java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
@@ -3019,7 +3023,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="n">End</span><span class="w"> </span><span class="n">Module</span>
 </span></code></pre></div></td></tr></table></div>
 <p>If you understand what getters and setters are supposed to do, you don’t have to memorize so much.</p>
-<h2 id="inheritance">Inheritance</h2>
+<h2 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h2>
 <p>The concept of inheritance allows a class to extend an existing class. The ‘top’ class is called the superclass. The class that inherits is the subclass. The subclass can use any data fields or methods in the superclass without having them in the subclass. This enables the programmer to change code in one place, the superclass, and all the subclasses will effectively change also.</p>
 <p>Below is a classic example of inheritance. Beagle inherits characteristics from Dog which inherits characteristics from Animal. Persian inherits data and methods from the Cat class which inherits data and methods from the Animal class.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Inheritance" src="../oop-inheritance-01.png" /></a></p>
@@ -3134,7 +3138,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="n">Dog</span><span class="w"> </span><span class="n">yourDog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="nf">Dog</span><span class="p">(</span><span class="s">&quot;Fido&quot;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div></p>
 </div>
-<h2 id="overriding-a-method">Overriding a Method</h2>
+<h2 id="overriding-a-method">Overriding a Method<a class="headerlink" href="#overriding-a-method" title="Permanent link">&para;</a></h2>
 <p>If the superclass and the subclass have a method named the same, the subclass overrides the superclass and the computer uses the subclass's method and not the superclass's.</p>
 <div class="language-Java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
@@ -3205,7 +3209,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 <p>In OOP, when a SalariedEmployee object is created as shown above, both the SalariedEmployee's constructor and the Employee's constructor are executed.</p>
 <p>But, when a program runs the SalariedEmployee's <code>updateSalary(...)</code> method, the computer only runs the <code>updateSalary(...)</code> method in the SalariedEmployee object. The subclass <em>overrides</em> the superclass's method and effectively replaces it. This allows salaried employees to have a different method from the Employee superclass's method.</p>
 <p>When a program runs the <code>setSalary(...)</code> method for a SalariedEmployee, the computer sees the method is not in the SalariedEmployee class, so it looks for it in the Employee class. This allows the subclass to <em>inherit</em> methods in the superclass without having to duplicate the code in the subclass. That’s inheritance!</p>
-<h2 id="overloading-a-method">Overloading a Method</h2>
+<h2 id="overloading-a-method">Overloading a Method<a class="headerlink" href="#overloading-a-method" title="Permanent link">&para;</a></h2>
 <p>A program may have two or more methods named the same when they have different parameter lists. You have already seen this when a class contains a no-arg constructor AND a constructor with the same name that accepts at least one parameter.</p>
 <p>Overloading is possible for methods other than just constructors too. For example, this is allowed:</p>
 <div class="language-Java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
@@ -3281,7 +3285,7 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 </span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a><span class="w">    </span><span class="n">Return</span><span class="w"> </span><span class="p">(</span><span class="n">playerHealth</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">increaseAmount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bonus</span><span class="p">)</span>
 </span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="n">End</span><span class="w"> </span><span class="n">Method</span>
 </span></code></pre></div></td></tr></table></div>
-<h2 id="unified-modeling-language-uml">Unified Modeling Language (UML)</h2>
+<h2 id="unified-modeling-language-uml">Unified Modeling Language (UML)<a class="headerlink" href="#unified-modeling-language-uml" title="Permanent link">&para;</a></h2>
 <p>The <strong>Unified Modeling Language</strong> is used by analysts and programmers to communicate with each other by using a standard methodology to describe an Object-Oriented group of classes and programs. The top section is the name of the class and therefore the file. The middle section lists the fields. The bottom section lists the methods in the class and the required parameters for each method. A negative sign (-) means private, and a plus sign (+) means public.</p>
 <p>The Student class extends the Person class - in other words, Student inherits the fields and methods from the Person class.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Unified Modeling Language (UML)" src="../oop-uml-01.png" /></a></p>
@@ -3294,14 +3298,14 @@ Objects need to be created and used in a Driver Program. The Driver Program does
 <div class="language-text highlight"><pre><span></span><code>The arrow means extends (inheritance).
 Student extends Person.
 </code></pre></div>
-<h2 id="accessing-an-object">Accessing an Object</h2>
+<h2 id="accessing-an-object">Accessing an Object<a class="headerlink" href="#accessing-an-object" title="Permanent link">&para;</a></h2>
 <p>Here are two instances of a class being created in a driver program:</p>
 <p><code>Person person1 = New Person ( )</code></p>
 <p><code>Person person2 = New Person ("Janet")</code></p>
 <p>Then the driver program can call methods in the object by using the object’s variable name, like this:</p>
 <p><code>person1.setName("Bob")</code></p>
 <p><code>name = person2.getName()</code></p>
-<h2 id="a-full-oop-example">A Full OOP Example</h2>
+<h2 id="a-full-oop-example">A Full OOP Example<a class="headerlink" href="#a-full-oop-example" title="Permanent link">&para;</a></h2>
 <p>Using the Person and Student Objects from the prior section, we will need a driver program to create and use the objects.</p>
 <p>Here are the specifications for the PersonDriver Program: (what it should do)</p>
 <ol>
@@ -3665,7 +3669,7 @@ Student extends Person.
 </span></code></pre></div></td></tr></table></div>
 <p><em>Polymorphism</em>. One of my favorite words. Notice above that the <code>displayInfo(...)</code> method takes in a Person as a parameter. But the program is sending to it both Person and Student objects. Because Student extends Person the computer will know what to do with each type of object. That’s polymorphism!</p>
 <p>For the above example to work, the method <code>getFullName()</code> must exist in the superclass as well as in the subclasses.</p>
-<h2 id="can-you-do-this">Can You Do This?</h2>
+<h2 id="can-you-do-this">Can You Do This?<a class="headerlink" href="#can-you-do-this" title="Permanent link">&para;</a></h2>
 <p>From your knowledge of OOP concepts and principles, write the below classes and the driver program.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Can You Do This Unified Modeling Language (UML) Diagram" src="../oop-can-you-do-this-0.png" /></a></p>
 <p>Fly extends Insect.</p>
@@ -3781,7 +3785,7 @@ Student extends Person.
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
         <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

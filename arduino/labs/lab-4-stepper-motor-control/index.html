@@ -2436,7 +2436,9 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -2445,7 +2447,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2990,7 +2992,9 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -2999,7 +3003,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -3438,10 +3442,10 @@
                   
 
 
-<h1 id="arduino-lab-4-stepper-motor-control">Arduino Lab 4 - Stepper Motor Control</h1>
-<h2 id="overview">Overview</h2>
+<h1 id="arduino-lab-4-stepper-motor-control">Arduino Lab 4 - Stepper Motor Control<a class="headerlink" href="#arduino-lab-4-stepper-motor-control" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>In this lab, you will learn to drive a stepper motor.</p>
-<h2 id="requirements">Requirements:</h2>
+<h2 id="requirements">Requirements:<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Arduino IDE (Arduino 2 was used for this document)</li>
 <li>(1) x Arduino Uno R3 or Elegoo Uno R3</li>
@@ -3454,7 +3458,7 @@
 <li>(6) x F-M wires (Female to Male DuPont wires)</li>
 <li>(1) x M-M wire (Male to Male jumper wire)</li>
 </ul>
-<h2 id="datasheets">Datasheets:</h2>
+<h2 id="datasheets">Datasheets:<a class="headerlink" href="#datasheets" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../../assets/pdf/ArduinoUNOR3Datasheet.pdf">Arduino UNO R3 Datasheet</a></li>
 <li><a href="../../../assets/pdf/ELEGOOUNOR3BoardDatasheet.pdf">ELEGOO UNO R3 Datasheet</a></li>
@@ -3464,15 +3468,15 @@
 <li><a href="../../../assets/pdf/9VDCBatteryDatasheet.pdf">9V battery</a></li>
 <li><a href="../../../assets/pdf/MB-V2BreadboardPowerSupplyModuleDatasheet.pdf">MB-V2 Breadboard Power Supply Module</a></li>
 </ul>
-<h2 id="required-libraries">Required Libraries:</h2>
+<h2 id="required-libraries">Required Libraries:<a class="headerlink" href="#required-libraries" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../../assets/zip/Stepper.zip">Stepper.zip</a> version 1.1.3 was used for this document. More info can be found at <a href="https://www.arduino.cc/reference/en/libraries/stepper/">https://www.arduino.cc/reference/en/libraries/stepper/</a> and the GitHub repository is located at <a href="https://github.com/arduino-libraries/Stepper">https://github.com/arduino-libraries/Stepper</a>.</li>
 </ul>
-<h2 id="component-introduction">Component Introduction</h2>
-<h3 id="28byj-48-5v-stepper-motor">28BYJ-48 – 5V Stepper Motor</h3>
+<h2 id="component-introduction">Component Introduction<a class="headerlink" href="#component-introduction" title="Permanent link">&para;</a></h2>
+<h3 id="28byj-48-5v-stepper-motor">28BYJ-48 – 5V Stepper Motor<a class="headerlink" href="#28byj-48-5v-stepper-motor" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="28BYJ-48 – 5V Stepper Motor" src="../../../assets/images/arduino-lab4-img00.png" /></a></p>
 <p>A stepper motor is an electromechanical device which converts electrical pulses into discrete mechanical movements. The shaft or spindle of a stepper motor rotates in discrete step increments when electrical command pulses are applied to it in the proper sequence. The motors rotation has several direct relationships to these applied input pulses. The sequence of the applied pulses is directly related to the direction of motor shafts rotation. The speed of the motor shafts rotation is directly related to the frequency of the input pulses and the length of rotation is directly related to the number of input pulses applied. One of the most significant advantages of a stepper motor is its ability to be accurately controlled in an open loop system. Open loop control means no feedback information about position is needed. This type of control eliminates the need for expensive sensing and feedback devices such as optical encoders. Your position is known simply by keeping track of the input step pulses.</p>
-<h4 id="stepper-motor-28byj-48-parameters">Stepper motor 28BYJ-48 Parameters</h4>
+<h4 id="stepper-motor-28byj-48-parameters">Stepper motor 28BYJ-48 Parameters<a class="headerlink" href="#stepper-motor-28byj-48-parameters" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Model: 28BYJ-48</li>
 <li>Rated voltage: 5V DC</li>
@@ -3493,15 +3497,15 @@
 <li>Rise in Temperature &lt; 40K(120Hz)</li>
 <li>Noise &lt; 35dB (120Hz, No load, 10cm)</li>
 </ul>
-<h4 id="interfacing-circuits">Interfacing Circuits</h4>
-<h4 id="wiring-diagram">Wiring Diagram</h4>
+<h4 id="interfacing-circuits">Interfacing Circuits<a class="headerlink" href="#interfacing-circuits" title="Permanent link">&para;</a></h4>
+<h4 id="wiring-diagram">Wiring Diagram<a class="headerlink" href="#wiring-diagram" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wiring Diagram" src="../../../assets/images/arduino-lab4-img02.png" /></a></p>
 <p>The bipolar stepper motor usually has four wires coming out of it. Unlike unipolar steppers, bipolar steppers have no common center connection. They have two independent sets of coils instead. You can distinguish them from unipolar steppers by measuring the resistance between the wires. You should find two pairs of wires with equal resistance. If you’ve got the leads of your meter connected to two wires that are not connected (i.e. not attached to the same coil), you should see infinite resistance (or no continuity).</p>
-<h3 id="breadboard-power-supply">Breadboard Power Supply</h3>
-<h4 id="mb-v2-breadboard-power-supply-module">MB-V2 Breadboard Power Supply Module</h4>
+<h3 id="breadboard-power-supply">Breadboard Power Supply<a class="headerlink" href="#breadboard-power-supply" title="Permanent link">&para;</a></h3>
+<h4 id="mb-v2-breadboard-power-supply-module">MB-V2 Breadboard Power Supply Module<a class="headerlink" href="#mb-v2-breadboard-power-supply-module" title="Permanent link">&para;</a></h4>
 <p>The small DC motor is likely to use more power than an UNO R3 board digital output can handle directly. If we tried to connect the motor straight to an UNO R3 board pin, there is a good chance that it could damage the UNO R3 board. So we use a power supply module provides power supply.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Breadboard Power Supply Module" src="../../../assets/images/arduino-lab4-img09.png" /></a></p>
-<h4 id="product-specifications">Product Specifications:</h4>
+<h4 id="product-specifications">Product Specifications:<a class="headerlink" href="#product-specifications" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Locking On/Off Switch</li>
 <li>LED Power Indicator</li>
@@ -3513,7 +3517,7 @@
 <li>Size: 2.1 in x 1.4 in</li>
 <li>USB device connector onboard to power external device</li>
 </ul>
-<h4 id="setting-up-output-voltage-of-the-breadboard-power-supply-module">Setting up output voltage of the breadboard power supply module:</h4>
+<h4 id="setting-up-output-voltage-of-the-breadboard-power-supply-module">Setting up output voltage of the breadboard power supply module:<a class="headerlink" href="#setting-up-output-voltage-of-the-breadboard-power-supply-module" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Setting up output voltage of the breadboard power supply module" src="../../../assets/images/arduino-lab4-img10.png" /></a></p>
 <p>The left and right voltage output can be configured independently. To select the output voltage, move jumper to the corresponding pins. Note: power indicator LED and the breadboard power rails will not power on if both jumpers are in the “OFF” position.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Breadboard power supply module jumper position" src="../../../assets/images/arduino-lab4-img11.png" /></a></p>
@@ -3521,10 +3525,10 @@
 <p class="admonition-title">Warning</p>
 <p>Make sure that you align the module correctly on the breadboard. The negative pin(-) on module lines up with the blue line(-) on breadboard and that the positive pin(+) lines up with the red line(+). Failure to do so could result in you accidentally reversing the power to your project.</p>
 </div>
-<h3 id="uln2003-driver-board">ULN2003 Driver Board</h3>
-<h4 id="uln2003-stepper-motor-driver-module-pcb">ULN2003 Stepper Motor Driver Module PCB</h4>
+<h3 id="uln2003-driver-board">ULN2003 Driver Board<a class="headerlink" href="#uln2003-driver-board" title="Permanent link">&para;</a></h3>
+<h4 id="uln2003-stepper-motor-driver-module-pcb">ULN2003 Stepper Motor Driver Module PCB<a class="headerlink" href="#uln2003-stepper-motor-driver-module-pcb" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ULN2003 Stepper Motor Driver Module PCB" src="../../../assets/images/arduino-lab4-img03.png" /></a></p>
-<h4 id="product-description">Product Description</h4>
+<h4 id="product-description">Product Description<a class="headerlink" href="#product-description" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Size: 42 mm x 30 mm</li>
 <li>Use ULN2003 driver chip, 500mA</li>
@@ -3534,25 +3538,25 @@
 <li>We kept the rest pins of the ULN2003 chip for your further prototyping.</li>
 </ul>
 <p>The simplest way of interfacing a unipolar stepper to Arduino is to use a breakout for ULN2003A transistor array chip. The ULN2003A contains seven Darlington transistor drivers and is somewhat like having seven TIP120 transistors all in one package. The ULN2003A can pass up to 500 mA per channel and has an internal voltage drop of about 1V when on. It also contains internal clamp diodes to dissipate voltage spikes when driving inductive loads. To control the stepper, apply voltage to each of the coils in a specific sequence.</p>
-<h4 id="the-sequence-would-go-like-this">The sequence would go like this:</h4>
+<h4 id="the-sequence-would-go-like-this">The sequence would go like this:<a class="headerlink" href="#the-sequence-would-go-like-this" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Sequence" src="../../../assets/images/arduino-lab4-img04.png" /></a></p>
 <p>Here are schematics showing how to interface a unipolar stepper motor to four controller pins using a ULN2003A, and showing how to interface using four com.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Schematic" src="../../../assets/images/arduino-lab4-img05.png" /></a></p>
-<h3 id="connection">Connection</h3>
-<h4 id="schematic">Schematic</h4>
+<h3 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h3>
+<h4 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connection Schematic" src="../../../assets/images/arduino-lab4-img06.png" /></a></p>
-<h4 id="wiring-diagram_1">Wiring Diagram</h4>
+<h4 id="wiring-diagram_1">Wiring Diagram<a class="headerlink" href="#wiring-diagram_1" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wiring Diagram" src="../../../assets/images/arduino-lab4-img07.png" /></a></p>
 <p>We are using 4 pins to control the Stepper. </p>
 <p>Pin 8-11 are controlling the Stepper motor. </p>
 <p>We connect the Ground from to UNO to the Stepper motor.</p>
-<h4 id="example-photo">Example Photo</h4>
+<h4 id="example-photo">Example Photo<a class="headerlink" href="#example-photo" title="Permanent link">&para;</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Example Photo" src="../../../assets/images/arduino-lab4-img08.png" /></a></p>
-<h3 id="code">Code</h3>
+<h3 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h3>
 <p>After wiring, please open the example program <strong><a href="../../../assets/ino/Lab04ArduinoStepperExample.ino">Lab04ArduinoStepperExample.ino</a></strong> in the Arduino IDE and click <strong>UPLOAD</strong> to upload the program from the Arduino IDE.</p>
 <p>Before you can run this, make sure that you have installed the <strong><a href="../../../assets/zip/Stepper.zip">Stepper-1.1.3.zip</a></strong> library or re-install it to the Arduino IDE, if necessary. Otherwise, your code won't work.</p>
 <p>For details about loading the library file, see <a href="#how-to-add-library-files-to-the-arduino-ide-2">"How To Add Library Files To The Arduino IDE"</a> at the bottom of this document.</p>
-<h2 id="example-code">Example Code</h2>
+<h2 id="example-code">Example Code<a class="headerlink" href="#example-code" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Ardunio Example Source Code File: <a href="../../../assets/ino/Lab04ArduinoStepperExample.ino">Lab04ArduinoStepperExample.ino</a></p>
@@ -3561,7 +3565,7 @@
 <p>Library File: <a href="../../../assets/zip/Stepper.zip">Stepper-1.1.3.zip</a></p>
 </li>
 </ul>
-<h3 id="lab04arduinostepperexampleino">Lab04ArduinoStepperExample.ino</h3>
+<h3 id="lab04arduinostepperexampleino">Lab04ArduinoStepperExample.ino<a class="headerlink" href="#lab04arduinostepperexampleino" title="Permanent link">&para;</a></h3>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Lab04ArduinoStepperExample.ino</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">//</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// Library Required: Stepper.zip</span>
@@ -3606,7 +3610,7 @@
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
 </span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="upload-the-code-to-the-arduino">Upload the code to the Arduino</h3>
+<h3 id="upload-the-code-to-the-arduino">Upload the code to the Arduino<a class="headerlink" href="#upload-the-code-to-the-arduino" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>See <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch</a></p>
@@ -3615,7 +3619,7 @@
 <p>See <a href="#how-to-add-library-files-to-the-arduino-ide-2">How To Insall A Library</a></p>
 </li>
 </ul>
-<h4 id="modify-the-code-for-the-lab">Modify The Code For The Lab</h4>
+<h4 id="modify-the-code-for-the-lab">Modify The Code For The Lab<a class="headerlink" href="#modify-the-code-for-the-lab" title="Permanent link">&para;</a></h4>
 <p>Below is the pseudocode of the changes that need to be made.</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">Initialize</span><span class="w"> </span><span class="n">direction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">loop</span><span class="p">()</span>
@@ -3634,7 +3638,7 @@
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span><span class="w"> </span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">repeat</span><span class="w"> </span><span class="n">continuously</span>
 </span></code></pre></div>
-<h4 id="source-code-for-lab-4">Source Code For Lab 4:</h4>
+<h4 id="source-code-for-lab-4">Source Code For Lab 4:<a class="headerlink" href="#source-code-for-lab-4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>Download Ardunio Source Code File: <a href="../../../assets/ino/Lab04Arduino.ino">Lab04Arduino.ino</a></p>
@@ -3739,7 +3743,7 @@
 </span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a>
 </span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="upload-the-source-code-and-library-to-the-arduino">Upload the source code and library to the Arduino</h3>
+<h3 id="upload-the-source-code-and-library-to-the-arduino">Upload the source code and library to the Arduino<a class="headerlink" href="#upload-the-source-code-and-library-to-the-arduino" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>See <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch</a></p>
@@ -3748,7 +3752,7 @@
 <p>See <a href="#how-to-add-library-files-to-the-arduino-ide-2">How To Insall A Library</a></p>
 </li>
 </ul>
-<h2 id="how-to-upload-a-sketch-with-the-arduino-ide-2">How to upload a sketch with the Arduino IDE 2</h2>
+<h2 id="how-to-upload-a-sketch-with-the-arduino-ide-2">How to upload a sketch with the Arduino IDE 2<a class="headerlink" href="#how-to-upload-a-sketch-with-the-arduino-ide-2" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
@@ -3758,14 +3762,14 @@
 <p>In the Arduino environment, we write <strong>sketches</strong> that can be uploaded to Arduino boards. In this tutorial, we will go through how to select a board connected to your computer, and how to upload a sketch to that board, using the Arduino IDE 2.</p>
 <p>You can easily download the editor from the Arduino Software page.</p>
 <p>You can also follow the <a href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
-<h3 id="requirements_1">Requirements</h3>
+<h3 id="requirements_1">Requirements<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Arduino IDE 2 installed.</li>
 </ul>
-<h3 id="verify-vs-upload">Verify vs Upload</h3>
+<h3 id="verify-vs-upload">Verify vs Upload<a class="headerlink" href="#verify-vs-upload" title="Permanent link">&para;</a></h3>
 <p>There are two main tools when uploading a sketch to a board: <strong>verify</strong> and <strong>upload</strong>. The verify tool simply goes through your sketch, checks for errors and compiles it. The upload tool does the same, but when it finishes compiling the code, it also uploads it to the board.</p>
 <p>A good practice is to use the verifying tool before attempting to upload anything. This is a quick way of spotting any errors in your code, so you can fix them before actually uploading the code.</p>
-<h3 id="uploading-a-sketch">Uploading a Sketch</h3>
+<h3 id="uploading-a-sketch">Uploading a Sketch<a class="headerlink" href="#uploading-a-sketch" title="Permanent link">&para;</a></h3>
 <p>Uploading a sketch is quick and easy, but let's take a look at what we need to do.</p>
 <ol>
 <li>
@@ -3801,7 +3805,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img04.png" /></a></p>
 <p><em>Successful upload printed in the console.</em></p>
 <p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
-<h4 id="please-read-only-linux-users">Please Read (Only Linux Users)</h4>
+<h4 id="please-read-only-linux-users">Please Read (Only Linux Users)<a class="headerlink" href="#please-read-only-linux-users" title="Permanent link">&para;</a></h4>
 <p>It might happen that when you upload a sketch - after you have selected your board and the serial port - you get an error such as "... Permission denied". If you get this error, you need to set serial port permission.</p>
 <p>To do this, open your Terminal and type:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyACM*
@@ -3818,18 +3822,18 @@
 <p><em>Adding user to the group.</em></p>
 <p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
 Results</p>
-<h2 id="how-to-add-library-files-to-the-arduino-ide">How To Add Library Files To The Arduino IDE</h2>
+<h2 id="how-to-add-library-files-to-the-arduino-ide">How To Add Library Files To The Arduino IDE<a class="headerlink" href="#how-to-add-library-files-to-the-arduino-ide" title="Permanent link">&para;</a></h2>
 <p><strong>Arduino IDE 2</strong></p>
 <p>From within the Arduino IDE with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>Stepper.zip</strong> file downloaded from this page.</p>
 <ul>
 <li>Download Library File: <a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a></li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab4-img-add-library.png" /></a></p>
-<h3 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2</h3>
+<h3 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2<a class="headerlink" href="#how-to-add-library-files-to-the-arduino-ide-2" title="Permanent link">&para;</a></h3>
 <p>From within the Arduino IDE, with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>Stepper.zip</strong> file downloaded from this page.</p>
 <p><a href="../../../assets/zip/Stepper.zip">Stepper.zip</a></p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab4-img-add-library.png" /></a></p>
-<h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2</h3>
+<h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2<a class="headerlink" href="#how-to-install-a-library-with-the-arduino-ide-2" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -3840,14 +3844,14 @@ Results</p>
 <p>In this tutorial, we will go through how to install a library using the library manager in the Arduino IDE 2. We will also show how to access examples from a library that you have installed.</p>
 <p>You can easily download the editor from the <a href="https://www.arduino.cc/en/software">Arduino Software page</a>.</p>
 <p>You can also follow the <a href="https://github.com/arduino/docs-content/blob/main/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
-<h3 id="requirements_2">Requirements</h3>
+<h3 id="requirements_2">Requirements<a class="headerlink" href="#requirements_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Arduino IDE 2 installed.</li>
 </ul>
-<h3 id="why-use-libraries">Why Use Libraries?</h3>
+<h3 id="why-use-libraries">Why Use Libraries?<a class="headerlink" href="#why-use-libraries" title="Permanent link">&para;</a></h3>
 <p>Libraries are incredibly useful when creating a project of any type. They make our development experience much smoother, and there almost an infinite amount out there. They are used to interface with many different sensors, RTCs, Wi-Fi modules, RGB matrices and of course with other components on your board.</p>
 <p>Arduino has many official libraries, but the real heroes are the Arduino community, who develop, maintain and improve their libraries on a regular basis.</p>
-<h3 id="installing-a-library">Installing a Library</h3>
+<h3 id="installing-a-library">Installing a Library<a class="headerlink" href="#installing-a-library" title="Permanent link">&para;</a></h3>
 <p>Installing a library is quick and easy, but let's take a look at what we need to do.</p>
 <ol>
 <li>
@@ -3871,7 +3875,7 @@ Results</p>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img04.png" /></a></p>
 <p>Congratulations! You have now successfully downloaded and installed a library on your machine.</p>
-<h3 id="including-a-library">Including a Library</h3>
+<h3 id="including-a-library">Including a Library<a class="headerlink" href="#including-a-library" title="Permanent link">&para;</a></h3>
 <p>To use a library, you first need to include the library at the top of the sketch.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img05.png" /></a></p>
 <p>Almost all libraries come with already made examples that you can use. These are accessible through File &gt; Examples &gt; {Library} &gt; {Example}. In this example, we are choosing the RTCZero &gt; SimpleRTC.</p>
@@ -3981,7 +3985,7 @@ Results</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
         <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

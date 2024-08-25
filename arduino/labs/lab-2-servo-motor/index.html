@@ -2394,7 +2394,9 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -2403,7 +2405,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -2816,7 +2818,9 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -2825,7 +2829,7 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -3090,10 +3094,10 @@
                   
 
 
-<h1 id="arduino-lab-2-servo-motor">Arduino Lab 2 - Servo Motor</h1>
-<h2 id="overview">Overview</h2>
+<h1 id="arduino-lab-2-servo-motor">Arduino Lab 2 - Servo Motor<a class="headerlink" href="#arduino-lab-2-servo-motor" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Servo is a type of geared motor that can only rotate 180 degrees. It is controlled by sending electrical pulses from your UNO R3 board. These pulses tell the servo what position it should move to. The Servo has three wires, of which the brown one is the ground wire and should be connected to the GND port of UNO, the red one is the power wire and should be connected to the 5v port, and the orange one is the signal wire and should be connected to the Dig #9 port.</p>
-<h2 id="requirements">Requirements:</h2>
+<h2 id="requirements">Requirements:<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Arduino IDE (Arduino 2 was used for this document)</li>
 <li>(1) x Arduino Uno R3 or Elegoo Uno R3</li>
@@ -3103,13 +3107,13 @@
 <li>(Optional) Phillips #0 Screwdriver to attach one of the three horns (arms) to the servo. They can be press-fit on for the purpose of this lab.</li>
 <li>(Optional) (1) x Apple USB-C to USB Adapter for macOS Users</li>
 </ul>
-<h2 id="datasheets">Datasheets:</h2>
+<h2 id="datasheets">Datasheets:<a class="headerlink" href="#datasheets" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../../assets/pdf/ArduinoUNOR3Datasheet.pdf">Arduino UNO R3 Datasheet</a></li>
 <li><a href="../../../assets/pdf/ELEGOOUNOR3BoardDatasheet.pdf">ELEGOO UNO R3 Datasheet</a></li>
 <li><a href="../../../assets/pdf/SG90ServoMotorDatasheet.pdf">Servo Motor SG90 Datasheet</a></li>
 </ul>
-<h2 id="component-introduction">Component Introduction</h2>
+<h2 id="component-introduction">Component Introduction<a class="headerlink" href="#component-introduction" title="Permanent link">&para;</a></h2>
 <p><strong>Servo Motor SG90</strong>
 - Universal for JR and FP connector
 - Cable length : 25cm
@@ -3121,10 +3125,10 @@
 - Dimension : 1.26 in x 1.18 in x 0.47 in (3.2 cm x 3 cm x 1.2 cm)
 - Weight : 4.73 oz (134 g)</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Servo Motor SG90" src="../../../assets/images/arduino-lab2-img01.png" /></a></p>
-<h2 id="connection">Connection</h2>
-<h3 id="schematic">Schematic</h3>
+<h2 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">&para;</a></h2>
+<h3 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Schematic" src="../../../assets/images/arduino-lab2-img02.png" /></a></p>
-<h3 id="wiring-diagram">Wiring diagram</h3>
+<h3 id="wiring-diagram">Wiring diagram<a class="headerlink" href="#wiring-diagram" title="Permanent link">&para;</a></h3>
 <p><strong>Note For Servo Motor SG90:</strong></p>
 <ul>
 <li>The <strong>BROWN</strong> wire from the servo motor connects to <strong>GND</strong> on the Elegoo Uno R3 board with an M-M wire.</li>
@@ -3132,10 +3136,10 @@
 <li>The <strong>ORANGE</strong> wire from the servo motor connects to <strong>~9</strong> on the Elegoo Uno R3 board with an M-M wire.</li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wiring Diagram" src="../../../assets/images/arduino-lab2-img03.png" /></a></p>
-<h3 id="example-picture">Example Picture</h3>
+<h3 id="example-picture">Example Picture<a class="headerlink" href="#example-picture" title="Permanent link">&para;</a></h3>
 <p>In the picture, the brown wire of servo is connected via the black M-M wires, the red one is connected via the red M-M wires, and the orange one is connected via the yellow M-M wires.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Example Picture" src="../../../assets/images/arduino-lab2-img04.png" /></a></p>
-<h2 id="example-code">Example Code</h2>
+<h2 id="example-code">Example Code<a class="headerlink" href="#example-code" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>Ardunio Example Source Code File: <a href="../../../assets/ino/Lab02ArduinoServoExampleCode.ino">Lab02ArduinoServoExampleCode.ino</a></p>
@@ -3171,7 +3175,7 @@
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
 </span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="upload-the-code-to-the-arduino">Upload the code to the Arduino</h3>
+<h3 id="upload-the-code-to-the-arduino">Upload the code to the Arduino<a class="headerlink" href="#upload-the-code-to-the-arduino" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>See <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch</a></p>
@@ -3180,7 +3184,7 @@
 <p>See <a href="#how-to-add-library-files-to-the-arduino-ide-2">How To Insall A Library</a></p>
 </li>
 </ul>
-<h2 id="modify-the-code-for-the-lab">Modify The Code For The Lab</h2>
+<h2 id="modify-the-code-for-the-lab">Modify The Code For The Lab<a class="headerlink" href="#modify-the-code-for-the-lab" title="Permanent link">&para;</a></h2>
 <p><strong>Modify the code to do the following:</strong></p>
 <ul>
 <li>
@@ -3199,7 +3203,7 @@
 <p>repeat continuously</p>
 </li>
 </ul>
-<h3 id="source-code-for-lab-2">Source Code For Lab 2</h3>
+<h3 id="source-code-for-lab-2">Source Code For Lab 2<a class="headerlink" href="#source-code-for-lab-2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Modified Ardunio Source Code File: <a href="../../../assets/ino/Lab02ArduinoServo.ino">Lab02ArduinoServo.ino</a></p>
@@ -3249,7 +3253,7 @@
 </span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
 </span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="p">}</span>
 </span></code></pre></div>
-<h3 id="upload-the-code-to-the-arduino_1">Upload the code to the Arduino</h3>
+<h3 id="upload-the-code-to-the-arduino_1">Upload the code to the Arduino<a class="headerlink" href="#upload-the-code-to-the-arduino_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>See <a href="#how-to-upload-a-sketch-with-the-arduino-ide-2">How To Upload A Sketch</a></p>
@@ -3258,7 +3262,7 @@
 <p>See <a href="#how-to-add-library-files-to-the-arduino-ide-2">How To Insall A Library</a></p>
 </li>
 </ul>
-<h2 id="how-to-upload-a-sketch-with-the-arduino-ide-2">How to upload a sketch with the Arduino IDE 2</h2>
+<h2 id="how-to-upload-a-sketch-with-the-arduino-ide-2">How to upload a sketch with the Arduino IDE 2<a class="headerlink" href="#how-to-upload-a-sketch-with-the-arduino-ide-2" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
@@ -3268,14 +3272,14 @@
 <p>In the Arduino environment, we write <strong>sketches</strong> that can be uploaded to Arduino boards. In this tutorial, we will go through how to select a board connected to your computer, and how to upload a sketch to that board, using the Arduino IDE 2.</p>
 <p>You can easily download the editor from the Arduino Software page.</p>
 <p>You can also follow the <a href="https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
-<h3 id="requirements_1">Requirements</h3>
+<h3 id="requirements_1">Requirements<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Arduino IDE 2 installed.</li>
 </ul>
-<h3 id="verify-vs-upload">Verify vs Upload</h3>
+<h3 id="verify-vs-upload">Verify vs Upload<a class="headerlink" href="#verify-vs-upload" title="Permanent link">&para;</a></h3>
 <p>There are two main tools when uploading a sketch to a board: <strong>verify</strong> and <strong>upload</strong>. The verify tool simply goes through your sketch, checks for errors and compiles it. The upload tool does the same, but when it finishes compiling the code, it also uploads it to the board.</p>
 <p>A good practice is to use the verifying tool before attempting to upload anything. This is a quick way of spotting any errors in your code, so you can fix them before actually uploading the code.</p>
-<h3 id="uploading-a-sketch">Uploading a Sketch</h3>
+<h3 id="uploading-a-sketch">Uploading a Sketch<a class="headerlink" href="#uploading-a-sketch" title="Permanent link">&para;</a></h3>
 <p>Uploading a sketch is quick and easy, but let's take a look at what we need to do.</p>
 <ol>
 <li>
@@ -3311,7 +3315,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img04.png" /></a></p>
 <p><em>Successful upload printed in the console.</em></p>
 <p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
-<h3 id="please-read-only-linux-users">Please Read (Only Linux Users)</h3>
+<h3 id="please-read-only-linux-users">Please Read (Only Linux Users)<a class="headerlink" href="#please-read-only-linux-users" title="Permanent link">&para;</a></h3>
 <p>It might happen that when you upload a sketch - after you have selected your board and the serial port - you get an error such as "... Permission denied". If you get this error, you need to set serial port permission.</p>
 <p>To do this, open your Terminal and type:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>/dev/ttyACM*
@@ -3329,13 +3333,13 @@
 <p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
 Results</p>
 <p>If you see the Arduino onboard LED blinking (100ms ON, 500ms OFF). Congratulations! Your PC / Arduino have passed the System Verification Test.</p>
-<h2 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2</h2>
+<h2 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2<a class="headerlink" href="#how-to-add-library-files-to-the-arduino-ide-2" title="Permanent link">&para;</a></h2>
 <p>From within the Arduino IDE, with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>pitches.zip</strong> file downloaded from this page.</p>
 <ul>
 <li>Library File: <a href="../../../assets/zip/Servo.zip">Servo.zip</a></li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab1-img-add-library.png" /></a></p>
-<h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2</h3>
+<h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2<a class="headerlink" href="#how-to-install-a-library-with-the-arduino-ide-2" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <ul>
@@ -3346,14 +3350,14 @@ Results</p>
 <p>In this tutorial, we will go through how to install a library using the library manager in the Arduino IDE 2. We will also show how to access examples from a library that you have installed.</p>
 <p>You can easily download the editor from the <a href="https://www.arduino.cc/en/software">Arduino Software page</a>.</p>
 <p>You can also follow the <a href="https://github.com/arduino/docs-content/blob/main/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing">downloading and installing the Arduino IDE 2</a> tutorial for more detailed guide on how to install the editor.</p>
-<h3 id="requirements_2">Requirements</h3>
+<h3 id="requirements_2">Requirements<a class="headerlink" href="#requirements_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Arduino IDE 2 installed.</li>
 </ul>
-<h3 id="why-use-libraries">Why Use Libraries?</h3>
+<h3 id="why-use-libraries">Why Use Libraries?<a class="headerlink" href="#why-use-libraries" title="Permanent link">&para;</a></h3>
 <p>Libraries are incredibly useful when creating a project of any type. They make our development experience much smoother, and there almost an infinite amount out there. They are used to interface with many different sensors, RTCs, Wi-Fi modules, RGB matrices and of course with other components on your board.</p>
 <p>Arduino has many official libraries, but the real heroes are the Arduino community, who develop, maintain and improve their libraries on a regular basis.</p>
-<h3 id="installing-a-library">Installing a Library</h3>
+<h3 id="installing-a-library">Installing a Library<a class="headerlink" href="#installing-a-library" title="Permanent link">&para;</a></h3>
 <p>Installing a library is quick and easy, but let's take a look at what we need to do.</p>
 <ol>
 <li>
@@ -3377,7 +3381,7 @@ Results</p>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img04.png" /></a></p>
 <p>Congratulations! You have now successfully downloaded and installed a library on your machine.</p>
-<h3 id="including-a-library">Including a Library</h3>
+<h3 id="including-a-library">Including a Library<a class="headerlink" href="#including-a-library" title="Permanent link">&para;</a></h3>
 <p>To use a library, you first need to include the library at the top of the sketch.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img05.png" /></a></p>
 <p>Almost all libraries come with already made examples that you can use. These are accessible through File &gt; Examples &gt; {Library} &gt; {Example}. In this example, we are choosing the RTCZero &gt; SimpleRTC.</p>
@@ -3487,7 +3491,7 @@ Results</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
         <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
