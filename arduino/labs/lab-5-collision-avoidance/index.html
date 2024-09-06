@@ -11,7 +11,7 @@
   
   
   <link rel="canonical" href="https://notes.ellermann.com/arduino/labs/lab-5-collision-avoidance/">
-  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <link rel="shortcut icon" href="../../../favicon.ico">
     
       
         <title>Arduino Lab 5 - Simulation of Collision Avoidance System - Notes</title>
@@ -260,6 +260,26 @@
     
   
   Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
 
         </a>
       </li>
@@ -3256,6 +3276,140 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -3857,10 +4011,10 @@
 </ul>
 <h2 id="required-libraries">Required Libraries<a class="headerlink" href="#required-libraries" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
-<li><a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
-<li><a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a></li>
-<li><a href="../../../assets/zip/Stepper.zip">Stepper.zip</a></li>
+<li><a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
+<li><a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
+<li><a href="https://www.arduino.cc/reference/en/libraries/servo/">Servo-1.2.1.zip</a></li>
+<li><a href="https://www.arduino.cc/reference/en/libraries/stepper/">Stepper.zip</a></li>
 </ul>
 <p>More information about the Servo library is located at <a href="https://www.arduino.cc/reference/en/libraries/servo/">https://www.arduino.cc/reference/en/libraries/servo/</a></p>
 <p>The GitHub repository for the Servo library is located at <a href="https://github.com/arduino-libraries/Servo">https://github.com/arduino-libraries/Servo</a></p>
@@ -4010,7 +4164,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/ardunio-lab5-wiring-diagram.png" /></a></p>
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
 <p>After wiring, please open the example program <strong>Lab05ArduinoCollisionAvoidance.ino</strong> in the Arduino IDE and click <strong>UPLOAD</strong> to upload the program from the Arduino IDE.</p>
-<p>Before you can run this, make sure that you have installed all of the the library files (<a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a>, <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a>, <a href="../../../assets/zip/pitches.zip">pitches.zip</a>, <a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a>) or re-install it to the Arduino IDE, if necessary. Otherwise, your code will not work.</p>
+<p>Before you can run this, make sure that you have installed all of the the library files (<a href="https://www.arduino.cc/reference/en/libraries/stepper/">Stepper-1.1.3.zip</a>, <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a>, <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a>, <a href="https://www.arduino.cc/reference/en/libraries/servo/">Servo-1.2.1.zip</a>) or re-install it to the Arduino IDE, if necessary. Otherwise, your code will not work.</p>
 <p>For details about loading the library file, see How <a href="#how-to-add-library-files-to-the-arduino-ide-2">"How To Add Library Files To The Arduino IDE"</a> at the bottom of this document.</p>
 <h3 id="source-code-for-lab-5">Source Code For Lab 5<a class="headerlink" href="#source-code-for-lab-5" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4528,16 +4682,16 @@ Results</p>
 <p><strong>Arduino IDE 2</strong></p>
 <p>From within the Arduino IDE with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>Stepper.zip</strong> file downloaded from this page.</p>
 <ul>
-<li>Download Library File: <a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a></li>
+<li>Download Library File: <a href="https://www.arduino.cc/reference/en/libraries/stepper/">Stepper-1.1.3.zip</a></li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab5-img-add-library.png" /></a></p>
 <h2 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2<a class="headerlink" href="#how-to-add-library-files-to-the-arduino-ide-2" title="Permanent link">&para;</a></h2>
 <p>From within the Arduino IDE, with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>pitches.zip</strong> file downloaded from this page. Repeat for the additional library files.</p>
 <ul>
-<li>Download Library File: <a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
-<li>Download Library File: <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
-<li>Download Library File: <a href="../../../assets/zip/Servo-1.2.1.zip">Servo-1.2.1.zip</a></li>
-<li>Download Library File: <a href="../../../assets/zip/Stepper-1.1.3.zip">Stepper-1.1.3.zip</a></li>
+<li>Download Library File: <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
+<li>Download Library File: <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
+<li>Download Library File: <a href="https://www.arduino.cc/reference/en/libraries/servo/">Servo-1.2.1.zip</a></li>
+<li>Download Library File: <a href="https://www.arduino.cc/reference/en/libraries/stepper/">Stepper.zip</a></li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab5-img-add-library.png" /></a></p>
 <h2 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2<a class="headerlink" href="#how-to-install-a-library-with-the-arduino-ide-2" title="Permanent link">&para;</a></h2>

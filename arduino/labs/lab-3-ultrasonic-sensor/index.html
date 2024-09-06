@@ -11,7 +11,7 @@
   
   
   <link rel="canonical" href="https://notes.ellermann.com/arduino/labs/lab-3-ultrasonic-sensor/">
-  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <link rel="shortcut icon" href="../../../favicon.ico">
     
       
         <title>Arduino Lab 3 - Ultrasonic Sensor - Notes</title>
@@ -260,6 +260,26 @@
     
   
   Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
 
         </a>
       </li>
@@ -3109,6 +3129,140 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -3575,12 +3729,12 @@
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
 <p>Using a Library designed for these sensors will make our code short and simple. We include the library at the beginning of our code, and then by using simple commands we can control the behavior of the sensor.</p>
 <p>After wiring, please type in or open the program <strong><a href="../../../assets/ino/Lab03ArduinoSR04Example.ino">Lab03ArduinoSR04Example.ino</a></strong> in the Arduino IDE code and click UPLOAD to upload the program.</p>
-<p>Before you can run this, make sure that you have installed the <strong><a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></strong> library or re-install it, if necessary. Otherwise, your code won't work.</p>
+<p>Before you can run this, make sure that you have installed the <strong><a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></strong> library or re-install it, if necessary. Otherwise, your code won't work.</p>
 <p>For details about loading the library file, see <a href="#how-to-add-library-files-to-the-arduino-ide-2">"How To Insall A Library"</a> at the bottom of this document.</p>
 <h3 id="example-ultrasonic-sensor-code">Example Ultrasonic Sensor Code<a class="headerlink" href="#example-ultrasonic-sensor-code" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Ardunio Example Source Code File: <a href="../../../assets/ino/Lab03ArduinoSR04Example.ino">Lab03ArduinoSR04Example.ino</a></li>
-<li>Library File: <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
+<li>Library File: <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
 </ul>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Example ultrasonic sensor module code</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">// Lab03ArduinoSR04Example.ino</span>
@@ -3630,12 +3784,12 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Wireing Example Picture" src="../../../assets/images/arduino-lab3-img07.png" /></a></p>
 <h4 id="code_1">Code<a class="headerlink" href="#code_1" title="Permanent link">&para;</a></h4>
 <p>After wiring, please type in or open the program <strong><a href="../../../assets/ino/Lab03ArduinoPassiveBuzzerExample.ino">Lab03ArduinoPassiveBuzzerExample.ino</a></strong> in the Arduino IDE code and click UPLOAD to upload the program.</p>
-<p>Before you can run this, make sure that you have installed the <strong><a href="../../../assets/zip/pitches.zip">pitches.zip</a></strong> library or re-install it, if necessary. Otherwise, your code won't work.</p>
+<p>Before you can run this, make sure that you have installed the <strong><a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></strong> library or re-install it, if necessary. Otherwise, your code won't work.</p>
 <p>For details about loading the library file, see <a href="#how-to-add-library-files-to-the-arduino-ide-2">"How To Insall A Library"</a> at the bottom of this document.</p>
 <h4 id="example-passive-buzzer-code">Example Passive Buzzer Code<a class="headerlink" href="#example-passive-buzzer-code" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Ardunio Example Source Code File: <a href="../../../assets/ino/Lab03ArduinoPassiveBuzzerExample.ino">Lab03ArduinoPassiveBuzzerExample.ino</a></li>
-<li>Library File: <a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
+<li>Library File: <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
 </ul>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Lab03ArduinoPassiveBuzzerExample.ino</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// Example passive buzzer code</span>
@@ -3709,8 +3863,8 @@
 <h3 id="source-code-for-lab-3">Source Code For Lab 3<a class="headerlink" href="#source-code-for-lab-3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Modified Ardunio Source Code File: <a href="../../../assets/ino/Lab03ArduinoLibrariesRequired.ino">Lab03ArduinoLibrariesRequired.ino</a></li>
-<li>Library File: <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
-<li>Library File: <a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
+<li>Library File: <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
+<li>Library File: <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
 </ul>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Lab03ArduinoLibrariesRequired.ino</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// </span>
@@ -3879,8 +4033,8 @@ Results</p>
 <h2 id="how-to-add-library-files-to-the-arduino-ide-2">How To Add Library Files To The Arduino IDE 2<a class="headerlink" href="#how-to-add-library-files-to-the-arduino-ide-2" title="Permanent link">&para;</a></h2>
 <p>From within the Arduino IDE, with source code sketch file for this lab open, from the Arduino IDE menu select <strong>Sketch</strong> &gt; <strong>Include Library</strong> &gt; <strong>Add .ZIP Library...</strong> then select the <strong>pitches.zip</strong> file downloaded from this page.</p>
 <ul>
-<li>Library File: <a href="../../../assets/zip/HC-SR04.zip">HC-SR04.zip</a></li>
-<li>Library File: <a href="../../../assets/zip/pitches.zip">pitches.zip</a></li>
+<li>Library File: <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
+<li>Library File: <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab1-img-add-library.png" /></a></p>
 <h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2<a class="headerlink" href="#how-to-install-a-library-with-the-arduino-ide-2" title="Permanent link">&para;</a></h3>
