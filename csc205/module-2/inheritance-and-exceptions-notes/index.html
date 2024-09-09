@@ -1,0 +1,3695 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta name="robots" content="noindex, nocache, nofollow, noarchive, nosnippet, notranslate, noimageindex, noodp, noydir, noai, noimageai">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
+  
+  
+  <link rel="canonical" href="https://notes.ellermann.com/csc205/module-2/inheritance-and-exceptions-notes/">
+  <link rel="shortcut icon" href="../../../favicon.ico">
+    
+      
+        <title>Inheritance and Exceptions - Notes - CSC205 - Module 2 - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.3c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inheritance-and-exceptions-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inheritance and Exceptions - Notes - CSC205 - Module 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/" class="md-tabs__link">
+          
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arduino/" class="md-tabs__link">
+          
+  
+    
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/arrays/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initializing an Array with Random Unique Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/key-array-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Array Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/conditionals-and-loops/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conditionals and Loops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Conditionals and Loops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Truth Tables Using Boolean Values Of True and False
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops - Three Types of Loops - The Do While Loop T- he While Loop - The For Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Counting Pre-Test Loop (While Loop) And Counting Post-Test Loop (Do-While Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    For-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Do-While Loop (Post-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input While-Loop (Pre-Test Loop) With A Sentinel Value And A Priming Read
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Input-Sentinel Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wantsToContinue Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While Loop General Format In Pseudocode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Which Loop To Use
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/inputvalidation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Input Validation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Input Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getValidNumber() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    isInvalid() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validating String Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples of Common String Library Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Input Values To Test For
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/menus/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Menus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Menus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/menus/practicemenu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practice Menu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/methods/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getString() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getinteger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getInteger() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getdouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getDouble() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/closescanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The closeScanner() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getrandomnumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getRandomNumber() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Input Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/oop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Object Oriented Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-review-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Review Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/resources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/java-programming-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Programming Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing The Java Development Kit JDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_3" id="__nav_2_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eclipse IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eclipse IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse IDE -How To Find Matching Brackets and Missing Brackets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_4" id="__nav_2_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diátaxis- A systematic approach to technical documentation authoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/ternary/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ternary
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Ternary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced For Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced If Statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/labs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Install A Library Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Upload A Sketch Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/arduino-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#csc205-module-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSC205 - Module 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inheritance-vs-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance vs. Containment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-references-this-and-super" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special References - this and super
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visibility-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visibility Modifiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overriding-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overriding Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-override-annotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The @Override Annotation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overloading-vs-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overloading vs Overriding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#class-hierarchies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Class Hierarchies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-java-object-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Java Object Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Java Object Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-object-class-includes-a-few-useful-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Object class includes a few useful methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-classes-in-a-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Designing Classes In a Hierarchy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exceptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-program-can-deal-with-an-exception-in-three-ways" class="md-nav__link">
+    <span class="md-ellipsis">
+      A program can deal with an exception in three ways:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-vs-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification vs. Exceptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exception Handling in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-common-java-exceptions-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some common Java exceptions are:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-try-catch-finally-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      The try-catch-finally Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-try-with-resources-construct" class="md-nav__link">
+    <span class="md-ellipsis">
+      The try-with-resources Construct
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-propagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Propagation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checked-vs-unchecked-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checked vs Unchecked Exceptions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exception-handling-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exception Handling Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java I/O
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#there-are-three-standard-io-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      There are three standard I/O streams:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ioexception-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      IOException Class
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-text-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Text Files
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="inheritance-and-exceptions-notes">Inheritance and Exceptions - Notes<a class="headerlink" href="#inheritance-and-exceptions-notes" title="Permanent link">&para;</a></h1>
+<h2 id="csc205-module-2">CSC205 - Module 2<a class="headerlink" href="#csc205-module-2" title="Permanent link">&para;</a></h2>
+<h2 id="containment">Containment<a class="headerlink" href="#containment" title="Permanent link">&para;</a></h2>
+<p>One of the powerful features of object-oriented programming is how you can reuse existing objects. Up to this point,  you have created classes through <strong>aggregation</strong> - your classes have contained members of other classes or primitive types. If <code>Object A</code> contains an object reference variable of type <code>Object B</code> then we say that <code>A</code> contains <code>B</code>. We use <strong>containment</strong> when a <strong>"has-a"</strong> relationship exists between two classes. For example, a book has an author, a city has a mayor, a person has a name, and so on. In the code below, we define a class that we can use to manage characters in a game. Each character has a name, strength, and health. We would then add methods to update the characters strength and health as the game was played.</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GameCharacter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">strength</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1">// methods go here</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h2>
+<p>In addition to containment, object-oriented programming languages allow us to associate classes together using <strong>inheritance</strong> where one class inherits the methods and data of another class. <strong>Inheritance</strong> allows a programmer to reuse an existing class (the <strong>parent</strong> / super / base class). The new class is called the <strong>child</strong> / sub / derived class. The child can then define changes to the parent class. Inheritance is used when an <strong>"is-a"</strong> relationship exists between two classes.</p>
+<p>The following diagram has 3 examples of inheritance. Notice how, for each of these, you could say the child class "is-a" parent class.</p>
+<pre class="mermaid"><code>flowchart BT
+    Airplane --&gt; Vehicle
+    GasGiant --&gt; Planet
+    Platypus --&gt; Mammal</code></pre>
+<p>We could instantiate an instance of each child class as follows:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">Airplane</span><span class="w"> </span><span class="n">flight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Airplane</span><span class="p">(</span><span class="s">&quot;Boeing&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">747</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;VH-OJL&quot;</span><span class="p">);</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">GasGiant</span><span class="w"> </span><span class="n">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GasGiant</span><span class="p">(</span><span class="s">&quot;Saturn&quot;</span><span class="p">);</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">Platypus</span><span class="w"> </span><span class="n">secrentAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Platypus</span><span class="p">(</span><span class="s">&quot;Perry&quot;</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Note that the child class is not a proper noun, but the instantiation includes a proper noun. Also, in each case, the <em>variable</em> name refers to how the object will be used in the program.</p>
+<p>The derived class can do any or all of the following:
+- Add new variables
+- Add new methods
+- Change existing methods by overriding
+- Have a new name and otherwise be identical to the parent class</p>
+<p>Java uses the <strong>extends</strong> keyword to indicate one class is inheriting from another. Java permits a class to inherit from only one other class. Recall that the <strong>super</strong> reference refers to the parent class. The most common use is to call the parent's constructor from the child class - <code>super()</code>. Java requires the call to the parent’s constructor (if there is one) to be the first line of the constructor.</p>
+<p>In the code below, we define a class that inherits from the GameCharacter class we saw above. The Wizard class extends GameCharacter, so it has name, health, and strength members that it inherits. It also adds an array of spells.</p>
+<p><div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Wizard</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">GameCharacter</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Spell</span><span class="w"> </span><span class="n">spells</span><span class="o">[]</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="c1">// methods go here</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Notice that the Wizard class is associated to GameCharacter through inheritance (a Wizard "is-a" GameCharacter) and to Spell through containment (a Wizard "has-a" array of spells)</p>
+<p>Inheritance provides many benefits. It eliminates the need to re-implement the same methods multiple times. Any changes to a parent class are instantly propagated to the child classes. Abstract classes (which we will cover next) can serve as a blueprint for child classes to reduce development time.</p>
+<h2 id="inheritance-vs-containment">Inheritance vs. Containment<a class="headerlink" href="#inheritance-vs-containment" title="Permanent link">&para;</a></h2>
+<p>Use inheritance when there is an "is-a" relationship between the two classes and you want to reuse a lot of the parent class’s members. Use containment when there is a "has-a" relationship. Think of a <code>Car</code> class which could <em>inherit</em> from <code>Vehicle</code> and use its <code>start</code>, <code>steer</code>, and <code>brake</code> methods. It could also <em>contain</em> <code>Tire</code> (hopefully 4!), <code>Engine</code>, and <code>SteeringWheel</code> classes, among others.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Object</th>
+<th style="text-align: center;">Relationship</th>
+<th style="text-align: center;">Object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Computer</td>
+<td style="text-align: center;">has-a</td>
+<td style="text-align: center;">CPU</td>
+</tr>
+<tr>
+<td style="text-align: center;">Rocket</td>
+<td style="text-align: center;">has-a</td>
+<td style="text-align: center;">Engine</td>
+</tr>
+<tr>
+<td style="text-align: center;">Song</td>
+<td style="text-align: center;">has-a</td>
+<td style="text-align: center;">Title</td>
+</tr>
+<tr>
+<td style="text-align: center;">Old MacDonald</td>
+<td style="text-align: center;">has-a</td>
+<td style="text-align: center;">Farm</td>
+</tr>
+<tr>
+<td style="text-align: center;">House</td>
+<td style="text-align: center;">has-a</td>
+<td style="text-align: center;">Den</td>
+</tr>
+<tr>
+<td style="text-align: center;">Square</td>
+<td style="text-align: center;">is-a</td>
+<td style="text-align: center;">Shape</td>
+</tr>
+<tr>
+<td style="text-align: center;">Kitchen</td>
+<td style="text-align: center;">is-a</td>
+<td style="text-align: center;">Room</td>
+</tr>
+<tr>
+<td style="text-align: center;">MacBook</td>
+<td style="text-align: center;">is-a</td>
+<td style="text-align: center;">Computer</td>
+</tr>
+<tr>
+<td style="text-align: center;">Zilog Z8000</td>
+<td style="text-align: center;">is-a</td>
+<td style="text-align: center;">CPU</td>
+</tr>
+<tr>
+<td style="text-align: center;">Grasshopper</td>
+<td style="text-align: center;">is-a</td>
+<td style="text-align: center;">Insect</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose we want to create a <code>Sedan</code> class. A sedan "is-a" car, so it would extend a <code>Car</code> class. A sedan has 4 doors and a trunk, so it would contain those as members (in addition to elements like 4 wheels, a transmission, and other members it would get from <code>Car</code>). So the (partial) class definition would look something like this:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Sedan</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="c1">// Sedan &quot;is-a&quot; car {</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">trunk</span><span class="p">;</span><span class="w">       </span><span class="c1">// Sedan &quot;has-a&quot; trunk</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Door</span><span class="w"> </span><span class="n">doors</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="p">;</span><span class="w">   </span><span class="c1">// Sedan &quot;has-a&quot; set of 4 doors</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>To summarize, the Sedan class would <strong><em>inherit</em></strong> from Car since a sedan <strong><em>is-a</em></strong> car, and it would <strong><em>contain</em></strong> 4 doors and a trunk since a sedan <strong><em>has-a</em></strong> trunk and has-a set of 4 doors.</p>
+<p>Note that there are exceptions to the is-a and has-a rules. Even if there is not a clear is-a relationship you may want to use inheritance if the child class needs most of the parent class's methods. You may want to use containment even if there is not a has-a relationship if you want to change access to a parent class's members. For example, suppose you have a <code>Backpack</code> class with a <code>public open()</code> method - maybe you want to use containment so that you can create your own <code>private open()</code> method that calls the <code>Backpack.open()</code> method.</p>
+<h2 id="special-references-this-and-super">Special References - <code>this</code> and <code>super</code><a class="headerlink" href="#special-references-this-and-super" title="Permanent link">&para;</a></h2>
+<p>Java objects contain two special references. The <strong>"this"</strong> reference refers to the object itself. It allows an object to refer to itself, such as calling another overloaded constructor or referring to its members when they have been <strong>shadowed</strong> by a local variable name or parameter. This reference can be useful to make methods more clear, especially when another object of the same type is involved, such as when a class has a method that takes an object of that same class as a parameter (as with <code>compareTo</code>).</p>
+<p>The <strong>"super"</strong> reference refers to the parent class of an object. The <strong>super</strong> reference can be used to call the parent class's constructor (always a good idea!). For example, in the example below, from the last module's notes, we call the <code>Account</code> class parent constructor:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">Account</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">credits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">        </span><span class="kd">super</span><span class="p">();</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credits</span><span class="p">;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">accountNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generateAccountNumber</span><span class="p">();</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The super constructor must be called in the first line of code in the constructor or else not at all.</p>
+<p>It can also be used if both the parent class and the child class have a member with the same name (which is <strong>not</strong> good class design). </p>
+<p>Note that neither <strong>this</strong> nor <strong>super</strong> can be used in a static method since they refer to a specific instance. </p>
+<p>The diagram below demonstrates how these special references work. The <code>super</code> reference can be used to access (public or protected) members of the parent class. The <code>this</code> reference can be used to access all members of the child class except for private members and shadowed members of the parent class. If we have shadowed members, for example if both the parent and child classes declare a variable called <code>MyNumber</code>, then there are two copies of the <code>MyNumber</code> in every object of the child class - one from the parent class and one from the child class. You can see how this can only reference the <code>MyNumber</code> from the child class, but we can use super to refer to the <code>MyNumber</code> from the parent class. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">"this"</th>
+<th style="text-align: center;">Members</th>
+<th style="text-align: center;">"super"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span> Yes</td>
+<td style="text-align: center;">Parent Class Members</td>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span> Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span> Yes</td>
+<td style="text-align: center;">Shadowed Members</td>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span> Yes</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg></span> Yes</td>
+<td style="text-align: center;">Child Class Members</td>
+<td style="text-align: center;"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg></span>  No</td>
+</tr>
+</tbody>
+</table>
+<p>However, to reiterate - shadowed members are a bad thing and should be avoided unless absolutely necessary. And it probably isn’t absolutely necessary, so do not do it.</p>
+<h2 id="visibility-modifiers">Visibility Modifiers<a class="headerlink" href="#visibility-modifiers" title="Permanent link">&para;</a></h2>
+<p>In Java, class members are private by default. Private data and methods in the parent class cannot be accessed (directly) by the child class. The <strong>protected</strong> modifier makes class members "public" to derived classes and "private" to everything else. Object-oriented purists will argue (correctly) that the protected modifier breaks encapsulation, but others will argue (also correctly) that it only breaks encapsulation a little bit and using protected members results in cleaner code syntax than calling accessors and mutators on parent class data. </p>
+<h2 id="overriding-methods">Overriding Methods<a class="headerlink" href="#overriding-methods" title="Permanent link">&para;</a></h2>
+<p>A child can <strong>override</strong> (redefine) the parent class's methods. This can be useful when the parent method doesn't work for the child or if the child needs to do additional work. To override a method, the method signature in the child class must be the same. The type of the object executing the method determines which version is invoked. Parent methods can still be invoked using the super reference. Members which are modified with the final modifier cannot be overwritten.</p>
+<h2 id="the-override-annotation">The <code>@Override</code> Annotation<a class="headerlink" href="#the-override-annotation" title="Permanent link">&para;</a></h2>
+<p>When <strong>overriding</strong> a method, it is good practice to use the <code>@Override</code> annotation to indicate to the compiler that the method is intended to override a method in a parent class (or in an interface, which we will cover in the next module). For example, the <code>toString</code> should always be intended to override the <code>Object.toString</code> method (since every class inherits from the O`bject class) so we add the annotation as follows:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nd">@Override</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;Task [priority=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">priority</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, name=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;]&quot;</span><span class="p">;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The annotation simply tells the compiler that <code>toString</code> is overriding a method. Eclipse adds the <code>@Override</code> annotation when you have it automatically generate inherited abstract methods. The annotation has no impact on how the program runs. However, it does help the programmer avoid bugs by indicating when a method that is intended to override another method is not actually overriding anything. For example, if we added a parameter to the toString method above we would get a compiler error.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Screenshot of Eclipse IDE displaying a tooltip of the @Override toString() method" src="../../../assets/images/csc205-module-2-inheritance-and-exceptions-notes-img07.png" title="Screenshot of Eclipse IDE displaying a tooltip of the @Override toString() method" /></a></p>
+<p>This can prevent hard-to-find bugs where the wrong method is being called. </p>
+<p>To reiterate, you can override a method with or without using the <code>@Override</code> annotation. We would be overriding the <code>toString</code> in the example above whether we used the annotation or not. The annotation is just there to let the compiler help you ensure that methods that are intended to be overriding other methods actually do so. You should always get in the practice of using the <code>@Override</code> annotation when you are overriding methods.</p>
+<h2 id="overloading-vs-overriding">Overloading vs Overriding<a class="headerlink" href="#overloading-vs-overriding" title="Permanent link">&para;</a></h2>
+<p>We saw in the previous module how overloading works. Overloading and overriding are often confused. Keep in mind the following:</p>
+<ul>
+<li>Overloading<ul>
+<li>Deals with members in the same class</li>
+<li>The methods have the same name, but different signatures</li>
+<li>Used when methods have a similar operation but different parameters</li>
+</ul>
+</li>
+<li>Overriding<ul>
+<li>Deals with members in different classes</li>
+<li>The methods have the same name and same signature</li>
+<li>Used when methods have a similar operation with different object types</li>
+</ul>
+</li>
+</ul>
+<p>As an example, suppose we have a parent classed defined as below:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Base</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;BASE: a=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>And suppose we have a child class defined as below:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Derived</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Base</span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">        </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;DERIVED: a=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; and s=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Here, the Derived class <em>overrides</em> the print method since the signature is the same as in the <code>Base</code> class. The change method is <em>overloaded</em>. In fact, there are 3 versions of change in the <code>Derived</code> class:</p>
+<p><div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+</span></code></pre></div>
+which <code>Derived</code> inherits from the <code>Base</code> class and</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+</span></code></pre></div>
+<p>which <code>Derived</code> overloads. So - <code>print()</code> is overridden, and <code>change()</code> is overloaded in this example.</p>
+<h2 id="class-hierarchies">Class Hierarchies<a class="headerlink" href="#class-hierarchies" title="Permanent link">&para;</a></h2>
+<p>Classes related by inheritance can be arranged into <strong>class hierarchies</strong>. For example, here is an example class hierarchy of animals:</p>
+<pre class="mermaid"><code>flowchart TD
+    B[Animal]
+    B--&gt;C[Reptile]
+    B--&gt;D[Mammal]
+    B--&gt;E[Insect]
+    C--&gt;F[Snake]
+    C--&gt;G[FlyingDragon]
+    D--&gt;H[Horse]
+    D--&gt;I[Bat]
+    E--&gt;J[Ant]
+    E--&gt;K[DragonFly]</code></pre>
+<p>Each child inherits from <em>all</em> its ancestor classes. Common features should be placed as high in the hierarchy as possible (but no higher!). So things that apply to all animals (breath oxygen, reproduce sexually, able to move, etc) should go in the <code>Animal</code> class, while things related more specifically to mammals (such as warm-blooded, bear live young, hair) should go in the <code>Mammal</code> class. Then additional child classes could be more specific. Anything in the <code>Animal</code> class should apply to any child class and anything in the <code>Insect</code> class should pertain to all Insect child classes. You would not want to put something such as "has 6 legs" in the <code>Animal</code> class since not all <code>Animals</code> have 6 legs, but such an attribute would be appropriate for the <code>Insect</code> class, but you If there are exceptions (such as penguins are birds but don’t fly) they can be dealt with in the child class (for example Penguin could have an empty fly method), but your class hierarchy design should minimize the number of exceptions required. </p>
+<p>There can be (and often is) more than one "correct" hierarchy. For example, suppose you want to create a class hierarchy that contains the same classes as the example above. Then the following class hierarchy is also perfectly reasonable:</p>
+<pre class="mermaid"><code>flowchart TD
+    B[Animal]
+    B--&gt;C[FlyingAnimal]
+    B--&gt;D[LandBased]
+    C--&gt;E[Bat]
+    C--&gt;F[FlyingDragon]
+    C--&gt;G[DragonFly]
+    D--&gt;H[Snake]
+    D--&gt;I[Horse]
+    D--&gt;J[Ant]</code></pre>
+<p>It is up to the program designer to determine the class hierarchy that best fits the problem domain. </p>
+<h2 id="the-java-object-class">The Java Object Class<a class="headerlink" href="#the-java-object-class" title="Permanent link">&para;</a></h2>
+<p>All Java classes are derived from the <code>Object</code> class. A class without the <code>extends</code> keyword by default will extend the Object class. (I’m not a huge fan of that name - it means that every class "is-a" Object. If you come across a reasonable explanation for that name please let me know.)  </p>
+<h3 id="the-object-class-includes-a-few-useful-methods">The Object class includes a few useful methods<a class="headerlink" href="#the-object-class-includes-a-few-useful-methods" title="Permanent link">&para;</a></h3>
+<ul>
+<li>toString</li>
+<li>equals</li>
+<li>clone</li>
+</ul>
+<p>Nearly every class you implement should override the <code>toString()</code> method and many should also override <code>equals()</code> so that you can check equality of two objects. Keep in mind that the <code>==</code> operator in Java checks that two references are equal, not two objects!</p>
+<h2 id="abstract-classes">Abstract Classes<a class="headerlink" href="#abstract-classes" title="Permanent link">&para;</a></h2>
+<p>An <strong>abstract class</strong> is a placeholder that represents a generic concept in the class hierarchy. An abstract class cannot be instantiated, but you can instantiate their non-abstract child classes. Abstract classes are declared with the <code>abstract</code> modifier as below:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Animal</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="c1">// contents</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>An abstract class can (but is not required to) contain <strong>abstract methods</strong> - methods with no definition. Non-abstract children <em>must</em> override these methods or else they will themselves be abstract. Abstract methods cannot be defined as final (think about why not). Abstract classes can also contain fully implemented methods and data members. </p>
+<p>Carefully consider where to put abstract classes in the class hierarchy. In our Animal class hierarchy above, the Animal, Insect, Mammal, and Reptile classes could be abstract since we would never instantiate an object of any of those classes. </p>
+<p>Abstract classes can be a difficult concept to wrap your mind around, especially without seeing an example. So be sure to review the video and code examples of abstract classes.</p>
+<h2 id="designing-classes-in-a-hierarchy">Designing Classes In a Hierarchy<a class="headerlink" href="#designing-classes-in-a-hierarchy" title="Permanent link">&para;</a></h2>
+<p>Every child class should usually have an is-a relationship with the parent class</p>
+<ul>
+<li>Think about reuse</li>
+<li>Push common characteristics as high as possible</li>
+<li>Override methods to tailor or change child functionality as needed</li>
+<li>Add new variables in the child classes</li>
+<li>Be careful of shadowing inherited variables (creating a child class member with the same name as a parent class member)</li>
+<li>Allow each class to manage its own data</li>
+<li>Override general methods (toString, equal) with appropriate definitions</li>
+<li>Use abstract classes to represent general concepts</li>
+<li>Use visibility modifiers carefully to provide access while maintaining encapsulation </li>
+<li>Use the final modifier to curtail inheritance</li>
+</ul>
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<p>An <strong>exception</strong> is an object that describes an unusual or erroneous situation. </p>
+<h3 id="a-program-can-deal-with-an-exception-in-three-ways">A program can deal with an exception in three ways:<a class="headerlink" href="#a-program-can-deal-with-an-exception-in-three-ways" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Handle it where it occurs</li>
+<li>Allow it to <strong>propagate</strong> to another place in the program where it will be handled</li>
+<li>Ignore it (only for unchecked exceptions - checked exceptions <em>must</em> be handled)</li>
+</ul>
+<h2 id="verification-vs-exceptions">Verification vs. Exceptions<a class="headerlink" href="#verification-vs-exceptions" title="Permanent link">&para;</a></h2>
+<p>There are two ways to find out something is not OK</p>
+<ul>
+<li>Verifying input/state is correct before execution<ul>
+<li>"Is it OK to continue?"</li>
+<li>"Are we sure we are ready?"</li>
+<li>"Is everything set up correctly?"</li>
+</ul>
+</li>
+<li>Checking for exceptions after execution<ul>
+<li>"Did anything bad happen?"</li>
+<li>"Did everything work?"</li>
+</ul>
+</li>
+</ul>
+<p>Which is better depends on the situation. Usually programs combine the two.</p>
+<h2 id="exception-handling-in-java">Exception Handling in Java<a class="headerlink" href="#exception-handling-in-java" title="Permanent link">&para;</a></h2>
+<p>Java has a predefined set of exceptions. In Java, exceptions are objects with their own class hierarchy. Classes that define exceptions are related by inheritance. All error and exception classes are descendants of the <code>Throwable</code> class. We can create new exceptions by extending the <code>Exception</code> class or one of its descendants. </p>
+<h3 id="some-common-java-exceptions-are">Some common Java exceptions are:<a class="headerlink" href="#some-common-java-exceptions-are" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>NullPointerException</code> when you try to use an object reference that is null</li>
+<li><code>ArithmeticException</code> when you try to divide by 0</li>
+<li><code>ArrayIndexOutOfBoundsException</code> when you try to access an invalid array index</li>
+<li><code>FileNotFoundException</code> when you try to open a file that does not exist</li>
+<li><code>NumberFormatException</code> when you try to convert a string to a number in an invalid format</li>
+<li><code>IllegalArgumentException</code> when you call a method with a parameter of an invalid type</li>
+</ul>
+<p>If an exception is ignored (an <strong>uncaught exception</strong>), the program will terminate abnormally and produce an appropriate message. A <strong>call stack trace</strong> will be displayed indicating the line where the exception occurred and the method call trail that leads to execution.</p>
+<h2 id="the-try-catch-finally-statement">The <code>try-catch-finally</code> Statement<a class="headerlink" href="#the-try-catch-finally-statement" title="Permanent link">&para;</a></h2>
+<p>Code that may trigger an exception should be placed in a <strong>try block</strong>. The try block can be followed by one or more <strong>catch clauses</strong> (<strong>exception handlers</strong>). The first handler that matches the exception is executed. A <strong>finally block</strong> following the try-catch will always be executed (Ok, this is not strictly true if the computer is destroyed due to the exception, but the statement is close enough to being true for our purposes.)  </p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span>
+<span class="normal"><a href="#__codelineno-11-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="c1">// Code that may throw an exception</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="c1">// Handle exception</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="p">}</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="c1">// This code executes no matter what</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The programmer can throw an exception using the throw statement. Usually this is done after checking a condition and detecting something is wrong.</p>
+<h2 id="the-try-with-resources-construct">The <code>try-with-resources</code> Construct<a class="headerlink" href="#the-try-with-resources-construct" title="Permanent link">&para;</a></h2>
+<p>It is very common in Java to have code that opens resources (files, Scanner, database, network) that need to be closed when you are done. If an exception occurs, you still need to close the resource. One way is to close the resource in the finally block, but the programmer still has to remember to do this and you may need a separate set of exception handlers inside the finally block!  Closing the resource inside the finally block also means it has to be declared before the try block so that it is scope for the finally block.</p>
+<p>The <strong>try-with-resources</strong> construct allows the programmer to open a resource that will be automatically closed when the try-catch block is complete
+The resource class must implement the <code>AutoClosable</code> interface</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">try</span><span class="p">(</span><span class="n">ResourceClass</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ResourceClass</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="c1">// code</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="p">}</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="c1">// Handle exception</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="p">}</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="c1">// res will be automatically closed</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="exception-propagation">Exception Propagation<a class="headerlink" href="#exception-propagation" title="Permanent link">&para;</a></h2>
+<p>If an exception is not handled where it occurs it is passed to the calling method. Exceptions propagate up through the method call hierarchy until they are caught and handled or until they reach the main method. A try block will catch any exception thrown by a method inside it. </p>
+<h2 id="checked-vs-unchecked-exceptions">Checked vs Unchecked Exceptions<a class="headerlink" href="#checked-vs-unchecked-exceptions" title="Permanent link">&para;</a></h2>
+<p>An exception can be either checked or unchecked. <strong>Checked exceptions</strong> must be either caught or listed in the throws clause of any method that may throw or propagate it. The compiler will complain if neither of these happens. For example, the method below expects the caller to handle the <code>EmptyCollectionException</code></p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">getRootElement</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">EmptyCollectionException</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>An <strong>unchecked exception</strong> does not require explicit handling. Objects of type <code>RuntimeException</code> are the only unchecked exceptions in Java. Errors are similar to RuntimeExceptions and should not be caught and do not require a throws clause. </p>
+<p>Unchecked exceptions extend the <code>RuntimeException</code> class, while checked exceptions extend the <code>Exception</code> class.</p>
+<h2 id="exception-handling-summary">Exception Handling Summary<a class="headerlink" href="#exception-handling-summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>try to execute statements within a block of code</li>
+<li><code>throw</code> an exception if you detect a problem</li>
+<li><code>catch</code> and process the exception</li>
+<li><code>finally</code> execute code that will run even if an exception is thrown</li>
+</ul>
+<p>You should always handle exceptions appropriately!</p>
+<h2 id="java-io">Java I/O<a class="headerlink" href="#java-io" title="Permanent link">&para;</a></h2>
+<p>A <strong>stream</strong> is a sequence of bytes. Our programs can read from an input string and write to an output stream. </p>
+<h3 id="there-are-three-standard-io-streams">There are three standard I/O streams:<a class="headerlink" href="#there-are-three-standard-io-streams" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>System.in</code> - standard input</li>
+<li><code>System.out</code> - standard output</li>
+<li><code>System.err</code> - standard error</li>
+</ul>
+<p><code>System.in</code> and <code>System.err</code> will both display on the cursor, with <code>System.err</code> in <font color="red">red</font>. </p>
+<h2 id="ioexception-class">IOException Class<a class="headerlink" href="#ioexception-class" title="Permanent link">&para;</a></h2>
+<p>An <code>IOException</code> is a checked exception. It is thrown any time there is an issue with I/O, such as</p>
+<ul>
+<li>A file does not exist</li>
+<li>Program cannot open a file</li>
+<li>Data is in incorrect format</li>
+</ul>
+<h2 id="writing-text-files">Writing Text Files<a class="headerlink" href="#writing-text-files" title="Permanent link">&para;</a></h2>
+<p>The <code>FileWriter</code> class represents a text output file. It provides minimal support for manipulating data. A <code>PrintWriter</code> gives us methods to print. Output streams should be closed, either by calling <code>close()</code> explicitly or using try-with-resources.</p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024. All Rights Reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

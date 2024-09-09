@@ -1,0 +1,3969 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta name="robots" content="noindex, nocache, nofollow, noarchive, nosnippet, notranslate, noimageindex, noodp, noydir, noai, noimageai">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
+  
+  
+  <link rel="canonical" href="https://notes.ellermann.com/csc205/module-2/inheritance-and-exceptions-faq/">
+  <link rel="shortcut icon" href="../../../favicon.ico">
+    
+      
+        <title>Inheritance and Exceptions - FAQ - CSC205 - Module 2 - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64H64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64 32-32z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.3c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4V32zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4l-45.6-16.8zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16h-8z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1zM96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0zm256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32zM208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-32zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0zm152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80zM48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48zm544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224h16z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0h-32zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg>');}</style>
+
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inheritance-and-exceptions-faq" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inheritance and Exceptions - FAQ - CSC205 - Module 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/" class="md-tabs__link">
+          
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arduino/" class="md-tabs__link">
+          
+  
+    
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/arrays/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initializing an Array with Random Unique Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/key-array-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Array Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/conditionals-and-loops/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conditionals and Loops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Conditionals and Loops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Truth Tables Using Boolean Values Of True and False
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops - Three Types of Loops - The Do While Loop T- he While Loop - The For Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Counting Pre-Test Loop (While Loop) And Counting Post-Test Loop (Do-While Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    For-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Do-While Loop (Post-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input While-Loop (Pre-Test Loop) With A Sentinel Value And A Priming Read
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Input-Sentinel Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wantsToContinue Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While Loop General Format In Pseudocode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Which Loop To Use
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/inputvalidation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Input Validation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Input Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getValidNumber() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    isInvalid() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validating String Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples of Common String Library Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Input Values To Test For
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/menus/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Menus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Menus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/menus/practicemenu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practice Menu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/methods/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getString() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getinteger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getInteger() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getdouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getDouble() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/closescanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The closeScanner() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getrandomnumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getRandomNumber() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Input Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/oop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Object Oriented Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-review-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Review Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/resources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/java-programming-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Programming Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing The Java Development Kit JDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_3" id="__nav_2_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eclipse IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eclipse IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse IDE -How To Find Matching Brackets and Missing Brackets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_4" id="__nav_2_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diátaxis- A systematic approach to technical documentation authoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/ternary/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ternary
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Ternary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced For Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced If Statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/labs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Install A Library Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Upload A Sketch Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/arduino-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#csc205-module-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSC205 - Module 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-the-three-visibility-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between the three visibility modifiers?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-would-i-use-a-protected-member" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When would I use a protected member?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-are-protected-members-different-from-private-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How are protected members different from private members?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-protected-members-affect-the-parent-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do protected members affect the parent class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-if-two-child-objects-use-the-same-protected-member-of-the-parent-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What if two child objects use the same protected member of the parent class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-a-public-class-and-a-private-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between a public class and a private class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-can-i-use-existing-classes-to-create-new-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How can I use existing classes to create new classes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-meant-by-containment-or-composition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is meant by containment (or composition)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-containment-similar-to-how-an-object-can-have-private-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is containment similar to how an object can have private members?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-the-this-and-super-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between the "this" and "super" references?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-point-of-the-super-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the point of the super reference?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-should-you-use-super" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When should you use super?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-why-do-you-call-super-the-parent-class-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Why do you call super() - the parent class constructor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-does-a-call-to-super-in-a-child-method-call-the-parents-version-of-the-same-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Does a call to super() in a child method call the parent's version of the same method?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-point-of-the-object-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the point of the Object class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-doesnt-inheritance-just-make-the-program-more-complicated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Doesn't inheritance just make the program more complicated?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-often-is-inheritance-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How often is inheritance used?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-does-it-mean-that-for-any-problem-there-is-not-always-a-single-correct-class-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What does it mean that for any problem there is not always a single correct class hierarchy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-can-you-differentiate-the-parent-class-from-the-child-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How can you differentiate the parent class from the child class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-is-inheritance-different-from-defining-a-private-class-inside-another-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How is inheritance different from defining a private class inside another class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-does-a-class-inherit-the-attributes-methods-of-its-parent-if-the-parent-is-a-child-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Does a class inherit the attributes &amp; methods of its parent if the parent is a child class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-with-a-narrowing-conversion-what-data-does-the-child-reference-have-access-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: With a narrowing conversion, what data does the child reference have access to?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-extending-a-class-by-inheritance-does-that-make-a-single-class-or-are-there-two-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When extending a class by inheritance does that make a single class or are there two classes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-does-shadowing-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What does shadowing mean?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-do-shadowed-members-relate-to-parentchild-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How do shadowed members relate to parent/child members?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-there-a-limit-to-inheritance-is-there-a-maximum-number-of-classes-in-a-class-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is there a limit to inheritance? Is there a maximum number of classes in a class hierarchy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-if-the-class-hierarchy-goes-on-for-multiple-levels-isnt-that-the-same-as-multiple-inheritance-since-a-class-inherits-more-than-one-other-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: If the class hierarchy goes on for multiple levels, isn't that the same as multiple inheritance since a class inherits more than one other class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-can-an-overridden-function-deal-with-data-that-has-been-added-to-the-child-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How can an overridden function deal with data that has been added to the child class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-overloading-and-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between overloading and overriding?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-we-always-have-to-override-equals-and-tostring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do we always have to override equals() and toString()?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-purpose-of-the-override-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the purpose of the @Override tag?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-the-override-tag-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is the @Override tag required?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-are-inheritance-and-composition-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How are inheritance and composition different?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-is-a-inheritance-and-has-a-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between "is-a" (inheritance) and "has-a" (containment)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-would-you-want-to-use-inheritance-if-you-dont-have-an-is-a-relation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When would you want to use inheritance if you don't have an "is-a" relation?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-you-have-to-use-inheritance-when-would-you-not-use-inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do you have to use inheritance? When would you not use inheritance?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-an-abstract-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is an abstract class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-an-abstract-class-have-variables-implemented-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can an abstract class have variables &amp; implemented methods?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-purpose-does-an-abstract-class-serve-when-we-just-have-a-regular-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What purpose does an abstract class serve when we just have a regular class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-you-use-a-regular-class-instead-of-an-abstract-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can you use a regular class instead of an abstract class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-benefit-of-not-allowing-an-abstract-class-to-be-instantiated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the benefit of not allowing an abstract class to be instantiated?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-is-an-abstract-method-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When is an abstract method useful?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-i-have-to-use-abstract-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do I have to use abstract classes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-does-the-root-class-of-a-class-hierarchy-have-to-be-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Does the root class of a class hierarchy have to be abstract?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-one-abstract-class-extend-another" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can one abstract class extend another?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-are-some-real-world-examples-of-when-you-would-want-to-have-an-abstract-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What are some real world examples of when you would want to have an abstract class?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-are-some-examples-of-abstract-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What are some examples of abstract methods?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-point-of-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the point of exceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-why-wouldnt-we-use-if-statements-instead-of-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Why wouldn't we use if statements instead of exceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-there-a-case-where-we-would-not-want-to-catch-an-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is there a case where we would not want to catch an exception?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-do-i-need-to-create-my-own-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When do I need to create my own exceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-i-need-to-memorize-the-exception-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do I need to memorize the exception hierarchy?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-does-a-try-catch-finally-block-look-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What does a try-catch-finally block look like?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-use-for-the-e-variable-in-the-catch-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the use for the "e" variable in the catch statement.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-do-i-have-to-catch-a-specific-exception-what-if-i-want-to-handle-all-exceptions-in-one-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Do I have to catch a specific exception? What if I want to handle all exceptions in one catch?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-should-go-in-a-try-block-and-catch-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What should go in a try block and catch statement?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-point-of-the-finally-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the point of the finally block?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-is-the-finally-block-different-from-just-having-code-at-the-end-of-the-try-catch-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How is the finally block different from just having code at the end of the try-catch block?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-the-finally-block-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is the finally block required?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-is-there-an-error-that-any-exception-cannot-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Is there an error that any exception cannot catch?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-point-of-checked-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the point of checked exceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-does-it-mean-to-rethrow-an-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What does it mean to rethrow an exception?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-purpose-of-a-throws-clause-in-a-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the purpose of a throws clause in a method?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-checked-unchecked-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between checked &amp; unchecked exceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-when-would-we-throw-an-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: When would we throw an exception?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-should-i-use-exceptions-to-validate-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Should I use exceptions to validate input?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-we-create-our-own-exception-how-would-you-do-that" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can we create our own exception? How would you do that?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-meant-by-exception-propagation-how-does-exception-propagation-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is meant by exception propagation? / How does exception propagation work?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-do-i-know-where-to-catch-an-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How do I know where to catch an exception?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-try-catch-blocks-be-nested" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can try-catch blocks be nested?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-you-catch-exceptions-outside-the-main-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can you catch exceptions outside the main() method?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-how-do-we-know-what-exception-to-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: How do we know what exception to catch?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-the-difference-between-a-run-time-error-and-runtimeexceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is the difference between a run time error and RuntimeExceptions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-can-exceptions-be-caught-outside-of-the-main-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Can exceptions be caught outside of the main() method?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-what-is-autocloseable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: What is AutoCloseable?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question-why-would-i-want-to-create-a-class-that-implements-autocloseable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question: Why would I want to create a class that implements AutoCloseable?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="inheritance-and-exceptions-faq">Inheritance and Exceptions - FAQ<a class="headerlink" href="#inheritance-and-exceptions-faq" title="Permanent link">&para;</a></h1>
+<h2 id="csc205-module-2">CSC205 - Module 2<a class="headerlink" href="#csc205-module-2" title="Permanent link">&para;</a></h2>
+<h2 id="question-what-is-the-difference-between-the-three-visibility-modifiers">Question: What is the difference between the three visibility modifiers?<a class="headerlink" href="#question-what-is-the-difference-between-the-three-visibility-modifiers" title="Permanent link">&para;</a></h2>
+<p>Public data and methods are accessible to any other class. The methods can be called and the data member changed without any control by the object itself. Private data and methods are only visible within the class. Protected members are public to subclasses and private to the rest of the world. (Note that this discussion omits what happens within packages - we will discuss that later.)</p>
+<hr />
+<h2 id="question-when-would-i-use-a-protected-member">Question: When would I use a protected member?<a class="headerlink" href="#question-when-would-i-use-a-protected-member" title="Permanent link">&para;</a></h2>
+<p>Protected members allow child classes to treat members of a parent class as if they were members of the child class. While private members of the parent class are inherited by the child class, the child class cannot access them directly. This makes it easier to write the child class since you don't have to use accessor/mutator methods to modify parent class members. However, this does break encapsulation, though only a little bit since only child classes can access protected members - protected members are private to everyone else.</p>
+<hr />
+<h2 id="question-how-are-protected-members-different-from-private-members">Question: How are <code>protected</code> members different from <code>private</code> members?<a class="headerlink" href="#question-how-are-protected-members-different-from-private-members" title="Permanent link">&para;</a></h2>
+<p>The difference depends on who is trying to access the member. There is no difference between <code>protected</code> &amp; <code>private</code> members if you are accessing the <code>protected</code> member from a non-child class. However, child classes have full access to <code>protected</code> members, so if a child class is trying to access a member, then <code>protected</code> members are essentially the same as <code>public</code> members. <code>Protected</code> members are <code>public</code> to child classes and <code>private</code> to all other classes. </p>
+<hr />
+<h2 id="question-do-protected-members-affect-the-parent-class">Question: Do protected members affect the parent class?<a class="headerlink" href="#question-do-protected-members-affect-the-parent-class" title="Permanent link">&para;</a></h2>
+<p>Protected members are fully visible to any instance of the parent class (parent class object) or any child class (child object). Each object has its own copy, so they do not affect each other. In both cases, the protected member is treated like any other member of that class.</p>
+<hr />
+<h2 id="question-what-if-two-child-objects-use-the-same-protected-member-of-the-parent-class">Question: What if two child objects use the same protected member of the parent class?<a class="headerlink" href="#question-what-if-two-child-objects-use-the-same-protected-member-of-the-parent-class" title="Permanent link">&para;</a></h2>
+<p>This is not a problem, since each object gets <em>its own copy</em> of the protected members of the parent class. This is also true of the private and public members, though the child class cannot directly access the private members it inherits from the parent class. </p>
+<p>Note however that <em>static members</em> are in fact shared by all instances of a class, so in that case a modification to a static member in one object will update that member in all instances of that class, however this is irrespective of the visibility modifier of that member.</p>
+<hr />
+<h2 id="question-what-is-the-difference-between-a-public-class-and-a-private-class">Question: What is the difference between a public class and a private class?<a class="headerlink" href="#question-what-is-the-difference-between-a-public-class-and-a-private-class" title="Permanent link">&para;</a></h2>
+<p>Public classes are the classes you are already familiar with. Public classes can also contain private classes which are simply classes defined inside the public class which are only available to the class in which they are contained. This is done when the private class is something useful to the public class, but which does not have any use outside that public class. We will see an example of this when we cover Linked Lists - we will create a private node class in the linked list class since the node objects are not useful outside a linked list.</p>
+<hr />
+<h2 id="question-how-can-i-use-existing-classes-to-create-new-classes">Question: How can I use existing classes to create new classes?<a class="headerlink" href="#question-how-can-i-use-existing-classes-to-create-new-classes" title="Permanent link">&para;</a></h2>
+<p>There are two primary ways to use existing classes to create new classes. The first is one you have likely seen before where one class contains a reference to an object of a different class as a data member. That is called composition, or containment. The second way is inheritance where a child class extends a parent class, including all the members of the parent class as part of itself. That is the focus of this module.</p>
+<hr />
+<h2 id="question-what-is-meant-by-containment-or-composition">Question: What is meant by containment (or composition)?<a class="headerlink" href="#question-what-is-meant-by-containment-or-composition" title="Permanent link">&para;</a></h2>
+<p>Containment (also called composition or aggregation) is when one class includes references to other objects as members. Those objects can be objects of a different class or even the current class. For example, an Account class could contain a reference to a Person to indicate who the owner of the account is. Furthermore, the Person object might contain a reference to an Address object. A Building object may also hold a reference to an Address object. </p>
+<hr />
+<h2 id="question-is-containment-similar-to-how-an-object-can-have-private-members">Question: Is containment similar to how an object can have private members?<a class="headerlink" href="#question-is-containment-similar-to-how-an-object-can-have-private-members" title="Permanent link">&para;</a></h2>
+<p>Not exactly. Containment is when one object contains another object as a member. You can also think of it as being when an object is built using another object (or several objects). Whether those "contained" members are public or private is not relevant in this context, though in general any data member / attribute should be private. </p>
+<hr />
+<h2 id="question-what-is-the-difference-between-the-this-and-super-references">Question: What is the difference between the "this" and "super" references?<a class="headerlink" href="#question-what-is-the-difference-between-the-this-and-super-references" title="Permanent link">&para;</a></h2>
+<p>The "this" reference refers to the current object. The "super" reference refers to the parent class. Suppose we have a constructor defined as below:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="nf">MyClass</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">super</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The "super" reference is calling the parent class constructor (with a as a parameter) and the "this" reference is being used to differentiate between the member os of the current class and the parameter "s" of the constructor. If both the parent and child class define a variable with the same name (say for example myVar), then you can use super.myVar and this.myVar to differentiate between them while you wait for someone to come to their senses and stop with all the creation of the shadow variables. </p>
+<hr />
+<h2 id="question-what-is-the-point-of-the-super-reference">Question: What is the point of the super reference?<a class="headerlink" href="#question-what-is-the-point-of-the-super-reference" title="Permanent link">&para;</a></h2>
+<p>The super reference refers to the data members and methods of the parent class. So if a data member has the same name as a parent data member, you can still access the parent's data member through the super reference. The most common use of the super reference is to call the constructor of the parent class, which allows the parent class to still have control over how its data is initialized. </p>
+<hr />
+<h2 id="question-when-should-you-use-super">Question: When should you use super?<a class="headerlink" href="#question-when-should-you-use-super" title="Permanent link">&para;</a></h2>
+<p>The <code>super</code> reference refers to the parts of the class inherited from the parent class. The main place you would use the <code>super</code> reference is in the constructor where you could call the parent class constructor like this; <code>super()</code>. You might want to call it with some additional parameters to set up the members inherited from the parent, such as <code>super(1, 9348)</code>. Without the parenthesis, <code>super</code> allows you to specify that you are referring to members inherited from the parent class, but that is only necessary in cases where you have shadowed a name from the parent class (meaning defined something with the same name both in the parent and child). Since you should try to avoid doing that, you should not usually have to use the <code>super</code> reference except to call the parent constructor. </p>
+<h2 id="question-why-do-you-call-super-the-parent-class-constructor">Question: Why do you call <code>super()</code> - the parent class  constructor?<a class="headerlink" href="#question-why-do-you-call-super-the-parent-class-constructor" title="Permanent link">&para;</a></h2>
+<p>Calling <code>super()</code> invokes the parent class constructor. The intention of the <code>super()</code> call is to allow the parent to use its own constructor to set up its own attributes. That way the child class does not have to set up those attributes. Since all classes you write are child classes (if no parent is specified then the class is a child of the Object class), you should generally include a call to the <code>super()</code> constructor in your </p>
+<hr />
+<h2 id="question-does-a-call-to-super-in-a-child-method-call-the-parents-version-of-the-same-method">Question: Does a call to <code>super()</code> in a child method call the parent's version of the same method?<a class="headerlink" href="#question-does-a-call-to-super-in-a-child-method-call-the-parents-version-of-the-same-method" title="Permanent link">&para;</a></h2>
+<p>No - <code>super</code> itself is a reference to the parent class.  A call to <code>super()</code> only will call the constructor of the parent class. You can only call <code>super()</code> in the first line of the child's constructor.  If you are overriding a method called <code>doSomeStuff()</code> in the child class, then you would need to call <code>super.doSomeStuff()</code> in that method if you want to call the parent's version.</p>
+<hr />
+<h2 id="question-what-is-the-point-of-the-object-class">Question: What is the point of the Object class?<a class="headerlink" href="#question-what-is-the-point-of-the-object-class" title="Permanent link">&para;</a></h2>
+<p>The <code>Object</code> class serves as the parent class for all classes that do not directly inherit from another class. This ensures that every Java class has a minimum common set of methods. It also becomes useful when we discuss polymorphism as we can treat any object as type <code>Object</code>.</p>
+<hr />
+<h2 id="question-doesnt-inheritance-just-make-the-program-more-complicated">Question: Doesn't inheritance just make the program more complicated?<a class="headerlink" href="#question-doesnt-inheritance-just-make-the-program-more-complicated" title="Permanent link">&para;</a></h2>
+<p>It certainly can. But imagine a case where we have several different classes which only differ by a small amount. In that case, we can use inheritance to gather the common data &amp; methods together and share them between all the child classes. So understanding a certain class may be a bit more difficult since you need to also examine its parent class, but the program as a whole is much simpler since the common code is gathered in one place. </p>
+<h2 id="question-how-often-is-inheritance-used">Question: How often is inheritance used?<a class="headerlink" href="#question-how-often-is-inheritance-used" title="Permanent link">&para;</a></h2>
+<p>Inheritance is fairly common with any object-oriented programming language and Java is no exception. It can be used any time you are creating a class that is based on another class. Currently in industry it is probably used a bit <em>too</em> much in that for some projects the initial design step is to create a class hierarchy whether or not one is warranted. In an ideal design, inheritance is only used if the application calls for it - if you are doing something (such as characters in a game, different types of accounts, etc) where there is a clear inheritance relationship. It is important to keep in mind that inheritance is just a tool. You do not always have to use it - using aggregation (containment) is often a better choice. </p>
+<hr />
+<h2 id="question-what-does-it-mean-that-for-any-problem-there-is-not-always-a-single-correct-class-hierarchy">Question: What does it mean that for any problem there is not always a single correct class hierarchy?<a class="headerlink" href="#question-what-does-it-mean-that-for-any-problem-there-is-not-always-a-single-correct-class-hierarchy" title="Permanent link">&para;</a></h2>
+<p>Say you are writing a game and there are multiple types of vehicles available - cars, airplanes, boats, motorcycles, walking, rockets, canoes, etc. You could create a class hierarchy based on the size or capacity of the vehicles, whether the vehicles float, have wheels, or fly, or even based on what level the player has to be to operate the vehicles. So it depends on what your main goal is for using the class hierarchy. And in some cases interfaces may be the better choice (for example, wheeled/winged/floating are often better represented with interfaces). </p>
+<hr />
+<h2 id="question-how-can-you-differentiate-the-parent-class-from-the-child-class">Question: How can you differentiate the parent class from the child class?<a class="headerlink" href="#question-how-can-you-differentiate-the-parent-class-from-the-child-class" title="Permanent link">&para;</a></h2>
+<p>All classes are child classes since when they do not have an <code>extends</code> clause then they implicitly extend the <code>Object</code> class.  The easiest way to tell them apart is that the class child will have an <code>extends</code> statement in its class header, explicitly stating that it is a child of its parent class.  For example, suppose we have the following class declarations:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="n">CollegeStudent</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="p">...</span><span class="c1">// we don&#39;t care how this class is implemented for this example</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="n">PartTimeStudent</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">CollegeStudent</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="p">...</span><span class="c1">// we don&#39;t care how this class is implemented for this example</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>These two classes, <code>CollegeStudent</code> &amp; <code>PartTimeStudent</code>, are related by inheritance with <code>CollegeStudent</code> being the parent class and <code>PartTimeStudent</code> being the child class. The fact that <code>CollegeStudent</code> also extends <code>Student</code> indicates that <code>Student</code> means that <code>CollegeStudent</code> is a child class (of student) in addition to a parent class (of <code>PartTimeStudent</code>).</p>
+<hr />
+<h2 id="question-how-is-inheritance-different-from-defining-a-private-class-inside-another-class">Question: How is inheritance different from defining a private class inside another class?<a class="headerlink" href="#question-how-is-inheritance-different-from-defining-a-private-class-inside-another-class" title="Permanent link">&para;</a></h2>
+<p>From the standpoint of the class there is not a whole lot of difference other than the visibility modifiers, but through inheritance multiple classes can inherit the attributes and methods of a class. If that same class is defined as a private class it only can be included inside a single class.</p>
+<hr />
+<h2 id="question-does-a-class-inherit-the-attributes-methods-of-its-parent-if-the-parent-is-a-child-class">Question: Does a class inherit the attributes &amp; methods of its parent if the parent is a child class?<a class="headerlink" href="#question-does-a-class-inherit-the-attributes-methods-of-its-parent-if-the-parent-is-a-child-class" title="Permanent link">&para;</a></h2>
+<p>The child class inherits all the attributes and methods of its parent class, including any that are inherited by the parent class.</p>
+<hr />
+<h2 id="question-with-a-narrowing-conversion-what-data-does-the-child-reference-have-access-to">Question: With a narrowing conversion, what data does the child reference have access to?<a class="headerlink" href="#question-with-a-narrowing-conversion-what-data-does-the-child-reference-have-access-to" title="Permanent link">&para;</a></h2>
+<p>A narrowing conversion refers to a situation where you have a child class object reference that is referring to a parent class object. In this case, the child reference thinks it knows about the child references, but in actuality only the public members of the parent object are available to it. So, a call to a child method would be allowed by the compiler, but would cause a run-time error since that method would not exist in the object being referenced.</p>
+<hr />
+<h2 id="question-when-extending-a-class-by-inheritance-does-that-make-a-single-class-or-are-there-two-classes">Question: When extending a class by inheritance does that make a single class or are there two classes?<a class="headerlink" href="#question-when-extending-a-class-by-inheritance-does-that-make-a-single-class-or-are-there-two-classes" title="Permanent link">&para;</a></h2>
+<p>Think of extending a class by inheritance as similar to purchasing a premium version of a game that includes an expansion pack. The parent is the original game and the child includes the original game and an expansion pack. So there are two separate options (the parent and the child) but if you choose the child you get both. So, inheritance results in two classes (the parent and child) but there is part of both classes that is identical.</p>
+<hr />
+<h2 id="question-what-does-shadowing-mean">Question: What does shadowing mean?<a class="headerlink" href="#question-what-does-shadowing-mean" title="Permanent link">&para;</a></h2>
+<p>Shadowing occurs when a child class declares a variable with the same name as a variable in the parent class. So there are two copies of the variable with the same name - one declared in the child, one declared in the parent. The parent copy is essentially invisible to the child (even if it is public or protected) since any time the variable name is used it will refer to the child variable. To access the parent variable, the super reference would need to be used, for example <code>super.myShadow</code>.</p>
+<hr />
+<h2 id="question-how-do-shadowed-members-relate-to-parentchild-members">Question: How do shadowed members relate to parent/child members?<a class="headerlink" href="#question-how-do-shadowed-members-relate-to-parentchild-members" title="Permanent link">&para;</a></h2>
+<p>A shadowed member is one where both the child and the parent have an attribute with the same name. You should avoid shadow members. Shadowed members "collide" in their naming. Suppose you have a <code>Parent</code> &amp; <code>Child</code> class that both define a data member called <code>sidewalk</code>. If you have a  variable called <code>joe</code>, then <code>joe.sidewalk</code> will refer to the child class's <code>sidewalk</code> variable - there is no way for variable <code>joe</code> to reference the parent class's <code>sidewalk</code> variable, even if it is public because it is hidden by the child class member.</p>
+<hr />
+<h2 id="question-is-there-a-limit-to-inheritance-is-there-a-maximum-number-of-classes-in-a-class-hierarchy">Question: Is there a limit to inheritance?  Is there a maximum number of classes in a class hierarchy?<a class="headerlink" href="#question-is-there-a-limit-to-inheritance-is-there-a-maximum-number-of-classes-in-a-class-hierarchy" title="Permanent link">&para;</a></h2>
+<p>A class can inherit from at most one other class. However, the class hierarchy can be as deep as you want it to be - in that case the bottommost child class inherits everything from its parent, grandparent, and so on. Also there is no technical limit to how many classes inherit from a parent class, though sometimes having inheritance too deep can result in code that is difficult to understand.</p>
+<hr />
+<h2 id="question-if-the-class-hierarchy-goes-on-for-multiple-levels-isnt-that-the-same-as-multiple-inheritance-since-a-class-inherits-more-than-one-other-class">Question: If the class hierarchy goes on for multiple levels, isn't that the same as multiple inheritance since a class inherits more than one other class?<a class="headerlink" href="#question-if-the-class-hierarchy-goes-on-for-multiple-levels-isnt-that-the-same-as-multiple-inheritance-since-a-class-inherits-more-than-one-other-class" title="Permanent link">&para;</a></h2>
+<p>No. Each class can inherit from a single other class. The parent class may inherit from other classes, but the inherited methods and attributes are still a part of the child class.</p>
+<hr />
+<h2 id="question-how-can-an-overridden-function-deal-with-data-that-has-been-added-to-the-child-class">Question: How can an overridden function deal with data that has been added to the child class?<a class="headerlink" href="#question-how-can-an-overridden-function-deal-with-data-that-has-been-added-to-the-child-class" title="Permanent link">&para;</a></h2>
+<p>You would work with the additional member data in the overridden function the same way you would with any other data in the class. In addition, you could use the super reference to call the parent's function to allow it to deal with any inherited data as long as the parent is doing something you also want the child to be doing. For example, we usually call the super class constructor to allow the parent class to handle the data members it provides. </p>
+<h2 id="question-what-is-the-difference-between-overloading-and-overriding">Question: What is the difference between overloading and overriding?<a class="headerlink" href="#question-what-is-the-difference-between-overloading-and-overriding" title="Permanent link">&para;</a></h2>
+<p>With overloading, the methods are usually in the same class and must have a different signature. Overloading is used when the same method will work with different types or a different number of parameters.</p>
+<p>With overriding, the methods are in a different class and must have the same signature. Overriding is used when the child class wants to implement a method differently from the parent.</p>
+<hr />
+<h2 id="question-do-we-always-have-to-override-equals-and-tostring">Question: Do we always have to override <code>equals()</code> and <code>toString()</code>?<a class="headerlink" href="#question-do-we-always-have-to-override-equals-and-tostring" title="Permanent link">&para;</a></h2>
+<p>In most cases, you will want to override toString() so you are able to print out a string representation of your class. You would override equals() when you want to be able to check equality between two objects of the same type. For example, if you have a student record class you could check that the student ID's are equal. However, you don't always have to override either of the methods - the application will dictate whether it is useful or not. But if you don't override them then you get the default implementation which is typically not what you want.</p>
+<hr />
+<h2 id="question-what-is-the-purpose-of-the-override-tag">Question: What is the purpose of the <code>@Override</code> tag?<a class="headerlink" href="#question-what-is-the-purpose-of-the-override-tag" title="Permanent link">&para;</a></h2>
+<p>The <code>@Override</code> tag is an optional tag that indicates that a method is overriding a method in the parent class or interface. It has two main purposes. First, it is a way for the programmer to document their intent. Second, and most helpfully, it indicates to the compiler that the method is intended to override a method in the parent class or interface. The compiler will then try to find a corresponding method in the parent class or interface and will throw an error if no method with a matching signature is required.</p>
+<hr />
+<h2 id="question-is-the-override-tag-required">Question: Is the <code>@Override</code> tag required?<a class="headerlink" href="#question-is-the-override-tag-required" title="Permanent link">&para;</a></h2>
+<p>The <code>@Override</code> tag is not required, but it is a good idea to use it anytime you override a method. If you accidentally change the method signature (so that it no longer has the same signature as a parent method) you will get a compiler warning. It is always best to use the compiler to help you find your errors!</p>
+<hr />
+<h2 id="question-how-are-inheritance-and-composition-different">Question: How are inheritance and composition different?<a class="headerlink" href="#question-how-are-inheritance-and-composition-different" title="Permanent link">&para;</a></h2>
+<p>In both cases the new classes share data and methods with the original class. With inheritance ("is-a"), the methods and data of the parent class become methods and data of the child class. This allows the child class to be treated like the parent type. With composition ("has-a"), the original class is a data member of the new class and only the new class has access to the (public) data members and methods of the original class. This allows the new class to limit access to the original class, so even if the "is-a" relationship holds it may be best to use composition.</p>
+<hr />
+<h2 id="question-what-is-the-difference-between-is-a-inheritance-and-has-a-containment">Question: What is the difference between "is-a" (inheritance) and "has-a" (containment)?<a class="headerlink" href="#question-what-is-the-difference-between-is-a-inheritance-and-has-a-containment" title="Permanent link">&para;</a></h2>
+<p>Suppose you have a class hierarchy of Trucks. A Ford F-150 "is-a" truck as is a Dodge Ram. So the F-150 &amp; Ram have a "is-a" relationship with Trucks. May parts go into the creation of a truck, such as a steering wheel, an engine, seats, etc. So, any truck will have a "has-a" relationship with the steering wheel object, the seat object, and so forth since the truck will contain those things inside it. To summarize, a Ford F-150 "is-a" truck and "has-a" steering wheel.</p>
+<hr />
+<h2 id="question-when-would-you-want-to-use-inheritance-if-you-dont-have-an-is-a-relation">Question: When would you want to use inheritance if you don't have an "is-a" relation?<a class="headerlink" href="#question-when-would-you-want-to-use-inheritance-if-you-dont-have-an-is-a-relation" title="Permanent link">&para;</a></h2>
+<p>If the parent class implements all the methods you want then using inheritance lets the child class have all the parent methods by default. If you use containment in this case you need to have a method in the child class that calls the parent method for each method you want to use. This is a bit of a misuse of object-oriented principles, but it is possible.</p>
+<hr />
+<h2 id="question-do-you-have-to-use-inheritance-when-would-you-not-use-inheritance">Question: Do you have to use inheritance?  When would you not use inheritance?<a class="headerlink" href="#question-do-you-have-to-use-inheritance-when-would-you-not-use-inheritance" title="Permanent link">&para;</a></h2>
+<p>You don't have to use inheritance at all. You should only use it when there is a well-defined class hierarchy that makes sense for the problem you are trying to solve. Inheritance is just one tool in your programming toolkit. Use it when it makes sense, but you shouldn't feel like you have to use it. There are billions of lines of code in use today that don't use inheritance at all.</p>
+<hr />
+<h2 id="question-what-is-an-abstract-class">Question: What is an abstract class?<a class="headerlink" href="#question-what-is-an-abstract-class" title="Permanent link">&para;</a></h2>
+<p>An abstract class serves as a placeholder in the class hierarchy. It cannot be instantiated, but other classes can inherit from it. It can have data members and implemented methods that would be passed on to child classes, but it can also have abstract methods that are not implemented but that must instead be implemented in a child class.</p>
+<hr />
+<h2 id="question-can-an-abstract-class-have-variables-implemented-methods">Question: Can an abstract class have variables &amp; implemented methods?<a class="headerlink" href="#question-can-an-abstract-class-have-variables-implemented-methods" title="Permanent link">&para;</a></h2>
+<p>Yes.  An abstract class can contain variables, constants, and fully implemented methods. There is no requirement for it to have any abstract methods, though of course those can be included as well. Note that the <code>abstract</code> keyword in the class header is what indicates that the class is abstract, not the presence of abstract methods.</p>
+<hr />
+<h2 id="question-what-purpose-does-an-abstract-class-serve-when-we-just-have-a-regular-class">Question: What purpose does an abstract class serve when we just have a regular class?<a class="headerlink" href="#question-what-purpose-does-an-abstract-class-serve-when-we-just-have-a-regular-class" title="Permanent link">&para;</a></h2>
+<p>You don't have to make any class abstract - that is up to you. However, since an abstract class is intended as a placeholder and not something that you would instantiate objects of, making a class abstract prevents it from being instantiated accidentally. It is also an indicator to someone looking at your code that the class is not intended to be final - it should be extended before it is used. </p>
+<hr />
+<h2 id="question-can-you-use-a-regular-class-instead-of-an-abstract-class">Question: Can you use a regular class instead of an abstract class?<a class="headerlink" href="#question-can-you-use-a-regular-class-instead-of-an-abstract-class" title="Permanent link">&para;</a></h2>
+<p>Yes, but then the abstract class cannot have any abstract methods, and that is one of the benefits of an abstract class. The point of abstract methods is to force child classes to define certain methods, but it leaves the specific implementation up to the child class. With a regular class, the child class can override a method, but there is no requirement that they do so unlike with an abstract class. </p>
+<hr />
+<h2 id="question-what-is-the-benefit-of-not-allowing-an-abstract-class-to-be-instantiated">Question: What is the benefit of not allowing an abstract class to be instantiated?<a class="headerlink" href="#question-what-is-the-benefit-of-not-allowing-an-abstract-class-to-be-instantiated" title="Permanent link">&para;</a></h2>
+<p>An abstract class represents an <code>abstract</code> concept, so there is no reason to instantiate one. You are not allowed to instantiate one because there would never be a reason to - the assumption is that any attempt to do so would be a bug. For example, suppose you were writing a game and you had an abstract GameCharacter class. You would never want to instantiate a GameCharacter - how would you know what skills they should have or what power they should have?  Instead, you could have Archer and Wizard classes that extend GameCharacter. They would have to implement all the abstract methods of GameCharacter and you would know what sort of skills each class would have.</p>
+<hr />
+<h2 id="question-when-is-an-abstract-method-useful">Question: When is an abstract method useful?<a class="headerlink" href="#question-when-is-an-abstract-method-useful" title="Permanent link">&para;</a></h2>
+<p>An abstract method is useful any time you want to force a child class to implement a method. For example, suppose you are writing a game and you have several classes of characters. Each character needs to be able to move and act. You could have a parent GameCharacter class that had two abstract methods - move() and act(). Then each character would have its own class that was a child class of GameCharacter. Each character could have whatever methods it needed, but they would all be forced to implement move() and act(). This makes it easier to work with characters in a general way (we will see examples of this when we talk about polymorphism).</p>
+<hr />
+<h2 id="question-do-i-have-to-use-abstract-classes">Question: Do I have to use abstract classes?<a class="headerlink" href="#question-do-i-have-to-use-abstract-classes" title="Permanent link">&para;</a></h2>
+<p>No. You don't have to do anything. Abstract classes are just a tool - use them when they make sense, and don't use them when they don't provide any value. </p>
+<h2 id="question-does-the-root-class-of-a-class-hierarchy-have-to-be-abstract">Question: Does the root class of a class hierarchy have to be abstract?<a class="headerlink" href="#question-does-the-root-class-of-a-class-hierarchy-have-to-be-abstract" title="Permanent link">&para;</a></h2>
+<p>No. Suppose you have a class you use that you later decide to extend. You may still want the existing (parent) class even after you create child classes that inherit from it. </p>
+<hr />
+<h2 id="question-can-one-abstract-class-extend-another">Question: Can one abstract class extend another?<a class="headerlink" href="#question-can-one-abstract-class-extend-another" title="Permanent link">&para;</a></h2>
+<p>Yes. It often makes sense for one abstract class to extend another if it represents a more specific, yet still abstract, concept in the class hierarchy. For example, Animal -&gt; Reptile -&gt; Rattlesnake. Here Animal and Reptile should both be abstract classes. In addition, abstract classes can implement interfaces.</p>
+<hr />
+<h2 id="question-what-are-some-real-world-examples-of-when-you-would-want-to-have-an-abstract-class">Question: What are some real world examples of when you would want to have an abstract class?<a class="headerlink" href="#question-what-are-some-real-world-examples-of-when-you-would-want-to-have-an-abstract-class" title="Permanent link">&para;</a></h2>
+<p>In addition to the game character example above, here are some other real-world examples:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Abstract Class</th>
+<th style="text-align: left;">Child Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Account</code></td>
+<td style="text-align: left;"><code>CheckingAccount</code>, <code>SavingsAccount</code>, <code>InvestmentAccount</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Window</code> (in a GUI)</td>
+<td style="text-align: left;"><code>AlertWindow</code>, <code>TerminalWindow</code>, <code>TextWindow</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Event</code> (in an operating system or application)</td>
+<td style="text-align: left;"><code>MouseClick</code>, <code>SwipeUp</code>, <code>AudioInput</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Fruit</code></td>
+<td style="text-align: left;"><code>Apple</code>, <code>Banana</code>, <code>Mango</code>, <code>Pineapple</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="question-what-are-some-examples-of-abstract-methods">Question: What are some examples of abstract methods?<a class="headerlink" href="#question-what-are-some-examples-of-abstract-methods" title="Permanent link">&para;</a></h2>
+<p>Suppose we had an <code>Account</code> class. The different types of account would need deposit &amp; withdrawal methods. Since the specifics of the method would be dependent on what the child class is implementing, those methods could be abstract methods in the <code>Account</code> class. Or for a <code>Window</code>  class, there could be abstract methods called resize and close so that any class derived from Window  would have to implement those methods. </p>
+<hr />
+<h2 id="question-what-is-the-point-of-exceptions">Question: What is the point of exceptions?<a class="headerlink" href="#question-what-is-the-point-of-exceptions" title="Permanent link">&para;</a></h2>
+<p>Exceptions allow the programmer to handle extraordinary cases without the program crashing. In a lot of cases, the same result could be achieved by checking that everything is ok before we execute code. But exceptions allow us to handle cases we don't foresee <em>after</em> they happen. They also can lead to cleaner code since one try block can handle multiple exceptions. It is sometimes easier to ask forgiveness (exceptions) than permission (pre-checking). One example would be if you prompt the user for a filename to read. If the file doesn't exist an exception is thrown. Handling that exception lets you prompt the user for better input instead of having the program crash.</p>
+<hr />
+<h2 id="question-why-wouldnt-we-use-if-statements-instead-of-exceptions">Question: Why wouldn't we use if statements instead of exceptions?<a class="headerlink" href="#question-why-wouldnt-we-use-if-statements-instead-of-exceptions" title="Permanent link">&para;</a></h2>
+<p>For many error handling situations, if statements are fine and are more efficient than using an exception. For example, if you want to check that an entered number is in a certain range, or that a method returned successfully then using an if statement or some other mechanism other than an exception will work fine. However, for cases where the problem is more fundamental than a bad value, such as a character being entered instead of a number, or something else catastrophic happening that prevented a method from executing then exception handling will help you recover.</p>
+<hr />
+<h2 id="question-is-there-a-case-where-we-would-not-want-to-catch-an-exception">Question: Is there a case where we would not want to catch an exception?<a class="headerlink" href="#question-is-there-a-case-where-we-would-not-want-to-catch-an-exception" title="Permanent link">&para;</a></h2>
+<p>Yes - anytime you want your program to crash if something unexpected happens. For example, suppose you are writing software to control a dangerous piece of hardware (such as a chainsaw, a bulldozer, or a self-chopping ax). There may be exceptions you can catch and handle, but if an unexpected exception occurs that you have not anticipated then you likely want to stop (crash) immediately to prevent possible real-world damage. Again in those cases the best thing to do is likely to catch the exception then gracefully exit (think in a case for an amusement park ride where riders are suspended upside down during the ride), but there are situations where immediately crashing is the best outcome. </p>
+<hr />
+<h2 id="question-when-do-i-need-to-create-my-own-exceptions">Question: When do I need to create my own exceptions?<a class="headerlink" href="#question-when-do-i-need-to-create-my-own-exceptions" title="Permanent link">&para;</a></h2>
+<p>If the built-in exceptions work for you, then just use those. Otherwise, create exceptions for any out-of-the-ordinary situation you want client code to handle.</p>
+<hr />
+<h2 id="question-do-i-need-to-memorize-the-exception-hierarchy">Question: Do I need to memorize the exception hierarchy?<a class="headerlink" href="#question-do-i-need-to-memorize-the-exception-hierarchy" title="Permanent link">&para;</a></h2>
+<p>No - you will just want to review it and be aware of what is there and know some of the most common ones (stack overflow, arithmetic exceptions, etc). </p>
+<hr />
+<h2 id="question-what-does-a-try-catch-finally-block-look-like">Question: What does a try-catch-finally block look like?<a class="headerlink" href="#question-what-does-a-try-catch-finally-block-look-like" title="Permanent link">&para;</a></h2>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="c1">//code that could throw an exception</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="p">}</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArithmeticException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="c1">// Handle exception if it is an ArithmeticException</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="c1">// Handle any other exception</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">}</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="c1">// This code gets executed whether or not an exception</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="c1">//   is thrown or if the try block succeeds </span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="question-what-is-the-use-for-the-e-variable-in-the-catch-statement">Question: What is the use for the "e" variable in the catch statement.<a class="headerlink" href="#question-what-is-the-use-for-the-e-variable-in-the-catch-statement" title="Permanent link">&para;</a></h2>
+<p><code>e</code> is the Exception object. There are multiple methods and attributes that you can get from that method to provide more information when that exception is caught.</p>
+<hr />
+<h2 id="question-do-i-have-to-catch-a-specific-exception-what-if-i-want-to-handle-all-exceptions-in-one-catch">Question: Do I have to catch a specific exception?  What if I want to handle all exceptions in one catch?<a class="headerlink" href="#question-do-i-have-to-catch-a-specific-exception-what-if-i-want-to-handle-all-exceptions-in-one-catch" title="Permanent link">&para;</a></h2>
+<p>In general, you should catch as specific an exception as possible to ensure you handle it properly. For example, you would want to handle a divide-by-0 exception (<code>ArithmeticException</code>) differently from an exception thrown because the user entered the wrong type of input (an <code>InputMismatchException</code>) perhaps. But, you can write a catch for any exception by catching an <code>Exception</code> object. </p>
+<hr />
+<h2 id="question-what-should-go-in-a-try-block-and-catch-statement">Question: What should go in a try block and catch statement?<a class="headerlink" href="#question-what-should-go-in-a-try-block-and-catch-statement" title="Permanent link">&para;</a></h2>
+<p>Any code that might throw an exception. Or any code that you don't know whether or not it will throw an exception. You can catch any exception you know might be thrown. If you aren't sure, you can throw a more general exception higher up on the exception hierarchy. </p>
+<hr />
+<h2 id="question-what-is-the-point-of-the-finally-block">Question: What is the point of the finally block?<a class="headerlink" href="#question-what-is-the-point-of-the-finally-block" title="Permanent link">&para;</a></h2>
+<p>The finally block allows the programmer to specify code that will be executed whether or not there is an exception. This is helpful to allow the programmer to do any clean up required such as closing system resources like files or close database connections. The only time the finally block would not get executed is if a fatal exception happened at the runtime level or if there was a system exit call in the catch block.</p>
+<hr />
+<h2 id="question-how-is-the-finally-block-different-from-just-having-code-at-the-end-of-the-try-catch-block">Question: How is the finally block different from just having code at the end of the try-catch block?<a class="headerlink" href="#question-how-is-the-finally-block-different-from-just-having-code-at-the-end-of-the-try-catch-block" title="Permanent link">&para;</a></h2>
+<p>The finally block will always execute after the try-catch block executes. If there is a <code>return</code> or <code>continue</code> statement in the catch block then any code after the <code>try-catch</code> block will not execute if an exception is caught. Adding the code to a <code>finally</code> block guarantees that it will execute even in cases when the control flow would mean that any code after the <code>try-catch</code> was not executed. </p>
+<hr />
+<h2 id="question-is-the-finally-block-required">Question: Is the finally block required?<a class="headerlink" href="#question-is-the-finally-block-required" title="Permanent link">&para;</a></h2>
+<p>No, the finally block is optional.</p>
+<hr />
+<h2 id="question-is-there-an-error-that-any-exception-cannot-catch">Question: Is there an error that any exception cannot catch?<a class="headerlink" href="#question-is-there-an-error-that-any-exception-cannot-catch" title="Permanent link">&para;</a></h2>
+<p>Certain catastrophic errors cannot be caught, such as a situation where the Java Virtual Machine (JVM) crashes or anything that causes physical damage to the computer. </p>
+<hr />
+<h2 id="question-what-is-the-point-of-checked-exceptions">Question: What is the point of checked exceptions?<a class="headerlink" href="#question-what-is-the-point-of-checked-exceptions" title="Permanent link">&para;</a></h2>
+<p>Checked exceptions are checked at compile time so the compiler forces you to handle them. If you write code that includes code that could throw a checked exception then you must either handle the exception with a try-catch block or specify in the method signature that the method throws that checked exception. Checked exceptions are used for cases where the code using your method/class can be reasonably expected to recover from whatever caused the exception. </p>
+<hr />
+<h2 id="question-what-does-it-mean-to-rethrow-an-exception">Question: What does it mean to rethrow an exception?<a class="headerlink" href="#question-what-does-it-mean-to-rethrow-an-exception" title="Permanent link">&para;</a></h2>
+<p>It means that you throw an exception after you catch it. Sometimes you want the caller to know what exception was thrown, but you need to do some cleanup yourself. In that case, you wouldn't want to let the exception propagate, as that would prevent you from doing your cleanup, so you could catch the exception, do what you need to do, then (re)throw the exception.</p>
+<hr />
+<h2 id="question-what-is-the-purpose-of-a-throws-clause-in-a-method">Question: What is the purpose of a throws clause in a method?<a class="headerlink" href="#question-what-is-the-purpose-of-a-throws-clause-in-a-method" title="Permanent link">&para;</a></h2>
+<p>A <code>throws</code> clause looks like this:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">myMethod</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NullPointerException</span>
+</span></code></pre></div>
+<p>and indicates to anyone calling <code>myMethod()</code> that <code>myMethod()</code> may throw a <code>NullPointerException</code>. In the case of checked exceptions, a <code>throws</code> clause is required if the method may throw an checked exception that is not handled within the method.</p>
+<hr />
+<h2 id="question-what-is-the-difference-between-checked-unchecked-exceptions">Question: What is the difference between checked &amp; unchecked exceptions?<a class="headerlink" href="#question-what-is-the-difference-between-checked-unchecked-exceptions" title="Permanent link">&para;</a></h2>
+<p>The compiler will verify that all checked exceptions are handled somehow - either with a <code>try..catch</code> block or by including a <code>throws</code> clause in the method signature. If a method includes a <code>throws</code> clause that lets callers know that an exception may occur which they must handle (or include their own <code>throws</code> clause). Unchecked exceptions are not verified by the compiler. 
+The intention of checked exceptions is to ensure that exceptions are properly handled by the programmer. Once the program is executing there is no difference between checked &amp; unchecked exceptions. </p>
+<hr />
+<h2 id="question-when-would-we-throw-an-exception">Question: When would we throw an exception?<a class="headerlink" href="#question-when-would-we-throw-an-exception" title="Permanent link">&para;</a></h2>
+<p>You can throw an exception any time some extraordinary problem occurs. For example, suppose we have a "bag of things" class with a "put" method. If the bag is full, then we can't "put" anything in it, so in that case we could choose to throw an exception. We can either throw an existing exception or create a new exception and throw that. </p>
+<hr />
+<h2 id="question-should-i-use-exceptions-to-validate-input">Question: Should I use exceptions to validate input?<a class="headerlink" href="#question-should-i-use-exceptions-to-validate-input" title="Permanent link">&para;</a></h2>
+<p>It is a good idea to catch any exceptions when getting input. For example, a user may enter an input of the wrong type, say a character instead of an integer.</p>
+<p>You could also use an exception to catch invalid <em>values</em> that are input - say a phone number that has too many digits, though in that case you would need to define your own exception to throw. </p>
+<p>It is usually simpler to just validate the value and re-prompt until you get a valid input.</p>
+<hr />
+<h2 id="question-can-we-create-our-own-exception-how-would-you-do-that">Question: Can we create our own exception?  How would you do that?<a class="headerlink" href="#question-can-we-create-our-own-exception-how-would-you-do-that" title="Permanent link">&para;</a></h2>
+<p>You can create a new exception by extending an existing exception. You can add checks in your code for whatever the exception is then throw the exception when it happens.</p>
+<hr />
+<h2 id="question-what-is-meant-by-exception-propagation-how-does-exception-propagation-work">Question: What is meant by exception propagation?  /  How does exception propagation work?<a class="headerlink" href="#question-what-is-meant-by-exception-propagation-how-does-exception-propagation-work" title="Permanent link">&para;</a></h2>
+<p>If an exception is not caught, then the current method exists and the exception is propagated to the calling method. This process repeats until the exception is caught or, if the exception reaches the main method and it is not caught there, the program exits.</p>
+<hr />
+<h2 id="question-how-do-i-know-where-to-catch-an-exception">Question: How do I know where to catch an exception?<a class="headerlink" href="#question-how-do-i-know-where-to-catch-an-exception" title="Permanent link">&para;</a></h2>
+<p>It is a design decision whether to handle an exception in a particular method or force any caller to handle.. You can indicate that a method does not catch an exception by adding a throws clause to the method declaration. </p>
+<hr />
+<h2 id="question-can-try-catch-blocks-be-nested">Question: Can try-catch blocks be nested?<a class="headerlink" href="#question-can-try-catch-blocks-be-nested" title="Permanent link">&para;</a></h2>
+<p>Yes. For example, suppose you have a program that needs to keep running no matter what. You might have a try-catch around your entire program logic that catches a general Exception to ensure that it keeps running. Inside that outer try block you may have other exceptions you want to catch and recover from, for example a resource is unavailable or you get bad input. You can nest a try-catch statement so that you deal with those where they happen.</p>
+<hr />
+<h2 id="question-can-you-catch-exceptions-outside-the-main-method">Question: Can you catch exceptions outside the main() method?<a class="headerlink" href="#question-can-you-catch-exceptions-outside-the-main-method" title="Permanent link">&para;</a></h2>
+<p>You can catch exceptions anywhere in your code. Though keep in mind that <code>main()</code> is the entry point of your program so technically all of your code is part of <code>main()</code>.</p>
+<hr />
+<h2 id="question-how-do-we-know-what-exception-to-catch">Question: How do we know what exception to catch?<a class="headerlink" href="#question-how-do-we-know-what-exception-to-catch" title="Permanent link">&para;</a></h2>
+<p>You can look at the Java exception hierarchy to see which ones are already defined and which ones might be thrown. You can also give your program input which you think might cause an exception and take note of what exception gets thrown when you run your program. You can catch an <code>Exception</code> object, which will handle any exception that is thrown, though you should be careful doing that since it may squash important information about bugs in your program. Also keep in mind that you can catch multiple types of exceptions by using multiple catch blocks. </p>
+<hr />
+<h2 id="question-what-is-the-difference-between-a-run-time-error-and-runtimeexceptions">Question: What is the difference between a run time error and <code>RuntimeExceptions</code>?<a class="headerlink" href="#question-what-is-the-difference-between-a-run-time-error-and-runtimeexceptions" title="Permanent link">&para;</a></h2>
+<p>A run time error is any error that happens during run time due to a bug in the program. Many run time errors, such as using an invalid array index or division by zero, will result in a <code>RuntimeException</code> being thrown. </p>
+<hr />
+<h2 id="question-can-exceptions-be-caught-outside-of-the-main-method">Question: Can exceptions be caught outside of the <code>main()</code> method?<a class="headerlink" href="#question-can-exceptions-be-caught-outside-of-the-main-method" title="Permanent link">&para;</a></h2>
+<p>Exceptions can be caught where they are thrown. If they are not caught when they occur then the exception propagates to the calling function.  </p>
+<hr />
+<h2 id="question-what-is-autocloseable">Question: What is <code>AutoCloseable</code>?<a class="headerlink" href="#question-what-is-autocloseable" title="Permanent link">&para;</a></h2>
+<p><code>AutoCloseable</code> is an interface that allows an object to be handled by a try-with-resources block. It contains a single method:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">();</span>
+</span></code></pre></div>
+<p>to ensure that the try-with-resources block is able to call the close method for the object when the block is complete.</p>
+<hr />
+<h2 id="question-why-would-i-want-to-create-a-class-that-implements-autocloseable">Question: Why would I want to create a class that implements <code>AutoCloseable</code>?<a class="headerlink" href="#question-why-would-i-want-to-create-a-class-that-implements-autocloseable" title="Permanent link">&para;</a></h2>
+<p>You would want to implement a the <code>AutoCloseable</code> interface anytime you have a class that uses resources (eg. a <code>Scanner</code> or network sockets) you want to be usable with a try-with-resources block.  When objects of classes that implement the <code>AutoCloseable</code> interface are used in a try-with-resources block, the <code>close()</code> method is called when the object goes out of scope.  This means the object is able to clean up after itself (freeing/closing resources) without the client explicitly having to close it.</p>
+<hr />
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024. All Rights Reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
