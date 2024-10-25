@@ -2,346 +2,406 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://notes.ellermann.com/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/arduino-resources/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/how-to-install-a-library-using-the-arduino-ide/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/how-to-upload-a-sketch-using-the-arduino-ide/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-0-system-test-verification/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-1-passive-buzzer/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-2-servo-motor/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-3-ultrasonic-sensor/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-4-stepper-motor-control/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/arduino/labs/lab-5-collision-avoidance/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-0/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-1/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-2/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-2/inheritance-and-exceptions-faq/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-2/inheritance-and-exceptions-notes/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-3/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-4/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-4/module-4-programming-exercise-4-recursion/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-5/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/javafoundations/chapter12/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/javafoundations/sourcecode/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/javafoundations/sourcecode/chap12examples/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/javafoundations/sourcecode/chap12examples/arraystack/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/notes/javafoundations/sourcecode/chap12examples/postfixtester/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc240/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc240/c/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc240/c/c1-notes/</loc>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/howtos/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/howtos/howtos-csc110/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/howtos/howtos-csc205/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/howtos/howtos-csc240/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/math/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/math/numbersystems/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/math/numbersystems/binarynumbers/</loc>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/programming/csc205-activity08-module09-searching/</loc>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/factorial/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/arrays/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/arrays/initializing-array-with-random-unique-values/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/arrays/key-array-skills/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/arrays/one-dimensional-arrays/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/arrays/two-dimensional-arrays/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/boolean/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/conditionals/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/do-while-loop-post-test-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/for-loop-pre-test-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/game-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/logic-getyorn/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/logic-logical-operators/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/loops/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/nested-loops/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/standard-input-sentinel-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/terminology-loops/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/wantstocontinue-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/which-loop-to-use/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/while-loop-example/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/conditionals-and-loops/while-loop-pre-test-loop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/common-input-values-to-test-for/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/examples-of-common-string-library-functions/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/getvalidnumber-template-input-validation/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/isinvalid-template-input-validation/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/one-function-input-validation-model/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/two-function-input-validation-model/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/inputvalidation/validating-string-data/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/menus/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/menus/practicemenu/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/closescanner/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/generalized-input-method-in-java/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/getdouble/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/getinteger/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/getrandomnumber/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/getstring/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/getyorn/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/methods/methods-and-functions-terminology/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/oop/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/oop/object-oriented-programming/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/oop/oop-review-questions/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/oop/oop-terminology/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/glossary/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/installing-the-java-development-kit/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/resources/java-programming-resources/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/programming/resources/javaprogrammingcheatsheet/</loc>
+         <lastmod>2024-10-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/programming/resources/where-and-how-to-learn-c/</loc>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/ternary/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
     <url>
          <loc>https://notes.ellermann.com/programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/</loc>
-         <lastmod>2024-09-22</lastmod>
+         <lastmod>2024-10-25</lastmod>
     </url>
 </urlset>

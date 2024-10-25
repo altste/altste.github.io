@@ -10,15 +10,15 @@
   <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
   
   
-  <link rel="canonical" href="https://notes.ellermann.com/csc205/">
-  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="canonical" href="https://notes.ellermann.com/csc205/notes/javafoundations/sourcecode/chap12examples/arraystack/">
+  <link rel="shortcut icon" href="../../../../../../favicon.ico">
     
       
-        <title>CSC205 - Index - Notes</title>
+        <title>Chapter 12 Example Code - ArrayStack - Notes</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.35f28582.min.css">
       
       
   
@@ -79,19 +79,19 @@
         
         
         
-        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <link rel="stylesheet" href="../../../../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -100,7 +100,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     <body dir="ltr">
@@ -112,7 +112,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#csc205-index" class="md-skip">
+        <a href="#chapter-12-example-code-arraystack" class="md-skip">
           Skip to content
         </a>
       
@@ -128,9 +128,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+    <a href="../../../../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
       
-  <img src="../assets/logo.svg" alt="logo">
+  <img src="../../../../../../assets/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CSC205 - Index
+              Chapter 12 Example Code - ArrayStack
             
           </span>
         </div>
@@ -212,7 +212,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../../../../../.." class="md-tabs__link">
           
   
     
@@ -232,7 +232,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../programming/" class="md-tabs__link">
+        <a href="../../../../../../programming/" class="md-tabs__link">
           
   
     
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../arduino/" class="md-tabs__link">
+        <a href="../../../../../../arduino/" class="md-tabs__link">
           
   
     
@@ -272,7 +272,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../howtos/" class="md-tabs__link">
+        <a href="../../../../../../howtos/" class="md-tabs__link">
           
   
     
@@ -315,9 +315,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+    <a href="../../../../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
       
-  <img src="../assets/logo.svg" alt="logo">
+  <img src="../../../../../../assets/logo.svg" alt="logo">
 
     </a>
     Notes
@@ -357,7 +357,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href=".." class="md-nav__link ">
+            <a href="../../../../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -433,7 +433,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/" class="md-nav__link ">
+            <a href="../../../../../../programming/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -499,7 +499,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/arrays/" class="md-nav__link ">
+            <a href="../../../../../../programming/arrays/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -532,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+      <a href="../../../../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -553,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+      <a href="../../../../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -574,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+      <a href="../../../../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/arrays/key-array-skills/" class="md-nav__link">
+      <a href="../../../../../../programming/arrays/key-array-skills/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -689,7 +689,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/conditionals-and-loops/" class="md-nav__link ">
+            <a href="../../../../../../programming/conditionals-and-loops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -722,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -743,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/loops/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1016,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1037,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1058,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1079,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1121,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+      <a href="../../../../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1189,7 +1189,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/inputvalidation/" class="md-nav__link ">
+            <a href="../../../../../../programming/inputvalidation/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1222,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1243,7 +1243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1285,7 +1285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1327,7 +1327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1348,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+      <a href="../../../../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1404,7 +1404,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/menus/" class="md-nav__link ">
+            <a href="../../../../../../programming/menus/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1437,7 +1437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/menus/practicemenu/" class="md-nav__link">
+      <a href="../../../../../../programming/menus/practicemenu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1507,7 +1507,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/methods/" class="md-nav__link ">
+            <a href="../../../../../../programming/methods/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1540,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/getstring/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/getstring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1561,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/getinteger/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/getinteger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1582,7 +1582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/getdouble/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/getdouble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1603,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/getyorn/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/getyorn/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1624,7 +1624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/closescanner/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/closescanner/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1645,7 +1645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/getrandomnumber/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/getrandomnumber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1666,7 +1666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1687,7 +1687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+      <a href="../../../../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1747,7 +1747,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/oop/" class="md-nav__link ">
+            <a href="../../../../../../programming/oop/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1780,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/oop/object-oriented-programming/" class="md-nav__link">
+      <a href="../../../../../../programming/oop/object-oriented-programming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1801,7 +1801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/oop/oop-terminology/" class="md-nav__link">
+      <a href="../../../../../../programming/oop/oop-terminology/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1822,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/oop/oop-review-questions/" class="md-nav__link">
+      <a href="../../../../../../programming/oop/oop-review-questions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1882,7 +1882,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/resources/" class="md-nav__link ">
+            <a href="../../../../../../programming/resources/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1965,7 +1965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/resources/java-programming-resources/" class="md-nav__link">
+      <a href="../../../../../../programming/resources/java-programming-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1986,7 +1986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+      <a href="../../../../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2007,7 +2007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/resources/glossary/" class="md-nav__link">
+      <a href="../../../../../../programming/resources/glossary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2082,7 +2082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+      <a href="../../../../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2157,7 +2157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+      <a href="../../../../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2223,7 +2223,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../programming/ternary/" class="md-nav__link ">
+            <a href="../../../../../../programming/ternary/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2256,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+      <a href="../../../../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2277,7 +2277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+      <a href="../../../../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2342,7 +2342,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../arduino/" class="md-nav__link ">
+            <a href="../../../../../../arduino/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2412,7 +2412,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../arduino/labs/" class="md-nav__link ">
+            <a href="../../../../../../arduino/labs/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2445,7 +2445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2466,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2487,7 +2487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2508,7 +2508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2529,7 +2529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2550,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
+      <a href="../../../../../../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2629,7 +2629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+      <a href="../../../../../../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2650,7 +2650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+      <a href="../../../../../../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2671,7 +2671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../arduino/arduino-resources/" class="md-nav__link">
+      <a href="../../../../../../arduino/arduino-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2738,7 +2738,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../howtos/" class="md-nav__link ">
+            <a href="../../../../../../howtos/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2771,7 +2771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howtos/howtos-csc110/" class="md-nav__link">
+      <a href="../../../../../../howtos/howtos-csc110/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2792,7 +2792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howtos/howtos-csc205/" class="md-nav__link">
+      <a href="../../../../../../howtos/howtos-csc205/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2813,7 +2813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howtos/howtos-csc240/" class="md-nav__link">
+      <a href="../../../../../../howtos/howtos-csc240/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2865,78 +2865,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modules" class="md-nav__link">
+  <a href="#directory-tree" class="md-nav__link">
     <span class="md-ellipsis">
-      Modules
+      Directory Tree
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#arraystackjava" class="md-nav__link">
     <span class="md-ellipsis">
-      Notes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Notes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#java-foundations-textbook-notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Java Foundations Textbook Notes
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wade-hubers-github-csc205codeexamples-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Wade Huber's GitHub csc205codeexamples repository
+      ArrayStack.java
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wade-hubers-github-codeexamples-repository" class="md-nav__link">
+  <a href="#stackadtjava" class="md-nav__link">
     <span class="md-ellipsis">
-      Wade Huber's GitHub codeexamples repository
+      StackADT.java
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#wade-hubers-youtube-channel" class="md-nav__link">
+  <a href="#emptycollectionexceptionjava" class="md-nav__link">
     <span class="md-ellipsis">
-      Wade Huber's Youtube Channel
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#textbooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Textbooks
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#other-material" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other Material
+      EmptyCollectionException.java
     </span>
   </a>
   
@@ -2957,120 +2915,219 @@
                   
 
 
-<h1 id="csc205-index">CSC205 - Index<a class="headerlink" href="#csc205-index" title="Permanent link">&para;</a></h1>
-<h2 id="modules">Modules<a class="headerlink" href="#modules" title="Permanent link">&para;</a></h2>
+<h1 id="chapter-12-example-code-arraystack">Chapter 12 Example Code - ArrayStack<a class="headerlink" href="#chapter-12-example-code-arraystack" title="Permanent link">&para;</a></h1>
 <ul>
-<li><a href="module-0/">Module 0 - Java Review</a></li>
-<li><a href="module-1/">Module 1 - Java Review - Encapsulation - Designing Classes - Testing </a></li>
-<li><a href="module-2/">Module 2 - Inheritance and Exceptions</a><ul>
-<li><a href="module-2/inheritance-and-exceptions-notes/">Inheritance and Exceptions - Notes</a></li>
-<li><a href="module-2/inheritance-and-exceptions-faq/">Inheritance and Exceptions - FAQ</a></li>
+<li>Java Foundations 5<sup>th</sup> Edition</li>
 </ul>
-</li>
-<li><a href="module-3/">Module 3 - Polymorphism and Interfaces</a></li>
-<li><a href="module-4/">Module 4 - Recursion and Analysis of Algorithms</a><ul>
-<li><a href="module-4/module-4-programming-exercise-4-recursion/">Programming Exercise 4 - Recursion</a></li>
-</ul>
-</li>
-<li><a href="module-5/">Module 5 - Collections Generics and Iterators</a></li>
-</ul>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
-<h3 id="java-foundations-textbook-notes">Java Foundations Textbook Notes<a class="headerlink" href="#java-foundations-textbook-notes" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="notes/javafoundations/chapter12/">Chapter 12</a></li>
-<li><a href="notes/javafoundations/sourcecode/chap12examples/">Chapter 12 Example Source Code</a></li>
-</ul>
-<h2 id="wade-hubers-github-csc205codeexamples-repository">Wade Huber's GitHub csc205codeexamples repository<a class="headerlink" href="#wade-hubers-github-csc205codeexamples-repository" title="Permanent link">&para;</a></h2>
-<ul>
-<li>GitHub: <a href="https://github.com/wadehuber/csc205codeexamples">https://github.com/wadehuber/csc205codeexamples</a></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The csc205codeexamples is a private GitHub repository. You will need to contact Wade Huber to be added to the repository for access.</p>
-</div>
-<h2 id="wade-hubers-github-codeexamples-repository">Wade Huber's GitHub codeexamples repository<a class="headerlink" href="#wade-hubers-github-codeexamples-repository" title="Permanent link">&para;</a></h2>
-<ul>
-<li>GitHub: <a href="https://github.com/wadehuber/codeexamples">https://github.com/wadehuber/codeexamples</a></li>
-</ul>
-<h2 id="wade-hubers-youtube-channel">Wade Huber's Youtube Channel<a class="headerlink" href="#wade-hubers-youtube-channel" title="Permanent link">&para;</a></h2>
-<ul>
-<li>YouTube: <a href="https://www.youtube.com/@logiclambda">https://www.youtube.com/@logiclambda</a></li>
-</ul>
-<h2 id="textbooks">Textbooks<a class="headerlink" href="#textbooks" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>Java Foundations (Required)</p>
-<ul>
-<li>5<sup>th</sup> edition</li>
-<li>ISBN: 9780135205976</li>
-<li>Author: Lewis</li>
-</ul>
-</li>
-<li>
-<p>Algorithms (Optional)</p>
-<ul>
-<li>4<sup>th</sup> edition</li>
-<li>ISBN: 9780132762564</li>
-<li>Author: Sedgewick</li>
-</ul>
-</li>
-</ul>
-<h2 id="other-material">Other Material<a class="headerlink" href="#other-material" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>Book: <a href="https://www.amazon.com/dp/111941847X">Programming Interviews Exposed: Coding Your Way Through the Interview</a></p>
-<ul>
-<li>4<sup>th</sup> Edition</li>
-<li>ISBN-10: 111941847X</li>
-<li>ISBN-13: 978-1119418474</li>
-<li>Author:  John Mongan, Noah Suojanen Kindler, Eric Giguère</li>
-</ul>
-</li>
-<li>
-<p>Book: <a href="https://www.amazon.com/dp/0984782869">Cracking the Coding Interview: 189 Programming Questions and Solutions</a></p>
-<ul>
-<li>6<sup>th</sup> Edition</li>
-<li>ISBN-10: 0984782869</li>
-<li>ISBN-13: 978-0984782864</li>
-<li>Author: Gayle Laakmann McDowell</li>
-</ul>
-</li>
-<li>
-<p>Book: <a href="https://www.amazon.com/dp/1633438538">Grokking Algorithms</a></p>
-<ul>
-<li>2<sup>nd</sup> Edition</li>
-<li>ISBN-10: 1633438538</li>
-<li>ISBN-13: 978-1633438538</li>
-<li>Author: Aditya Y Bhargava</li>
-</ul>
-</li>
-<li>
-<p>I also strongly recommend the <a href="https://www.algorithmsilluminated.org/">Algorithms Illuminated</a> series by Tim Roughgarden, which has corresponding YouTube playlists.</p>
-<ul>
-<li>
-<p>Website: <a href="https://www.algorithmsilluminated.org/">https://www.algorithmsilluminated.org/</a></p>
-</li>
-<li>
-<p>Book: <a href="https://www.amazon.com/dp/0999282980">Algorithms Illuminated</a></p>
-<ul>
-<li>Omnibus Edition</li>
-<li>ISBN-10: 0999282980</li>
-<li>ISBN-13: 978-0999282984</li>
-<li>Author: Tim Roughgarden</li>
-</ul>
-</li>
-<li>
-<p>YouTube: <a href="https://youtube.com/playlist?list=PLXFMmlk03Dt7Q0xr1PIAriY5623cKiH7V">Algorithms 1 YouTube Playlist</a></p>
-</li>
-<li>
-<p>YouTube: <a href="https://youtube.com/playlist?list=PLXFMmlk03Dt5EMI2s2WQBsLsZl7A5HEK6">Algorithms 2 Youtube Playlist</a></p>
-</li>
-<li>
-<p>YouTube: <a href="https://www.youtube.com/@stanfordalgorithms2264">All YouTube Videos by Tim Roughgarden</a></p>
-</li>
-</ul>
-</li>
-</ul>
+<h2 id="directory-tree">Directory Tree<a class="headerlink" href="#directory-tree" title="Permanent link">&para;</a></h2>
+<p>/SourceCode/
+Chap 12 examples/
+├─ ArrayStack/
+│  ├─ src/
+|     ├─ jsjf/
+|        ├─ ArrayStack.java
+|        ├─ StackADT.java
+|        ├─ exceptions/
+|           ├─ EmptyCollectionException.java</p>
+<h2 id="arraystackjava">ArrayStack.java<a class="headerlink" href="#arraystackjava" title="Permanent link">&para;</a></h2>
+<p><strong>/SourceCode/Chap 12 examples/ArrayStack/src/jsjf/ArrayStack.java</strong></p>
+<div class="language-java highlight"><span class="filename">ArrayStack.java</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jsjf.exceptions.*</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm">/**</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm"> * An array implementation of a stack in which the bottom of the</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm"> * stack is fixed at index 0.</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm"> * </span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm"> * @author Java Foundations</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cm"> * @version 4.0</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cm"> */</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ArrayStack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">StackADT</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">{</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">DEFAULT_CAPACITY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">top</span><span class="p">;</span><span class="w">  </span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">T</span><span class="o">[]</span><span class="w"> </span><span class="n">stack</span><span class="p">;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="cm">     * Creates an empty stack using the default capacity.</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="cm">     */</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ArrayStack</span><span class="p">()</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">DEFAULT_CAPACITY</span><span class="p">);</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="cm">     * Creates an empty stack using the specified capacity.</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="cm">     * @param initialCapacity the initial size of the array </span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="cm">     */</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">ArrayStack</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">initialCapacity</span><span class="p">)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="n">top</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="o">[]</span><span class="p">)(</span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="o">[</span><span class="n">initialCapacity</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="cm">     * Adds the specified element to the top of this stack, expanding</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="cm">     * the capacity of the array if necessary.</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="cm">     * @param element generic element to be pushed onto stack</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="cm">     */</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">element</span><span class="p">)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">length</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="n">expandCapacity</span><span class="p">();</span>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">        </span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element</span><span class="p">;</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">        </span><span class="n">top</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="cm">     * Creates a new array to store the contents of this stack with</span>
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="cm">     * twice the capacity of the old one.</span>
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="cm">     */</span>
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">expandCapacity</span><span class="p">()</span>
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">        </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOf</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">   </span>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="cm">     * Removes the element at the top of this stack and returns a</span>
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="cm">     * reference to it. </span>
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="cm">     * @return element removed from top of stack</span>
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="cm">     * @throws EmptyCollectionException if stack is empty </span>
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="cm">     */</span>
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">EmptyCollectionException</span>
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EmptyCollectionException</span><span class="p">(</span><span class="s">&quot;stack&quot;</span><span class="p">);</span>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="w">        </span><span class="n">top</span><span class="o">--</span><span class="p">;</span>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="w">        </span><span class="n">T</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="w">        </span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-80"><a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="cm">     * Returns a reference to the element at the top of this stack.</span>
+</span><span id="__span-0-81"><a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="cm">     * The element is not removed from the stack.  </span>
+</span><span id="__span-0-82"><a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="cm">     * @return element on top of stack</span>
+</span><span id="__span-0-83"><a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="cm">     * @throws EmptyCollectionException if stack is empty</span>
+</span><span id="__span-0-84"><a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="cm">     */</span>
+</span><span id="__span-0-85"><a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">peek</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">EmptyCollectionException</span>
+</span><span id="__span-0-86"><a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-87"><a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isEmpty</span><span class="p">())</span>
+</span><span id="__span-0-88"><a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EmptyCollectionException</span><span class="p">(</span><span class="s">&quot;stack&quot;</span><span class="p">);</span>
+</span><span id="__span-0-89"><a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>
+</span><span id="__span-0-90"><a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stack</span><span class="o">[</span><span class="n">top</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+</span><span id="__span-0-91"><a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-92"><a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>
+</span><span id="__span-0-93"><a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-94"><a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="cm">     * Returns true if this stack is empty and false otherwise. </span>
+</span><span id="__span-0-95"><a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="cm">     * @return true if this stack is empty</span>
+</span><span id="__span-0-96"><a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="cm">     */</span>
+</span><span id="__span-0-97"><a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">()</span>
+</span><span id="__span-0-98"><a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-99"><a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="w">        </span><span class="c1">// To be completed as a Programming Project</span>
+</span><span id="__span-0-100"><a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>
+</span><span id="__span-0-101"><a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">  </span><span class="c1">// temp</span>
+</span><span id="__span-0-102"><a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>
+</span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="cm">     * Returns the number of elements in this stack.</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="cm">     * @return the number of elements in the stack</span>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="cm">     */</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">()</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="w">        </span><span class="c1">// To be completed as a Programming Project</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// temp</span>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="cm">     * Returns a string representation of this stack. </span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a><span class="cm">     * @return a string representation of the stack</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a><span class="cm">     */</span>
+</span><span id="__span-0-119"><a id="__codelineno-0-119" name="__codelineno-0-119" href="#__codelineno-0-119"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span>
+</span><span id="__span-0-120"><a id="__codelineno-0-120" name="__codelineno-0-120" href="#__codelineno-0-120"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-0-121"><a id="__codelineno-0-121" name="__codelineno-0-121" href="#__codelineno-0-121"></a><span class="w">        </span><span class="c1">// To be completed as a Programming Project</span>
+</span><span id="__span-0-122"><a id="__codelineno-0-122" name="__codelineno-0-122" href="#__codelineno-0-122"></a>
+</span><span id="__span-0-123"><a id="__codelineno-0-123" name="__codelineno-0-123" href="#__codelineno-0-123"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// temp</span>
+</span><span id="__span-0-124"><a id="__codelineno-0-124" name="__codelineno-0-124" href="#__codelineno-0-124"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-125"><a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="stackadtjava">StackADT.java<a class="headerlink" href="#stackadtjava" title="Permanent link">&para;</a></h2>
+<p><strong>/SourceCode/Chap 12 examples/ArrayStack/src/jsjf/StackADT.java</strong></p>
+<div class="language-java highlight"><span class="filename">StackADT.java</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">/**</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm"> * Defines the interface to a stack collection.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm"> *</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm"> * @author Java Foundations</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm"> * @version 4.0</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cm"> */</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StackADT</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="cm">/**  </span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="cm">     * Adds the specified element to the top of this stack. </span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="cm">     * @param element element to be pushed onto the stack</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="cm">     */</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">element</span><span class="p">);</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="cm">/**  </span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="cm">     * Removes and returns the top element from this stack. </span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="cm">     * @return the element removed from the stack</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="cm">     */</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">pop</span><span class="p">();</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="cm">/**  </span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="cm">     * Returns without removing the top element of this stack. </span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="cm">     * @return the element on top of the stack</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="cm">     */</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">peek</span><span class="p">();</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">    </span><span class="cm">/**  </span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="cm">     * Returns true if this stack contains no elements. </span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="cm">     * @return true if the stack is empty</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="cm">     */</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">();</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="cm">/** </span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="cm">     * Returns the number of elements in this stack. </span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="cm">     * @return the number of elements in the stack</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="cm">     */</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">();</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">    </span><span class="cm">/**  </span>
+</span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="cm">     * Returns a string representation of this stack. </span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="cm">     * @return a string representation of the stack</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="cm">     */</span>
+</span><span id="__span-1-45"><a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">();</span>
+</span><span id="__span-1-46"><a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="emptycollectionexceptionjava">EmptyCollectionException.java<a class="headerlink" href="#emptycollectionexceptionjava" title="Permanent link">&para;</a></h2>
+<p><strong>/SourceCode/Chap 12 examples/ArrayStack/src/jsjf/exceptions/EmptyCollectionException.java</strong></p>
+<div class="language-java highlight"><span class="filename">EmptyCollectionException.java</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf.exceptions</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">/**</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> * Represents the situation in which a collection is empty.</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm"> *</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm"> * @author Java Foundations</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cm"> * @version 4.0</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="cm"> */</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmptyCollectionException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RuntimeException</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="cm">     * Sets up this exception with an appropriate message.</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="cm">     * @param collection the name of the collection</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="cm">     */</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">EmptyCollectionException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">collection</span><span class="p">)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="s">&quot;The &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is empty.&quot;</span><span class="p">);</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
+</span></code></pre></div>
 <hr />
 
 
@@ -3134,18 +3191,18 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../../../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../../../../../../javascripts/tablesort.js"></script>
       
-        <script src="../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+        <script src="../../../../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/mathjax.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
-        <script src="../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {

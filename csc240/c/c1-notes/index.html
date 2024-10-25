@@ -1,0 +1,3849 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta name="robots" content="noindex, nocache, nofollow, noarchive, nosnippet, notranslate, noimageindex, noodp, noydir, noai, noimageai">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
+  
+  
+  <link rel="canonical" href="https://notes.ellermann.com/csc240/c/c1-notes/">
+  <link rel="shortcut icon" href="../../../favicon.ico">
+    
+      
+        <title>C Module 1 - Notes - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24m40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.3c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32m0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24m32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1M96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0m256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32M208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0m152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80M48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48m544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216m256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216"/></svg>');}</style>
+
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#c-module-1-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              C Module 1 - Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/" class="md-tabs__link">
+          
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arduino/" class="md-tabs__link">
+          
+  
+    
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/arrays/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initializing an Array with Random Unique Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/key-array-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Array Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/conditionals-and-loops/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conditionals and Loops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Conditionals and Loops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Truth Tables Using Boolean Values Of True and False
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops - Three Types of Loops - The Do While Loop T- he While Loop - The For Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Counting Pre-Test Loop (While Loop) And Counting Post-Test Loop (Do-While Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    For-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Do-While Loop (Post-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input While-Loop (Pre-Test Loop) With A Sentinel Value And A Priming Read
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Input-Sentinel Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wantsToContinue Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While Loop General Format In Pseudocode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Which Loop To Use
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/inputvalidation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Input Validation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Input Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getValidNumber() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    isInvalid() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validating String Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples of Common String Library Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Input Values To Test For
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/menus/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Menus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Menus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/menus/practicemenu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practice Menu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/methods/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getString() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getinteger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getInteger() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getdouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getDouble() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/closescanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The closeScanner() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getrandomnumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getRandomNumber() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Input Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/oop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Object Oriented Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-review-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Review Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/resources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/java-programming-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Programming Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing The Java Development Kit JDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_3" id="__nav_2_8_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eclipse IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eclipse IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse IDE -How To Find Matching Brackets and Missing Brackets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_4" id="__nav_2_8_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diátaxis- A systematic approach to technical documentation authoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/ternary/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ternary
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Ternary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced For Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced If Statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/labs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Install A Library Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Upload A Sketch Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/arduino-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imperative-programming-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imperative Programming in C
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-c-and-the-imperative-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to C and the Imperative Paradigm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to C and the Imperative Paradigm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-imperative-paradigm" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Imperative Paradigm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history-of-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      History of C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undefined-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Undefined Behavior
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-basics-chapters-1-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      C Basics (Chapters 1-5)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="c-module-1-notes">C Module 1 - Notes<a class="headerlink" href="#c-module-1-notes" title="Permanent link">&para;</a></h1>
+<h2 id="imperative-programming-in-c">Imperative Programming in C<a class="headerlink" href="#imperative-programming-in-c" title="Permanent link">&para;</a></h2>
+<p>These notes are primarily adapted from <em>Programming in C</em> by Stephen G. Kochan (referenced by chapter) and <em>Introduction to Programming Languages: Programming in C, C++, Scheme, Prolog, C#, and SOA</em> by Yinong Chen. Chapter numbers refer to <em>Programming in C</em>. </p>
+<p>We will be using gcc to compile our C programs. See the notes at the end of this document under <em>Compiling with gcc</em> (<strong>Appendix C</strong>) for more information.</p>
+<h2 id="introduction-to-c-and-the-imperative-paradigm">Introduction to C and the Imperative Paradigm<a class="headerlink" href="#introduction-to-c-and-the-imperative-paradigm" title="Permanent link">&para;</a></h2>
+<h3 id="the-imperative-paradigm">The Imperative Paradigm<a class="headerlink" href="#the-imperative-paradigm" title="Permanent link">&para;</a></h3>
+<p>An imperative program is made up of statements that manipulate data. Imperative programs are algorithmic in nature - <em>do this, then that, then repeat</em>. The imperative paradigm focuses on <em>how</em> to solve the problem rather than what the problem is. We will be using C as our example imperative paradigm. C is a much lower level language than Java, so while some of the syntax will be familiar, it will take practice to understand how to write and debug C programs. </p>
+<p>Related to imperative programming are <strong>structured programming</strong> (structuring the code with flow control, blocks, and functions) and <strong>modular programming</strong> (where the code is divided into modules that perform a group of related tasks). Structured &amp; modular programming allow the programmer to focus on smaller subproblems and make debugging and maintenance much easier. The programs are also more extensible. </p>
+<h3 id="history-of-c">History of C<a class="headerlink" href="#history-of-c" title="Permanent link">&para;</a></h3>
+<p>C was developed by Dennis Ritchie at Bell Labs in the early 1970’s. It was based on the Language B developed by Ken Thompson which was influenced by Algol. It was closely tied to the development of UNIX (though it is available on nearly every operating system). The original standard was the first edition of the K&amp;R book. The <strong>ANSI standard</strong> was issued in 1988. </p>
+<p>Updated standards were developed in 1999 &amp; 2011, though the ANSI standard is still the most commonly used. During the late 1980’s through the mid 1990’s, C was one of the most popular languages for end-user applications, though languages such as C++, Java, and C# are more widely used for end-user applications today. However, C is still widely used, especially in embedded systems and other places where efficiency (both speed and memory) is the primary consideration. If efficiency is not a necessary goal of your application then another, safer, language such as Java, C#, etc. may be better suited. C++, especially modern standards, provides a nice balance between the efficiency of C and the safety of other languages. </p>
+<p>C was designed to be a language for solving specific problems. As a result, C programs tend to directly solve problems instead of working with abstractions. </p>
+<h3 id="undefined-behavior">Undefined Behavior<a class="headerlink" href="#undefined-behavior" title="Permanent link">&para;</a></h3>
+<p>Language designers need to decide what to do when an error occurs. In safe languages errors are trapped as they happen, for example Java exceptions. In unsafe languages like C, errors are not trapped. Instead, the compiler designer is given freedom to decide what happens. Execution may continue but in a (possibly) incorrect way. Such an operation is called undefined behavior. While code that invokes undefined behavior may do what you expect, your program would still not be correct because another compiler may choose to do something else. When you are writing important applications it is important to understand what syntax can invoke undefined behavior and how your specific compiler handles it.</p>
+<h2 id="c-basics-chapters-1-5">C Basics (Chapters 1-5)<a class="headerlink" href="#c-basics-chapters-1-5" title="Permanent link">&para;</a></h2>
+<p>If you are coming from a background in Java, some of the C syntax may look familiar to you. Many more recent languages based their syntax on C, though the underlying semantics are usually very different.</p>
+<p>The following code is a simple example of a C program.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/* C Hello World example */</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The first line is a comment, which must start with <code>/*</code> and end with <code>*/</code>. Comments can span multiple lines. The "<code>#include</code>" statement tells the compiler you are using functions defined in <code>stdio.h</code> (we will talk more about that later - for now you should know that these ".h" files are called header files and you include .h files in your .c files. You do <strong>not</strong> include .c files). Then the main function is the <strong>entry point</strong> for our program - it is what will be called when the program is executed. Output to the console is generated by the <strong>printf</strong> statement. The '<code>\n</code>' is a newline character. The return statement indicates to the operating system that the program terminated successfully (<code>0</code> is the convention for a successful exit).</p>
+<p>To compile a C program, use the following command:</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">gcc</span><span class="w"> </span><span class="o">--</span><span class="n">std</span><span class="o">=</span><span class="n">c11</span><span class="w"> </span><span class="o">-</span><span class="n">pedantic</span><span class="w"> </span><span class="o">-</span><span class="n">Wall</span><span class="w"> </span><span class="n">filename</span><span class="p">.</span><span class="n">c</span>
+</span></code></pre></div>
+<p>The name of the compiler we will be using is <strong>gcc</strong>. The <code>-pedantic</code> flag tells gcc that you want it to be strict about standard C code and warn you when you do something that is not strictly standard C. The <code>-Wall</code> flag tells gcc that you want it to warn you about everything it finds that could be problematic. You should always strive to write code that produces no warnings. Warnings almost always indicate a subtle bug. </p>
+<p>In C, <strong>variables</strong> (and functions) must be <strong>declared</strong> before you use them. C also allows <strong>global variables</strong> to be declared that are not part of any function. Global variables are available throughout the execution of the program. As such, they cause difficult bugs and should be avoided in most cases. </p>
+<p>The following program declares two variables, one of type int and one of type double.</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;num1=%d, num2=%.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Note that the <code>printf</code> statement is different from the first one we saw. The <code>printf</code> function lets you specify <strong>control sequences</strong> that will be replaced by the expressions that follow. In the above example, the <code>%d</code> is replaced by the value of <code>num1</code> and the<code>%.1f</code> is replaced by the value of <code>num2</code>. The '<code>.1</code>' indicates that you want to display one decimal place. The expressions that follow the string do not have to be variables - they can be any valid expression, including a function call - though the types need to match. </p>
+<p>Data is represented by states: collections of variables and their values. Variables have several different attributes:</p>
+<ul>
+<li><strong>Name</strong>: A name associated with a memory location </li>
+<li><strong>Value</strong>: What is stored in memory </li>
+<li><strong>Type</strong>: Permitted values and operations </li>
+<li><strong>Location</strong>: Where the data is stored in memory </li>
+<li><strong>Address</strong>: Permanent label for the location of stored data </li>
+<li><strong>Reference/pointer</strong>: A variable that holds an address </li>
+<li><strong>Scope</strong> (visibility): the part of the code in which we can use the variable’s name</li>
+</ul>
+<p>At the machine level, the value stored in any memory location is just a sequence of bits. A variable <strong>declaration binds</strong> a name to a location in memory and describes the attributes of the value in the location. The <strong>scope</strong> of a declaration starts from the declaration and extends to the end of the current block. Variables and functions must be declared before they are used. </p>
+<p>C provides the following data types (along with their control sequences):</p>
+<ul>
+<li>Integer (<code>int</code>)</li>
+<li><code>123</code> - integer constant - <code>%d</code> or <code>%i</code></li>
+<li><code>0123</code> - octal constant - <code>%o</code></li>
+<li><code>0x123ABC</code> - hexadecimal constant - <code>%x</code></li>
+<li>Floating-point (<code>float</code>)</li>
+<li><code>3.14f</code> - <code>%f</code> (or <code>%e</code> for scientific notation, <code>%g</code> to let C decide)</li>
+<li>Double-precision floating-point (<code>double</code>)</li>
+<li><code>3.14</code> - <code>%f</code> (or <code>%e</code> for scientific notation, <code>%g</code> to let C decide)</li>
+<li>Character (<code>char</code>)</li>
+<li>'<code>a</code>' - <code>%c</code></li>
+<li>'<code>\n</code>'</li>
+<li>Boolean (<code>_Bool</code>)</li>
+<li><code>0</code> - false </li>
+<li><code>1</code> - true</li>
+<li><code>stdbool.h</code> defines the type "<code>bool</code>" and constants false and true.</li>
+</ul>
+<p>The C standard specifies minimum sizes for each data type, but not maximums. </p>
+<p>Note that when using control sequences that C will treat the expression as the type specified by the control sequence. </p>
+<p>C has both <strong>signed</strong> &amp; <strong>unsigned</strong> types. Signed types allow negative values, whereas unsigned types are always positive. For an unsigned int, all the bits are used to represent the number, but for an int the ﬁrst bit is often used to store the sign. You should be careful when using signed &amp; unsigned types in the same expression. For example, given the deﬁnitions below</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Is <code>a &lt; b</code> or <code>a &gt; b</code>?  All values are stored in memory as a sequence of bits. When you treat a negative signed value as an unsigned value, the sign bit represents the largest value instead of the sign so your number will be very large. So, <code>a &lt; b</code> will evaluate to false if the comparison uses unsigned values since the sign bit of variable a will be <code>1</code> (it is negative) which makes it a very large <em>unsigned</em> value. Here is a program you can run to test this yourself:</p>
+<p>``` c</p>
+<h1 id="include">include<stdio.h><a class="headerlink" href="#include" title="Permanent link">&para;</a></h1>
+<p>int main(void) {
+  int a = -1;
+  unsigned int b = 1;</p>
+<p>printf("int a = %d, unsigned int b = %u\n", a, b);
+  if (a &lt;b)
+    printf("a is less than b\n");
+  else
+    printf("b is less than a\n");
+  return 0;
+}
+```</p>
+<p>Some of the types above can be modified with one of the following specifiers:
+* long - 1234L (%li, %ld, %lo, %lx) for integers or for 1.23L( %Lf, %Le, %Lg) for floating-point
+* long long - 1234LL (%lli)
+* short - (%hd)
+* unsigned - 0xffffU (%u) - the U/%u can be combined with the length descriptors above
+* signed 
+There are several qualifiers that can be used in variable declarations in addition to the type modifiers above:
+* const - indicates that the value of the variable should not be changed. Keep in mind that while the value cannot be changed using the variable name, with some effort, the value could be changed through a pointer.
+* static - indicates that the value of the variable should be maintained. When used in a function the value is “remembered” from the previous call to the function. They are initialized only the first time the function is called. In subsequent calls to the function they keep their last value.</p>
+<p>Column width can be specified in a control sequence by inserting a column width. Decimal precision can be specified using X in the control sequence.
+printf(“%3d %10d %10.2f\n”, x, y, z);</p>
+<p>The scanf function will read a value from the user into a variable. For example, the statement
+scanf ("%d", &amp;b);
+will read an integer into the variable b from user input. Note the &amp; character - that is required. Leaving it out can cause your program to crash. We will discuss the meaning of the &amp; later.</p>
+<p>Constants in C
+C has three ways to define constant values:
+* Constant variables declared with const
+* Macros (#define) where the value is substituted by the compiler
+* Enumerated types (enum) which are user-defined types with explicitly named integer values
+You cannot change the value of macro or enumerated type constants and neither one has memory allocated to it. Constant variables have memory allocated to them, so while you cannot modify them directly it is possible for their value to be changed through indirection (pointers). 
+We will discuss macros and enumerated types in more detail later in the notes.</p>
+<p>Associativity &amp; Precedence
+Precedence and associativity affect the grouping and evaluation of operands in expressions. Precedence determines which operators are evaluated ﬁrst. Associativity determines the direction in which operators with the same precedence are evaluated (left-to-right or right-to-left). Most C references have precedence &amp; associativity charts listed in them. It is best practice to use parentheses to remove any confusion that might arise due to associativity &amp; precedence. 
+Associativity Examples: 
+The left-associative operators + and - have the same precedence, so the following expressions are all equivalent: 
+x + 3 - y + 5 
+(x + 3) - y + 5 
+((x + 3) - y) + 5 
+((x + 3) - y + 5) 
+The right-associative operators =, += and -= have the same precedence, so the following expressions are all equivalent:
+x = y += z -= 4 
+x = y += (z -= 4) 
+x = (y += (z -= 4)) 
+(x = y += (z -= 4))</p>
+<p>C &amp; C++ use lazy evaluation – expressions are only evaluated when (and if) their value is needed. So, suppose you have an if statement with a compound boolean expression as follows:
+if (expression1 &amp;&amp; expression2) 
+Then if expression1 evaluates to false then expression2 will not be evaluated because its value does not affect the result of the entire compound boolean expression. C only evaluates an expression if it has to - once it evaluates enough to know what the result is it stops.</p>
+<p>For example, suppose you have an if statement with two function calls like the following (keep in mind that we evaluate an expression with a function call by calling the function and examining its return value):
+if (willing() &amp;&amp; able())
+Here, the function has to be called in order to know if it evaluates to true or false. However, if willing() returns false, then the if statement cannot evaluate to true, regardless of the result of able(). We only need to call able() if calling willing() returns true. 
+Or, suppose we have an or condition instead of an and - then if willing() returns true, then the if statement cannot evaluate to false, regardless of the result of able(). We only need to call able() if calling willing() returns false. 
+if (willing() &amp;&amp; able())</p>
+<p>You need to be careful not to assume that every expression in a boolean expression will be evaluated. For example, in the code below y will not be incremented if x &lt; y.
+if ((x &lt; y) || (++y &gt; 10)) 
+This code is not particularly well written - the following (equivalent code) is much more clear in its intent:
+if (x &lt; y) {
+    ++y;
+    if (y &gt; 10) {
+        /* do some stuff
+    }
+}
+Yes, this is more code, but what is actually happening is more clear - and clarity is always better.        </p>
+<p>Control structures
+C provides several different control structures for controlling program flow. These include the following:
+* for loop
+* while loop
+* do .. while loop
+* if .. else 
+* switch statements
+* The conditional statement (? .. : ..)
+Any of the above structures can be nested inside each other. The C statements “break” and “continue“ allow the program flow to be interrupted. The file control.c in the example code has examples of each of the above. While C allows the programmer to write very complex expressions inside of these control structures, simple and clear code is always easier to debug and maintain.</p>
+<p>L-values &amp; r-values
+An object in C that has a memory location associated with it is called an l-value. This would include objects such as variables and arrays. (Note that we are using the term “object” here in the general sense, not in the object-oriented sense). Objects that do not have memory locations associated with them are called r-values. R-values do not have any memory associated with them. </p>
+<p>You will sometimes see l-value &amp; r-value defined in terms of where they can appear in an assignment - an l-value can usually appear on the left-hand side of an assignment (meaning that you can assign a value to it) and an r-value can only appear on the right hand side. For example:
+lvalue = rvalue;    /<em> OK </em>/
+rvalue = lvalue;    /<em> Not OK </em>/
+But keep in mind that since an l-value has memory associated with it, it can be evaluated to a value so it can appear on either side of the assignment operator (the left side or the right side):
+lvalue = another_lvalue;    /<em> Also OK </em>/
+Also, some types of l-values cannot appear on the left hand side of an assignment, such as constant variables and arrays. Most literals (int literals such as 123 or char literals such as ‘A’) are r-values, but string literals are actually l-values since they are stored in memory. 
+Arrays (Chapter 6)
+Arrays
+C arrays are homogeneous collections of data elements of the same type. Individual elements in an array are accessed by their index. So an array declared as int[4] has 4 elements: int[0], int[1], int[2], and int[3]. C does not do bounds checking, so you can access, for example, int[8]. In that case, the program will compile and will likely run, but the results will be unpredictable. Modern C allows the size of the array to be a variable.</p>
+<p>Arrays can be initialized when they are declared, but that is not required. 
+int a1[4];
+int a2[4] = {1,2,3,4};
+int a3[] = {1,2,3,4,5};
+int a4[2][3] = {{1,2,3},{4,5,6}};
+In the examples above, a1 is an array of 4 integers that is not initialized. The next array, a2, is an array of 4 integers that is initialized. If the initializer has more elements than the array the extra elements will be ignored. The third array, a3, is an array of 5 integers initialized with a list of 5 integers. Note that the size of a3 is implicitly defined based on the length of the initializer list. The final array, a4, is a 2-dimensional array. Note that it is initialized with an array of arrays. 2-dimensional arrays are references with 2 indices, as in a4[0][2]. Arrays can only be initialized in the above manner when they are declared.
+Functions (Chapter 7)
+C programs are made up of functions (also called procedures or subroutines) - named blocks of code that are explicitly called by the program. The purpose of functions are
+* Abstraction - statements form a conceptual unit
+* Reuse - statements are executed in multiple locations
+In addition to the built-in functions, the programmer can define their own functions. Just like with variables, functions must be declared before they are used. 
+Functions communicate with the rest of the program through global variables, parameters, or return values. 
+A C function is declared with:
+        return_type function_name(parameters)
+If the function is not being defined when it is declared, the declaration should end with a semicolon (called a forward declaration). The forward declaration ensures that the function is in scope even though it hasn’t been defined yet so we can use it before it is defined. The argument names are optional in a forward declaration, but the types are required. If we use a function before it is declared, C assumes the function returns an int. 
+void bar(int);         /<em> forward declaration </em>/ 
+int foo(int, float);   /<em> forward declaration </em>/ 
+. . . 
+int foo(int x, float f) {
+  ...
+  bar(x);  /<em> call function bar() </em>/
+}
+void bar(int y) {  /<em> declaration of function bar() </em>/
+ . . . 
+} 
+It is good practice to break up your program into multiple, well-named functions. Well-chosen function names make code much more readable. Functions with a return type of void do not need a return statement - control will return to the caller at the end of the function. </p>
+<p>The parameters in the declaration are called formal parameters and are local variables of the function. When the function is called, actual parameters are used. Suppose I have the code below
+int do_something(int a, int b) {
+  /<em> do some stuff </em>/
+  return 0;
+}
+Then we call the function as below:
+int x=42;
+Int y=19;
+do_something(x,y);
+In this case, a &amp; b in the function declaration/definition are the formal parameters, and the values of x &amp; y (42, &amp; 19, respectively) in the function call are the actual parameters.</p>
+<p>Example function definitions:
+void say_hello() {
+  printf("Hello!\n");
+}
+The function above simply prints “Hello” and returns. </p>
+<p>int add_ten(int x) {
+  return x + 10;
+}
+This function takes a parameter, adds 10 to it, then returns that value. Note that x is not modified. Function arguments are local variables in the function and can be modified, but the value of the actual argument passed to the function does not change. We can also declare local variables inside our function (called automatic variables). These variables are created when the function is called and destroyed when the function returns.</p>
+<p>The length of an array is not passed to a function by default, so functions that work with arrays should include an argument for the length of the array. Also, any changes made to an array passed in as an argument are made to the original array as well. We will discuss why this is later.</p>
+<p>Parameter Passing<br />
+* Call-by-value: a formal parameter is a local variable in the function. It is a copy of the actual parameter that is initialized to the value of the actual parameter. The advantage of call-by-value is that there are no side effects, but it is less ﬂexible &amp; powerful.
+* Call-by-reference:  the formal parameter is an alias to the actual parameter, so there is only one variable with two names. Changing the formal parameter immediately changes the actual parameter. The actual parameter must be a variable; it cannot be a value because a value cannot have an alias. 
+* Call-by-address (pointer):  The formal parameter is the address to the actual parameter. For the address itself, it is like call-by-value (the value of the pointer passed as a parameter doesn’t change). For the variable pointed to by the address, it is like call-by-reference (that value can be changed through the pointer inside the function). 
+Recursion
+A recursive definition is one in which the concept being defined is used in the definition. Consider a list of numbers, eg. 24, 88, 40, 37. We can define a list as follows: 
+A list is: 
+* A number 
+* A number followed by a comma followed by a list  </p>
+<p>The factorial operation can also be defined recursively as follows:</p>
+<div class="language-text highlight"><pre><span></span><code>    n!=n ×(n-1)!
+</code></pre></div>
+<p>A recursive function is a method that calls itself in order to perform a computation. The recursive function must have two parts:
+1. A base case that stops the recursion
+2. A recursive call (to itself) with a different parameter
+If there is no base case then the recursion will continue indefinitely. </p>
+<p>Keep in mind that recursion is a tool, not a goal. It is important to understand when to use recursion and when to avoid it. Iteration can often be more efficient (in computational terms). Every recursive solution has a corresponding iterative solution, though the iterative solution can be significantly more complicated. But even when recursion is not as efficient, it is often clearer and more elegant than an iterative solution. Plus, many modern compilers can efficiently handle tail recursion.</p>
+<p>It can be difficult to think of how to write recursive functions because it can be hard to trust that the recursion will work. The key is to trust that it will. Usually recursive solutions are much simpler &amp; shorter than you expect. It takes experience, so practice!</p>
+<p>The diagrams below show how a recursive factorial function uses stack memory as it completes the computation:</p>
+<p>The recursive call can happen anywhere in the method, but if no additional computation is performed after the recursive call we call that tail-recursion. The structure of a tail-recursive function is similar to a while loop. </p>
+<p>Tail-recursion can be handled efficiently by modern compilers - since the current call stack does not need to be kept, the compiler can optimize it to a while loop. For factorial, notice how in the example above we have to multiply the result of the recursive call by n each time. In contrast, notice how the tail-recursive factorial function below computes the result after it makes the final recursive call - no additional computation is needed. A tail-recursive solution is similar in structure to an iterative solution such as a while loop since once the base case is reached no further computation is performed.</p>
+<p>Implementing Recursion
+The following steps for writing recursive functions were mentioned in a comment by DonaldPShimoda on HackerNews. It is probably the best summary of writing recursive methods.
+1. Write down what your function does in a comment. (e.g., "sum all the elements of a binary tree"). 
+2. Write the function signature. 
+3. Write the base case. (This is usually straightforward.) 
+4. Stop thinking. 
+5. Assume your function already works and write the recursive case. 
+6. Profit!
+Fibonacci numbers
+The Fibonacci numbers are a series of numbers where each number in the sequence is the sum of the previous two numbers. Here are 3 implementations of a function that will return the nth Fibonacci number:</p>
+<p>Iterative - using a while loop:
+int fibwhile(int n) {
+  int f=1, f1 = 1, f2 = 1;
+  int ii=n;
+  while (ii &gt; 2) {
+    f = f1 + f2;
+    f2 = f1;
+    f1 = f;
+    ii--;
+  }
+  return f;
+}</p>
+<p>Recursive:
+int fib(int n) {
+   counter[n]++;
+   if (n &lt;=0) {
+      return 0;
+   }
+   else if (n == 1) {
+      return 1;
+   }
+   else {
+      return (fib(n-1) + (fib(n-2)));
+   }
+}</p>
+<p>Tail-Recursive:
+int fibtail(int n) {
+  return fibtail_helper(n, 0, 1);
+}
+int fibtail_helper(int n, int f2, int f1)   {
+  counter[n]++;
+  if (n &lt;= 1) {
+    return f1;
+  }
+  else {
+    return(fibtail_helper(n-1, f1, f1+f2));
+  }
+}</p>
+<p>Towers of Hanoi
+In the Towers of Hanoi game, the goal is to move all disks from one peg to another with the following constraints:
+1. You can only move one peg at a time
+2. A larger disk cannot be placed on a smaller disk
+3. All disks must be on some peg (except when being moved)</p>
+<p>It turns out that there is a very straightforward recursive solution to the Towers of Hanoi game. Suppose we want to move all the disks from a source peg to a destination peg. Then the recursive algorithm is as follows:
+* Base Case:  Only one disk
+   * Move from source to destination
+* Recursive Case:
+   * Move n-1 disks from source to intermediate
+   * Move one disk from source to destination
+   * Move n-1 disks from intermediate to destination</p>
+<p>Unfortunately, the number of moves grows exponentially as the number of disks increases. Our recursive solution is simple &amp; elegant, but is not optimally efficient. Of course, while the iterative solution is more efficient, it is also much more complex to implement. See - trade-offs.</p>
+<p>Merge Sort
+Another recursive algorithm is merge sort. Merge sort sorts an array by splitting it into two halves, recursively sorting the two halves, then combining the two sorted halves. The base case is an array of length one which is trivially sorted. 
+The following is an example of merge sort. We start by breaking the array up into individual elements, then we recursively combine the parts, sorting as we go.</p>
+<p>Now we merge the arrays back, ensuring that each combined array is sorted.</p>
+<p>Structures (Chapter 8)
+A C struct allows you to combine multiple fields of data in a single type.
+struct date {
+  int month;
+  int day;
+  int year;
+};
+Defining a struct does not allocate any memory. In order to do that, we need to declare a variable of type date as follows:
+struct date birthday;
+struct date first_day= {5, 29, 2019};
+struct date new_years_day= {.month=1, .day=1};
+To access the individual structure members, use .
+birthday.month = 6;
+birthday.day = 9;
+birthday.year = 1998;      <br />
+You can set an existing structure variable using a compound literal:
+final_exam = (struct date) { .month=7, .day=17, .year=2019;        </p>
+<p>You can create an array of structures. Structures can contain array members and struct members.</p>
+<p>Structure Alignment 
+One thing you should keep in mind when creating structs is how your compiler allocates memory. It is common for the members of a struct to be allocated in order in memory. Since most architectures do not allow variables to cross word boundaries, a lot of memory  can be wasted. Here is an example of the memory allocation of two different declarations of a struct - both with 3 integers and 4 characters. </p>
+<p>The size of tightstruct will be 16 bytes (assuming 32-bit words).</p>
+<p>The size of loosestruct will be 28 bytes (assuming 32-bit words).</p>
+<p>Linked Lists
+The diagram below demonstrates how the basiclist example works.</p>
+<p>Characters &amp; Strings (Chapter 9)
+Character literals are single-quoted: 'a', '\n', '\t'. The last two are also single characters referred to as escape sequences. Using the backslash character allows us to represent characters like newline and tab. Keep in mind that the char data type is an integer - the variable holds the ASCII value of the character. So we can do things like:
+char a = 'a';
+char d = c + 3;
+int order = d - 'a';
+We can use ((c &gt;= 'A')  &amp;&amp; (c &lt;= 'Z')) to check that a character is an uppercase letter.</p>
+<p>String literals are double quoted: “This is a string”. 
+Note that most word processors automatically convert both single and double quotes to smart quotes. Copy-and-pasting code from a word processor may generate syntax errors due to the different quote characters used.
+C stores strings in char arrays with a null character at the end. There is an implicit null character (‘\0’) at the end of each string literal. </p>
+<p>We can initialize a string array with an array initializer or a string literal:
+char carr1[] = {'H','e','l','l','o'};
+char carr2[] = "world";
+Following the declarations above, carr1 is a character array of length 5. But carr2 is a character string of length 6 because the string literal adds a null character at the end. We can treat carr2 as a string, but not carr1. To use carr1 as a string we would need to add the null as follows:
+char carr1[] = {'H','e','l','l','o','\0'};
+This is a critical distinction in C. Without the null character there is no way to determine where the string ends. If we print the string using printf’s %s control sequence or use the string with any of C’s string functions we will likely get unexpected results. </p>
+<p>The  character can be used to extend a string literal over multiple lines of code without adding a newline inside the string. Consecutive string literals in the source code are automatically concatenated. 
+Pointers (Chapter 10)
+One of the most powerful features of C is the pointer data type. Put simply, a pointer is a data type that has memory addresses as its values. Pointers allow the programmer to reference values through indirect addressing. Pointers have many uses in C, including
+* Dynamically allocating memory
+* Efficiently working with large, complex data structures
+* Changing the value of data passed to a function
+Keep in mind that pointers are variables. So they use memory just like any other variable. The difference is that they store a memory location (of another variable) as their data.</p>
+<p>The following code defines a pointer and uses it to change a variable’s value.
+int num = 6;  /<em> integer </em>/
+int * ptr;    /<em> pointer to an integer (or integer pointer) </em>/
+ptr = &num;   /<em> assign the value of the address of num to ptr. 
+                 Now ptr is a pointer to num </em>/
+<em>ptr = 20;    /</em> Assign the value 20 to the variable pointed to 
+                 by ptr */
+The &amp; is the C reference operator. It returns the address of a variable. It is an r-value (it can appear only on the right side of an assignment operator - you cannot assign a value to it and the address of a variable cannot be changed). 
+The * is the C indirection (dereference) operator. It returns an alias of the variable pointed to by a pointer. It is an l-value (it can appear on either side of the assignment operator - you can assign a value to it). No additional memory overhead is incurred when using a pointer as an alias. One advantage of using an alias is you can write code that can work on different variables at different times depending on what the alias is referring to.</p>
+<p>Note that while this example shows x and ptr being stored together in memory, the order and spacing between variables is compiler &amp; operating system dependent. The only memory guaranteed to be contiguous by the C standard is the individual members of an array.</p>
+<p>The reference operator and the dereference operator are complementary:
+* converts an address to a variable name 
+&amp; converts a variable name to an address</p>
+<p>Note that pointers have a type. A char pointer and an integer pointer pointing to the same location will yield different results. We will use integer pointers to illustrate how pointers work, but they are more often used with structs and arrays. When accessing the members of a struct through a pointer we need to use the -&gt; operator in place of the . operator. </p>
+<p>When used with a pointer, the const modifier can be used to indicate to the compiler that the data being the pointer refers to will not be changed through the const pointer. We can also use the const modifier to indicate that the pointer itself will not change, preventing us from changing what it is pointing to.</p>
+<p>We can use pointer types as function parameters. This allows us to modify the actual parameter inside the function. The address of the actual parameter should be passed to the function in this case. We can also return a pointer from a function, but be careful not to return a pointer to a local variable!</p>
+<p>We can perform some arithmetic with pointers (addition and subtraction). However, when we add 1 to a pointer we do not add one to the address it holds. Instead, we add the size of the type the pointer points to. So typically adding 1 to a char pointer will add one to its address, but adding 1 to an int pointer will add 4, 8 or even more to the address the pointer holds, depending on the size of the int type.</p>
+<p>We can also use pointers to access arrays. We can either set the value of the pointer to the array name or the address of the first element of the array:
+int arr[] = {1, 2, 3, 4, 5};
+int * ptr;
+ptr = arr;   /<em> equivalent to: ptr = &amp;arr[0] </em>/
+We can then use pointer arithmetic to access the elements of array arr through ptr. The increment and decrement operators (++ and --) can be used to move back and forth through an array using a pointer. </p>
+<p>Finally, it is also possible to have a pointer to a function. This is helpful in cases where you want to pass a function as a parameter to another function. This is used extensively in implementing object-oriented languages in C, or even for writing object-oriented programs using C.</p>
+<p>Dynamic Memory Allocation (from Chapter 16)
+Many times the programmer does not know how much memory will be required. In this case, C lets the programmer allocate memory using one of the two functions below:
+* calloc(number_ofunits, unit_size) returns a void pointer to a region of memory large enough to hold number_of_units elements of size unit_size. The entire region is filled with 0s.
+* malloc(number_of_bytes) returns a void pointer to a region of memory of size number_of_bytes. It does not initialize the memory. 
+The sizeof operator returns the number of bytes allocated to an item. Since the size of different types varies on different machines, the sizeof operator can be used to ensure enough memory is allocated.
+ptr1 = calloc(20, sizeof(char));        /<em> Allocate 20 integers and 
+                                      initialize to 0 </em>/
+ptr2 = malloc(10);                    /<em> Allocate 10 bytes </em>/
+nums = malloc(10 * sizeof(int));        /<em> Allocate 10 integers </em>/</p>
+<p>When using sizeof to determine the size of an array, you need to divide the size of the array by the type the array holds.
+item_count = sizeof(item_list) / sizeof(int);</p>
+<p>When you are finished working with dynamically allocated memory you should always free them memory using the free function.
+free(ptr1);</p>
+<p>When working with pointers it is imperative that you ensure that any pointer you try to dereference is pointing to allocated memory. Look at the following program: </p>
+<h1 id="include_1">include<stdio.h><a class="headerlink" href="#include_1" title="Permanent link">&para;</a></h1>
+<h1 id="include_2">include<stdlib.h><a class="headerlink" href="#include_2" title="Permanent link">&para;</a></h1>
+<p>int main(void) {
+   int x = 10;
+   int <em>ptr1 = &x;
+   int </em>ptr2 = malloc(sizeof(int));
+   int <em>ptr3; 
+   printf("x=%d &amp;x=%p  ptr1=%p  &amp;ptr1=%p </em>ptr1=%d\n",
+           x, &amp;x, ptr1, &amp;ptr1, <em>ptr1);
+   printf("x=%d &amp;x=%p  ptr2=%p  &amp;ptr2=%p </em>ptr2=%d\n",
+           x, &amp;x, ptr2, &amp;ptr2, <em>ptr2);
+   /</em>printf("x=%d &amp;x=%p  ptr3=%p  &amp;ptr3=%p <em>ptr3=%d\n",
+             x, &amp;x, ptr3, &amp;ptr3, </em>ptr3); */
+   free(ptr2);
+   return 0;
+ } 
+With ptr1 we set it to the address of variable x, so it points to x. We allocate new memory for ptr2 using the malloc function (which allocates the given number of bytes, in this case the number of bytes the int type uses). We don’t initialize ptr3. We don’t have any problem using ptr1 or ptr2 since they both point to allocated memory - ptr1 memory that was allocated for variable x, ptr2 for memory allocated just for that variable which is why we must free it when we are done. We had to comment out the output line for ptr3 since we did not initialize it. Therefore, we can’t know what it is pointing to. Usually it is not going to point to anything valid, so when we try to dereference it we will get unexpected behavior. In most cases the program will crash as your operating system does not like to give your programs access to random locations in memory! </p>
+<p>Pointer Example 1:</p>
+<p>In this example, when we reach the code the value stored in x is 500 and the value stored in y is 8000. We aren't concerned with where those values came from, just that the variables have that value now.</p>
+<p>y = &x;
+In this line, &amp;x returns the address where x is stored (which we are told is 2000 in the example). So y will now hold the value 2000. The value held in x does not change. </p>
+<p><em>y = 100;
+Here we dereference y, which means </em>y is an alias of the variable y is pointing to. The value held in y is 2000 which is the address of x. Therefore, *y is an alias of x so the statement assigned the value 100 to x. Now x holds the value 100. </p>
+<p>y = y + 10;
+This line is an example of pointer arithmetic. When we add or subtract a value from a pointer, we change the value stored by the pointer. However, we don’t just add or subtract the value. The actual value we add or subtract is based on the size of the type of the pointer. Here y is an int pointer and ints are 4 bytes. So when we have y + 10 we are adding 10 * 4 = 40 to y since each byte is 4. This is convenient because it allows us to cycle through an array quickly using a pointer.</p>
+<p>Pointer Example 2:</p>
+<p>Pointer Example 3:</p>
+<p>In this example, we see a pointer to a pointer (double pointer) - <strong>k. A double pointer holds the address of a pointer as its value, so *k is an alias for j. </strong>k is an alias for i. You can have multiple levels of indirection, but in practice anything more than a double pointer is rare.</p>
+<p>Why pointers? 
+In a typical program you should not use pointers unless you have a good reason. Some of the reasons to use pointers are: 
+* Pointers allow you to manipulate memory much more quickly than any other language construct 
+* If your program needs to dynamically allocate array you need to use pointers 
+* Passing a pointer allows a large data structure to be used in a function without having to be copied - you can just reference it using the pointer But to reiterate, you should not use pointers unless you have a good reason. </p>
+<p>Pointers vs Arrays
+It may seem like pointers and arrays are the same thing. After all, pointer names can be used with array indexing, so
+p is equivalent to &amp;p[0]
+<em>p is equivalent to p[0]
+</em>(p+3) is equivalent to p[3]
+Conversely, array names can be used syntactically as pointer names. So
+arr is equivalent to &amp;arr[0]
+*(arr+3) is equivalent to arr[3]
+However, while we can use the name of a pointer and an array interchangeably, at least syntactically, pointers and arrays are not equivalent. A pointer is a variable that holds an address - only enough memory to hold an address is allocated. An array variable allocates all the memory necessary to hold the array. In addition, a pointer is an rvalue (you can assign a new value to it), while an array is an lvalue (you cannot assign a new value to it).</p>
+<p>Pointer Type vs Unsigned Int 
+* Both typically have the same data range (32 or 64 bits) 
+* Both support + and - operators 
+* But the operations have different meanings! 
+* Pointer type does not support * (multiply) and / 
+* Unsigned int does not support * (dereference)  </p>
+<p>Bit Operations (Chapter 11)
+Systems programmers often need to work with memory at the individual bit level. A byte consists of 8 bits. Each bit can have the value 1 or 0. We call the rightmost bit of a byte the least significant or low-order bit, and the leftmost bit is called the most significant or high-order bit. </p>
+<p>Representation of numbers in binary
+Positive integers are typically represented by converting them to binary. With negative numbers, most computers use two's complement notation where the leftmost bit is the sign bit. 
+To convert a negative number from decimal to binary we add 1 to the value, convert to binary,  then change all the 1’s to 0’s and the 0's to 1’s. 
+To convert a negative binary number to decimal, we complement the bits, convert to decimal, then subtract 1.
+Integers are typically represented by four or eight contiguous bytes (32 bits). </p>
+<p>Bit operators:
+        &amp; - bitwise AND
+        | - bitwise OR
+        ^ - bitwise exclusive OR
+        &lt;&lt; - left shift
+        &gt;&gt; - right shift
+There is also a unary ones complement operator ~. These operators are valid on any integer type. 
+The C Preprocessor (Chapter 12)
+Before a C program is compiled, it is first analyzed by the preprocessor. Preprocessor statements are prefixed by the pound sign - #. The preprocessor, when used properly, allows you to write programs that are easier to develop, modify, and port to different systems. Preprocessor statements have a slightly different syntax than regular C statements.</p>
+<p>The -E gcc flag will generate the C file after the preprocessor runs. This is useful for seeing how preprocessor statements work and for debugging them.</p>
+<p>The #define statement assigns a symbolic name to a constant (a symbolic constant). They are sometimes called macros. While they can appear anywhere in the code, by convention they appear near the top of the source file. The convention is to use all caps for preprocessor constants. Note that, unlike a const variable, no memory is allocated by a #define. You cannot assign a value to a preprocessor constant. So the following statements</p>
+<h1 id="define-num-10">define NUM 10<a class="headerlink" href="#define-num-10" title="Permanent link">&para;</a></h1>
+<h1 id="define-name-clint-barton">define NAME "Clint Barton"<a class="headerlink" href="#define-name-clint-barton" title="Permanent link">&para;</a></h1>
+<p>define two symbolic constants. Note that the statements are not terminated by a semicolon. In code, the statement
+printf("Name=%s, Num=%d\n", NAME, NUM);
+would be converted by the preprocessor to the statement
+printf("Name=%s, Num=%d\n", "Clint Barton", 10);
+before the compilation begins. Many compilers define NULL and pi (M_PI in math.h). One common use of preprocessor constants is to define array sizes. This allows the size to be changed with only a single line of code. </p>
+<p>The preprocessor performs a literal replacement of the name with the value in the source. So you can define constants to represent operations, though if you choose to do so you should make sure the name makes the operation clear. </p>
+<p>You can also define macros that take arguments, creating inline functions. The advantage of inline functions is that there is no function-call overhead since the inline function is converted to code before compilation. In this case, the arguments will be replaced in the macro when the code is replaced by the preprocessor. 
+So code like below: </p>
+<h1 id="define-maxval-100">define MAXVAL 100<a class="headerlink" href="#define-maxval-100" title="Permanent link">&para;</a></h1>
+<h1 id="define-quadfnab-asqrtb-bb-2aa">define QUADFN(a,b) a<em>sqrt(b) + b</em>b - 2<em>a</em>a<a class="headerlink" href="#define-quadfnab-asqrtb-bb-2aa" title="Permanent link">&para;</a></h1>
+<p>x = MAXVAL + QUADFN(5,16); 
+becomes 
+x = 100 + 5<em>sqrt(16) + 16</em>16 - 2<em>5</em>5; </p>
+<p>Again, great care should be taken not to write macros that introduce subtle bugs. Suppose you have the following inline function:</p>
+<h1 id="define-absa-a0-a-a">define abs(a)  ((a&lt;0) ? -(a) : (a))<a class="headerlink" href="#define-absa-a0-a-a" title="Permanent link">&para;</a></h1>
+<p>Then
+k=abs(3);
+is equivalent to:
+k=(3 &lt; 0) ? –(3) : (3);
+But
+k=abs(++j);
+is equivalent to:
+k=((++j &lt; 0) ? –(++j) : (++j);
+You will note that since ++j performs an assignment, the variable j is modified twice in this case. </p>
+<p>The number of arguments to a macro can be variable. The arguments can be accessed using the <strong>VA_ARGS</strong> identifier. </p>
+<p>The #include statement allows us to include statements from another file into our C program. C include files are also called header files and typically end with the .h extension. Header files should be included before any code that uses statements defined in them. The #include statement is replaced by the contents of the header file in the source code. You have seen the following statement </p>
+<h1 id="include_3">include<stdio.h><a class="headerlink" href="#include_3" title="Permanent link">&para;</a></h1>
+<p>which includes I/O routines. Other helpful include files provided by C are 
+stddef.h
+limits.h
+float.h
+string.h
+You can also write your own header file. The &lt;&gt; characters tell the preprocessor to look for the file in the system include file directory. Using “” tells the preprocessor to look in the current directory. Note that you should never include .c files!</p>
+<p>Conditional compilation allows code to be compiled only when certain criteria has been met. For example, </p>
+<h1 id="ifdef-debug">ifdef DEBUG<a class="headerlink" href="#ifdef-debug" title="Permanent link">&para;</a></h1>
+<p>printf(“DEBUG: something happened\n”);</p>
+<h1 id="endif">endif<a class="headerlink" href="#endif" title="Permanent link">&para;</a></h1>
+<p>The #endif is important - always make sure you end an #ifndef statement with #endif. In this code, the printf will only be compiled if the DEBUG constant has been defined. We can define preprocessor constants at compile time, so the same source file can generate different executables depending on those constants.</p>
+<p>You can also #undef a constant if necessary.</p>
+<p>There is also an if … else preprocessor construct:</p>
+<h1 id="if-os-1-mac-os">if    OS == 1  /<em> Mac OS </em>/<a class="headerlink" href="#if-os-1-mac-os" title="Permanent link">&para;</a></h1>
+<p>...</p>
+<h1 id="elif-os-2-windows">elif  OS == 2  /<em> Windows </em>/<a class="headerlink" href="#elif-os-2-windows" title="Permanent link">&para;</a></h1>
+<p>...</p>
+<h1 id="elif-os-3-linux">elif  OS == 3  /<em> Linux  </em>/<a class="headerlink" href="#elif-os-3-linux" title="Permanent link">&para;</a></h1>
+<p>...</p>
+<h1 id="else">else<a class="headerlink" href="#else" title="Permanent link">&para;</a></h1>
+<p>...</p>
+<h1 id="endif_1">endif<a class="headerlink" href="#endif_1" title="Permanent link">&para;</a></h1>
+<p>Include files can be nested. While this can simplify your code, it can lead to problems if a file is included multiple times in the same file. To prevent this, we can use conditional compilation to create a guard to prevent multiple inclusion  In the example below, code is included only if it has not been previously included:</p>
+<h1 id="ifndef-_myheader_h">ifndef _MYHEADER_H<a class="headerlink" href="#ifndef-_myheader_h" title="Permanent link">&para;</a></h1>
+<h1 id="define-_myheader_h">define _MYHEADER_H<a class="headerlink" href="#define-_myheader_h" title="Permanent link">&para;</a></h1>
+<p>/<em> code </em>/</p>
+<h1 id="endif_2">endif<a class="headerlink" href="#endif_2" title="Permanent link">&para;</a></h1>
+<p>Working with Types (Chapter 13)
+Enumerated Data Types
+There are times where we want to create a new data type that has as its values names that represent some concept. Enumerated data types allow us to specify the valid values for a type. For example, we can define a “days of the week” type as follows:
+enum week_day { sunday, monday, tuesday, wednesday, 
+                  thursday, friday, saturday};
+This creates a new enumerated data type called enum week_day. We can then define and use a variable of this type as follows:
+enum week_day workday = monday;
+/<em> ... </em>/
+if ( workday == friday ) {
+  workday = monday;
+}
+Enumerated data types are integer types. The specified names are assigned integer values starting with 0. So in our week_day_t enum sunday=0, thursday=4 and saturday=6. We can assign our own values when we create the enum.
+enum direction { south = 180, north = 0, east = 90, west = 270 };</p>
+<p>The scope rules for enumerated data types are the same as with structs or variable declarations. Keep in mind that if you print an enumerated data type the result will be an integer, not the name. If you want to use the name as input or output you will need to write your own functions to handle that conversion. In general, enumerated data types should not be treated as integers and their underlying values should not be assumed. For example, in our direction type above, if we want to change the direction a variable holds we should use the names, not the values. Finally, the names in the enumerated data type are treated as constants in the program, so those names should not be reused anywhere the eum is in scope.
+Defining Types
+When we defined structs and enums above we needed to specify in the variable declaration that we were using a struct or enum. For example, in the previous section we declared a direction variable as
+enum direction current_direction = north;
+not
+direction current_direction = north;
+C lets us define a new type name using the typedef statement. The format is
+typedef double real;
+The typedef statement adds readability to the code. The compiler will treat the variable “real” as a double. We can use typedef to simplify how we use our direction enumeration above:
+typedef enum { south = 180, north = 0, 
+               east = 90, west = 270 } direction_t;
+Then we can define a direction variable as follows:
+direction_t current_direction = north;</p>
+<p>We can define array and struct types as follows:
+typedef int grades_t[10];
+typedef struct { float x; float y; } point_t;</p>
+<p>grades_t cs_grades;  /<em> Array of 10 ints </em>/
+point_t current_loc; /<em> Point </em>/</p>
+<p>Clear naming of user-defined types is critical, as the typedef hides the details of the type. The name should indicate what the underlying type is For example
+typedef char *string_pointer_t;
+typedef struct {int id, char * name} student_record_t;
+are a good names, but
+typedef int my_type_t[23];
+typedef struct {int id, char * name} thing_t;
+are not.
+Type Conversion
+The C compiler has a series of steps it takes when determining how to convert types from one to the other. It is best to write code that avoids implicit type conversion as much as possible, but you should familiarize yourself with the rules just in case.
+Working with Large Programs (Chapter 14)
+Most C programs are too large to be manageable in a single file. In industry, programs are usually developed by more than one programmer. C provides a mechanism to facilitate breaking code across multiple files. 
+C supports modular programming where programs can be combined into modules - functions or related functions logically grouped together in individual files. The benefits of modules are data abstraction, code sharing (libraries) and separate compilation. C is flexible about how you create modules. 
+Best practice is to create a specification in a header (.h) file with any forward declarations and symbolic constants provided by the module (similar to the public members of a Java object) . The implementation is provided in a C source file with the definitions. The C file can also contain functions that are “private”, that is they are not intended to be used outside the module. </p>
+<p>When using a module, the module code must be linked with the source code. To create an executable called “myprogram” based on myprogram.c which uses the modules mymath and mystuff you would compile with the following gcc command (carefully note the extensions used!):
+gcc myprogram.c mymath.c mystuff.c -o myprogram
+myprogram.c should contain</p>
+<h1 id="include_4">include<mystuff.h><a class="headerlink" href="#include_4" title="Permanent link">&para;</a></h1>
+<p>An alternate way to compile your program would be to first generate object files of each module as follows:
+gcc -c mymath.c
+gcc -c mystuff.c
+Then you can build your code by linking the object files:
+gcc myprogram.c mymath.o mystuff.o
+Communication Between Modules
+We have already discussed how you can provide functions from a module by including their forward declarations in a header file. Functions in separate files can also access (and change) the same variable by using external variables. To access an external variable, use the extern keyword in the variable declaration:
+extern int counter;
+Keep in mind the declaration above is not a definition. The variable must be defined somewhere either by omitting the extern keyword in the declaration or by initializing the variable as follows:
+extern int counter = 0;
+To prevent a global variable from being declared as external implicitly (which is the default) you can declare it as static:
+static int local_counter = 0;
+Functions can also be defined as static to prevent them from being called outside the module. It is a good idea to always use static to declare global variables that should not be available outside the module where they are defined. 
+Utilities for working with large programs
+There are several utilities that allow you to simplify the process of building multi-file programs. The make utility allows you to specify how to build a particular program and what other files (dependencies) need to be included (discussed below). It is also a good idea to use some sort of source code management to manage your source code such as cvs, svn, or git. Finally, Unix provides multiple utilities such as grep and sed which allow you to work with source code (as well as any text file). 
+Makefiles
+The make utility is designed to automatically determine how a program should be compiled then to execute the correct commands to perform that compilation. It also intelligently determines what parts of the program need to be compiled in cases where there are multiple files. The input to make is a makefile which contains the directions for building the program. </p>
+<p>The make utility is executed by typing make in the directory that contains the makefile. The makefile contains a list of rules that tell the make utility what to do. There are two parts to each rule:
+1. The dependency line (which must start in column 1)
+2. A list of actions (which must be indented with a tab)
+The sample makefile below has 2 rules - one to build a program called “myprogram” and another to build an object file called goodstuff.o. Note that goodstuff.o is a dependency of myprogram, so it will be automatically built by make if necessary when you build myprogram.
+myprogram: myprogram.c .o goodstuff.o
+    gcc --std=c11 -Wall -pedantic myprogram.c .o goodstuff.o
+goodstuff.o: 
+    gcc --std=c11 -Wall -pedantic -c goodstuff.c
+In order to build myprogram, you would execute the following command:
+make myprogram
+You could also generated the goodstuff.o object file by entering the command
+make goodstuff.o</p>
+<p>If you add a rule for “all” to your make file, then simply typing
+make
+at the command line will build everything needed to generate the program executable.</p>
+<p>You can also use variables to avoid having to retype the same things over and over. That is often used for the compiler command and compiler flags. You can also have a rule that executes shell commands, useful to create a rule to clean up after the compiler or to force everything to rebuild. </p>
+<p>Below is a sample makefile for a project that includes 4 C files - poly.c, term.c, polynomial.c, and basiclist.c. The “all” rule builds the whole project, then there is a separate rule for each of the modules term.c, polynomial.c, and basiclist.c. The rule “clean” deletes all object files, backup files, and .exe files (in cases where this is compiled on Windows). Note that there are two variables defined at the top - one for the name of the compile command and another for the flags for the compiler. 
+CC=gcc
+CFLAGS=-Wall -pedantic --std=c11
+all: poly.c term.o polynomial.o basiclist.o
+        $(CC) $(CFLAGS) poly.c term.o polynomial.o basiclist.o -o poly
+term.o: term.c
+        $(CC) $(CFLAGS) -c term.c
+polynomial.o: polynomial.c
+        $(CC) $(CFLAGS) -c polynomial.c
+basiclist.o: basiclist.c
+        $(CC) $(CFLAGS) -c basiclist.c
+clean:
+        rm -f <em>.o </em>~ poly.exe
+To build the whole project
+make
+To build just one module (in this case term.o)
+make term.o
+To clean the directory
+make clean
+C I/O (Chapter 15)
+The C language itself does not provide input / output (I/O) operations, but the C library contains several I/O functions. The stdio.h header file includes function declarations and macro definitions for the standard library I/O routines.</p>
+<p>Character I/O is performed using the getchar() and putchar() functions. These functions work one character at a time. The  putchar takes a single character as an argument and displays that character. </p>
+<p>Formatted I/O is performed using the printf() and scanf() functions. Both of these functions take a string pointer to a format string as their first argument. The format string specifies how the remaining arguments to the function are to be interpreted. Scanf ignores any leading whitespace if a non-character type is read. Scanf returns the number of variables it read &amp; assigned. We have already covered many of the control sequences printf &amp; scanf use. There are several other flags and modifiers available such as justification, field size, and additional types. Any good C reference will provide a listing of these. The code examples from class will cover all the ones you will be expected to use in your code for this class. </p>
+<p>Note that scanf will read a string (%s), but only up to the first whitespace. To read an entire string to the end of the line (necessary for getting input) use fgets.
+fgets(movie-&gt;title, TITLE_LEN, stdin);
+The first parameter is a pointer to your string (in this case I have a pointer to a structure of type movie_t and I'm passing a character array member of movie_t called "title"), the # of characters to read, and the filename. stdin is a special file that represents user input.</p>
+<p>Input &amp; Output Operations with Files
+One way to write output to a file is to use your operating system’s redirect operator. For example, the line below writes the output of myprogram.exe to a file called “output.txt”:
+        ./myprogram.exe &gt; output.txt
+Note that this redirects all output to the file, so if you have any prompts for input those will not be displayed to the screen. There is a similar technique that we can use to provide input to our program:
+        ./myprogram.exe &lt; input.txt
+Note that the direction of the operator is reversed. In this case, the file will be treated as the input of our program. </p>
+<p>The above operations were done using the operating system, not the C language. C provides functions to write directly to and read from a file from inside our program. Note that when dealing with files we need to be concerned about the end of the file. If we read from a file past the end of the file we will get an error. Most C library file functions use a special flag (EOF) to indicate when the end of the file is reached. You should always check that flag in your programs when you use file I/O.</p>
+<p>Before you can perform I/O on a file the file must be opened. The fopen function opens a file and returns a FILE pointer to the file. You must specify the mode you want to use the file for - read (“r”), write(“w”), or append (“a”). Append and write mode will create the file if it does not already exist. You can read from anywhere in a file, but you can only write to the end. Adding a + character to the mode will allow both reading &amp; writing. Adding a b to the mode will open the file in binary mode. If the file cannot be opened the function returns NULL. You should always check that the file was opened successfully before proceeding.
+FILE <em>infile, </em>outfile, <em>binaryfile;
+if ( (infile = fopen(“input.txt”, “r”)) ==  NULL ) {
+    /</em> Input file was not opened <em>/ 
+    exit(EXIT_FAILURE);
+}
+if ( (outfile = fopen(“output.txt”, “w+”)) ==  NULL ) {
+    /</em> Output file was not opened <em>/
+    exit(EXIT_FAILURE);
+}
+if ( (binaryfile = fopen(“myfile”, “wb+”)) ==  NULL ) {
+    /</em> My file was not opened */
+    exit(EXIT_FAILURE);
+}
+The code above opens input.txt for reading and myfile for both reading &amp; writing in binary mode. The exit function is used to force the program to terminate. The EXIT_FAILURE value is defined in stdlib.h and indicates to the OS that the program failed. EXIT_SUCCESS is used to indicate a successful termination. You can also specify your own integer value. Using the exit() function in main() is the same as return();
+When you are done with a file you should always close it. 
+fclose(infile);
+fclose(outfile);
+fclose(binaryfile);</p>
+<p>Once we have opened a file, C provides several methods for writing to the file. Also, the standard streams (stdin, stdout, stderr) can also be used in place of a file. </p>
+<p>You can use getc &amp; putc to write a single character to a file:
+c = getc(infile);
+putc('\n', outfile);
+The return type of getc is an int and returns EOF when you reach the end of the file. There are also file versions of the I/O functions you have already seen. The functions fprintf, sprintf, fgets, and fputs work just like you would expect except that they take an additional parameter for a file pointer. .</p>
+<p>The function rename(filename, newname) renames a file and remove(filename) deletes a file. A nonzero value is returned when these functions fail.
+Advanced C Features (Chapter 16)
+C provides a goto statement. In general, you should not use goto for flow control. However, there are places where goto statements can make the code more readable or more efficient. 
+if (myptr == NULL) {
+  goto handle_error;
+}
+/<em> … </em>/
+handle_error : printf("There was a problem!");</p>
+<p>Using Semicolons &amp; Commas
+A semicolon can be placed anywhere a legal statement can appear. This causes nothing to be done and is called a null statement. This is most often seen in a loop. For example, the following code counts  the number of characters that appear in the file:
+fileptr = fopen("input.txt", "r");
+int count = 0;
+for ( ; getc(fileptr) != EOF; count++)
+    ;
+printf("The number of characters in the file is %d\n", count);
+fclose(fileptr);
+All the work is done in the for statement - we get a file and increment the count. Since there is nothing to do in the loop, we use a null-statement. The reason we declare count outside the for statement is so that it is in scope when we get to the printf.</p>
+<p>Commas are also operators in C. They have the lowest precedence of any operator. We could write a while loop to add up an array using the comma operator:
+int jj = 0, sum = 0;
+while ( jj &lt; 10 ) {
+    sum += arr[jj], ++jj;
+}</p>
+<p>Unions
+A C union is used when it is necessary to store different data types in the same memory location. 
+union my_union {
+  int x;
+  char s[20];
+};
+Unions are similar to structs, but, unlike a struct, only enough memory is allocated for a union variable to hold the largest member. So in the example above, a union my_union variable would allocate enough memory for 20 characters. Then the variable could be used to hold either an int or a char array, but not both at the same time. </p>
+<p>Type Qualifiers
+C provides several type qualifiers to give the compiler more information about the way you intend to use the variable. What actually happens with these type qualifiers is compiler &amp; machine dependent. 
+* register requests the compiler to be stored in one of the one of the machines registers to speed up execution. 
+* volatile tells the compiler that the variable will change its value to prevent optimizations that remove assignments that the compiler views as redundant. 
+* restrict is used in pointer declarations to indicate that it is the only pointer to the memory it is pointing to. </p>
+<p>Command-line Arguments
+We have seen how to get information into your program from user input and from files. Another way is via command-line arguments. When you execute your program, the operating system passes two parameters to main. The first, argc, is an integer that specifies the number of command-line arguments (including the executable name). The second, argv, is an array of character pointers to the command line parameters, where argv[0] is the name of the command and argv[1] through argv[n] are the parameters. Keep in mind that the arguments are stored as strings, so if you expect numeric input they will need to be converted to the correct type. The program below prints each of the command line arguments:</p>
+<h1 id="include_5">include<stdio.h><a class="headerlink" href="#include_5" title="Permanent link">&para;</a></h1>
+<p>int main(int argc, char * argv[]) {</p>
+<p>int ii;
+  /<em> Print the number of arguments passed </em>/
+  printf("argc = %d\n", argc);
+  /<em> Print each individual argument. arg[0] is the name of the command </em>/
+  for(ii=0;ii&lt;argc;ii++) {
+    printf("argv[%d] = %s\n", ii, argv[ii]);
+  } 
+  return 0;
+}
+Debugging (Chapter 17)
+Debugging with the preprocessor
+One way to get debugging output from a C program is to use preprocessor directives to enable debugging code to be enabled or disabled as desired. In the example below, we use the symbol DEBUG to determine whether to compile the debug statements. </p>
+<h1 id="ifdef-debug_1">ifdef DEBUG<a class="headerlink" href="#ifdef-debug_1" title="Permanent link">&para;</a></h1>
+<p>fprintf(stderr, "Debug: y=%d\n", y);</p>
+<h1 id="endif_3">endif<a class="headerlink" href="#endif_3" title="Permanent link">&para;</a></h1>
+<p>If the DEBUG symbol is defined, either with a #define or by using the -D flag to gcc, then the debug statement will be printed. Otherwise, nothing will print. This allows the programmer to decide at compile time whether or not to print the debug statements. 
+You could also write an inline function that will only display debug statements if the DEBUG symbol is defined as follows:</p>
+<h1 id="ifdef-debug_2">ifdef DEBUG<a class="headerlink" href="#ifdef-debug_2" title="Permanent link">&para;</a></h1>
+<h1 id="define-printdebugfmt-fprintfstderr-fmt-va_args">define PRINTDEBUG(fmt, ...)  fprintf(stderr, fmt, <strong>VA_ARGS</strong>)<a class="headerlink" href="#define-printdebugfmt-fprintfstderr-fmt-va_args" title="Permanent link">&para;</a></h1>
+<h1 id="else_1">else<a class="headerlink" href="#else_1" title="Permanent link">&para;</a></h1>
+<h1 id="define-printdebugfmt">define PRINTDEBUG(fmt, ...)<a class="headerlink" href="#define-printdebugfmt" title="Permanent link">&para;</a></h1>
+<h1 id="endif_4">endif<a class="headerlink" href="#endif_4" title="Permanent link">&para;</a></h1>
+<p>PRINTDEBUG("  DEBUG %d", x);
+In the code above we need the else case so that any call to PRINTDEBUG in the code will evaluate to a null statement during the preprocessor step.</p>
+<p>Debugging using the GNU debugger
+You can always track down bugs using print statements (printf or cout). Also writing to a log file can be helpful, especially once a program is in production. For more subtle bugs you will want to use a debugger. </p>
+<p>In order to use gdb to debug, you will need to compile with the -g option
+gcc -pedantic -Wall gdbtest.c -g</p>
+<p>The “gdb” command is used to start gdb. gdb runs in interactive mode. You issue commands similar to a shell prompt. The gdb prompt has command-line recall and tab-completion.
+whuber@localhost 220]$ gdb a.out 
+GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-94.el7
+Copyright (C) 2013 Free Software Foundation, Inc.
+This GDB was configured as "x86_64-redhat-linux-gnu".
+Reading symbols from /home/whuber/220/a.out...done.
+(gdb) </p>
+<p>To run your program:
+(gdb) run
+Starting program: /home/whuber/220/a.out 
+10 + 0 = 10
+15 + 5 = 10
+[Inferior 1 (process 3623) exited normally]</p>
+<p>If your program takes command-line parameters you can enter them after “run”. </p>
+<p>To set a breakpoint: 
+(gdb) break gdbtest.c:11</p>
+<p>We can also put a condition on our breakpoint:
+(gdb) break gdbtest.c:30 if a &gt;= 12</p>
+<p>“clear” removes all breakpoints, or you can specify a breakpoint to remove using delete. To see all breakpoints currently set, use “info breakpoints”</p>
+<p>At a breakpoint:
+   * step moves forward one instruction
+   * next moves forward one line of code (treating function calls as a single instruction)
+   * until finishes the loop
+   * continue begins regular processing until the next breakpoint or end of program
+   * finish continues until the end of the current function</p>
+<p>To display a variable’s value, use the print command (or print/x to see the hex value). You can also use print with pointers.(gdb) print a
+(gdb) print a
+$3 = 15
+(gdb) print/x a
+$4 = 0xf
+(gdb) print ptr-&gt;num
+$1 = 40 
+(gdb) print ptr-&gt;str
+$2 = "Hello!\000\000\000"
+(gdb) print *ptr
+$5 = {num = 40, str = “Hello!\000\000\000”}</p>
+<p>Watchpoints stop execution when a variable is modified. Note that if your program has multiple variables with the same name then the one currently in scope gets watched.</p>
+<p>Other commands;
+   * The where command displays a trace of where you are in the program.
+   * The backtrace command gives you a call stack trace.
+   * finish continues until the end of the current function.
+   * delete deletes a specified breakpoint.
+   * info breakpoints displays information about all breakpoints currently set
+   * You can recall history using the arrow keys and use the <tab> key for autocomplete. 
+   * Enter the command quit to exit.</p>
+<p>The Standard C Library (Appendix B)
+The C standard library provides several functions, macros, and type definitions which perform common tasks. We will not cover all the functions in the C standard library, but you should be able to look at a reference and use them in your code where necessary. 
+* stddef.h contains standard definitions for things like NULL &amp;size_t
+* limits.h contains implementation-defined minimum and maximum values for different integral types. For example, the valid values of the int type range from INT_MIN through INT_MAX.
+* stdbool.h contains definitions for Boolean variables. 
+* float.h contains implementation-defined minimum and maximum values for different floating point data types.
+* stdint.h contains definitions and constants to allow you to work with integers in a more portable fashion. For example, the type int32_t is defined to be exactly 32 bits no matter what platform the code runs on. 
+* string.h contains functions to perform character array operations. 
+* stdbool.h contains definitions for Boolean variables. 
+* ctype.h contains functions dealing with single characters such as checking the type (numeric, space, etc) and its case.. 
+* stdio.h contains functions and defines for working with I/O. 
+* stdlib.h contains a wide variety of miscellaneous functions, including memory management and functions to convert between types. 
+* math.h contains math functions and constants 
+* complex.h contains functions and constants for working with complex numbers</p>
+<p>string.h
+The functions on string.h work on character arrays &amp; memory. They take character pointers as parameters. Most of the functions that start with strn also work with non-terminated character arrays since they include a length parameter. In general, strn- functions are preferred when they exist.
+Some commonly used functions include:
+* strcmp(str1, str2) compares str1 &amp; str2. It returns a value less than zero if s1 is less than s2, 0 if they are equal, and greater than zero if s1 is greater than s2.
+* strcmp(str1, str2, n) compares at most n characters of str1 &amp; str2. 
+* strcpy(str1, str2) copies the string at str2 to str1 and returns a pointer to str1. Note that if str2 is bigger than str1 a buffer overflow will occur. You should never use strcpy()!
+* strncpy(str1, str2, n) copies at most n characters from str2 to str1 and returns a pointer to str1.
+* strlen(str1) returns the number of characters in str1, excluding the null character.
+* strtok(str1, str2) breaks str1 into tokens based on the delimiters in str2. It returns the first token of str1. Delimiters are replaced with NULL as they are encountered. Each subsequent call should pass a null pointer in place of str1 and will return the next token. 
+* memcmp(ptr1, ptr2, n) compares the n first characters, returning a value less than 0 if ptr1 is less than ptr2, 0 if they are equal, and a value greater than 0 if ptr1 is greater than ptr2.
+* memcpy(ptr1, ptr2, n) copies n characters from the memory location pointed to by ptr2 to ptr1. 
+* memmove(ptr1, ptr2, n) copies n characters from the memory location pointed to by ptr2 to ptr1 even if they overlap
+* memset(ptr1, c, n) sets the first n characters of ptr1 to the character c.
+Note that the mem- functions treat null characters the same as any regular characters.</p>
+<p>Compiling with gcc (Appendix C)
+The C compiler we will use is gcc (which originally stood for GNU C Compiler but now stands for GNU Compiler Collection). An Integrated Development Environment (IDE) such as Eclipse or Visual Studio will let you edit, compile, debug, and run your program all in one application. However, gcc only compiles your code. You will have to edit your code in the editor of your choice, as long as it will save your code in raw text format. Visual Studio Code is an excellent choice, as is Notepad++. </p>
+<p>The general format of the gcc command is:
+gcc [ options ] file1 [ file2 ….]
+Gcc will compile and link all files listed on the command line. Keep in mind that you do not have to compile header files as they are included in the source code that uses them. </p>
+<p>The primary options we will use are the following:
+-std=c11                 Specifies the standard to use (in this case c11)
+-Wall                 Display all warnings
+-pedantic                 Checks that the code does include any allowable language 
+extensions that are not required by the language standard
+The options above ensure that our code is compliant with the 2011 C standard. A list of other helpful options is included later in this section. You should get in the habit of always fixing warnings unless you are sure they will not cause any problems. And even if you are sure, you should try to fix them as warnings nearly always indicate a bug.</p>
+<p>To compile and run your code, first edit it (in your favorite text editor) and save it to the file system. Then using a terminal, navigate to the directory where your code is stored. On Windows, the easiest way is to first change to the root of the disk you saved your file on using one of the commands below:
+* cd c: (Cygwin)
+* cd /mnt/c (Ubuntu for Windows)
+* On MacOS or Linux you can change directly do the directory with the cd command</p>
+<p>The book has a list of gcc options (also called switches). You can also use the command man gcc to display the valid options. The most common ones we will use in class are
+-c                         Do not link the files, instead save the object files (.o).
+-g                         Include debugging information (used with gdb)
+-D id                        Defines id with a value of 1
+-D id=value         Defines id with a value of value
+-E                         Run the preprocessor
+-o filename                Generate an executable named filename instead of a.out or a.exe
+-std=c99                 Specifies the standard to use (in this case c99)
+-Wall                 Display all warnings
+-Wextra                 Display extra warnings not included in Wall
+-Wconversion        Display warnings related to implicit conversion
+-llib                        Link in library lib
+-S                         Generate assembly code
+-ON                         Optimization level N
+-v                         Show verbose output
+--version                Display the version and copyright notice</p>
+<p>Examples:
+You can compile project.c &amp; basiclist.c into an executable called proj2 like this:
+gcc -std=c11 -pedantic -Wall project.c basiclist.c -o proj2
+You can generate an object file (basiclist.o) from basiclist.c with the command
+gcc -std=c11 -pedantic -Wall basiclist.c -c
+Once you’ve done that, if you change project.c you can recompile your project with the command
+gcc -std=c11 -pedantic -Wall project.c basiclist.o -o proj2
+This will use basiclist.o to build proj2 without recompiling basiclist.c.</p>
+<p>Common Programming Mistakes (Appendix D)
+Common Programming Pitfalls
+As you write your code, try to avoid the following types of (very common) errors that programmers make:
+* Random Walk Programming is making small, random changes until your code compiles. This is a bad habit!  When you find an error you should always try to figure out why the error occurred and then fix it in a way that ensures it is really fixed. Keep in mind that just because your code compiles that doesn’t mean it will work.
+* Cargo Cult Programming / Magical Incantations is copying and pasting code you don’t understand. If you don’t understand code you should never include it - it could be dangerous.
+* Big Ball of Mud is “A haphazardly structured, sprawling, sloppy, duct-tape-and-baling-wire, spaghetti-code jungle.”  Big balls of mud usually result when you start programming before fully understanding the requirements without a good design and frequently incorporate the 2 problems above.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024. All Rights Reserved.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
