@@ -3178,7 +3178,6 @@
         +contains(T) boolean
         +find(T) T
     }
-
     class BinarySearchTreeADT~T~ {
         &lt;&lt;Interface&gt;&gt;
         +addElement(T)
@@ -3189,7 +3188,6 @@
         +findMin() T
         +findMax() T
     }
-
     class LinkedBinaryTree~T~ {
         #root: BinaryTreeNode~T~
         #modCount: int
@@ -3197,13 +3195,11 @@
         +LinkedBinaryTree(T)
         +LinkedBinaryTree(T, LinkedBinaryTree, LinkedBinaryTree)
     }
-
     class LinkedBinarySearchTree~T~ {
         +addElement(T)
         +removeElement(T) T
         +removeAllOccurrences(T)
     }
-
     class BinaryTreeNode~T~ {
         #element: T
         #left: BinaryTreeNode~T~
@@ -3232,19 +3228,16 @@
         +iterator() Iterator
         +toString() String
     }
-
     class UnorderedListADT~T~ {
         &lt;&lt;Interface&gt;&gt;
         +addToFront(T)
         +addToRear(T)
         +addAfter(T, T)
     }
-
     class OrderedListADT~T~ {
         &lt;&lt;Interface&gt;&gt;
         +add(T)
     }
-
     class ArrayList~T~ {
         &lt;&lt;Abstract&gt;&gt;
         -DEFAULT_CAPACITY: int
@@ -3256,7 +3249,6 @@
         +ArrayList(initialCapacity: int)
         #expandCapacity()
     }
-
     class ArrayUnorderedList~T~ {
         +addToFront(T)
         +addToRear(T)
@@ -3270,11 +3262,9 @@
     class ElementNotFoundException {
         +ElementNotFoundException(String)
     }
-
     class EmptyCollectionException {
         +EmptyCollectionException(String)
     }
-
     class NonComparableElementException {
         +NonComparableElementException(String)
     }</code></pre>
