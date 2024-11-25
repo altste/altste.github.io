@@ -1,0 +1,3745 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+  <meta name="robots" content="noindex, nocache, nofollow, noarchive, nosnippet, notranslate, noimageindex, noodp, noydir, noai, noimageai">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="copyright" content="Copyright © 2024. All Rights Reserved. Content (including text, graphics, artwork, audio, video, documents, and other media formats) available on this website are for educational purpose only and are properties of their respective owners. The use of these names, logos and brands does not imply endorsement.">
+  
+  
+  <link rel="canonical" href="https://notes.ellermann.com/csc205/module-7/stacks-and-queues-notes/">
+  <link rel="shortcut icon" href="../../../favicon.ico">
+    
+      
+        <title>Stacks and Queues - Notes - Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96v320c0 35.3 28.7 64 64 64h224V368c0-26.5 21.5-48 48-48h112V96c0-35.3-28.7-64-64-64zm384 320H336c-8.8 0-16 7.2-16 16v112l32-32 64-64z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H96m0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32m32-240c0-8.8 7.2-16 16-16h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16m16 48h192c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24m40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M480 32c0-12.9-7.8-24.6-19.8-29.6S434.5.2 425.3 9.3L381.7 53c-48 48-113.1 75-181 75H64c-35.3 0-64 28.7-64 64v96c0 35.3 28.7 64 64 64v128c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32V352h8.7c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V300.3c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4zm-64 76.7v262.6C357.2 317.8 280.5 288 200.7 288H192v-96h8.7c79.8 0 156.5-29.8 215.3-83.3"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7l233.4-233.3c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-86.2-346.7c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1 0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6-13.3 0-24-10.7-24-24v-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1 0-8.4-6.8-15.1-15.1-15.1h-58.3c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7.2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8.2-40.1l216-368C228.7 39.5 241.8 32 256 32m0 128c-13.3 0-24 10.7-24 24v112c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24m32 224a32 32 0 1 0-64 0 32 32 0 1 0 64 0"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.1 52.4 442.6 6.5c-1.9-3.9-6.1-6.5-10.5-6.5s-8.5 2.6-10.4 6.5l-16.5 45.9-46 16.8c-4.3 1.6-7.3 5.9-7.2 10.4 0 4.5 3 8.7 7.2 10.2l45.7 16.8 16.8 45.8c1.5 4.4 5.8 7.5 10.4 7.5s8.9-3.1 10.4-7.5l16.5-45.8 45.7-16.8c4.2-1.5 7.2-5.7 7.2-10.2 0-4.6-3-8.9-7.2-10.4zm-132.4 53c-12.5-12.5-32.8-12.5-45.3 0l-2.9 2.9c-22-8-45.8-12.3-70.5-12.3C93.1 96 0 189.1 0 304s93.1 208 208 208 208-93.1 208-208c0-24.7-4.3-48.5-12.2-70.5l2.9-2.9c12.5-12.5 12.5-32.8 0-45.3l-80-80zM200 192c-57.4 0-104 46.6-104 104v8c0 8.8-7.2 16-16 16s-16-7.2-16-16v-8c0-75.1 60.9-136 136-136h8c8.8 0 16 7.2 16 16s-7.2 16-16 16z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 398.9c58.5-41.1 96-104.1 96-174.9C512 100.3 397.4 0 256 0S0 100.3 0 224c0 70.7 37.5 133.8 96 174.9V464c0 26.5 21.5 48 48 48h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h64v-48c0-8.8 7.2-16 16-16s16 7.2 16 16v48h48c26.5 0 48-21.5 48-48v-65.1M96 256a64 64 0 1 1 128 0 64 64 0 1 1-128 0m256-64a64 64 0 1 1 0 128 64 64 0 1 1 0-128"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 0c17.7 0 32 14.3 32 32v64h120c39.8 0 72 32.2 72 72v272c0 39.8-32.2 72-72 72H168c-39.8 0-72-32.2-72-72V168c0-39.8 32.2-72 72-72h120V32c0-17.7 14.3-32 32-32M208 384c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16zM264 256a40 40 0 1 0-80 0 40 40 0 1 0 80 0m152 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80M48 224h16v192H48c-26.5 0-48-21.5-48-48v-96c0-26.5 21.5-48 48-48m544 0c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48h-16V224z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M288 0H128c-17.7 0-32 14.3-32 32s14.3 32 32 32v132.8c0 11.8-3.3 23.5-9.5 33.5L10.3 406.2C3.6 417.2 0 429.7 0 442.6 0 480.9 31.1 512 69.4 512h309.2c38.3 0 69.4-31.1 69.4-69.4 0-12.8-3.6-25.4-10.3-36.4L329.5 230.4c-6.2-10.1-9.5-21.7-9.5-33.5V64c17.7 0 32-14.3 32-32S337.7 0 320 0zm-96 196.8V64h64v132.8c0 23.7 6.6 46.9 19 67.1l34.5 56.1h-171l34.5-56.1c12.4-20.2 19-43.4 19-67.1"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216m256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216"/></svg>');}</style>
+
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stacks-and-queues-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Notes" class="md-header__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stacks and Queues - Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Notes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/" class="md-tabs__link">
+          
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../arduino/" class="md-tabs__link">
+          
+  
+    
+  
+  Arduino
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../howtos/" class="md-tabs__link">
+          
+  
+    
+  
+  How-Tos
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes" class="md-nav__button md-logo" aria-label="Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/arrays/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Arrays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/one-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/two-dimensional-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-Dimensional Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/initializing-array-with-random-unique-values/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initializing an Array with Random Unique Values
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/arrays/key-array-skills/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Key Array Skills
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/conditionals-and-loops/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Conditionals and Loops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Conditionals and Loops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/conditionals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conditionals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/boolean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Boolean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-logical-operators/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logical Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-relational-operators-decision-structures-and-boolean-logic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Relational Operators
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-basic-truth-tables-using-boolean-values-of-true-or-false/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Truth Tables Using Boolean Values Of True and False
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/logic-getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops - Three Types of Loops - The Do While Loop T- he While Loop - The For Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/counting-pre-test-loop-and-counting-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Counting Pre-Test Loop (While Loop) And Counting Post-Test Loop (Do-While Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/for-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    For-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-pre-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop (Pre-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/do-while-loop-post-test-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Do-While Loop (Post-Test Loop)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/game-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Game Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/input-while-loop-pre-test-loop-with-a-sentinel-value-and-a-priming-read/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input While-Loop (Pre-Test Loop) With A Sentinel Value And A Priming Read
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/standard-input-sentinel-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Standard Input-Sentinel Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/wantstocontinue-loop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wantsToContinue Loop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/nested-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-general-format-in-pseudocode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While Loop General Format In Pseudocode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/while-loop-example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    While-Loop Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/which-loop-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Which Loop To Use
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/conditionals-and-loops/terminology-loops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Loops Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/inputvalidation/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Input Validation
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Input Validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/getvalidnumber-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    getValidNumber() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/isinvalid-template-input-validation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    isInvalid() Template Input Validation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/one-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    One-Function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/two-function-input-validation-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Two-function Input Validation Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/validating-string-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validating String Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/examples-of-common-string-library-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples of Common String Library Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/inputvalidation/common-input-values-to-test-for/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common Input Values To Test For
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/menus/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Menus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Menus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/menus/practicemenu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practice Menu
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/methods/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Methods
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getstring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getString() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getinteger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getInteger() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getdouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getDouble() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getyorn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getYorN() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/closescanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The closeScanner() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/getrandomnumber/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The getRandomNumber() Method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/generalized-input-method-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Input Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/methods/methods-and-functions-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/oop/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Object Oriented Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-terminology/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Terminology
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/oop/oop-review-questions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming Review Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/data-structures-and-algorithms/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data Structures and Algorithms
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Data Structures and Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/data-structures-and-algorithms/bubble-sort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bubble Sor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/data-structures-and-algorithms/generic-bubble-sort-using-the-comparable-interface-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic Bubble Sort Using The Comparable Interface In Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/data-structures-and-algorithms/generic-bubble-sort-using-the-comparator-interface-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generic Bubble Sort Using The Comparator Interface In Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/resources/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_2" id="__nav_2_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/java-programming-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Programming Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/installing-the-java-development-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing The Java Development Kit JDK
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_3" id="__nav_2_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Eclipse IDE
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            Eclipse IDE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/eclipse-ide-how-to-find-matching-brackets-and-missing-brackets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eclipse IDE -How To Find Matching Brackets and Missing Brackets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9_4" id="__nav_2_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Writing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Writing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/resources/diataxis-a-systematic-approach-to-technical-documentation-authoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diátaxis- A systematic approach to technical documentation authoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_10" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../programming/ternary/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ternary
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Ternary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-for-loops-short-form-for-loops-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced For Loops
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/ternary/ternary-enhanced-if-statements-short-form-if-statments-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enhanced If Statements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Arduino
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Arduino
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../arduino/labs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-0-system-test-verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 0
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-1-passive-buzzer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-2-servo-motor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-3-ultrasonic-sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-4-stepper-motor-control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/labs/lab-5-collision-avoidance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-install-a-library-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Install A Library Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/how-to-upload-a-sketch-using-the-arduino-ide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How To Upload A Sketch Using The Arduino IDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../arduino/arduino-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arduino Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../howtos/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    How-Tos
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-Tos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC110
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc205/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC205
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../howtos/howtos-csc240/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How-Tos - CSC240
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#csc205-module-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSC205 - Module 7
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Stacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications of Stacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-postfix-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application: Postfix Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-api-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java API: Stacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stack-interface-jsjf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stack Interface - jsjf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackadt-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      StackADT Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-an-exception" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining an Exception
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Stacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-stacks-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Stacks - Linked List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-stacks-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Stacks - Arrays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-stacks-linked-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Stacks - Linked Nodes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing Stacks - Linked Nodes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-stack-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis of Stack Methods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Queues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-api-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java API: Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Applications of Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-coded-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application: Coded Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-ticket-counter-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application: Ticket Counter Simulation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-interface-jsjf" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Interface - jsjf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queueadt-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      QueueADT Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-queues-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Queues - Linked List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-queues-linked-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Queues: Linked Nodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementing-queues-circular-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing Queues: Circular Array
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analysis-of-queue-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analysis of Queue Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-versus-array-based-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linked versus Array-based Implementations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="stacks-and-queues-notes">Stacks and Queues - Notes<a class="headerlink" href="#stacks-and-queues-notes" title="Permanent link">&para;</a></h1>
+<h2 id="csc205-module-7">CSC205 - Module 7<a class="headerlink" href="#csc205-module-7" title="Permanent link">&para;</a></h2>
+<h2 id="stacks">Stacks<a class="headerlink" href="#stacks" title="Permanent link">&para;</a></h2>
+<p>A <strong>stack</strong> is a linear data structure whose elements are added in “last in, first out” (<strong>LIFO</strong>) order. So, when we remove an element from a stack it will be the last one we added.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img01.png" /></a></p>
+<h3 id="stack-operations">Stack Operations<a class="headerlink" href="#stack-operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>push(E element) adds an element to top of the stack.</li>
+<li>pop() removes &amp; returns the top element from the stack.</li>
+<li>peek() returns the element at top of the stack.</li>
+<li>size() returns the number of elements in the stack.</li>
+<li>isEmpty() returns true if the stack is empty, false if it is not.</li>
+</ul>
+<h3 id="applications-of-stacks">Applications of Stacks<a class="headerlink" href="#applications-of-stacks" title="Permanent link">&para;</a></h3>
+<p>Stacks have a wide variety of applications such as implementing an undo feature, storing the history in a browser (used by the back button), validating a string with a recursive structure (such as HTML).</p>
+<h3 id="application-postfix-expressions">Application: Postfix Expressions<a class="headerlink" href="#application-postfix-expressions" title="Permanent link">&para;</a></h3>
+<p>One natural application of a stack is for evaluating postfix expressions. A <strong>postfix expression</strong> is written with the operator <strong><em>following</em></strong> the two operands, as opposed to the <strong>infix notation</strong> you may be used to where the operator is <strong><em>between</em></strong> the two operands. </p>
+<p>The following expressions are equivalent:</p>
+<p>Postfix: <code>15 8 -</code>
+Infix: <code>15 - 8</code></p>
+<p>The benefit of postfix expressions is that they are unambiguous. They completely eliminate the need for parenthesis. </p>
+<p>The following expressions are equivalent:</p>
+<p>Postfix: <code>3 4 * 2 5 + - 4 * 2 /</code>
+Infix: <code>(3 * 4 - (2 + 5)) * 4 / 2</code></p>
+<p>We can use a stack to evaluate postfix expressions using the following algorithm:
+Scan the expression left to right</p>
+<ul>
+<li>When we read an operand, push it on the stack.</li>
+<li>When we read an operator, pop the top two elements of the stack, perform the operation, &amp; push the result.</li>
+<li>The result is the value on the stack when the expression is exhausted.</li>
+</ul>
+<p>The postfix expressions video has a walkthrough of the algorithm.</p>
+<p><a href="https://youtu.be/P5YWUXrPEyw">https://youtu.be/P5YWUXrPEyw</a></p>
+<h3 id="java-api-stacks">Java API: Stacks<a class="headerlink" href="#java-api-stacks" title="Permanent link">&para;</a></h3>
+<p><code>java.util.Stack</code> is the Java API implementation of the Stack abstract data type. It implements all the operations, but there is no interface. It extends the <code>Vector</code> class so it allows several non-stack operations, which can be an issue in applications where you want to only allow stack operations. (Side note: one of the benefits of limiting the interface of a data structure is that it makes debugging easier. You don’t have to worry about things getting stuck in the middle of a stack if you only have push &amp; pop operations). The Java API also provides other data structures that can perform like a stack (<code>java.util.Deque</code>, linked-list, etc), but again these do not use the standard stack method names and it is up to the programmer to ensure that the data structure acts like a stack.</p>
+<p>We can create our own Stack class that does not allow the user to perform illegal operations.</p>
+<h3 id="stack-interface-jsjf">Stack Interface - jsjf<a class="headerlink" href="#stack-interface-jsjf" title="Permanent link">&para;</a></h3>
+<p>For each abstract data type we implement in this class, the <code>jsjf</code> package provides an interface. Your code should use the interfaces and data structures defined in the <code>jsjf</code> package, <strong>not the Java API</strong>. The naming convention for the interfaces will be <code>ColllectionNameADT</code>. From this point forward all of your projects should make use of the <code>jsjf</code> package.</p>
+<h3 id="stackadt-interface">StackADT Interface<a class="headerlink" href="#stackadt-interface" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">StackADT</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">element</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">pop</span><span class="p">();</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">peek</span><span class="p">();</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">();</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">();</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">();</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the <code>StackADT</code> interface is generic.</p>
+</div>
+<h3 id="defining-an-exception">Defining an Exception<a class="headerlink" href="#defining-an-exception" title="Permanent link">&para;</a></h3>
+<p>Our stack implementations will throw an <code>EmptyCollectionException</code> when a pop or peek is attempted on an empty stack. The <code>EmptyCollectionException</code> class extends <code>RuntimeException</code>. We will pass a string into the constructor to indicate the type of collection on which the error was thrown.</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf.exceptions</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EmptyCollectionException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">RuntimeException</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="cm">/**</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="cm">    * Sets up this exception with an appropriate message.</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="cm">    * @param collection the name of the collection</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="cm">    */</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">EmptyCollectionException</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">collection</span><span class="p">)</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="s">&quot;The &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">collection</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is empty.&quot;</span><span class="p">);</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="implementing-stacks">Implementing Stacks<a class="headerlink" href="#implementing-stacks" title="Permanent link">&para;</a></h3>
+<p>When implementing an abstract data type, you must first decide on the underlying representation. We will see three different implementations:</p>
+<ol>
+<li>An implementation using the <code>LinkedList</code> data structure we created in the last module (in the <code>csc205</code> package).</li>
+<li>An implementation using arrays (in the <code>jsjf</code> package).</li>
+<li>An implementation using linked nodes (in the <code>jsjf</code> package).</li>
+</ol>
+<p>We will briefly discuss the three approaches above. <strong>See the example code and
+videos for each for a more detailed description.</strong></p>
+<p>You may wonder why we bother implementing a stack (and later a queue) three different ways, or even at all since the Java API provides a stack for us. The reason we avoid the Java Stack is that it contains extraneous methods that allow our "stack" to be used like a Vector which is undesirable.</p>
+<p>Seeing different implementations has multiple benefits for you later on in your career:</p>
+<ul>
+<li>You get the opportunity to work with code you did not write.</li>
+<li>You learn more about how the data structures work so that you can make good choices about data structures.</li>
+<li>You get to see different approaches to solving a problem.</li>
+</ul>
+<p>While you may never actually implement a stack again once you leave this class,
+the three benefits above will all make you a better programmer.</p>
+<h3 id="implementing-stacks-linked-list">Implementing Stacks - Linked List<a class="headerlink" href="#implementing-stacks-linked-list" title="Permanent link">&para;</a></h3>
+<p>The simplest way to implement a stack is by using an existing data structure. For example, in our <code>FastStack</code> class, we use the <code>LinkedList</code> we created earlier. The <code>LinkedList</code> has all the functions we need to implement the StackADT interface.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>StackADT</strong></th>
+<th style="text-align: center;"><strong>LinkedList</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">push(T element)</td>
+<td style="text-align: center;">addToFront(T element)</td>
+</tr>
+<tr>
+<td style="text-align: center;">pop()</td>
+<td style="text-align: center;">removeFromFront()</td>
+</tr>
+<tr>
+<td style="text-align: center;">peek()</td>
+<td style="text-align: center;">first()</td>
+</tr>
+<tr>
+<td style="text-align: center;">isEmpty()</td>
+<td style="text-align: center;">isEmpty()</td>
+</tr>
+<tr>
+<td style="text-align: center;">size()</td>
+<td style="text-align: center;">size()</td>
+</tr>
+<tr>
+<td style="text-align: center;">toString()</td>
+<td style="text-align: center;">toString()</td>
+</tr>
+</tbody>
+</table>
+<p>Our FastStack class has one data member: a LinkedList.</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then, we implement each method in StackADT by calling the corresponding method of ListStack. For example, here is our pop() implementation:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nd">@Override</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">elements</span><span class="p">.</span><span class="na">removeFirst</span><span class="p">();</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="implementing-stacks-arrays">Implementing Stacks - Arrays<a class="headerlink" href="#implementing-stacks-arrays" title="Permanent link">&para;</a></h3>
+<p>We can use an array as the underlying structure in a stack implementation. The ArrayStack class in the <code>jsjf</code> package does this. The array holds references to the objects stored in the stack. We also need to carefully handle the case when the array is full - our stack shouldn’t be limited to the size of the array.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img02.png" /></a></p>
+<p>The bottom of the stack is at index 0. The top of the stack is at index 4 where the reference to Object5 is stored. We keep track of the top using a variable creatively named “top”. Note that top actually points to the next available slot, so the actual top is at index top-1. The top also doubles as the size of the stack. You may notice this looks very similar to an ArrayList.</p>
+<p>The number of cells in the array is called its <strong>capacity</strong>. We can’t change the capacity of an existing array. We should not have to worry too often about the stack reaching capacity, but when the top reaches the end of the array we will copy the array to an array of double the size.</p>
+<p>Pushing and popping elements will affect the stack. After popping (which removes Object5). It is up to the user what to do with Object5 after it is returned from the <code>pop()</code> method.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img03.png" /></a></p>
+<p>Next we push element Object6. Note the stack looks exactly like it did in the first example, except now index 4 refers to Object6.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img04.png" /></a></p>
+<h2 id="implementing-stacks-linked-nodes">Implementing Stacks - Linked Nodes<a class="headerlink" href="#implementing-stacks-linked-nodes" title="Permanent link">&para;</a></h2>
+<p>The <code>LinkedStack</code> class in the <code>jsjf</code> package implements the <code>StackADT</code> using linked nodes (<code>LinearNode</code>). Recall that the <code>LinkedList</code> class in <code>jsjf</code> also used <code>LinearNodes</code>. We will need to keep track of the <code>LinearNode</code> at the top of the stack as well as the count. Note that we don’t need to concern ourselves with other nodes in the stack as the top node is the only node the stack "cares" about.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img05.png" /></a></p>
+<p>The LinkedStack after we pop:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img06.png" /></a></p>
+<p>The LinkedStack after we push Object6:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img07.png" /></a></p>
+<h3 id="analysis-of-stack-methods">Analysis of Stack Methods<a class="headerlink" href="#analysis-of-stack-methods" title="Permanent link">&para;</a></h3>
+<p>All stack operations are O(1) for both linked and array based implementations. Since we know exactly where the top of the array is it is easy to find and modify. However, when using an array implementation, if the array is full it has to be resized which is an O(n) operation since we have to copy every element to the new array. Fortunately, resizing the array does not happen often - only after filling up the existing array. So while a worst case push operation could take linear (O(n)) time, that time averages out to O(1) time when spread out over all push operations (because if the size of the array is X it takes at least X push operations to fill the array).</p>
+<h2 id="queues">Queues<a class="headerlink" href="#queues" title="Permanent link">&para;</a></h2>
+<p>A <em>queue</em> is a linear data structure whose elements are added in "first in, first out" (<strong>FIFO</strong>) order. We add elements to one end of the queue and remove them from the other. This has the effect of removing elements in the same order they are added to a queue.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img08.png" /></a></p>
+<h3 id="queue-operations">Queue Operations<a class="headerlink" href="#queue-operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>enqueue(E element)</code> adds an element to rear of the queue.</li>
+<li><code>dequeue()</code> removes &amp; returns the top element from the queue.</li>
+<li><code>first()</code> returns the element at top of the queue.</li>
+<li><code>size()</code> returns the number of elements in the queue.</li>
+<li><code>isEmpty()</code> returns true if the queue is empty, false if it is not.</li>
+</ul>
+<h3 id="java-api-queues">Java API: Queues<a class="headerlink" href="#java-api-queues" title="Permanent link">&para;</a></h3>
+<p>The Java API provides a Queue interface. The interface has two methods each for adding an element, removing an  element, and returning the first element in the queue. The first set of enqueue/dequeue/first methods throws an exception if a problem occurs during the operation, whereas the second set of methods returns a value indicating an error (boolean for offer, null for poll/peek). This allows the programmer to decide how to handle exceptional cases.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Queue Operation</strong></th>
+<th style="text-align: center;"><strong>Throws Exception</strong></th>
+<th style="text-align: center;"><strong>Returns Special Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">enqueue</td>
+<td style="text-align: center;">add(element)</td>
+<td style="text-align: center;">offer(element)</td>
+</tr>
+<tr>
+<td style="text-align: center;">dequeue</td>
+<td style="text-align: center;">remove()</td>
+<td style="text-align: center;">poll()</td>
+</tr>
+<tr>
+<td style="text-align: center;">first</td>
+<td style="text-align: center;">element</td>
+<td style="text-align: center;">peek()</td>
+</tr>
+</tbody>
+</table>
+<h3 id="applications-of-queues">Applications of Queues<a class="headerlink" href="#applications-of-queues" title="Permanent link">&para;</a></h3>
+<p>Queues have a wide variety of applications. Operating systems use queues extensively to manage access to a single resource, such as a disk, printer, or network. Any application that uses a buffer, such as watching an online video, uses a queue to store the data that has been downloaded before it is presented to the user. Queues can also be used to model real-world situations where there is a line, such as a call center or a ticket window.</p>
+<p>There are video walkthroughs of the applications below on the GitHub repository.</p>
+<ul>
+<li><a href="code/README.md">Videos</a></li>
+<li><a href="../code/">Example Code</a></li>
+</ul>
+<h3 id="application-coded-messages">Application: Coded Messages<a class="headerlink" href="#application-coded-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../code/codes/Codes/">Example Code - Codes.java</a></li>
+<li><a href="https://youtu.be/xt3o_k5hQn0">Video</a></li>
+</ul>
+<p>A <strong>Caesar cipher</strong> encodes a message by shifting each letter in a message by some constant k. For example, if k=5, then A becomes F, B becomes G, etc.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img09.png" /></a></p>
+<p>Unfortunately, this is <em>very</em> easy to break (or fortunately if it is your enemies who are encoding messages this way).</p>
+<p>We can improve upon the Caesar cipher by changing the value of k depending on where the letter is in the message. We do this by using a <strong>repeating key</strong>: a series of integers that determine how much we shift a character.</p>
+<p>Given the repeating key {3 1 7 4 2}, we shift the first character by 3, the next by 1, the next by 7, and so on. When the key is exhausted, we start over at the beginning, so the 6<sup>th</sup> character would be shifted by 3, the 7<sup>th</sup> by 1, and so on. This is called the <strong>Vigenère cipher</strong>.</p>
+<p>It was originally:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img10.png" /></a></p>
+<p>We can use a queue to hold the repeating key. Then as we encrypt (or decrypt) a character, we dequeue a key, use it, then enqueue it so that it can be used again if needed.</p>
+<h3 id="application-ticket-counter-simulation">Application: Ticket Counter Simulation<a class="headerlink" href="#application-ticket-counter-simulation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="ticketcounter/index.md">Example Code</a></li>
+<li><a href="https://youtu.be/dTokf_SLKpg">video</a></li>
+</ul>
+<p>We can use a queue to simulate waiting lines at a movie theater. Our program will determine how many cashiers are needed to keep the wait time below a certain threshold. We will assume customers arrive every 15 seconds and processing a request takes 2 minutes. We will adjust the number of cashiers until the average wait time is less than 7 minutes. We will use a queue to hold the customers that are currently waiting in line.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img11.png" /></a></p>
+<p>The ticket counter video walks through the ticket counter simulation.</p>
+<ul>
+<li><a href="https://youtu.be/dTokf_SLKpg">video</a></li>
+</ul>
+<h3 id="queue-interface-jsjf">Queue Interface - jsjf<a class="headerlink" href="#queue-interface-jsjf" title="Permanent link">&para;</a></h3>
+<p>For each abstract data type we implement in this class, the <code>jsjf</code> package provides an interface. Your code should use the interfaces and data structures defined in the <code>jsjf</code> package, <strong>not the Java API</strong>. The naming convention for the interfaces will be <code>CollectionNameADT</code>. From this point forward all of your projects should make use of the <code>jsjf</code> package.</p>
+<h3 id="queueadt-interface">QueueADT Interface<a class="headerlink" href="#queueadt-interface" title="Permanent link">&para;</a></h3>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">jsjf</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">QueueADT</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">enqueue</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">element</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">dequeue</span><span class="p">();</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">first</span><span class="p">();</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isEmpty</span><span class="p">();</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">size</span><span class="p">();</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">();</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Note that the <code>QueueADT</code> interface is generic.</p>
+<h3 id="implementing-queues">Implementing Queues<a class="headerlink" href="#implementing-queues" title="Permanent link">&para;</a></h3>
+<p>When implementing an abstract data type, you must first decide on the underlying representation. </p>
+<p>We will see three different implementations:</p>
+<ol>
+<li>An implementation using the LinkedList data structure we created in the last module (in the <code>csc205</code> package).</li>
+<li>An implementation using linked nodes (in the <code>jsjf</code> package).</li>
+<li>An implementation using circular arrays (in the <code>jsjf</code> package).</li>
+</ol>
+<p>We will briefly discuss the three approaches above. <strong>See the example code and videos for each for a more detailed description</strong>.</p>
+<h3 id="implementing-queues-linked-list">Implementing Queues - Linked List<a class="headerlink" href="#implementing-queues-linked-list" title="Permanent link">&para;</a></h3>
+<p>The simplest way to implement a queue is by using an existing data structure. For example, in our <code>FastQueue</code> class, we use the <code>LinkedList</code> we created earlier. Just as with the <code>FastStack</code>, the <code>LinkedList</code> class has all the functions we need to implement the <code>QueueADT</code> interface. However, notice we add to the rear and remove from the front.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>QueueADT</strong></th>
+<th style="text-align: center;"><strong>LinkedList</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">enqueue(T element)</td>
+<td style="text-align: center;">addToRear(T element)</td>
+</tr>
+<tr>
+<td style="text-align: center;">dequeue()</td>
+<td style="text-align: center;">removeFromFront()</td>
+</tr>
+<tr>
+<td style="text-align: center;">first()</td>
+<td style="text-align: center;">first()</td>
+</tr>
+<tr>
+<td style="text-align: center;">isEmpty()</td>
+<td style="text-align: center;">isEmpty()</td>
+</tr>
+<tr>
+<td style="text-align: center;">size()</td>
+<td style="text-align: center;">size()</td>
+</tr>
+<tr>
+<td style="text-align: center;">toString()</td>
+<td style="text-align: center;">toString()</td>
+</tr>
+</tbody>
+</table>
+<p>Our <code>FastQueue</code> class has one data member: a <code>LinkedList</code>.</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Then, we implement each method in <code>QueueADT</code> by calling the corresponding method of <code>ListStack</code>. For example, here is our <code>dequeue()</code> implementation:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nd">@Override</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">dequeue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">elements</span><span class="p">.</span><span class="na">removeFromFront</span><span class="p">();</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="implementing-queues-linked-nodes">Implementing Queues: Linked Nodes<a class="headerlink" href="#implementing-queues-linked-nodes" title="Permanent link">&para;</a></h3>
+<p>This implementation is similar to <code>LinkedStack</code>, except that we add an additional reference to the rear node. We use <code>null</code> as the next reference of the last node (<code>rear</code>) to indicate the end of the list.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img12.png" /></a></p>
+<p>After removing an element from the front:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img13.png" /></a></p>
+<p>After enqueuing Object6:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img14.png" /></a></p>
+<h3 id="implementing-queues-circular-array">Implementing Queues: Circular Array<a class="headerlink" href="#implementing-queues-circular-array" title="Permanent link">&para;</a></h3>
+<p>It may initially seem that we can use an array to implement a queue. However, since we add and remove from opposite ends, there is no way to avoid shifting the
+elements. If the front is at index <code>0</code>, then we have to shift the elements to the left when we <code>dequeue</code>.  conversely, if we set the rear to index <code>0</code>, we have to shift all the elements to the right when we <code>enqueue</code>. Both of these are linear time operations - O(n) - which is inefficient.</p>
+<p>We can improve the performance by using a <strong>circular array</strong>. A circular array is an array that is treated as if it loops back around on itself. We consider index <code>0</code> to
+come after the last index. When we reach the last index, we use the modulus operator (<code>%</code>) to reset the index back to <code>0</code> like</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="w">    </span><span class="n">rear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">rear</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">queue</span><span class="p">.</span><span class="na">count</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Our CircularArrayQueue will have data members to keep track of the front and rear and the total size, and we resize the array when it is full.</p>
+<p>Here is an example of a circular array with 4 objects:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img15.png" /></a></p>
+<p>After 2 dequeue operations and enqueuing Object5, we have an array that looks like this. Notice that the front is no longer at index 0;</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img16.png" /></a></p>
+<p>And after another dequeue operation and enqueuing Object6, Object7, &amp; Object 8, the circular array looks like this:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img17.png" /></a></p>
+<p>The array itself that we are using looks like this:</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/csc205-module-7-stacks-and-queues-notes-img18.png" /></a></p>
+<h3 id="analysis-of-queue-methods">Analysis of Queue Methods<a class="headerlink" href="#analysis-of-queue-methods" title="Permanent link">&para;</a></h3>
+<p>All stack operations are O(1) for both linked &amp; array based implementations, assuming our array implementation uses a circular array. Note that the same issues we had with resizing the array with stacks also occurs with our array queue implementation - a worst case push operation could take linear (O(n)) time though that time still averages out to O(1) time when spread out over all the enqueue operations.</p>
+<h3 id="queue-efficiency">Queue Efficiency<a class="headerlink" href="#queue-efficiency" title="Permanent link">&para;</a></h3>
+<p>All operations in a Linked Queue are O(1). For an array implementation where we make index 0 the front of the queue, enqueue is O(1) but dequeue is O(n) since we have to shift the elements in the array. Circular arrays avoid the shift, so all operations for a circular array implementation are O(1). Therefore, like with a stack, all queue methods are O(1) given an ideal implementation (linked or circular queue).</p>
+<h3 id="linked-versus-array-based-implementations">Linked versus Array-based Implementations<a class="headerlink" href="#linked-versus-array-based-implementations" title="Permanent link">&para;</a></h3>
+<p><strong>Advantages to linked implementation:</strong></p>
+<ul>
+<li>Nodes only added as they are needed, so no wasted space in the data structure.</li>
+<li>An efficient queue implementation is much simpler since the front/rear are not tied to a specific memory location.</li>
+</ul>
+<p><strong>Advantages to array implementation:</strong></p>
+<ul>
+<li>No extra memory allocated for the node references.</li>
+<li>Less wasteful if you know beforehand how big the stack or queue will need to be.</li>
+<li>More efficient since there is no need to constantly allocate space for new elements and no garbage collection is required.</li>
+<li>Arrays tend to be more optimizable by the compiler and JVM than linked lists.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

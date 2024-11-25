@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
       
       
   
@@ -78,8 +78,8 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -280,26 +280,6 @@
     
   
   How-Tos
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../../csc205/" class="md-tabs__link">
-          
-  
-    
-  
-  CSC205
 
         </a>
       </li>
@@ -3420,96 +3400,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-          
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../../csc205/" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    CSC205
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            CSC205
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../csc205/module-12/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    CSC205 - Module 12
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -3954,7 +3844,7 @@
 </ul>
 <h2 id="component-introduction">Component Introduction<a class="headerlink" href="#component-introduction" title="Permanent link">&para;</a></h2>
 <h3 id="ultrasonic-sensor">Ultrasonic sensor<a class="headerlink" href="#ultrasonic-sensor" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img08.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HC-SR04 Ultrasonic Sensor Module" src="../../../assets/images/arduino-lab3-img08.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="HC-SR04 Ultrasonic Sensor Module" src="../../../assets/images/arduino-lab3-img08.png" /></a></p>
 <p>Ultrasonic sensor module HC-SR04 provides 2cm-400cm non-contact measurement function, the ranging accuracy can reach to 3mm. The modules includes ultrasonic transmitters, receiver and control circuit. The basic principle of work:</p>
 <ol>
 <li>Using IO trigger for at least 10us high level signal,</li>
@@ -3965,14 +3855,14 @@
 <p>The Timing diagram is shown below. You only need to supply a short 10us pulse to the trigger input to start the ranging, and then the module will send out an 8 cycle burst of ultrasound at 40 kHz and raise its echo. The Echo is a distance object that is pulse width and the range in proportion .You can calculate the range through the time interval between sending trigger signal and receiving echo signal. Formula: us
 / 58 = centimeters or us / 148 =inch; or: the range = high level time * velocity (340M/S) / 2; we suggest to use over 60ms measurement cycle, in order to prevent trigger signal to the echo signal.</p>
 <h4 id="ultrasonic-sensor-module-timing-diagram">Ultrasonic Sensor Module Timing Diagram<a class="headerlink" href="#ultrasonic-sensor-module-timing-diagram" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img01.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Timing Diagram" src="../../../assets/images/arduino-lab3-img01.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Timing Diagram" src="../../../assets/images/arduino-lab3-img01.png" /></a></p>
 <h2 id="ultrasonic-sensor-module-connection">Ultrasonic Sensor Module Connection<a class="headerlink" href="#ultrasonic-sensor-module-connection" title="Permanent link">&para;</a></h2>
 <h3 id="schematic">Schematic<a class="headerlink" href="#schematic" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img02.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Schematic " src="../../../assets/images/arduino-lab3-img02.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Schematic " src="../../../assets/images/arduino-lab3-img02.png" /></a></p>
 <h3 id="wiring-diagram">Wiring Diagram<a class="headerlink" href="#wiring-diagram" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img03.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Wiring Diagram" src="../../../assets/images/arduino-lab3-img03.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Wiring Diagram" src="../../../assets/images/arduino-lab3-img03.png" /></a></p>
 <h3 id="example-picture">Example Picture<a class="headerlink" href="#example-picture" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img06.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Wiring Example Picture" src="../../../assets/images/arduino-lab3-img06.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ultrasonic Sensor Module Wiring Example Picture" src="../../../assets/images/arduino-lab3-img06.png" /></a></p>
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">&para;</a></h2>
 <p>Using a Library designed for these sensors will make our code short and simple. We include the library at the beginning of our code, and then by using simple commands we can control the behavior of the sensor.</p>
 <p>After wiring, please type in or open the program <strong><a href="../../../assets/ino/Lab03ArduinoSR04Example.ino">Lab03ArduinoSR04Example.ino</a></strong> in the Arduino IDE code and click UPLOAD to upload the program.</p>
@@ -4023,12 +3913,12 @@
 (500Hz).</p>
 <h3 id="passive-buzzer-connection">Passive Buzzer Connection<a class="headerlink" href="#passive-buzzer-connection" title="Permanent link">&para;</a></h3>
 <h4 id="schematic_1">Schematic<a class="headerlink" href="#schematic_1" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img04.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Schematic" src="../../../assets/images/arduino-lab3-img04.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Schematic" src="../../../assets/images/arduino-lab3-img04.png" /></a></p>
 <h4 id="wiring-diagram_1">Wiring Diagram<a class="headerlink" href="#wiring-diagram_1" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img05.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Wiring Diagram" src="../../../assets/images/arduino-lab3-img05.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Wiring Diagram" src="../../../assets/images/arduino-lab3-img05.png" /></a></p>
 <p>Wiring the buzzer connected to the UNO R3 board, the red (positive) to the pin 8, black wire (negative) to the GND.</p>
 <h4 id="example-picture_1">Example Picture<a class="headerlink" href="#example-picture_1" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img07.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Wireing Example Picture" src="../../../assets/images/arduino-lab3-img07.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Passive Buzzer Wireing Example Picture" src="../../../assets/images/arduino-lab3-img07.png" /></a></p>
 <h4 id="code_1">Code<a class="headerlink" href="#code_1" title="Permanent link">&para;</a></h4>
 <p>After wiring, please type in or open the program <strong><a href="../../../assets/ino/Lab03ArduinoPassiveBuzzerExample.ino">Lab03ArduinoPassiveBuzzerExample.ino</a></strong> in the Arduino IDE code and click UPLOAD to upload the program.</p>
 <p>Before you can run this, make sure that you have installed the <strong><a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></strong> library or re-install it, if necessary. Otherwise, your code won't work.</p>
@@ -4106,7 +3996,7 @@
 </span></code></pre></div>
 <h2 id="putting-it-all-together-ultrasonic-sensor-and-the-passive-buzzer">Putting it all together, Ultrasonic Sensor and the Passive Buzzer<a class="headerlink" href="#putting-it-all-together-ultrasonic-sensor-and-the-passive-buzzer" title="Permanent link">&para;</a></h2>
 <h3 id="wiring-diagram_2">Wiring Diagram<a class="headerlink" href="#wiring-diagram_2" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab3-img09.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wireing Diagram" src="../../../assets/images/arduino-lab3-img09.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Wireing Diagram" src="../../../assets/images/arduino-lab3-img09.png" /></a></p>
 <h3 id="source-code-for-lab-3">Source Code For Lab 3<a class="headerlink" href="#source-code-for-lab-3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Modified Ardunio Source Code File: <a href="../../../assets/ino/Lab03ArduinoLibrariesRequired.ino">Lab03ArduinoLibrariesRequired.ino</a></li>
@@ -4233,20 +4123,20 @@
 <p>With the editor open, let's take a look at the toolbar at the top. At the very left, there is a checkmark and an arrow pointing right. The checkmark is used to verify, and the arrow is used to upload.</p>
 </li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/uploading-a-sketch-img01.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img01.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img01.png" /></a></p>
 <p><em>Verifying and uploading buttons</em></p>
 <ol>
 <li>But before doing any of that, we should choose what board we are uploading to. Beside the verify and upload button you should see a a drop down menu, this will, in most cases, display Arduino boards that are connected to your computer. If your board is not automatically detected, you can either press "Select other board and port..." in the drop-down and follow the instructions, or go to Tools &gt; Board and Tools &gt; Port in the toolbar menu to select the board and port manually.</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/uploading-a-sketch-img03.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.png" /></a></p>
 <p><em>Selecting the board.</em></p>
 <p>So connect your board to the computer and select it from the drop down menu. You'll know that there is a connection to the board when the board name appears in <strong>bold</strong>.</p>
-<p><a class="glightbox" href="../../../assets/images/uploading-a-sketch-img03.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.5.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img03.5.png" /></a></p>
 <p><em>Selecting the board.</em></p>
 <ol>
 <li>Click on the verify tool (checkmark). Since we are verifying an empty sketch, we can be sure it is going to compile. After a few seconds, we can see the result of the action in the console (black box in the bottom).</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/uploading-a-sketch-img02.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img02.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img02.png" /></a></p>
 <p><em>Successful compilation printed in the console.</em></p>
 <ol>
 <li>
@@ -4256,7 +4146,7 @@
 <p>When it is finished, a notification pops up in the bottom right of your IDE window. Of course, sometimes there are some complications when uploading, and these errors will be listed here as well.</p>
 </li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/uploading-a-sketch-img04.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img04.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/uploading-a-sketch-img04.png" /></a></p>
 <p><em>Successful upload printed in the console.</em></p>
 <p>Congratulations, you have now uploaded a sketch to your Arduino board!</p>
 <h3 id="please-read-only-linux-users">Please Read (Only Linux Users)<a class="headerlink" href="#please-read-only-linux-users" title="Permanent link">&para;</a></h3>
@@ -4272,7 +4162,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span>&lt;username&gt;
 </span></code></pre></div>
 <p>where <code>&lt;username&gt;</code> is your Linux user name. <strong>You will need to log out and log in again for this change to take effect.</strong></p>
-<p><a class="glightbox" href="../../../assets/images/Ubuntu_Serial.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/Ubuntu_Serial.jpg" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/Ubuntu_Serial.jpg" /></a></p>
 <p><em>Adding user to the group.</em></p>
 <p>After this procedure, you should be able to proceed normally and upload the sketch to your board or use the Serial Monitor.
 Results</p>
@@ -4283,7 +4173,7 @@ Results</p>
 <li>Library File: <a href="https://github.com/gamegine/HCSR04-ultrasonic-sensor-lib">HC-SR04.zip</a></li>
 <li>Library File: <a href="https://gist.github.com/mikeputnam/2820675">pitches.zip</a></li>
 </ul>
-<p><a class="glightbox" href="../../../assets/images/arduino-lab1-img-add-library.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab1-img-add-library.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Importing A Library Into Arduino IDE" src="../../../assets/images/arduino-lab1-img-add-library.png" /></a></p>
 <h3 id="how-to-install-a-library-with-the-arduino-ide-2">How to install a library with the Arduino IDE 2<a class="headerlink" href="#how-to-install-a-library-with-the-arduino-ide-2" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -4312,29 +4202,29 @@ Results</p>
 <p>With the editor open, let's take a look at the left column. Here, we can see a couple of icons. Let's click the on the <strong>"library"</strong> icon.</p>
 </li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img01.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img01.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img01.png" /></a></p>
 <ol>
 <li>A list will now appear of all available libraries, where we can also search for the library we want to use. In this example, we are going to install the <strong>RTCZero</strong> library. Click on the <strong>"INSTALL"</strong> button to install the library.</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img02.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img02.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img02.png" /></a></p>
 <ol>
 <li>This process should not take too long, but allow up to a minute to install it.</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img03.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img03.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img03.png" /></a></p>
 <ol>
 <li>When it is finished, we can take a look at the library in the library manager column, where it should say <strong>"INSTALLED"</strong>.</li>
 </ol>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img04.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img04.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img04.png" /></a></p>
 <p>Congratulations! You have now successfully downloaded and installed a library on your machine.</p>
 <h3 id="including-a-library">Including a Library<a class="headerlink" href="#including-a-library" title="Permanent link">&para;</a></h3>
 <p>To use a library, you first need to include the library at the top of the sketch.</p>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img05.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img05.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img05.png" /></a></p>
 <p>Almost all libraries come with already made examples that you can use. These are accessible through File &gt; Examples &gt; {Library} &gt; {Example}. In this example, we are choosing the RTCZero &gt; SimpleRTC.</p>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img06.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.png" /></a></p>
 <p>You can also access library examples directly in the library manager, by clicking the three dots next to the installed library, like this: </p>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img06.5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.5.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img06.5.png" /></a></p>
 <p>The chosen example will now open up in a new window, and you can start using it however you want to.</p>
-<p><a class="glightbox" href="../../../assets/images/installing-a-library-img07.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img07.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/installing-a-library-img07.png" /></a></p>
 
 
 
@@ -4432,22 +4322,30 @@ Results</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="../../../javascripts/tablesort.js"></script>
       
-        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+        <script src="../../../assets/external/unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
-        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
-      
-        <script src="../../../javascripts/mermaid.js"></script>
-      
-        <script src="https://unpkg.com/browse/mermaid@11.4.0/dist/mermaid.min.js"></script>
+        <script src="../../../assets/external/unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(() => { lightbox.reload() });
 </script></body>
 </html>
