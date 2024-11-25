@@ -49,6 +49,14 @@
          <lastmod>2024-11-25</lastmod>
     </url>
     <url>
+         <loc>https://notes.ellermann.com/aws/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/aws/aws-certifications/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
          <loc>https://notes.ellermann.com/csc205/</loc>
          <lastmod>2024-11-25</lastmod>
     </url>
@@ -89,7 +97,11 @@
          <lastmod>2024-11-25</lastmod>
     </url>
     <url>
-         <loc>https://notes.ellermann.com/csc205/module-14/csc205-module-14-video%20example-class-diagram/</loc>
+         <loc>https://notes.ellermann.com/csc205/module-14/heaps-and-priority-queues-faq/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/heaps-and-priority-queues-notes/</loc>
          <lastmod>2024-11-25</lastmod>
     </url>
     <url>
@@ -110,6 +122,10 @@
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-14/code/StudentRecord/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/code/csc205-module-14-video-example-class-diagram/</loc>
          <lastmod>2024-11-25</lastmod>
     </url>
     <url>
@@ -214,6 +230,118 @@
     </url>
     <url>
          <loc>https://notes.ellermann.com/csc205/module-14/code/priorityqueue/PriorityQueue/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/HeapDriver/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/Project9TestDriver/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/csc205-module-14-project-9-heaps-starter-code-class-diagram/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/project-9-readme/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/csc205/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/csc205/Sorting/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/ArrayBinaryTree/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/ArrayHeap/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/ArrayList/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/ArrayUnorderedList/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/BinaryTreeADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/BinaryTreeNode/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/HeapADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/HeapNode/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/HeapQueue/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/HeapStack/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/LinkedBinaryTree/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/LinkedHeap/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/ListADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/QueueADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/StackADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/UnorderedListADT/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/exceptions/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/exceptions/ElementNotFoundException/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/exceptions/EmptyCollectionException/</loc>
+         <lastmod>2024-11-25</lastmod>
+    </url>
+    <url>
+         <loc>https://notes.ellermann.com/csc205/module-14/project9heaps/jsjf/exceptions/NonComparableElementException/</loc>
          <lastmod>2024-11-25</lastmod>
     </url>
     <url>
