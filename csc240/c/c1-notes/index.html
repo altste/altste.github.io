@@ -3227,10 +3227,10 @@ Any of the above structures can be nested inside each other. The C statements �
 <p>L-values &amp; r-values
 An object in C that has a memory location associated with it is called an l-value. This would include objects such as variables and arrays. (Note that we are using the term “object” here in the general sense, not in the object-oriented sense). Objects that do not have memory locations associated with them are called r-values. R-values do not have any memory associated with them. </p>
 <p>You will sometimes see l-value &amp; r-value defined in terms of where they can appear in an assignment - an l-value can usually appear on the left-hand side of an assignment (meaning that you can assign a value to it) and an r-value can only appear on the right hand side. For example:
-lvalue = rvalue;    /<em> OK </em>/
-rvalue = lvalue;    /<em> Not OK </em>/
+lvalue = rvalue;    /* OK <em>/
+rvalue = lvalue;    /</em> Not OK <em>/
 But keep in mind that since an l-value has memory associated with it, it can be evaluated to a value so it can appear on either side of the assignment operator (the left side or the right side):
-lvalue = another_lvalue;    /<em> Also OK </em>/
+lvalue = another_lvalue;    /</em> Also OK */
 Also, some types of l-values cannot appear on the left hand side of an assignment, such as constant variables and arrays. Most literals (int literals such as 123 or char literals such as ‘A’) are r-values, but string literals are actually l-values since they are stored in memory. 
 Arrays (Chapter 6)
 Arrays
@@ -3250,20 +3250,20 @@ Functions communicate with the rest of the program through global variables, par
 A C function is declared with:
         return_type function_name(parameters)
 If the function is not being defined when it is declared, the declaration should end with a semicolon (called a forward declaration). The forward declaration ensures that the function is in scope even though it hasn’t been defined yet so we can use it before it is defined. The argument names are optional in a forward declaration, but the types are required. If we use a function before it is declared, C assumes the function returns an int. 
-void bar(int);         /<em> forward declaration </em>/ 
-int foo(int, float);   /<em> forward declaration </em>/ 
+void bar(int);         /* forward declaration <em>/ 
+int foo(int, float);   /</em> forward declaration <em>/ 
 . . . 
 int foo(int x, float f) {
   ...
-  bar(x);  /<em> call function bar() </em>/
+  bar(x);  /</em> call function bar() <em>/
 }
-void bar(int y) {  /<em> declaration of function bar() </em>/
+void bar(int y) {  /</em> declaration of function bar() */
  . . . 
 } 
 It is good practice to break up your program into multiple, well-named functions. Well-chosen function names make code much more readable. Functions with a return type of void do not need a return statement - control will return to the caller at the end of the function. </p>
 <p>The parameters in the declaration are called formal parameters and are local variables of the function. When the function is called, actual parameters are used. Suppose I have the code below
 int do_something(int a, int b) {
-  /<em> do some stuff </em>/
+  /* do some stuff */
   return 0;
 }
 Then we call the function as below:
@@ -3414,11 +3414,11 @@ One of the most powerful features of C is the pointer data type. Put simply, a p
 * Changing the value of data passed to a function
 Keep in mind that pointers are variables. So they use memory just like any other variable. The difference is that they store a memory location (of another variable) as their data.</p>
 <p>The following code defines a pointer and uses it to change a variable’s value.
-int num = 6;  /<em> integer </em>/
-int * ptr;    /<em> pointer to an integer (or integer pointer) </em>/
-ptr = &num;   /<em> assign the value of the address of num to ptr. 
-                 Now ptr is a pointer to num </em>/
-<em>ptr = 20;    /</em> Assign the value 20 to the variable pointed to 
+int num = 6;  /* integer <em>/
+int * ptr;    /</em> pointer to an integer (or integer pointer) <em>/
+ptr = &num;   /</em> assign the value of the address of num to ptr. 
+                 Now ptr is a pointer to num <em>/
+*ptr = 20;    /</em> Assign the value 20 to the variable pointed to 
                  by ptr */
 The &amp; is the C reference operator. It returns the address of a variable. It is an r-value (it can appear only on the right side of an assignment operator - you cannot assign a value to it and the address of a variable cannot be changed). 
 The * is the C indirection (dereference) operator. It returns an alias of the variable pointed to by a pointer. It is an l-value (it can appear on either side of the assignment operator - you can assign a value to it). No additional memory overhead is incurred when using a pointer as an alias. One advantage of using an alias is you can write code that can work on different variables at different times depending on what the alias is referring to.</p>
@@ -3433,7 +3433,7 @@ The * is the C indirection (dereference) operator. It returns an alias of the va
 <p>We can also use pointers to access arrays. We can either set the value of the pointer to the array name or the address of the first element of the array:
 int arr[] = {1, 2, 3, 4, 5};
 int * ptr;
-ptr = arr;   /<em> equivalent to: ptr = &amp;arr[0] </em>/
+ptr = arr;   /* equivalent to: ptr = &amp;arr[0] */
 We can then use pointer arithmetic to access the elements of array arr through ptr. The increment and decrement operators (++ and --) can be used to move back and forth through an array using a pointer. </p>
 <p>Finally, it is also possible to have a pointer to a function. This is helpful in cases where you want to pass a function as a parameter to another function. This is used extensively in implementing object-oriented languages in C, or even for writing object-oriented programs using C.</p>
 <p>Dynamic Memory Allocation (from Chapter 16)
@@ -3441,10 +3441,10 @@ Many times the programmer does not know how much memory will be required. In thi
 * calloc(number_ofunits, unit_size) returns a void pointer to a region of memory large enough to hold number_of_units elements of size unit_size. The entire region is filled with 0s.
 * malloc(number_of_bytes) returns a void pointer to a region of memory of size number_of_bytes. It does not initialize the memory. 
 The sizeof operator returns the number of bytes allocated to an item. Since the size of different types varies on different machines, the sizeof operator can be used to ensure enough memory is allocated.
-ptr1 = calloc(20, sizeof(char));        /<em> Allocate 20 integers and 
-                                      initialize to 0 </em>/
-ptr2 = malloc(10);                    /<em> Allocate 10 bytes </em>/
-nums = malloc(10 * sizeof(int));        /<em> Allocate 10 integers </em>/</p>
+ptr1 = calloc(20, sizeof(char));        /* Allocate 20 integers and 
+                                      initialize to 0 <em>/
+ptr2 = malloc(10);                    /</em> Allocate 10 bytes <em>/
+nums = malloc(10 * sizeof(int));        /</em> Allocate 10 integers */</p>
 <p>When using sizeof to determine the size of an array, you need to divide the size of the array by the type the array holds.
 item_count = sizeof(item_list) / sizeof(int);</p>
 <p>When you are finished working with dynamically allocated memory you should always free them memory using the free function.
@@ -3455,14 +3455,14 @@ free(ptr1);</p>
 <p>int main(void) {
    int x = 10;
    int <em>ptr1 = &x;
-   int </em>ptr2 = malloc(sizeof(int));
-   int <em>ptr3; 
-   printf("x=%d &amp;x=%p  ptr1=%p  &amp;ptr1=%p </em>ptr1=%d\n",
-           x, &amp;x, ptr1, &amp;ptr1, <em>ptr1);
-   printf("x=%d &amp;x=%p  ptr2=%p  &amp;ptr2=%p </em>ptr2=%d\n",
-           x, &amp;x, ptr2, &amp;ptr2, <em>ptr2);
-   /</em>printf("x=%d &amp;x=%p  ptr3=%p  &amp;ptr3=%p <em>ptr3=%d\n",
-             x, &amp;x, ptr3, &amp;ptr3, </em>ptr3); */
+   int *ptr2 = malloc(sizeof(int));
+   int *ptr3; 
+   printf("x=%d &amp;x=%p  ptr1=%p  &amp;ptr1=%p *ptr1=%d\n",
+           x, &amp;x, ptr1, &amp;ptr1, *ptr1);
+   printf("x=%d &amp;x=%p  ptr2=%p  &amp;ptr2=%p *ptr2=%d\n",
+           x, &amp;x, ptr2, &amp;ptr2, *ptr2);
+   /</em>printf("x=%d &amp;x=%p  ptr3=%p  &amp;ptr3=%p *ptr3=%d\n",
+             x, &amp;x, ptr3, &amp;ptr3, *ptr3); */
    free(ptr2);
    return 0;
  } 
@@ -3471,13 +3471,13 @@ With ptr1 we set it to the address of variable x, so it points to x. We allocate
 <p>In this example, when we reach the code the value stored in x is 500 and the value stored in y is 8000. We aren't concerned with where those values came from, just that the variables have that value now.</p>
 <p>y = &x;
 In this line, &amp;x returns the address where x is stored (which we are told is 2000 in the example). So y will now hold the value 2000. The value held in x does not change. </p>
-<p><em>y = 100;
-Here we dereference y, which means </em>y is an alias of the variable y is pointing to. The value held in y is 2000 which is the address of x. Therefore, *y is an alias of x so the statement assigned the value 100 to x. Now x holds the value 100. </p>
+<p>*y = 100;
+Here we dereference y, which means *y is an alias of the variable y is pointing to. The value held in y is 2000 which is the address of x. Therefore, *y is an alias of x so the statement assigned the value 100 to x. Now x holds the value 100. </p>
 <p>y = y + 10;
 This line is an example of pointer arithmetic. When we add or subtract a value from a pointer, we change the value stored by the pointer. However, we don’t just add or subtract the value. The actual value we add or subtract is based on the size of the type of the pointer. Here y is an int pointer and ints are 4 bytes. So when we have y + 10 we are adding 10 * 4 = 40 to y since each byte is 4. This is convenient because it allows us to cycle through an array quickly using a pointer.</p>
 <p>Pointer Example 2:</p>
 <p>Pointer Example 3:</p>
-<p>In this example, we see a pointer to a pointer (double pointer) - <strong>k. A double pointer holds the address of a pointer as its value, so *k is an alias for j. </strong>k is an alias for i. You can have multiple levels of indirection, but in practice anything more than a double pointer is rare.</p>
+<p>In this example, we see a pointer to a pointer (double pointer) - *<em>k. A double pointer holds the address of a pointer as its value, so *k is an alias for j. *</em>k is an alias for i. You can have multiple levels of indirection, but in practice anything more than a double pointer is rare.</p>
 <p>Why pointers? 
 In a typical program you should not use pointers unless you have a good reason. Some of the reasons to use pointers are: 
 * Pointers allow you to manipulate memory much more quickly than any other language construct 
@@ -3486,8 +3486,8 @@ In a typical program you should not use pointers unless you have a good reason. 
 <p>Pointers vs Arrays
 It may seem like pointers and arrays are the same thing. After all, pointer names can be used with array indexing, so
 p is equivalent to &amp;p[0]
-<em>p is equivalent to p[0]
-</em>(p+3) is equivalent to p[3]
+*p is equivalent to p[0]
+*(p+3) is equivalent to p[3]
 Conversely, array names can be used syntactically as pointer names. So
 arr is equivalent to &amp;arr[0]
 *(arr+3) is equivalent to arr[3]
@@ -3558,11 +3558,11 @@ You can also write your own header file. The &lt;&gt; characters tell the prepro
 <p>The #endif is important - always make sure you end an #ifndef statement with #endif. In this code, the printf will only be compiled if the DEBUG constant has been defined. We can define preprocessor constants at compile time, so the same source file can generate different executables depending on those constants.</p>
 <p>You can also #undef a constant if necessary.</p>
 <p>There is also an if … else preprocessor construct:</p>
-<h1 id="if-os-1-mac-os">if    OS == 1  /<em> Mac OS </em>/<a class="headerlink" href="#if-os-1-mac-os" title="Permanent link">&para;</a></h1>
+<h1 id="if-os-1-mac-os">if    OS == 1  /* Mac OS */<a class="headerlink" href="#if-os-1-mac-os" title="Permanent link">&para;</a></h1>
 <p>...</p>
-<h1 id="elif-os-2-windows">elif  OS == 2  /<em> Windows </em>/<a class="headerlink" href="#elif-os-2-windows" title="Permanent link">&para;</a></h1>
+<h1 id="elif-os-2-windows">elif  OS == 2  /* Windows */<a class="headerlink" href="#elif-os-2-windows" title="Permanent link">&para;</a></h1>
 <p>...</p>
-<h1 id="elif-os-3-linux">elif  OS == 3  /<em> Linux  </em>/<a class="headerlink" href="#elif-os-3-linux" title="Permanent link">&para;</a></h1>
+<h1 id="elif-os-3-linux">elif  OS == 3  /* Linux  */<a class="headerlink" href="#elif-os-3-linux" title="Permanent link">&para;</a></h1>
 <p>...</p>
 <h1 id="else">else<a class="headerlink" href="#else" title="Permanent link">&para;</a></h1>
 <p>...</p>
@@ -3570,7 +3570,7 @@ You can also write your own header file. The &lt;&gt; characters tell the prepro
 <p>Include files can be nested. While this can simplify your code, it can lead to problems if a file is included multiple times in the same file. To prevent this, we can use conditional compilation to create a guard to prevent multiple inclusion  In the example below, code is included only if it has not been previously included:</p>
 <h1 id="ifndef-_myheader_h">ifndef _MYHEADER_H<a class="headerlink" href="#ifndef-_myheader_h" title="Permanent link">&para;</a></h1>
 <h1 id="define-_myheader_h">define _MYHEADER_H<a class="headerlink" href="#define-_myheader_h" title="Permanent link">&para;</a></h1>
-<p>/<em> code </em>/</p>
+<p>/* code */</p>
 <h1 id="endif_2">endif<a class="headerlink" href="#endif_2" title="Permanent link">&para;</a></h1>
 <p>Working with Types (Chapter 13)
 Enumerated Data Types
@@ -3579,7 +3579,7 @@ enum week_day { sunday, monday, tuesday, wednesday,
                   thursday, friday, saturday};
 This creates a new enumerated data type called enum week_day. We can then define and use a variable of this type as follows:
 enum week_day workday = monday;
-/<em> ... </em>/
+/* ... */
 if ( workday == friday ) {
   workday = monday;
 }
@@ -3601,8 +3601,8 @@ direction_t current_direction = north;</p>
 <p>We can define array and struct types as follows:
 typedef int grades_t[10];
 typedef struct { float x; float y; } point_t;</p>
-<p>grades_t cs_grades;  /<em> Array of 10 ints </em>/
-point_t current_loc; /<em> Point </em>/</p>
+<p>grades_t cs_grades;  /* Array of 10 ints <em>/
+point_t current_loc; /</em> Point */</p>
 <p>Clear naming of user-defined types is critical, as the typedef hides the details of the type. The name should indicate what the underlying type is For example
 typedef char *string_pointer_t;
 typedef struct {int id, char * name} student_record_t;
@@ -3665,7 +3665,7 @@ polynomial.o: polynomial.c
 basiclist.o: basiclist.c
         $(CC) $(CFLAGS) -c basiclist.c
 clean:
-        rm -f <em>.o </em>~ poly.exe
+        rm -f *.o *~ poly.exe
 To build the whole project
 make
 To build just one module (in this case term.o)
@@ -3687,7 +3687,7 @@ Note that this redirects all output to the file, so if you have any prompts for 
 Note that the direction of the operator is reversed. In this case, the file will be treated as the input of our program. </p>
 <p>The above operations were done using the operating system, not the C language. C provides functions to write directly to and read from a file from inside our program. Note that when dealing with files we need to be concerned about the end of the file. If we read from a file past the end of the file we will get an error. Most C library file functions use a special flag (EOF) to indicate when the end of the file is reached. You should always check that flag in your programs when you use file I/O.</p>
 <p>Before you can perform I/O on a file the file must be opened. The fopen function opens a file and returns a FILE pointer to the file. You must specify the mode you want to use the file for - read (“r”), write(“w”), or append (“a”). Append and write mode will create the file if it does not already exist. You can read from anywhere in a file, but you can only write to the end. Adding a + character to the mode will allow both reading &amp; writing. Adding a b to the mode will open the file in binary mode. If the file cannot be opened the function returns NULL. You should always check that the file was opened successfully before proceeding.
-FILE <em>infile, </em>outfile, <em>binaryfile;
+FILE <em>infile, *outfile, *binaryfile;
 if ( (infile = fopen(“input.txt”, “r”)) ==  NULL ) {
     /</em> Input file was not opened <em>/ 
     exit(EXIT_FAILURE);
@@ -3716,7 +3716,7 @@ C provides a goto statement. In general, you should not use goto for flow contro
 if (myptr == NULL) {
   goto handle_error;
 }
-/<em> … </em>/
+/* … */
 handle_error : printf("There was a problem!");</p>
 <p>Using Semicolons &amp; Commas
 A semicolon can be placed anywhere a legal statement can appear. This causes nothing to be done and is called a null statement. This is most often seen in a loop. For example, the following code counts  the number of characters that appear in the file:
@@ -3749,9 +3749,9 @@ We have seen how to get information into your program from user input and from f
 <h1 id="include_5">include<stdio.h><a class="headerlink" href="#include_5" title="Permanent link">&para;</a></h1>
 <p>int main(int argc, char * argv[]) {</p>
 <p>int ii;
-  /<em> Print the number of arguments passed </em>/
+  /* Print the number of arguments passed <em>/
   printf("argc = %d\n", argc);
-  /<em> Print each individual argument. arg[0] is the name of the command </em>/
+  /</em> Print each individual argument. arg[0] is the name of the command */
   for(ii=0;ii&lt;argc;ii++) {
     printf("argv[%d] = %s\n", ii, argv[ii]);
   } 
